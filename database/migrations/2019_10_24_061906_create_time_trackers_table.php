@@ -13,8 +13,9 @@ class CreateTimeTrackersTable extends Migration
      */
     public function up()
     {
-        Schema::create('timetrackers', function (Blueprint $table) {
+        Schema::create('tim_trackers', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->
             $table->timestamps();
         });
     }

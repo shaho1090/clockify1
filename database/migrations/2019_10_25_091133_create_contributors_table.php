@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContributersTable extends Migration
+class CreateContributorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,13 +19,11 @@ class CreateContributersTable extends Migration
             $table->bigInteger('project_id')->unsigned();
             $table->timestamps();
             $table->foreign('contributor')
-                ->references('id')->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+                 ->references('id')->on('users')
+                 ->onUpdate('cascade');
             $table->foreign('project_id')
-                ->references('id')->on('projects')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+                 ->references('id')->on('projects')
+                 ->onUpdate('cascade');
         });
     }
 
@@ -36,6 +34,6 @@ class CreateContributersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contributers');
+        Schema::dropIfExists('contributors');
     }
 }

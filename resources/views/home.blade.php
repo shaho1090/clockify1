@@ -1,9 +1,11 @@
 @extends('layouts.app')
-
+@section('sidebar')
+    @include('layouts.sidebar')
+@endsection
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="row justify-content-right">
+        <div class="col-lg">
             <div class="card">
                 <div class="card-header">داشبورد</div>
 
@@ -21,3 +23,4 @@
     </div>
 </div>
 @endsection
+

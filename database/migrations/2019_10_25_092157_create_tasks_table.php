@@ -21,7 +21,7 @@ class CreateTasksTable extends Migration
             $table->dateTime('stop_time');
             $table->boolean('billable');
             $table->timestamps();
-           $table->foreign('contributor_id')
+            $table->foreign('contributor_id')
                 ->references('id')->on('contributors')
                 ->onUpdate('cascade');
             });

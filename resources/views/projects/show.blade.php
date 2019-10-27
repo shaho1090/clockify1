@@ -15,30 +15,32 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">لیست پروژه ها</div>
+                    <div class="card-header">{!! $project->title !!}</div>
                     <div class="card-body">
                         <div class="panel panel-default">
 
                             <div class="panel-heading">
-                                <h3> لیست پروژه های شما </h3>
+                                <h4> لیست افراد شرکت کننده در پروژه</h4>
                             </div>
-                            @if ($projects->isEmpty())
-                                <p> هنوز هیچ پروژه ای  توسط شما ایجاد نشده است.</p>
+                            @if ($contributors->isEmpty())
+                                <p> هنوز هیچ کس برای مشارکت در این پروژه اقدام نکرده است.</p>
                             @else
                                 <table class="table">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>عنوان پروژه</th>
+                                        <th>نام کاربری</th>
+                                        <th>آدرس ایمیل</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($projects as $project)
+                                    @foreach($contributors as $contributor)
                                         <tr>
-                                            <td>{!! $project->id !!}</td>
+                                            <td>{!! $contributor->id !!}</td>
                                             <td>
-                                                <a href="{!! action('ProjectsController@show', $project->id) !!}">{!! $project->title !!} </a>
+                                                <a href="{!! action('ProjectsController@edit', $contributor->id) !!}">{!! $contributor->name !!} </a>
                                             </td>
+                                            <td>{!! $contributor->email !!}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -48,17 +50,18 @@
                         <div id="accordion">
                         <div class="card-header">
                             <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-                                اضافه کردن پروژه جدید
+                                ارسال ایمیل مشارکت در پروژه
                             </a>
                         </div>
 
                         <div id="collapseTwo" class="collapse" data-parent="#accordion">
                             <div class="card-body">
-                               <form action="/projects/add" method="post">
+                               <form action="/contributors/add" method="post">
 
                                    <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                                   <button type="submit" class="btn" >ارسال</button>
                                    <input type="text" name="project_title">
-                                  <button type="submit" class="btn" >ثبت</button>
+
                                </form>
                             </div>
                         </div>

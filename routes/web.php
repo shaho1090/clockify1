@@ -12,9 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('projects/index','ProjectsController@index')->middleware('auth');
+//Route::get('/projects/{id?}', 'ProjectsController@show')->middleware('auth');
+Route::post('/projects/add', 'ProjectsController@add')->middleware('auth');
+Route::get('/projects/edit/{id?}', 'ProjectsController@edit')->middleware('auth');
+

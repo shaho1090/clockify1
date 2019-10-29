@@ -28,14 +28,21 @@
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>نقش شما</th>
                                         <th>عنوان پروژه</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($projects as $project)
                                         <tr>
-                                            <td>{!! $project->id !!}</td>
+                                            <td>@if ( $project->pivot->access == 0 )
+                                                    {{ 'owner' }}
+                                                @elseif ($project->pivot->access == 1)
+                                                    {{ 'admin' }}
+                                                @else
+                                                    {{'user'}}
+                                                @endif
+                                            </td>
                                             <td>
                                                 <a href="{!! action('ProjectsController@show', $project->id) !!}">{!! $project->title !!} </a>
                                             </td>

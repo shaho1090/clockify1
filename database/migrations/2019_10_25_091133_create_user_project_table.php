@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContributorsTable extends Migration
+class CreateUserProjectTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,18 @@ class CreateContributorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contributors', function (Blueprint $table) {
+        Schema::create('user_project', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('contributor')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('project_id')->unsigned();
+            $table->tinyInteger('access')->default(2);
             $table->timestamps();
-            $table->foreign('contributor')
+         /*   $table->foreign('user_id')
                  ->references('id')->on('users')
                  ->onUpdate('cascade');
             $table->foreign('project_id')
                  ->references('id')->on('projects')
-                 ->onUpdate('cascade');
+                 ->onUpdate('cascade');*/
         });
     }
 
@@ -34,6 +35,6 @@ class CreateContributorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contributors');
+        Schema::dropIfExists('user_project');
     }
 }

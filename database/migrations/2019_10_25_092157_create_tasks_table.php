@@ -22,7 +22,7 @@ class CreateTasksTable extends Migration
             $table->boolean('billable');
             $table->timestamps();
             $table->foreign('contributor_id')
-                ->references('id')->on('contributors')
+                ->references('id')->on('user_project')
                 ->onUpdate('cascade');
             });
     }

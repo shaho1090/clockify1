@@ -22,10 +22,7 @@
                             <div class="panel-heading">
                                 <h4> لیست افراد شرکت کننده در پروژه</h4>
                             </div>
-                            @if ($contributors->isEmpty())
-                                <p> هنوز هیچ کس برای مشارکت در این پروژه اقدام نکرده است.</p>
-                            @else
-                                <table class="table">
+                               <table class="table">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
@@ -34,19 +31,18 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($contributors as $contributor)
+                                    @foreach($projects->user as $user)
                                         <tr>
-                                            <td>{!! $contributor->id !!}</td>
+                                            <td>{!! $user->pivot->id !!}</td>
                                             <td>
-                                                <a href="{!! action('ProjectsController@edit', $contributor->id) !!}">{!! $contributor->name !!} </a>
+                                                <a href="{!! action('ProjectsController@edit') !!}">{!! $user->pivot->name !!} </a>
                                             </td>
-                                            <td>{!! $contributor->email !!}</td>
+                                            <td>{!! $user->pivot->email !!}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
                                 </table>
-                            @endif
-                        </div>
+                            </div>
                         <div id="accordion">
                         <div class="card-header">
                             <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
@@ -56,12 +52,12 @@
 
                         <div id="collapseTwo" class="collapse" data-parent="#accordion">
                             <div class="card-body">
-                               <form action="/contributors/add" method="post">
-
+                               <form action="/contributors/invite" method="post">
                                    <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                                   <input type="text" name="email">
+                                   <input type="hidden" name="project_id" value={!! $project->id !!}>
+                                   <input type="hidden" name="project_title" value={!! $project->title !!}>
                                    <button type="submit" class="btn" >ارسال</button>
-                                   <input type="text" name="project_title">
-
                                </form>
                             </div>
                         </div>

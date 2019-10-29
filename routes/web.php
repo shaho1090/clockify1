@@ -18,20 +18,24 @@ Route::get('sendemail', function () {
     $data = array(
         'name' => "Learning Laravel",
     );
-    Mail::send( 'contributors.invite',$data, function ($message) {
+    Mail::send( 'contributors.welcome',$data, function ($message) {
         $message->from('laravelshaho@gmail.com', 'Learning Laravel');
         $message->to('shaho.sanandaji@gmail.com')->subject('Learning Laravel test email');
     });
     return "Your email has been sent successfully";
 });
-Route::get('/contributors/invite',function () {
-    return view('contributors.invite');
+Route::get('/contributors/welcome',function () {
+    return view('contributors.welcome');
 });
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('projects/index','ProjectsController@index')->middleware('auth');
 Route::get('/projects/show/{id?}', 'ProjectsController@show')->middleware('auth');
-Route::post('/projects/add', 'ProjectsController@add')->middleware('auth');
+
+Route::post('/contributors/invite', 'ContributorsController@invite')->middleware('auth');
+Route::post('/projects/add', 'ProjectsController@createNewProject')->middleware('auth');
 Route::get('/projects/edit/{id?}', 'ProjectsController@edit')->middleware('auth');
+
+Route::get('/contributors/invited/{email?}', 'ContributorsController@add')->middleware('auth');
 

@@ -38,6 +38,7 @@ class User extends Authenticatable
     ];
     public function projects()
     {
-        return $this->hasMany('App\Project');
+        return $this->belongsToMany(Project::class,'user_project')->withPivot('access');
     }
+
 }

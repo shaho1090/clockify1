@@ -38,7 +38,24 @@ class User extends Authenticatable
     ];
     public function projects()
     {
-        return $this->belongsToMany(Project::class,'user_project')->withPivot('access');
+        return $this->belongsToMany(Project::class,'user_project')->withPivot('access','id');
     }
+    public function userProjects()
+    {
+        return $this->hasMany(UserProject::class,'user_id');
+    }
+
+    public function works()
+    {
+        return $this->hasManyThrough(
+            Work::class,
+            UserProject::class,
+            'user_id',// Foreign key on user_project table...
+            'user_project_id', // Foreign key on works table...
+            'id', // Local key on user_project table...
+            'id' // Local key on tasks table...
+        );
+    }
+
 
 }

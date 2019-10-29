@@ -33,9 +33,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('projects/index','ProjectsController@index')->middleware('auth');
 Route::get('/projects/show/{id?}', 'ProjectsController@show')->middleware('auth');
 
-Route::post('/contributors/invite', 'ContributorsController@invite')->middleware('auth');
+
 Route::post('/projects/add', 'ProjectsController@createNewProject')->middleware('auth');
 Route::get('/projects/edit/{id?}', 'ProjectsController@edit')->middleware('auth');
 
 Route::get('/contributors/invited/{email?}', 'ContributorsController@add')->middleware('auth');
+Route::post('/contributors/invite', 'ContributorsController@invite')->middleware('auth');
 
+Route::post('/works/new', 'WorksController@setNewTime')->middleware('auth');
+Route::get('/works/index/{id?}', 'WorksController@index')->middleware('auth');

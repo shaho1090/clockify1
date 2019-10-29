@@ -10,7 +10,7 @@ class Project extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class,'user_project')->withPivot('access');
+        return $this->belongsToMany(User::class,'user_project')->withPivot('access','id');
     }
 
 }

@@ -36,19 +36,19 @@
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    <button class="btn btn-outline-dark"><a href="{!! action('WorksController@setStartTime',$project_id) !!}">شروع </a></button>
+                                                    <button class="btn btn-outline-dark"><a  href="{!! action('WorksController@setStartTime',$project_id) !!}">شروع </a></button>
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-outline-dark"><a href="{!! action('WorksController@setStopTime') !!}">پایان</a></button>
+                                                    <button class="btn btn-outline-dark"><a href="{!! action('WorksController@setStopTime',$project_id) !!}">پایان</a></button>
                                                 </td>
                                                 <td>
                                                     {{ date("Y-m-d") }}
                                                 </td>
                                                 <td>
-                                                    {{ $works->start_time ?? '' }}
+
                                                 </td>
                                                 <td>
-                                                    {{ $works->stop_time ?? ''}}
+
                                                 </td>
                                             </tr>
 
@@ -61,7 +61,7 @@
                             <div class="panel-heading">
                                 <h4> لیست زمان های کاری شما</h4>
                             </div>
-                            @if ($works===null)
+                            @if ($works == null)
                                 <p> شما تاکنون برای این پروژه زمان کار ثبت نکرده اید!</p>
                             @else
                                 <table class="table">
@@ -71,21 +71,26 @@
                                         <th>تاریخ</th>
                                         <th>ساعت شروع</th>
                                         <th>ساعت پایان</th>
-                                        <th>تگ</th>
-
+                                        <th>قابلیت پرداخت</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($works as $work)
                                         <tr>
                                             <td>
-
+                                                {!! $project_title !!}
                                             </td>
                                             <td>
-                                                <a href="{!! action('ProjectsController@show', $work->id) !!}">{!! $work->title !!} </a>
+                                                {!! date("Y-m-d",strtotime($work->created_at)) !!}
                                             </td>
                                             <td>
-                                                <button class="btn btn-outline-dark"><a href="{!! action('ProjectsController@show', $project->id) !!}">شروع به انجام کار </a></button>
+                                               {!! date("H:i:s",strtotime($work->start_time))!!}
+                                            </td>
+                                            <td>
+                                                {!! date("H:i:s",strtotime($work->stop_time))!!}
+                                            </td>
+                                            <td>
+                                                {!! $work->billable !!}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -99,5 +104,5 @@
             </div>
         </div>
     </div>
-    </div>>
+    </div>
 @endsection

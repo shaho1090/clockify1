@@ -4,18 +4,23 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use App\Work;
 
 class UserProject extends Pivot
 {
     public $incrementing = true;
     protected $table = 'user_project';
     protected $fillable = ['user_id',  'project_id','access' ];
+    public function works()
+    {
+        return $this->hasMany(Work::class,'user_project_id');
+    }
 
    /* public function tasks()
     {
         return $this->hasMany(Task::class);
     }*/
-    /*public function works()
+   /*public function works()
     {
         return $this->hasManyThrough(
             Work::class,

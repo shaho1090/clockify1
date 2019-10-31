@@ -18,9 +18,48 @@
                     <div class="card-header">{{ $project_title }}</div>
                     <div class="card-body">
                         <div class="panel panel-default">
+                              <div class="panel-heading">ثبت زمان کاری برای این پروژه</div>
 
+
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th>تاریخ</th>
+                                            <th>ساعت شروع</th>
+                                            <th>ساعت پایان</th>
+
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <button class="btn btn-outline-dark"><a href="{!! action('WorksController@setStartTime',$project_id) !!}">شروع </a></button>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-outline-dark"><a href="{!! action('WorksController@setStopTime') !!}">پایان</a></button>
+                                                </td>
+                                                <td>
+                                                    {{ date("Y-m-d") }}
+                                                </td>
+                                                <td>
+                                                    {{ $works->start_time ?? '' }}
+                                                </td>
+                                                <td>
+                                                    {{ $works->stop_time ?? ''}}
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+
+                            </div>
+
+                        <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3> لیست زمان های کاری شما</h3>
+                                <h4> لیست زمان های کاری شما</h4>
                             </div>
                             @if ($works===null)
                                 <p> شما تاکنون برای این پروژه زمان کار ثبت نکرده اید!</p>
@@ -46,7 +85,7 @@
                                                 <a href="{!! action('ProjectsController@show', $work->id) !!}">{!! $work->title !!} </a>
                                             </td>
                                             <td>
-                                             <button class="btn btn-outline-dark"><a href="{!! action('ProjectsController@show', $project->id) !!}">شروع به انجام کار </a>
+                                                <button class="btn btn-outline-dark"><a href="{!! action('ProjectsController@show', $project->id) !!}">شروع به انجام کار </a></button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -60,4 +99,5 @@
             </div>
         </div>
     </div>
+    </div>>
 @endsection

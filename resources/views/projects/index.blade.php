@@ -49,10 +49,10 @@
                                                 <a href="{!! action('ProjectsController@show', $project->id) !!}">{!! $project->title !!} </a>
                                             </td>
                                             <td>
-                                             <button class="btn btn-outline-dark"><a href="{!! action('WorksController@index', $project->id) !!}">مشاهده زمان های کاری</a>
+                                                <button class="btn btn-outline-dark"><a href="{!! action('WorksController@index', $project->id) !!}">مشاهده زمان های کاری</a></button>
                                             </td>
                                             <td>
-                                                <button class="btn btn-outline-dark"><a href="{!! action('WorksController@index', $project->id) !!}">انجام کار روی پروژه</a>
+                                                <button class="btn btn-outline-dark"><a href="{!! action('WorksController@index', $project->id) !!}">انجام کار روی پروژه</a></button>
                                             </td>
                                         </tr>
                                     @endforeach

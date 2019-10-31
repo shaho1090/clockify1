@@ -40,5 +40,8 @@ Route::get('/projects/edit/{id?}', 'ProjectsController@edit')->middleware('auth'
 Route::get('/contributors/invited/{email?}', 'ContributorsController@add')->middleware('auth');
 Route::post('/contributors/invite', 'ContributorsController@invite')->middleware('auth');
 
-Route::post('/works/new', 'WorksController@setNewTime')->middleware('auth');
+Route::get('/works/start/{id?}', 'WorksController@setStartTime')->middleware('auth');
+Route::get('/works/stop', 'WorksController@setStopTime')->middleware('auth');
 Route::get('/works/index/{id?}', 'WorksController@index')->middleware('auth');
+Route::post('/works/setwork/', 'WorksController@setWork')->middleware('auth');
+

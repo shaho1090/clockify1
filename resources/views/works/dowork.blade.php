@@ -15,26 +15,24 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">لیست پروژه ها</div>
+                    <div class="card-header"></div>
                     <div class="card-body">
                         <div class="panel panel-default">
 
                             <div class="panel-heading">
-                                <h3> لیست پروژه های شما </h3>
+                                <h3> </h3>
                             </div>
-                            @if ($projects->isEmpty())
-                                <p> هنوز هیچ پروژه ای  توسط شما ایجاد نشده است.</p>
-                            @else
-                                <table class="table">
+                               <table class="table">
                                     <thead>
                                     <tr>
-                                        <th>نقش شما</th>
                                         <th>عنوان پروژه</th>
-                                        <th>مشاهده انجام کار</th>
-                                        <th>کار روی پروژه </th>
+                                        <th>تاریخ</th>
+                                        <th>ساعت شروع کار</th>
+                                        <th>ساعت پایان کار </th>
                                     </tr>
                                     </thead>
                                     <tbody>
+
                                     @foreach($projects as $project)
                                         <tr>
                                             <td>@if ( $project->pivot->access == 0 )

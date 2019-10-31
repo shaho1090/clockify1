@@ -17,8 +17,8 @@ class CreateWorksTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_project_id');
             $table->dateTime('start_time');
-            $table->dateTime('stop_time');
-            $table->boolean('billable');
+            $table->dateTime('stop_time')->nullable();
+            $table->boolean('billable')->default(true);
             $table->timestamps();
         });
     }

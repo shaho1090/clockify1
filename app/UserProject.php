@@ -11,11 +11,11 @@ class UserProject extends Pivot
     protected $table = 'user_project';
     protected $fillable = ['user_id',  'project_id','access' ];
 
-    public function tasks()
+   /* public function tasks()
     {
         return $this->hasMany(Task::class);
-    }
-    public function works()
+    }*/
+    /*public function works()
     {
         return $this->hasManyThrough(
             Work::class,
@@ -25,14 +25,7 @@ class UserProject extends Pivot
             'id', // Local key on user_project table...
             'id' // Local key on tasks table...
             );
-    }
+    }*/
 
 }
-        /*return $this->hasManyThrough(
-         'App\Post',
-         'App\User',
-         'country_id', // Foreign key on users table...
-         'user_id', // Foreign key on posts table...
-         'id', // Local key on countries table...
-         'id' // Local key on users table...
-       );*/
+

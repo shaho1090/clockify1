@@ -31,7 +31,7 @@
                                         <th>نقش شما</th>
                                         <th>عنوان پروژه</th>
                                         <th>مشاهده انجام کار</th>
-                                        <th>کار روی پروژه </th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -46,14 +46,12 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{!! action('ProjectsController@show', $project->id) !!}">{!! $project->title !!} </a>
+                                                <a href="{!! action('ProjectsController@editProject', $project->id) !!}">{!! $project->title !!} </a>
                                             </td>
                                             <td>
                                                 <button class="btn btn-outline-dark"><a href="{!! action('WorksController@index', $project->id) !!}">مشاهده زمان های کاری</a></button>
                                             </td>
-                                            <td>
-                                                <button class="btn btn-outline-dark"><a href="{!! action('WorksController@index', $project->id) !!}">انجام کار روی پروژه</a></button>
-                                            </td>
+
                                         </tr>
                                     @endforeach
                                     </tbody>

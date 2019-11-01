@@ -19,18 +19,12 @@
                     <div class="card-body">
                         <div class="panel panel-default">
                               <div class="panel-heading">ثبت زمان کاری برای این پروژه</div>
-
-
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th></th>
-                                            <th></th>
-                                            <th>تاریخ</th>
-                                            <th>ساعت شروع</th>
-                                            <th>ساعت پایان</th>
-
-
+                                            <th>ثبت ساعت شروع کار</th>
+                                            <th>ثبت ساعت پایان کار</th>
+                                            <th>تاریخ امروز</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -44,19 +38,12 @@
                                                 <td>
                                                     {{ date("Y-m-d") }}
                                                 </td>
-                                                <td>
 
-                                                </td>
-                                                <td>
-
-                                                </td>
                                             </tr>
 
                                         </tbody>
                                     </table>
-
                             </div>
-
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4> لیست زمان های کاری شما</h4>
@@ -71,7 +58,8 @@
                                         <th>تاریخ</th>
                                         <th>ساعت شروع</th>
                                         <th>ساعت پایان</th>
-                                        <th>قابلیت پرداخت</th>
+                                        <th>نوع کار</th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -90,10 +78,15 @@
                                                 {!! date("H:i:s",strtotime($work->stop_time))!!}
                                             </td>
                                             <td>
-                                                {!! $work->billable !!}
+                                              {!! $work->billable ? 'پولی' : 'رایگان' !!}
+                                             </td>
+                                            <td>
+                                                <button class="btn-outline-dark"><a href="{!! action('WorksController@editWork',$work->id)!!}">ویرایش</a></button>
                                             </td>
-                                        </tr>
+                                           </tr>
+
                                     @endforeach
+
                                     </tbody>
                                 </table>
                             @endif

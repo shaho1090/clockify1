@@ -18,34 +18,42 @@ class ProjectsController extends Controller
     public function index()
     {
         $user_id = Auth::user()->id;
-      //  $projects = DB::table('projects')->where('user_id',$user_id)->get();
-       $projects = User::find($user_id)->projects()->get();
-      /*  $user = User::find($user_id);
-        foreach ($user->projects as $project) {
-            echo $project;
-        }*/
+        $projects = User::find($user_id)->projects()->get();
         return view('projects.index', ['projects' => $projects]);
     }
 
-
-    public function show($project_id)
+    public function editProject($project_id)
     {
-        //$contributors = Project::find($project_id)->user()->orderBy('id')->get();
-      //  $projects = Project::find($project_id);
-       // $user = $projects->user;
-        //dd($user);
-       // dd($projects);
-        //$projects = User::find($user_id)->project()->orderBy('id')->get();
-
-        $project = DB::table('projects')->where('id',$project_id)->first();
-       // $contributors = DB::table('users')->where('id',$contributor)->get();
-
-        //dd( $contributors);
-
-        return view('projects.show', ['project'=>$project,
-           'projects' =>  $projects,
+        $project = DB::table('projects')
+            ->where('id',$project_id)
+            ->get()
+            ->first();
+        $contributors = Project::find($project_id)
+            ->users()
+            ->get()
+            ->all();
+        return view('projects.edit', [
+            'project' => $project,
+            'contributors' => $contributors,
         ]);
+
     }
+    public function storeEdited(ProjectFormRequest $request)
+    {
+
+        $project_title = $request->get('project_title');
+        $project_id = $request->get('project_id');
+
+        DB::table('projects')
+            ->where('id', $project_id)
+            ->update(['title' => $project_title]);
+
+        return redirect()->action(
+            'ProjectsController@editProject', ['id' =>   $project_id]
+        );
+
+    }
+
     public function createNewProject(ProjectFormRequest $request)
     {
         $user_id = Auth::user()->id;

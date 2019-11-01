@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\UserProject;
 use App\Http\Requests\ContributorFormRequest;
 use App\Project;
@@ -12,6 +13,13 @@ use Illuminate\Support\Facades\Mail;
 
 class ContributorsController extends Controller
 {
+    public function index()
+    {
+        $user_id = Auth::user()->id;
+        $projects = User::find($user_id)->userProjects()->get();
+        return view('contributers.index', ['projects' => $projects]);
+    }
+
     public function add($project_id)
     {
         $contributor = new UserProject(array(

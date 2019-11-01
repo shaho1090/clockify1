@@ -62,9 +62,12 @@ class WorksController extends Controller
             ->where('user_project_id',  $user_project_id)
             ->orderBy('start_time','desc')
             ->first();
-        //dd($user_project_works->stop_time);
-
-        if (!is_null($user_project_works->stop_time)){
+        if (!is_null($user_project_works)){
+            if(!is_null($user_project_works->stop_time)) {
+                $this::$startTime = Carbon::now();
+                return $this->setWork($project_id);
+            }
+        }else{
             $this::$startTime = Carbon::now();
             return $this->setWork($project_id);
         }
@@ -72,6 +75,7 @@ class WorksController extends Controller
         'WorksController@index', ['id' => $project_id]
     );
     }
+
     public function setWork($project_id)
     {
        $user_id = Auth::user()->id;
@@ -94,8 +98,6 @@ class WorksController extends Controller
        );
     }
 
-
-
     public function setStopTime($project_id)
     {
         date_default_timezone_set('Asia/Tehran');
@@ -112,34 +114,51 @@ class WorksController extends Controller
             ->where('user_project_id',  $user_project_id)
             ->orderBy('start_time','desc')
             ->first();
-        if(is_null($work->stop_time)) {
-            DB::table('works')
-                ->where('id', $work->id)
-                ->update(['stop_time' => $this::$stopTime]);
+
+        if(!is_null($work)) {
+            if (is_null($work->stop_time)) {
+                DB::table('works')
+                    ->where('id', $work->id)
+                    ->update(['stop_time' => $this::$stopTime]);
+            }
         }
          return redirect()->action(
             'WorksController@index', ['id' => $project_id]
         );
-
     }
 
-
-    public function showTime($time)
+    public function editWork($work_id)
     {
+        $work = DB::table('works')
+            ->where('id',$work_id)
+            ->get()
+            ->first();
+        $startTime = Carbon::parse($work->start_time);
+        $stopTime = Carbon::parse($work->stop_time);
+        $totalDuration =  $stopTime->diffInSeconds($startTime);
+        return view('works.edit', [
+            'totalDuration' => $totalDuration,
+            'work' => $work,
+        ]);
 
     }
 
-    public function doWork($project_id)
-   {
-       $user_id = Auth::user()->id;
-       $works = User::find($user_id)->works()->get()->first();
-       $project = DB::table('projects')->where('id',$project_id)->get()->first();
+    public function storeEdited(WorkFormRequest $request)
+    {
+        $billable = $request->get('selectBillable');
+        if(is_null($billable)) {
+            $billable = false;
+        }
+        $work_id = $request->get('work_id');
 
-       return view('works.index', [
-           'project_title' => $project->title,
-           'works' => $works,
-           ]);
-   }
+       DB::table('works')
+            ->where('id', $work_id)
+            ->update(['billable' => $billable]);
+
+       return redirect()->action(
+           'WorksController@editWork', ['id' =>  $work_id]
+       );
+    }
 
 
 

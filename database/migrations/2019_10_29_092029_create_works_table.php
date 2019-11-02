@@ -19,6 +19,7 @@ class CreateWorksTable extends Migration
             $table->dateTime('start_time');
             $table->dateTime('stop_time')->nullable();
             $table->boolean('billable')->default(true);
+            $table->string('title');
             $table->timestamps();
         });
     }

@@ -19,7 +19,7 @@ class WorksController extends Controller
     private static $stopTime = null;
     private static $work_id = null;
 
-    public function index($project_id)
+    public function index(Project $project)
     {
         date_default_timezone_set('Asia/Tehran');
         $user_id = Auth::user()->id;
@@ -155,9 +155,8 @@ class WorksController extends Controller
             ->where('id', $work_id)
             ->update(['billable' => $billable]);
 
-       return redirect()->action(
-           'WorksController@editWork', ['id' =>  $work_id]
-       );
+       return $this->index($request->user_project_id);
+
     }
 
 

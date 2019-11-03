@@ -75,7 +75,10 @@
                                                {!! date("H:i:s",strtotime($work->start_time))!!}
                                             </td>
                                             <td>
+                                               @if(is_null($work->stop_time))--:--:--
+                                               @else
                                                 {!! date("H:i:s",strtotime($work->stop_time))!!}
+                                               @endif
                                             </td>
                                             <td>
                                               {!! $work->billable ? 'پولی' : 'رایگان' !!}

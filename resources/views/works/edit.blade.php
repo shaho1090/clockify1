@@ -53,6 +53,7 @@
                                 </tbody>
                             </table>
                                 <input type="hidden" name="work_id" value="{!! $work->id !!}">
+                                <input type="hidden" name="user_project_id" value="{!! $work->user_project_id !!}">
                                 <button type="submit" class="btn btn-outline-danger" >ثبت تغییرات</button>
                            </form>
 

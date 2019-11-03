@@ -17,7 +17,7 @@ class ContributorsController extends Controller
     {
         $user_id = Auth::user()->id;
         $projects = User::find($user_id)->userProjects()->get();
-        return view('contributers.index', ['projects' => $projects]);
+        return view('contributors.index', ['projects' => $projects]);
     }
 
     public function add($project_id)

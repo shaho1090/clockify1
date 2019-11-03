@@ -10,17 +10,17 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ContributorsController;
 use App\UserProject;
 
-
-
 class ProjectsController extends Controller
 {
-    public function editProject($project_id)
+    public function index()
     {
-        $project = new Project();
-        $project =  $project->where('id',$project_id)
-            ->get()
-            ->first();
-        $contributors = Project::find($project_id)
+        $user = new User;
+        $projects = $user->currentUser()->projects()->get()->all();
+        return view("projects.index",compact('projects'));
+    }
+    public function editProject(Project $project)
+    {
+        $contributors = $project
             ->users()
             ->get()
             ->all();
@@ -56,9 +56,6 @@ class ProjectsController extends Controller
             'user_id' =>$user_id,
         ));
         $project->save();
-        /*
-
-        */
         $latest_project = $project->where('user_id',$user_id)->latest('created_at')->first();
         $user->currentUser()->projects()->attach( $latest_project->id,['access'=>0]); // zero means owner access
         return redirect('/projects/index')->with('status', 'پروژه جدید ایجاد شد!');

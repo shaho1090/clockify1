@@ -13,6 +13,20 @@ class Project extends Model
         return $this->belongsToMany(User::class,'user_project')->withPivot('access','id');
     }
 
+    public function works()
+    {
+         return $this->hasManyThrough(
+                Work::class,
+                UserProject::class,
+                'project_id',// Foreign key on user_project table...
+                'user_project_id', // Foreign key on works table...
+                'id', // Local key on user_project table...
+                'id' // Local key on tasks table...
+         );
+    }
+
+
+
 }
 
 

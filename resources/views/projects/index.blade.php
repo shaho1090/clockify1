@@ -22,7 +22,7 @@
                             <div class="panel-heading">
                                 <h3> لیست پروژه های شما </h3>
                             </div>
-                            @if ($projects->isEmpty())
+                            @if (is_null($projects))
                                 <p> هنوز هیچ پروژه ای  توسط شما ایجاد نشده است.</p>
                             @else
                                 <table class="table">
@@ -31,6 +31,7 @@
                                         <th>نقش شما</th>
                                         <th>عنوان پروژه</th>
                                         <th>مشاهده انجام کار</th>
+                                        <th>دعوت به همکاری در این پروژه</th>
 
                                     </tr>
                                     </thead>
@@ -46,10 +47,13 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{!! action('ProjectsController@editProject', $project->id) !!}">{!! $project->title !!} </a>
+                                                <a href="{!! action('ProjectsController@editProject', $project) !!}">{!! $project->title !!} </a>
                                             </td>
                                             <td>
                                                 <button class="btn btn-outline-dark"><a href="{!! action('WorksController@index', $project->id) !!}">مشاهده زمان های کاری</a></button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-outline-dark"><a href="{!! action('ProjectsController@show', $project->id) !!}">دعوت به همکاری</a></button>
                                             </td>
 
                                         </tr>

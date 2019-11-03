@@ -40,26 +40,20 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('projects/index','ProjectsController@index')->middleware('auth');
-Route::get('projects/index', function () {
-    $user = new User();
-    $projects = User::findOrFail($user->currentUserId())->projects()->get();
-    // return the view and the post
-    return view('projects.index', ['projects' => $projects]);
-});
+Route::get('/projects/index','ProjectsController@index' )->middleware('auth')->name('projectIndex');
 Route::get('/projects/show/{id?}', 'ProjectsController@show')->middleware('auth');
 
 
 Route::post('/projects/add', 'ProjectsController@createNewProject')->middleware('auth');
-Route::get('/projects/edit/{id?}', 'ProjectsController@editProject')->middleware('auth');
+Route::get('/projects/edit/{project}', 'ProjectsController@editProject')->middleware('auth');
 Route::post('/projects/storeEdited', 'ProjectsController@storeEdited')->middleware('auth');
 
 Route::get('/contributors/invited/{email?}', 'ContributorsController@add')->middleware('auth')->name('inviteGet');
 Route::post('/contributors/invite', 'ContributorsController@invite')->middleware('auth')->name('invitePost');
 Route::get('/contributors/index', 'ContributorsController@index')->middleware('auth')->name('contributors');
 
-
+Route::get('/works/index/{project}', 'WorksController@index')->middleware('auth');
 Route::get('/works/start/{id?}', 'WorksController@setStartTime')->middleware('auth');
 Route::get('/works/stop/{id?}', 'WorksController@setStopTime')->middleware('auth');
-Route::get('/works/index/{id?}', 'WorksController@index')->middleware('auth');
 Route::get('/works/edit/{id?}', 'WorksController@editWork')->middleware('auth');
 Route::post('/works/storeEdited', 'WorksController@storeEdited')->middleware('auth');

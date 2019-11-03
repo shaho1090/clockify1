@@ -15,12 +15,15 @@ use App\UserProject;
 
 class ProjectsController extends Controller
 {
-    public function index()
+    /*
+     * I use Route-model Binding instead this method
+     */
+   /* public function index()
     {
         $user_id = Auth::user()->id;
         $projects = User::find($user_id)->projects()->get();
         return view('projects.index', ['projects' => $projects]);
-    }
+    }*/
 
     public function editProject($project_id)
     {

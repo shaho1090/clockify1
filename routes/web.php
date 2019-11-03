@@ -11,6 +11,15 @@
 |
 */
 
+use App\Http\Requests\ProjectFormRequest;
+use App\Project;
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\ContributorsController;
+use App\UserProject;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -30,7 +39,13 @@ Route::get('/contributors/welcome',function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('projects/index','ProjectsController@index')->middleware('auth');
+//Route::get('projects/index','ProjectsController@index')->middleware('auth');
+Route::get('projects/index', function () {
+    $user = new User();
+    $projects = User::findOrFail($user->currentUserId())->projects()->get();
+    // return the view and the post
+    return view('projects.index', ['projects' => $projects]);
+});
 Route::get('/projects/show/{id?}', 'ProjectsController@show')->middleware('auth');
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\WorkFormRequest;
+use App\Project;
 use App\UserProject;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -23,10 +24,10 @@ class WorksController extends Controller
     {
         date_default_timezone_set('Asia/Tehran');
         $user_id = Auth::user()->id;
-        $user = User::find($user_id );
+        $user = User::find($user_id);
         $user_project_id = $user
             ->userProjects()
-            ->where('project_id',$project_id)
+            ->where('project_id',$project->id)
             ->get('id')
             ->first()
             ->id;
@@ -35,15 +36,17 @@ class WorksController extends Controller
             ->where('user_project_id', $user_project_id)
             ->get()
             ->first;*/
-        $user_project_works = DB::table('works')
-            ->where('user_project_id',  $user_project_id)
-            ->get();
-        //dd( $user_project_works);
-        $project = DB::table('projects')->where('id',$project_id)->get()->first();
+
+
+        $user_project_works = $user->works()->where('user_project_id',$user_project_id)
+            ->get()
+            ->all();
+
+
         return view('works.index', [
           'works' =>  $user_project_works ,
           'project_title' => $project->title,
-          'project_id' => $project_id,
+          'project_id' => $project->id,
          ]);
     }
 

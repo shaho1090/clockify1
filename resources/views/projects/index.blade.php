@@ -47,7 +47,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{!! action('ProjectsController@editProject', $project) !!}">{!! $project->title !!} </a>
+                                                <a href="{!! action('ProjectsController@show', $project) !!}">{!! $project->title !!} </a>
                                             </td>
                                             <td>
                                                 <button class="btn btn-outline-dark"><a href="{!! action('WorksController@index', $project->id) !!}">مشاهده زمان های کاری</a></button>

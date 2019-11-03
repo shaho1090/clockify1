@@ -41,12 +41,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('projects/index','ProjectsController@index')->middleware('auth');
 Route::get('/projects/index','ProjectsController@index' )->middleware('auth')->name('projectIndex');
-Route::get('/projects/show/{id?}', 'ProjectsController@show')->middleware('auth');
-
-
-Route::post('/projects/add', 'ProjectsController@createNewProject')->middleware('auth');
-Route::get('/projects/edit/{project}', 'ProjectsController@editProject')->middleware('auth');
-Route::post('/projects/storeEdited', 'ProjectsController@storeEdited')->middleware('auth');
+//Route::get('/projects/show/{id?}', 'ProjectsController@show')->middleware('auth');
+Route::post('/projects/add', 'ProjectsController@add')->middleware('auth');
+Route::get('/projects/show/{project}', 'ProjectsController@show')->middleware('auth');
+Route::post('/projects/edit/', 'ProjectsController@edit')->middleware('auth');
 
 Route::get('/contributors/invited/{email?}', 'ContributorsController@add')->middleware('auth')->name('inviteGet');
 Route::post('/contributors/invite', 'ContributorsController@invite')->middleware('auth')->name('invitePost');

@@ -15,58 +15,91 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">{!! $project->title !!}</div>
+                    <div class="card-header">ویرایش پروژه</div>
                     <div class="card-body">
                         <div class="panel panel-default">
-
                             <div class="panel-heading">
-                                <h4> لیست افراد شرکت کننده در پروژه</h4>
+                                <h4></h4>
                             </div>
-                               <table class="table">
+                            <form action="/projects/edit" method="post">
+                                <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                                <table class="table">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>نام کاربری</th>
-                                        <th>آدرس ایمیل</th>
-                                    </tr>
+                                        <th>عنوان پروژه : {!! $project->title !!}</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+
+                                   </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($projects->user as $user)
-                                        <tr>
-                                            <td>{!! $user->pivot->id !!}</td>
-                                            <td>
-                                                <a href="{!! action('ProjectsController@edit') !!}">{!! $user->pivot->name !!} </a>
-                                            </td>
-                                            <td>{!! $user->pivot->email !!}</td>
-                                        </tr>
-                                    @endforeach
+                                    <tr>
+                                        <td>عنوان جدید را برای پروژه اینجا وارد کنید :<input type="text" name="project_title"> </td>
+                                        <td><input type="hidden" name="project_id" value="{!! $project->id !!}"></td>
+                                        <td><button type="submit" class="btn btn-outline-danger" >ثبت تغییرات</button></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
                                     </tbody>
                                 </table>
-                            </div>
+                                <input type="hidden" name="project_id" value="{!! $project->id !!}">
+                            </form>
+                        </div>
                         <div id="accordion">
-                        <div class="card-header">
-                            <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-                                ارسال ایمیل مشارکت در پروژه
-                            </a>
-                        </div>
+                            <div class="card-header">
+                                <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+                                   نمایش افراد مشارکت کننده در این پروژه
+                                </a>
+                            </div>
 
-                        <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                            <div class="card-body">
-                               <form action="/contributors/invite" method="post">
-                                   <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-                                   <input type="text" name="email">
-                                   <input type="hidden" name="project_id" value={!! $project->id !!}>
-                                   <input type="hidden" name="project_title" value={!! $project->title !!}>
-                                   <button type="submit" class="btn" >ارسال</button>
-                               </form>
+                            <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                                <div class="card-body">
+                                    @if (is_null($contributors))
+                                        <p> هیچ کس در این پروژه مشارکت نکرده است.</p>
+                                    @else
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>نام </th>
+                                                <th>آدرس ایمیل</th>
+                                                <th>نقش</th>
+                                                <th>مشاهده انجام کار</th>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($contributors as $contributor)
+                                                <tr>
+                                                    <td>{!! $contributor->name !!}</td>
+                                                    <td>{!! $contributor->email !!}</td>
+                                                    <td>@if ($contributor->pivot->access == 0 )
+                                                            {{ 'owner' }}
+                                                        @elseif ($contributor->pivot->access == 1)
+                                                            {{ 'admin' }}
+                                                        @else
+                                                            {{'user'}}
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-outline-dark"><a href="{!! action('WorksController@index', $project->id) !!}">مشاهده زمان های کاری</a></button>
+                                                    </td>
+
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                        </div>
-
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>

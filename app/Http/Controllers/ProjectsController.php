@@ -18,35 +18,33 @@ class ProjectsController extends Controller
         $projects = $user->currentUser()->projects()->get()->all();
         return view("projects.index",compact('projects'));
     }
-    public function editProject(Project $project)
+    public function show(Project $project)
     {
         $contributors = $project
             ->users()
             ->get()
             ->all();
-        return view('projects.edit', [
+        return view('projects.show', [
             'project' => $project,
             'contributors' => $contributors,
         ]);
 
     }
-    public function storeEdited(ProjectFormRequest $request)
+    public function edit(ProjectFormRequest $request)
     {
-
         $project_title = $request->get('project_title');
         $project_id = $request->get('project_id');
-        $project = new Project();
 
+        $project = new Project();
         $project = $project->where('id', $project_id)
             ->update(['title' => $project_title]);
 
         return redirect()->action(
-            'ProjectsController@editProject', ['id' =>   $project_id]
+            'ProjectsController@show', ['project' =>  $project]
         );
-
     }
 
-    public function createNewProject(ProjectFormRequest $request)
+    public function add(ProjectFormRequest $request)
     {
         $user = new User();
         $user_id =$user->currentUserId();
@@ -55,10 +53,15 @@ class ProjectsController extends Controller
             'title' => $project_title ,
             'user_id' =>$user_id,
         ));
+        //the return contributor@add must be here
         $project->save();
         $latest_project = $project->where('user_id',$user_id)->latest('created_at')->first();
         $user->currentUser()->projects()->attach( $latest_project->id,['access'=>0]); // zero means owner access
         return redirect('/projects/index')->with('status', 'پروژه جدید ایجاد شد!');
+    }
+    public function delete(Project $project)
+    {
+        
     }
 
 }

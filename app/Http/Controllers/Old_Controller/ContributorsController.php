@@ -33,7 +33,7 @@ class ContributorsController extends Controller
     /*
      *
      */
-    public function invite(ContributorFormRequest $request)
+    public function blabla(ContributorFormRequest $request)
     {
 
         $email = $request->get('email');
@@ -51,6 +51,9 @@ class ContributorsController extends Controller
    /*
     *
     */
+     public function invite(Project $project)
+     {
 
+     }
 
 }

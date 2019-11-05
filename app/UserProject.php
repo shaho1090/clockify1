@@ -11,6 +11,7 @@ class UserProject extends Pivot
     public $incrementing = true;
     protected $table = 'user_project';
     protected $fillable = ['user_id',  'project_id','access' ];
+
     public function works()
     {
         return $this->hasMany(Work::class,'user_project_id');
@@ -31,6 +32,21 @@ class UserProject extends Pivot
             'id' // Local key on tasks table...
             );
     }*/
+//    public function scopeId($query,$project_id)
+//    {
+//        $user = Auth::user();
+//        $user_project_id = $user
+//            ->userProjects()
+//            ->where('project_id',$project->id);
+//
+//        return $user_project_id;
+//    }
+
+    public function scopeContributor($query, $userId, $projectId)
+    {
+        return $query->where('user_id', $userId)
+            ->where('project_id', $projectId);
+    }
 
 }
 

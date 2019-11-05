@@ -37,14 +37,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /*
+     *many to many relationship with pivot table user_project
+     */
+
     public function projects()
     {
         return $this->belongsToMany(Project::class,'user_project')->withPivot('access','id');
     }
-    public function userProjects()
+    /*public function userProjects()
     {
         return $this->hasMany(UserProject::class,'user_id');
-    }
+    }*/
+
+    /*
+     * each user has many works through the table name user_project
+     */
 
     public function works()
     {
@@ -57,7 +66,7 @@ class User extends Authenticatable
             'id' // Local key on tasks table...
         );
     }
-    public function currentUserId()
+  /*  public function currentUserId()
     {
         return Auth::user()->id;
     }
@@ -66,5 +75,5 @@ class User extends Authenticatable
     {
         $user = User::find($this->currentUserId());
         return $user;
-    }
+    }*/
 }

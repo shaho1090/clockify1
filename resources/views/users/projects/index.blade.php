@@ -18,7 +18,22 @@
                     <div class="card-header">لیست پروژه ها</div>
                     <div class="card-body">
                         <div class="panel panel-default">
-
+                            <div id="accordion">
+                                <div class="card-header">
+                                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+                                        اضافه کردن پروژه جدید
+                                    </a>
+                                </div>
+                                <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <form action="store" method="post">
+                                            <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                                            <input type="text" name="project_title">
+                                            <button type="submit" class="btn" >ثبت</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="panel-heading">
                                 <h3> لیست پروژه های شما </h3>
                             </div>
@@ -47,13 +62,13 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{!! action('ProjectsController@show', $project) !!}">{!! $project->title !!} </a>
+                                                <a href="show/{{$project->id}}">{!! $project->title !!} </a>
                                             </td>
                                             <td>
-                                                <button class="btn btn-outline-dark"><a href="{!! action('WorksController@index', $project->id) !!}">مشاهده زمان های کاری</a></button>
+                                                <button class="btn btn-outline-dark"><a href="/user/project/works/index/{{$project->id}}">مشاهده زمان های کاری</a></button>
                                             </td>
                                             <td>
-                                                <button class="btn btn-outline-dark"><a href="{!! action('ProjectsController@show', $project->id) !!}">دعوت به همکاری</a></button>
+                                                <button class="btn btn-outline-dark"><a href="">دعوت به همکاری</a></button>
                                             </td>
 
                                         </tr>
@@ -62,29 +77,9 @@
                                 </table>
                             @endif
                         </div>
-                        <div id="accordion">
-                        <div class="card-header">
-                            <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-                                اضافه کردن پروژه جدید
-                            </a>
-                        </div>
-
-                        <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                            <div class="card-body">
-                               <form action="/projects/add" method="post">
-
-                                   <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-                                   <input type="text" name="project_title">
-                                  <button type="submit" class="btn" >ثبت</button>
-                               </form>
-                            </div>
-                        </div>
-                        </div>
 
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>

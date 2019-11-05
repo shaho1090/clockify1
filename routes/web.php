@@ -11,18 +11,13 @@
 |
 */
 
-use App\Http\Requests\ProjectFormRequest;
-use App\Project;
-use App\User;
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\ContributorsController;
-use App\UserProject;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('sendemail', function () {
     $data = array(
         'name' => "Learning Laravel",
@@ -33,25 +28,61 @@ Route::get('sendemail', function () {
     });
     return "Your email has been sent successfully";
 });
+
 Route::get('/contributors/welcome',function () {
     return view('contributors.welcome');
 });
-Auth::routes();
 
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('/user/projects')->middleware('auth')->group(function () {
+    Route::get('/index','UserProjectsController@index' );
+    Route::get('/create','UserProjectsController@create' );
+    Route::post('/store','UserProjectsController@store' );
+    Route::get('/show/{project}','UserProjectsController@show' );
+    Route::get('/edit','UserProjectsController@edit' );
+    Route::post('/update','UserProjectsController@update' )->name('user_project_update');
+    Route::get('/destroy/{id}','UserProjectsController@destroy' );
+});
+
+Route::prefix('/user/project/works')->middleware('auth')->group(function () {
+    Route::get('/index/{project}','UserProjectWorksController@index' );
+    Route::get('/create','UserProjectWorksController@create' );
+    Route::post('/store','UserProjectWorksController@store' );
+    Route::get('/show/{project}','UserProjectWorksController@show' );
+    Route::get('/edit','UserProjectWorksController@edit' );
+    Route::post('/update','UserProjectWorksController@update' )->name('user_project_update');
+    Route::get('/destroy','UserProjectWorksController@destroy' );
+});
+
+Route::prefix('project/works')->middleware('auth')->group(function () {
+    Route::get('/index/{id}','project\WorksController@index' );
+    Route::get('/create','project\WorksController@create' );
+    Route::post('/store','project\WorksController@store' );
+    Route::get('/show','project\WorksController@show' );
+    Route::get('/edit','project\WorksController@edit' );
+    Route::get('/update','project\WorksController@update' );
+    Route::get('/destroy','project\WorksController@destroy' );
+});
+
+
 //Route::get('projects/index','ProjectsController@index')->middleware('auth');
-Route::get('/projects/index','ProjectsController@index' )->middleware('auth')->name('projectIndex');
+Route::get('/projects/index','ProjectsController@index' )->middleware('auth');
 //Route::get('/projects/show/{id?}', 'ProjectsController@show')->middleware('auth');
-Route::post('/projects/add', 'ProjectsController@add')->middleware('auth');
-Route::get('/projects/show/{project}', 'ProjectsController@show')->middleware('auth');
-Route::post('/projects/edit/', 'ProjectsController@edit')->middleware('auth');
+Route::post('/projects/create', 'ProjectsController@create')->middleware('auth');
+Route::get('/projects/show/{id?}', 'ProjectsController@show')->middleware('auth');
+Route::post('/projects/store/', 'ProjectsController@store')->middleware('auth');
+Route::post('/projects/delete/', 'ProjectsController@delete')->middleware('auth');
+
 
 Route::get('/contributors/invited/{email?}', 'ContributorsController@add')->middleware('auth')->name('inviteGet');
-Route::post('/contributors/invite', 'ContributorsController@invite')->middleware('auth')->name('invitePost');
+Route::get('/contributors/invite/{project}', 'ContributorsController@invite')->middleware('auth')->name('invitePost');
 Route::get('/contributors/index', 'ContributorsController@index')->middleware('auth')->name('contributors');
 
 Route::get('/works/index/{project}', 'WorksController@index')->middleware('auth');
-Route::get('/works/start/{id?}', 'WorksController@setStartTime')->middleware('auth');
-Route::get('/works/stop/{id?}', 'WorksController@setStopTime')->middleware('auth');
+Route::get('/works/start/{project}', 'WorksController@setStartTime')->middleware('auth');
+Route::get('/works/stop/{project}', 'WorksController@setStopTime')->middleware('auth');
 Route::get('/works/edit/{id?}', 'WorksController@editWork')->middleware('auth');
 Route::post('/works/storeEdited', 'WorksController@storeEdited')->middleware('auth');
+Route::get('/works/current/{project}', 'WorksController@currentWork')->middleware('auth');

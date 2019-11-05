@@ -55,13 +55,17 @@ class ProjectsController extends Controller
         ));
         //the return contributor@add must be here
         $project->save();
+        dd($project->id);
         $latest_project = $project->where('user_id',$user_id)->latest('created_at')->first();
         $user->currentUser()->projects()->attach( $latest_project->id,['access'=>0]); // zero means owner access
         return redirect('/projects/index')->with('status', 'پروژه جدید ایجاد شد!');
     }
-    public function delete(Project $project)
+    public function delete(ProjectFormRequest $request)
     {
-        
+      //  dd($request->get('project_id'));
+        $project = new Project();
+        $project->where('id',$request->project_id)->delete();
+        return $this->index();
     }
 
 }

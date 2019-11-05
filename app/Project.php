@@ -24,6 +24,10 @@ class Project extends Model
                 'id' // Local key on tasks table...
          );
     }
+    public function invites()
+    {
+        $this->hasMany(Invite::class);
+    }
 
 
 

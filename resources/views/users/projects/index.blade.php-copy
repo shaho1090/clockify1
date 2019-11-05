@@ -48,7 +48,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($contributors as $contributor)
+                                    @foreach($projects as $contributor)
                                         <tr>
                                             <td>{!! $contributor->name !!}</td>
                                             <td>{!! $contributor->email !!} </td>

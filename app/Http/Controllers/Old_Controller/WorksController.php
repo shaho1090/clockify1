@@ -31,18 +31,9 @@ class WorksController extends Controller
             ->get('id')
             ->first()
             ->id;
-     /*   $user_project_works = $user
-            ->works()
-            ->where('user_project_id', $user_project_id)
-            ->get()
-            ->first;*/
-
-
         $user_project_works = $user->works()->where('user_project_id',$user_project_id)
             ->get()
             ->all();
-
-
         return view('works.index', [
           'works' =>  $user_project_works ,
           'project_title' => $project->title,
@@ -50,36 +41,58 @@ class WorksController extends Controller
          ]);
     }
 
-    public function setStartTime($project_id)
+    public function currentWork(Project $project)
+    {
+        $current_user_project = $this->currentUserProject($project);
+        $user = new User();
+        $current_user_work =  $user
+            ->currentUser()
+            ->works()
+            ->where('user_project_id',$current_user_project->id)
+            ->get()
+            ->last();
+        return $current_user_work;
+    }
+
+   public function currentUserProject(Project $project)
+    {
+        $user = new User();
+        $current_user_project = $user->currentUser()
+            ->userProjects()
+            ->where('project_id',$project->id)->get()->first();
+        return  $current_user_project;
+    }
+
+    public function setStartTime(Project $project)
     {
         date_default_timezone_set('Asia/Tehran');
-        $user_id = Auth::user()->id;
-        $user = User::find($user_id );
-        $user_project_id = $user
+        $start_time = carbon::now();
+        $user = new User();
+       /* $user_project_id = $user->currentUser()
             ->userProjects()
-            ->where('project_id',$project_id)
+            ->where('project_id',$project->id)
             ->get('id')
             ->first()
-            ->id;
-        $user_project_works = DB::table('works')
+            ->id;*/
+        $work = new Work();
+        $work = $work->fill(['user_project_id'=>$user_project_id,
+                             'start_time'=> $start_time,
+        ]);
+        $user_project_works = $user->currentUser()
+            ->works()
             ->where('user_project_id',  $user_project_id)
             ->orderBy('start_time','desc')
             ->first();
-        if (!is_null($user_project_works)){
-            if(!is_null($user_project_works->stop_time)) {
-                $this::$startTime = Carbon::now();
-                return $this->setWork($project_id);
-            }
-        }else{
+        if (!is_null($user_project_works)and(!is_null($user_project_works->stop_time))) {
             $this::$startTime = Carbon::now();
-            return $this->setWork($project_id);
+            return $this->setWork($project);
         }
         return redirect()->action(
-        'WorksController@index', ['id' => $project_id]
-    );
+        'WorksController@index', ['project' => $project->id]
+         );
     }
 
-    public function setWork($project_id)
+    public function setWork(Project $project)
     {
        $user_id = Auth::user()->id;
        $user = User::find($user_id );
@@ -105,27 +118,23 @@ class WorksController extends Controller
     {
         date_default_timezone_set('Asia/Tehran');
         $this::$stopTime = Carbon::now();
-        $user_id = Auth::user()->id;
-        $user = User::find($user_id );
-        $user_project_id = $user
+        $user = new User();
+        $user_project_id = $user->currentUser()
             ->userProjects()
             ->where('project_id',$project_id)
             ->get('id')
             ->first()
             ->id;
-        $work = DB::table('works')
-            ->where('user_project_id',  $user_project_id)
+        $work = new Work();
+        $work = $work->where('user_project_id',  $user_project_id)
             ->orderBy('start_time','desc')
             ->first();
 
-        if(!is_null($work)) {
-            if (is_null($work->stop_time)) {
-                DB::table('works')
-                    ->where('id', $work->id)
-                    ->update(['stop_time' => $this::$stopTime]);
+        if(!is_null($work)and(is_null($work->stop_time))) {
+            $work->where('id', $work->id)
+                 ->update(['stop_time' => Carbon::now()]);
             }
-        }
-         return redirect()->action(
+        return redirect()->action(
             'WorksController@index', ['id' => $project_id]
         );
     }

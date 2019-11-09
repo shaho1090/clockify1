@@ -21,7 +21,7 @@
                             <div class="panel-heading">
                                 <h4></h4>
                             </div>
-                            <form action="/projects/edit" method="post">
+                            <form action="{{route('user_project_update')}}" method="post">
                                 <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                                 <table class="table">
                                     <thead>
@@ -39,7 +39,7 @@
                                     <tbody>
                                     <tr>
                                         <td>عنوان جدید را برای پروژه اینجا وارد کنید :<input type="text" name="project_title"> </td>
-                                        <td><button type="submit" name="editproject" class="btn btn-outline-danger" >ثبت تغییرات</button></td>
+                                        <td><button type="submit" name="user_project_update" class="btn btn-outline-danger" >ثبت تغییرات</button></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -60,11 +60,9 @@
 
                             <div id="collapseOne" class="collapse" data-parent="#accordion">
                                 <div class="card-body">
-                                  <form method="post" action="{{route('delproject')}}">
-                                      <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                                  <form method="get" action="user/project/destroy/{{$project}}">
+                                       <button type="submit" name="destroy" class="btn btn-outline-danger ">حذف این پروژه </button>
                                       <input type="hidden" name="project_id" value="{!! $project->id !!}">
-                                      <button type="submit" name="delproject" class="btn btn-outline-danger ">حذف این پروژه </button>
-
                                   </form>
                                  </div>
                             </div>

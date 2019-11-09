@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PhpIncludePathManager">
+  <component name="ChangeListManager">
+    <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/clockify1/app/Http/Controllers/UserProjectWorksController.php" beforeDir="false" afterPath="$PROJECT_DIR$/clockify1/app/Http/Controllers/UserProjectWorksController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clockify1/app/Http/Controllers/UserProjectsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/clockify1/app/Http/Controllers/UserProjectsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clockify1/app/UserProject.php" beforeDir="false" afterPath="$PROJECT_DIR$/clockify1/app/UserProject.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clockify1/app/Work.php" beforeDir="false" afterPath="$PROJECT_DIR$/clockify1/app/Work.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clockify1/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/clockify1/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clockify1/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/clockify1/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clockify1/resources/views/projects/invite.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/clockify1/resources/views/projects/invite.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clockify1/resources/views/projects/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/clockify1/resources/views/projects/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clockify1/resources/views/users/projects/index.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clockify1/resources/views/users/projects/index.blade.php-copy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clockify1/resources/views/users/projects/invite.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clockify1/resources/views/users/projects/show.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clockify1/resources/views/users/projects/welcome.blade - Copy (2).php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clockify1/resources/views/users/projects/welcome.blade - Copy.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clockify1/resources/views/users/projects/welcome.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clockify1/resources/views/users/projects/works/edit.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clockify1/resources/views/users/projects/works/index.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clockify1/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/clockify1/routes/web.php" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/clockify1/composer.json</pharConfigPath>
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/clockify1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/clockify1/vendor/theseer/tokenizer" />
       <path value="$PROJECT_DIR$/clockify1/vendor/symfony/var-dumper" />
@@ -90,10 +126,49 @@
       <path value="$PROJECT_DIR$/clockify1/vendor/doctrine/inflector" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
-  <component name="PhpUnit">
-    <phpunit_settings>
-      <PhpUnitSettings load_method="CUSTOM_LOADER" custom_loader_path="$PROJECT_DIR$/clockify1/vendor/autoload.php" />
-    </phpunit_settings>
+  <component name="ProjectId" id="1THQhOmySOJltVAxBikuTUGufYp" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="" />
+      <created>1573114660112</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573114660112</updated>
+      <workItem from="1573114666001" duration="596000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

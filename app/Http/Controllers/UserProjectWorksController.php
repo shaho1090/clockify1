@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use App\UserProject;
+use App\Work;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,31 +14,31 @@ class UserProjectWorksController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Project $project
      * @return \Illuminate\Http\Response
      */
     public function index(Project $project)
     {
-        $user = Auth::user();
-        $user_project_id = UserProject::contributor($user->id, $project->id)
-            ->first()
-            ->id;
-        dd($user_project_id);
-        $user_project_works="";
+        $contributor = UserProject::contributor(auth()->id(),$project->id)->first();
+
+        $lastActiveProject = $contributor->incompletedWorks()->first();
+
         return view('works.index', [
-            'works' =>  $user_project_works ,
-            'project_title' => $project->title,
-            'project_id' => $project->id,
+            'contributor' => $contributor->load('works'),
+            'project' => $project,
+            'last_project' => $lastActiveProject ?: false,
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Project $project
+     * @return void
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -45,9 +47,10 @@ class UserProjectWorksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+
+
     }
 
     /**
@@ -56,20 +59,31 @@ class UserProjectWorksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Project $project)
     {
-        //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Work $work
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Work $work)
     {
-        //
+        Work::find($work->id)
+            ->get()
+            ->first();
+
+        $startTime = Carbon::parse($work->start_time);
+        $stopTime = Carbon::parse($work->stop_time);
+        $totalDuration =  $stopTime->diffInSeconds($startTime);
+
+        return view('works.edit', [
+            'totalDuration' => $totalDuration,
+            'work' => $work,
+        ]);
     }
 
     /**
@@ -79,9 +93,19 @@ class UserProjectWorksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $billable = $request->get('selectBillable');
+        if(is_null($billable)) {
+            $billable = false;
+        }
+
+        Work::find($request->get('work_id'))->update(['billable' => $billable,
+            'title' => $request->title]);
+
+        return redirect()->action('UserProjectWorksController@index',
+            ['project' => $request->user_project_id]);
+
     }
 
     /**

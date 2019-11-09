@@ -47,6 +47,22 @@ class UserProject extends Pivot
         return $query->where('user_id', $userId)
             ->where('project_id', $projectId);
     }
+    /*
+     * Get Id From user_project table
+     */
+    public function getUserProjectId($user_id, $project_id)
+    {
+       return $this->where('user_id',$user_id)
+           ->where('project_id', $project_id)
+           ->get()
+           ->first()
+           ->id;
+    }
+
+    public function incompletedWorks()
+    {
+        return $this->works()->incomplete();
+    }
 
 }
 

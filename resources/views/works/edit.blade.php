@@ -21,24 +21,29 @@
                             <div class="panel-heading">
                                 <h4></h4>
                             </div>
-                            <form action="/works/storeEdited" method="post">
-                              <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-                              <table class="table">
+                            <form action="/work/update" method="post">
+                                @csrf
+                                @method('PUT')
+                               <table class="table">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>تاریخ</th>
                                     <th>ساعت شروع به کار</th>
                                     <th>ساعت پایان کار</th>
                                     <th>مدت زمان کار </th>
-                                    <th>فی </th>
+                                    <th>عنوان کار </th>
+                                    <th>نوع کار </th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>{!!$work->id !!}</td>
-                                        <td>{!!date('H:i:s',strtotime($work->start_time)) !!}</td>
-                                        <td>{!!date('H:i:s',strtotime($work->stop_time)) !!}</td>
-                                        <td>{!!gmdate('H:i:s',$totalDuration) !!}</td>
+                                        <td>{{date('Y:m:d',strtotime($work->start_time))}}</td>
+                                        <td>{{date('H:i:s',strtotime($work->start_time)) }}</td>
+                                        <td>{{date('H:i:s',strtotime($work->stop_time)) }}</td>
+                                        <td>{{gmdate('H:i:s',$totalDuration) }}</td>
+                                        <td>
+                                            <input typeof="text" name="title" placeholder="عنوان کار">
+                                        </td>
                                         <td>
                                             <select name="selectBillable">
                                                 <option value="{!! $work->billable !!}">
@@ -49,6 +54,7 @@
                                                 </option>
                                             </select>
                                         </td>
+
                                     </tr>
                                 </tbody>
                             </table>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\UserProject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +18,7 @@ class UserProjectsController extends Controller
     public function index()
     {
         $projects =Auth::user()->projects()->get()->all();
-        return view("users.projects.index",compact('projects'));
+        return view("projects.index",compact('projects'));
     }
 
     /**
@@ -60,7 +61,7 @@ class UserProjectsController extends Controller
             ->users()
             ->get()
             ->all();
-        return view('users.projects.show', [
+        return view('projects.show', [
             'project' => $project,
             'contributors' => $contributors,
         ]);

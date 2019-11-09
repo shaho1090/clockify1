@@ -1,17 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
@@ -35,28 +23,35 @@ Route::get('/contributors/welcome',function () {
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/user/project/works/create/{project?}','UserProjectWorksController@create')->middleware('auth');
 
-Route::prefix('/user/projects')->middleware('auth')->group(function () {
-    Route::get('/index','UserProjectsController@index' );
-    Route::get('/create','UserProjectsController@create' );
-    Route::post('/store','UserProjectsController@store' );
-    Route::get('/show/{project}','UserProjectsController@show' );
-    Route::get('/edit','UserProjectsController@edit' );
-    Route::post('/update','UserProjectsController@update' )->name('user_project_update');
-    Route::get('/destroy/{id}','UserProjectsController@destroy' );
+//Route::resource('/user/project/works/','UserProjectWorksController')->middleware('auth');
+//Route::resource('/user/projects/','UserProjectWorksController')->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::get('/user/projects/index','UserProjectsController@index' );
+    Route::get('/user/projects/create','UserProjectsController@create' );
+    Route::post('/user/projects/store','UserProjectsController@store' );
+    Route::get('/user/projects/show/{project}','UserProjectsController@show' );
+    Route::get('/user/projects/edit','UserProjectsController@edit' );
+    Route::post('/user/projects/update','UserProjectsController@update' )->name('user_project_update');
+    Route::get('/user/projects/destroy/{id}','UserProjectsController@destroy' );
 });
 
-Route::prefix('/user/project/works')->middleware('auth')->group(function () {
-    Route::get('/index/{project}','UserProjectWorksController@index' );
-    Route::get('/create','UserProjectWorksController@create' );
-    Route::post('/store','UserProjectWorksController@store' );
-    Route::get('/show/{project}','UserProjectWorksController@show' );
-    Route::get('/edit','UserProjectWorksController@edit' );
-    Route::post('/update','UserProjectWorksController@update' )->name('user_project_update');
-    Route::get('/destroy','UserProjectWorksController@destroy' );
+Route::middleware('auth')->group(function () {
+    Route::get('/user/project/works/index/{project}','UserProjectWorksController@index' );
+    Route::get('/user/project/works/create/{project?}','UserProjectWorksController@create');
+//  Route::post('/user/project/works/store','UserProjectWorksController@store' );
+    Route::get('/user/project/works/show/{project?}','UserProjectWorksController@show');
+    Route::get('/user/project/works/destroy','UserProjectWorksController@destroy');
+
+    Route::put('/work/update','UserProjectWorksController@update');
+    Route::patch('/task/{work?}/edit/','UserProjectWorksController@edit');
+    Route::post('/task-start/{contributor}', 'TasksController@store');
+    Route::post('/task-end/{contributor}', 'TasksController@destroy');
+
 });
 
-Route::prefix('project/works')->middleware('auth')->group(function () {
+/*Route::prefix('project/works')->middleware('auth')->group(function () {
     Route::get('/index/{id}','project\WorksController@index' );
     Route::get('/create','project\WorksController@create' );
     Route::post('/store','project\WorksController@store' );
@@ -64,7 +59,7 @@ Route::prefix('project/works')->middleware('auth')->group(function () {
     Route::get('/edit','project\WorksController@edit' );
     Route::get('/update','project\WorksController@update' );
     Route::get('/destroy','project\WorksController@destroy' );
-});
+});*/
 
 
 //Route::get('projects/index','ProjectsController@index')->middleware('auth');
@@ -86,3 +81,4 @@ Route::get('/works/stop/{project}', 'WorksController@setStopTime')->middleware('
 Route::get('/works/edit/{id?}', 'WorksController@editWork')->middleware('auth');
 Route::post('/works/storeEdited', 'WorksController@storeEdited')->middleware('auth');
 Route::get('/works/current/{project}', 'WorksController@currentWork')->middleware('auth');
+

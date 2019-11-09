@@ -22,7 +22,9 @@ Route::get('/contributors/welcome',function () {
 });
 
 Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/initial-workspace','InitialWorkSpaceController@store');
 //Route::get('/user/project/works/create/{project?}','UserProjectWorksController@create')->middleware('auth');
 
 //Route::resource('/user/project/works/','UserProjectWorksController')->middleware('auth');

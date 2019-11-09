@@ -46,6 +46,13 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Project::class,'user_project')->withPivot('access','id');
     }
+    /*
+    *many to many relationship with pivot table user_work_space
+    */
+    public function workSpaces()
+    {
+        return $this->belongsToMany(WorkSpace::class,'user_work_space')->withPivot('access','id','active');
+    }
     /*public function userProjects()
     {
         return $this->hasMany(UserProject::class,'user_id');

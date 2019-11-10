@@ -30,41 +30,27 @@ Route::middleware('auth')->group(function () {
     Route::get('/work-time/index','WorkTimesController@index');
     Route::post('/work-time/start','NewWorkTimeController@store' );
     Route::post('/work-time/stop','NewWorkTimeController@destroy' );
-
-    Route::post('/user/projects/store','UserProjectsController@store' );
-    Route::get('/user/projects/show/{project}','UserProjectsController@show' );
-    Route::get('/user/projects/edit','UserProjectsController@edit' );
-    Route::post('/user/projects/update','UserProjectsController@update' )->name('user_project_update');
-    Route::get('/user/projects/destroy/{id}','UserProjectsController@destroy' );
-});
-
-
-//Route::get('/user/project/works/create/{project?}','UserProjectWorksController@create')->middleware('auth');
-
-//Route::resource('/user/project/works/','UserProjectWorksController')->middleware('auth');
-//Route::resource('/user/projects/','UserProjectWorksController')->middleware('auth');
-Route::middleware('auth')->group(function () {
-    Route::get('/user/projects/index','UserProjectsController@index' );
-    Route::get('/user/projects/create','UserProjectsController@create' );
-    Route::post('/user/projects/store','UserProjectsController@store' );
-    Route::get('/user/projects/show/{project}','UserProjectsController@show' );
-    Route::get('/user/projects/edit','UserProjectsController@edit' );
-    Route::post('/user/projects/update','UserProjectsController@update' )->name('user_project_update');
-    Route::get('/user/projects/destroy/{id}','UserProjectsController@destroy' );
+    Route::patch('/work-time/{workTime}/edit','WorkTimesController@edit' );
+    Route::put('/work-time/update','WorkTimesController@update' );
+    Route::delete('/work-time/delete/{workTime}','WorkTimesController@destroy');
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/user/project/works/index/{project}','UserProjectWorksController@index' );
-    Route::get('/user/project/works/create/{project?}','UserProjectWorksController@create');
-//  Route::post('/user/project/works/store','UserProjectWorksController@store' );
-    Route::get('/user/project/works/show/{project?}','UserProjectWorksController@show');
-    Route::get('/user/project/works/destroy','UserProjectWorksController@destroy');
+    Route::get('/tags/index','TagsController@index');
+    Route::post('/tags/start','TagsController@store' );
+    Route::post('/tags/stop','TagsController@destroy' );
+    Route::patch('/tags/{tag}/edit','TagsController@edit' );
+    Route::put('/tags/update','TagsController@update' );
+});
 
-    Route::put('/work/update','UserProjectWorksController@update');
-    Route::patch('/task/{work?}/edit/','UserProjectWorksController@edit');
-    Route::post('/task-start/{contributor}', 'TasksController@store');
-    Route::post('/task-end/{contributor}', 'TasksController@destroy');
-
+Route::middleware('auth')->group(function () {
+    Route::get('/projects/index','ProjectsController@index' );
+    Route::get('/projects/create','ProjectsController@create' );
+    Route::post('/projects/store','ProjectsController@store' );
+    Route::get('/projects/show/{project}','ProjectsController@show' );
+    Route::get('/projects/edit','ProjectsController@edit' );
+    Route::post('/projects/update','ProjectsController@update' );
+    Route::get('/projects/destroy/{id}','ProjectsController@destroy' );
 });
 
 /*Route::prefix('project/works')->middleware('auth')->group(function () {

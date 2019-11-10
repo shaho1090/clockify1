@@ -37,9 +37,6 @@ class InitialWorkSpaceController extends Controller
      */
     public function store()
     {
-       //Auth::user()->WorkSpace()
-       //     ->create(['title' => Auth::user()->getAuthIdentifierName()]);
-
         $workSpace = new WorkSpace(array(
             'title' => Auth::user()->name
           ));

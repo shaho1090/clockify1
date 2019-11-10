@@ -21,7 +21,7 @@
                             <div class="panel-heading">
                                 <h4></h4>
                             </div>
-                            <form action="/work/update" method="post">
+                            <form action="/work-time/update" method="post">
                                 @csrf
                                 @method('PUT')
                                <table class="table">
@@ -37,35 +37,37 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>{{date('Y:m:d',strtotime($work->start_time))}}</td>
-                                        <td>{{date('H:i:s',strtotime($work->start_time)) }}</td>
-                                        <td>{{date('H:i:s',strtotime($work->stop_time)) }}</td>
+                                        <td>{{date('Y:m:d',strtotime($workTime->start_time))}}</td>
+                                        <td>{{date('H:i:s',strtotime($workTime->start_time)) }}</td>
+                                        <td>{{date('H:i:s',strtotime($workTime->stop_time)) }}</td>
                                         <td>{{gmdate('H:i:s',$totalDuration) }}</td>
                                         <td>
                                             <input typeof="text" name="title" placeholder="عنوان کار">
                                         </td>
                                         <td>
                                             <select name="selectBillable">
-                                                <option value="{!! $work->billable !!}">
-                                                    {!! $work->billable ? 'پولی' : 'رایگان' !!}
+                                                <option value="{!! $workTime->billable !!}">
+                                                    {!! $workTime->billable ? 'پولی' : 'رایگان' !!}
                                                 </option>
-                                                <option value="{!! !$work->billable !!}">
-                                                    {!! $work->billable ?  'رایگان' :'پولی' !!}
+                                                <option value="{!! !$workTime->billable !!}">
+                                                    {!! $workTime->billable ?  'رایگان' :'پولی' !!}
                                                 </option>
                                             </select>
                                         </td>
-
                                     </tr>
                                 </tbody>
                             </table>
-                                <input type="hidden" name="work_id" value="{!! $work->id !!}">
-                                <input type="hidden" name="user_project_id" value="{!! $work->user_project_id !!}">
+                                <input type="hidden" name="workTimeId" value="{!! $workTime->id !!}">
                                 <button type="submit" class="btn btn-outline-danger" >ثبت تغییرات</button>
                            </form>
-
-                         </div>
-
-                     </div>
+                            <p></p>
+                            <form action="/work-time/delete/{{$workTime->id}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-outline-danger" >حذف این زمان کاری</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

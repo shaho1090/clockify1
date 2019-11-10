@@ -14,8 +14,14 @@ class UserWorkSpace extends pivot
 
     public function workTimes()
     {
-        return $this->hasMany(WorkTime::class,'work_space_id','id');
+        return $this->hasMany(WorkTime::class,'user_work_space_id','id');
     }
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class,'user_work_space_id','id');
+    }
+
     public function incompleteWorkTimes()
     {
         return $this->workTimes()->incomplete();

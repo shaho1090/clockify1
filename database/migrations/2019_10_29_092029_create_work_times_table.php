@@ -15,11 +15,12 @@ class CreateWorkTimesTable extends Migration
     {
         Schema::create('work_times', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('work_space_id');
+            $table->unsignedBigInteger('user_work_space_id');
             $table->dateTime('start_time');
             $table->dateTime('stop_time')->nullable();
             $table->boolean('billable')->default(true);
             $table->unsignedBigInteger('project_id')->nullable();
+            $table->unsignedBigInteger('tag_id')->nullable();
             $table->string('title')->nullable();
             $table->timestamps();
         });

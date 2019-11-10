@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\WorkTimeFormRequest;
 use App\User;
+use App\Work;
 use App\WorkSpace;
 use App\WorkTime;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\UserWorkSpace;
@@ -21,11 +24,11 @@ class WorkTimesController extends Controller
     {
         $activeWorkSpace = Auth::user()->activeWorkSpace();
 
-        $workTimes = WorkTime::where('work_space_id', $activeWorkSpace->id)
+        $workTimes = WorkTime::where('user_work_space_id', $activeWorkSpace->id)
+            ->orderby('id','desc')
             ->get();
 
         $incompleteWorkTime = UserWorkSpace::find($activeWorkSpace->id)->incompleteWorkTimes()->first();
-      //  dd( $workTimes);
 
         return view('work_times.index', [
             'workTimes' => $workTimes,
@@ -72,21 +75,36 @@ class WorkTimesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(WorkTime $workTime)
     {
-        //
+        $startTime = Carbon::parse($workTime->start_time);
+        $stopTime = Carbon::parse($workTime->stop_time);
+        $totalDuration =  $stopTime->diffInSeconds($startTime);
+
+        return view('work_times.edit', [
+            'totalDuration' => $totalDuration,
+            'workTime' => $workTime,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param WorkTime $workTime
+     * @return void
      */
-    public function update(Request $request, $id)
+    public function update(WorkTimeFormRequest $request)
     {
-        //
+        $billable = $request->get('selectBillable');
+        $billable = $billable ? true : false;
+
+        WorkTime::find($request->get('workTimeId'))
+            ->update(['billable' => $billable,
+                'title' => $request->title]);
+
+        return redirect()->action('WorkTimesController@index');
+
     }
 
     /**
@@ -95,8 +113,10 @@ class WorkTimesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(WorkTime $workTime)
     {
-        //
+       $workTime->delete();
+
+       return redirect()->action('WorkTimesController@index');
     }
 }

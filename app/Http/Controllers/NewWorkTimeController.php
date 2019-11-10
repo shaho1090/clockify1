@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\UserProject;
+
 use App\UserWorkSpace;
-use App\Work;
 use App\WorkTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -12,20 +11,25 @@ use Illuminate\Support\Carbon;
 class NewWorkTimeController extends Controller
 {
 
-    public function store(UserWorkSpace $activeWorkSpace,Request $request)
+    public function store(Request $request)
     {
-        $incompleteWorkTime = $activeWorkSpace->incompleteWorkTimes()->first();
+        $incompleteWorkTime =UserWorkSpace::find($request->activeWorkSpaceId)
+            ->incompleteWorkTimes()
+            ->first();
+
         if (! $incompleteWorkTime) {
            WorkTime::create(['start_time'=> Carbon::now(),
-                'work_space_id' => $activeWorkSpace->id,
+                'user_work_space_id' => $request->activeWorkSpaceId,
                  ]);
             return redirect()->action('WorkTimesController@index');
         }
    }
 
-    public function destroy(UserWorkSpace $activeWorkSpace,Request $request)
+    public function destroy(Request $request)
     {
-        $incompleteWorkTime = $activeWorkSpace->incompleteWorkTimes()->first();
+        $incompleteWorkTime = UserWorkSpace::find($request->activeWorkSpaceId)
+            ->incompleteWorkTimes()
+            ->first();
 
         if (! $incompleteWorkTime) {
             return redirect()->back();

@@ -7,7 +7,7 @@ use App\UserProject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class UserProjectsController extends Controller
+class ProjectsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class UserProjectsController extends Controller
 
     public function index()
     {
-        $projects =Auth::user()->projects()->get()->all();
+
         return view("projects.index",compact('projects'));
     }
 

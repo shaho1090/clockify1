@@ -25,6 +25,20 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/initial-workspace','InitialWorkSpaceController@store');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/work-time/index','WorkTimesController@index');
+    Route::post('/work-time/start','NewWorkTimeController@store' );
+    Route::post('/work-time/stop','NewWorkTimeController@destroy' );
+
+    Route::post('/user/projects/store','UserProjectsController@store' );
+    Route::get('/user/projects/show/{project}','UserProjectsController@show' );
+    Route::get('/user/projects/edit','UserProjectsController@edit' );
+    Route::post('/user/projects/update','UserProjectsController@update' )->name('user_project_update');
+    Route::get('/user/projects/destroy/{id}','UserProjectsController@destroy' );
+});
+
+
 //Route::get('/user/project/works/create/{project?}','UserProjectWorksController@create')->middleware('auth');
 
 //Route::resource('/user/project/works/','UserProjectWorksController')->middleware('auth');

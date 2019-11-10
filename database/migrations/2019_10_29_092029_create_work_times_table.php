@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWorksTable extends Migration
+class CreateWorkTimesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateWorksTable extends Migration
      */
     public function up()
     {
-        Schema::create('works', function (Blueprint $table) {
+        Schema::create('work_times', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_project_id');
+            $table->unsignedBigInteger('work_space_id');
             $table->dateTime('start_time');
             $table->dateTime('stop_time')->nullable();
             $table->boolean('billable')->default(true);
+            $table->unsignedBigInteger('project_id')->nullable();
             $table->string('title')->nullable();
             $table->timestamps();
         });

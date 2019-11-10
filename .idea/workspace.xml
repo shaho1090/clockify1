@@ -2,16 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkTimesController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/WorkTime.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InitialWorkSpaceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InitialWorkSpaceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TasksController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NewWorkTimeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clockify1/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clockify1/.idea/clockify1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clockify1/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clockify1/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clockify1/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clockify1/.idea/php.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clockify1/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/UserWorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UserWorkSpace.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/WorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkSpace.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_29_092029_create_works_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_29_092029_create_work_times_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_29_093426_create_work_tag_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/temp/2019_10_29_093426_create_work_tag_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_09_105546_create_user_work_space_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_09_105546_create_user_work_space_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/works/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/work_times/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/works/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/work_times/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/works/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/work_times/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -120,9 +126,20 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1THQhOmySOJltVAxBikuTUGufYp" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\clockify1\database\migrations\temp" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -148,7 +165,10 @@
       <updated>1573114660112</updated>
       <workItem from="1573114666001" duration="596000" />
       <workItem from="1573274589051" duration="38000" />
-      <workItem from="1573274686059" duration="8208000" />
+      <workItem from="1573274686059" duration="10888000" />
+      <workItem from="1573295952992" duration="14072000" />
+      <workItem from="1573325953567" duration="6669000" />
+      <workItem from="1573360857835" duration="6094000" />
     </task>
     <servers />
   </component>
@@ -167,5 +187,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/clockify1" />
+    </ignored-roots>
   </component>
 </project>

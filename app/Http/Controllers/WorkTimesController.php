@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Project;
+use App\User;
 use App\WorkSpace;
+use App\WorkTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\UserWorkSpace;
 
-class InitialWorkSpaceController extends Controller
+
+class WorkTimesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +19,19 @@ class InitialWorkSpaceController extends Controller
      */
     public function index()
     {
-        //
+        $activeWorkSpace = Auth::user()->activeWorkSpace();
+
+        $workTimes = WorkTime::where('work_space_id', $activeWorkSpace->id)
+            ->get();
+
+        $incompleteWorkTime = UserWorkSpace::find($activeWorkSpace->id)->incompleteWorkTimes()->first();
+      //  dd( $workTimes);
+
+        return view('work_times.index', [
+            'workTimes' => $workTimes,
+            'activeWorkSpace' =>  $activeWorkSpace,
+            'incompleteWorkTime' =>   $incompleteWorkTime,
+            ]);
     }
 
     /**
@@ -35,20 +50,9 @@ class InitialWorkSpaceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-       //Auth::user()->WorkSpace()
-       //     ->create(['title' => Auth::user()->getAuthIdentifierName()]);
-
-        $workSpace = new WorkSpace(array(
-            'title' => Auth::user()->name
-          ));
-        $workSpace->save();
-        Auth::user()->workSpaces()->attach( $workSpace->id,['access' => 0,
-            'active' =>true
-        ]); // zero means owner access and also this work space activated
-
-        return redirect('/home');
+        //
     }
 
     /**

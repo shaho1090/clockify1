@@ -15,10 +15,10 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">{{ $project->title }}</div>
+                    <div class="card-header">لیست زمان های کاری شما</div>
                     <div class="card-body">
                         <div class="panel panel-default">
-                            <div class="panel-heading">ثبت زمان کاری برای این پروژه</div>
+                            <div class="panel-heading">ثبت زمان کار جدید</div>
 
                                 <table class="table">
                                     <thead>
@@ -39,17 +39,17 @@
                                         </td>
 
                                         <td>
-                                            @if (! $last_project)
-                                                <form method="post" action="/task-start/{{ $contributor->id }}">
+                                            @if (! $incompleteWorkTime)
+                                                <form method="post" action="/work-time/start">
                                                     @csrf
-                                                    <input type="hidden" name="project_id" value="{{ $project->id }}">
+                                                    <input type="hidden" name="project_id" value="{{ $activeWorkSpace->id }}">
                                                     <button class="btn btn-outline-dark" type="submit" name="start">شروع
                                                     </button>
                                                 </form>
                                             @else
-                                                <form method="post" action="/task-end/{{ $contributor->id }}">
+                                                <form method="post" action="/work-time/stop">
                                                     @csrf
-                                                <input type="hidden" name="project_id" value="{{ $project->id }}">
+                                                <input type="hidden" name="project_id" value="{{ $activeWorkSpace->id }}">
                                                 <button class="btn btn-outline-dark" type="submit" name="stop">پایان
                                                 </button>
                                                 </form>
@@ -57,18 +57,14 @@
                                         </td>
 
                                         <td>
-                                             {{ $last_project ? date("H:i:s",strtotime($last_project->start_time)) :'--:--:--'}}
+                                             {{ $incompleteWorkTime ? date("H:i:s",strtotime($incompleteWorkTime->start_time)) :'--:--:--'}}
                                         </td>
 
                                         <td>
-                                            @if(($last_project)&&($last_project->stop_time))
-                                                {{ date("H:i:s",strtotime($last_project->stop_time)) }}
-                                            @else
-                                                --:--:--
-                                            @endif
+                                            {{ $incompleteWorkTime ? date("H:i:s",strtotime($incompleteWorkTime->stop_time)) :'--:--:--'}}
                                         </td>
 
-                                        <form method="post" action="/task/{{$contributor->id}}/edit">
+                                        <form method="post" action="/task/{{$activeWorkSpace->id}}/edit">
                                             @csrf
                                             @method('PATCH')
                                         <td>
@@ -85,9 +81,6 @@
                                             <input typeof="text" name="title" placeholder="عنوان کار">
                                         </td>
 
-                                        <td>
-                                            <button class="btn btn-outline-dark" type="submit" name="final_set">ذخیره نهایی</button>
-                                        </td>
                                         </form>
 
                                     </tr>
@@ -116,36 +109,36 @@
                                 </thead>
 
                                 <tbody>
-                                @forelse ($contributor->works as $work)
+                                @forelse ($workTimes as $workTime)
                                     <tr>
-                                        <td>{{ $project->title }}</td>
+                                        <td>{{ $workTime->title }}</td>
 
                                         <td>
-                                            {{ $work->title }}
+                                            {{ $workTime->title }}
                                         </td>
 
                                         <td>
-                                            {{ date("Y-m-d",strtotime($work->created_at)) }}
+                                            {{ date("Y-m-d",strtotime($workTime->created_at)) }}
                                         </td>
 
                                         <td>
-                                            {{ date("H:i:s",strtotime($work->start_time)) }}
+                                            {{ date("H:i:s",strtotime($workTime->start_time)) }}
                                         </td>
 
                                         <td>
-                                            @if(is_null($work->stop_time))
+                                            @if(is_null($workTime->stop_time))
                                                 --:--:--
                                             @else
-                                                {{ date("H:i:s",strtotime($work->stop_time)) }}
+                                                {{ date("H:i:s",strtotime($workTime->stop_time)) }}
                                             @endif
                                         </td>
 
                                         <td>
-                                            {{ $work->billable ? 'پولی' : 'رایگان' }}
+                                            {{ $workTime->billable ? 'پولی' : 'رایگان' }}
                                         </td>
 
                                         <td>
-                                            <form action="/task/{{ $work->id }}/edit/" method="POST">
+                                            <form action="/task/{{ $workTime->id }}/edit/" method="POST">
                                                 @csrf
                                                 @method('PATCH')
                                                 <button class="btn-outline-dark">ویرایش</button>

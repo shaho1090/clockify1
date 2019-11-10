@@ -42,21 +42,43 @@ class User extends Authenticatable
      *many to many relationship with pivot table user_project
      */
 
-    public function projects()
-    {
-        return $this->belongsToMany(Project::class,'user_project')->withPivot('access','id');
-    }
+//    public function projects()
+//    {
+//        return $this->belongsToMany(Project::class,'user_project')
+//                      ->withPivot('access','id');
+//    }
     /*
     *many to many relationship with pivot table user_work_space
     */
     public function workSpaces()
     {
-        return $this->belongsToMany(WorkSpace::class,'user_work_space')->withPivot('access','id','active');
+        return $this->belongsToMany(WorkSpace::class,'user_work_space')
+            ->withPivot('access','id','active');
     }
-    /*public function userProjects()
+
+    public function activeWorkSpace()
     {
-        return $this->hasMany(UserProject::class,'user_id');
-    }*/
+        return UserWorkSpace::find(auth::user())->where('active',true)->first();
+    }
+
+   public function workTimes()
+    {
+      //  return $this->hasManyThrough(UserWorkSpace::class,'user_id');
+        return $this->hasManyThrough(
+            WorkTime::class,
+            UserWorkSpace::class,
+            'user_id',// Foreign key on user_project table...
+            'work_space_id', // Foreign key on works table...
+            'id', // Local key on user_project table...
+            'id' // Local key on tasks table...
+        );
+    }
+
+
+//    public function activeWorkSpace()
+//    {
+//        return $this->where('active',true)->first();
+//    }
 
     /*
      * each user has many works through the table name user_project

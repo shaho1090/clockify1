@@ -15,6 +15,8 @@ class CreateUserWorkSpaceTable extends Migration
     {
         Schema::create('user_work_space', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('work_space_id');
             $table->tinyInteger('access')->default(2);
             $table->boolean('active')->default(true);
             $table->timestamps();

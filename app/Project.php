@@ -8,10 +8,22 @@ class Project extends Model
 {
     protected $fillable = ['user_work_space_id','title'];
 
-    public function users()
+    public function userWorkSpace()
+    {
+        return $this->belongsTo(UserWorkSpace::class);
+    }
+
+    public function workTimes()
     {
        return $this->belongsToMany(WorkTime::class,'work_time_project')->withPivot('id');
     }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class,'task_id','id');
+    }
+
+
 
 
 //

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
-use App\UserProject;
+use App\UserWorkSpace;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,8 +17,16 @@ class ProjectsController extends Controller
 
     public function index()
     {
+        $activeWorkSpace = Auth::user()->activeWorkSpace();
 
-        return view("projects.index",compact('projects'));
+        $projects = Project::where('user_work_space_id', $activeWorkSpace->id)
+            ->orderby('id','desc')
+            ->get();
+
+        return view('projects.index', [
+            'projects' => $projects,
+            'activeWorkSpace' =>  $activeWorkSpace,
+        ]);
     }
 
     /**
@@ -39,14 +47,12 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        $user=Auth::user();
+        $activeWorkSpace = Auth::user()->activeWorkSpace();
         $project_title = $request->get('project_title');
-        $project = new Project(array(
-            'title' => $project_title
-        ));
-        $project->save();
-        Auth::user()->projects()->attach( $project->id,['access'=>0]); // zero means owner access
-        return redirect('/user/projects/index')->with('status', 'پروژه جدید ایجاد شد!');
+
+        UserWorkSpace::find($activeWorkSpace->id)->projects()->create(['title' =>$project_title]);
+
+        return redirect('/projects/index')->with('status', 'پروژه جدید ایجاد شد!');
     }
 
     /**

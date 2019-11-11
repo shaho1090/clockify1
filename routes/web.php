@@ -37,8 +37,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/tags/index','TagsController@index');
-    Route::post('/tags/start','TagsController@store' );
-    Route::post('/tags/stop','TagsController@destroy' );
+    Route::post('/tags/store','TagsController@store' );
     Route::patch('/tags/{tag}/edit','TagsController@edit' );
     Route::put('/tags/update','TagsController@update' );
 });

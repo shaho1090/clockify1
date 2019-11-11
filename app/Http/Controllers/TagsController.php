@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
+use App\UserWorkSpace;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TagsController extends Controller
 {
@@ -13,6 +16,15 @@ class TagsController extends Controller
      */
     public function index()
     {
+        $activeWorkSpace = Auth::user()->activeWorkSpace();
+
+        $tags = Tag::where('user_work_space_id', $activeWorkSpace->id)
+            ->orderby('id','asc')
+            ->get();
+
+        return view('tags.index', [
+            'tags' => $tags,
+        ]);
 
     }
 
@@ -34,7 +46,12 @@ class TagsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $activeWorkSpace = Auth::user()->activeWorkSpace();
+        $tag_title = $request->get('tag_title');
+
+        UserWorkSpace::find($activeWorkSpace->id)->tags()->create(['title' => $tag_title]);
+
+        return redirect('/tags/index');
     }
 
     /**

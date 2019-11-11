@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
-    protected $fillable = ['title'];
+    protected $fillable = ['user_work_space_id','title'];
 
     public function workTimes()
     {

@@ -15,53 +15,47 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">لیست پروژه ها</div>
+                    <div class="card-header">لیست تگ ها</div>
                     <div class="card-body">
                         <div class="panel panel-default">
                             <div id="accordion">
                                 <div class="card-header">
                                     <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-                                        اضافه کردن پروژه جدید
+                                        اضافه کردن تگ جدید
                                     </a>
                                 </div>
                                 <div id="collapseTwo" class="collapse" data-parent="#accordion">
                                     <div class="card-body">
-                                        <form action="store" method="post">
+                                        <form action="/tags/store" method="post">
                                             @csrf
-                                            <input type="text" name="project_title">
+                                            <input type="text" name="tag_title">
                                             <button type="submit" class="btn" >ثبت</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                             <div class="panel-heading">
-                                <h3> لیست پروژه های شما </h3>
+                                <h3>  </h3>
                             </div>
-                            @if (is_null($projects))
-                                <p> هنوز هیچ پروژه ای  توسط شما ایجاد نشده است.</p>
+                            @if (is_null($tags))
+                                <p> هنوز هیچ تگی در این فضای کاری ایجاد نشده است.</p>
                             @else
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th>عنوان پروژه</th>
+                                        <th>عنوان تگ</th>
                                         <th>مشاهده انجام کار</th>
-                                        <th>دعوت به همکاری در این پروژه</th>
-
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($projects as $project)
+                                    @foreach($tags as $tag)
                                         <tr>
                                             <td>
-                                                <a href="show/{{$project->id}}">{!! $project->title !!} </a>
+                                                <a href="show/{{$tag->id}}">{!! $tag->title !!} </a>
                                             </td>
                                             <td>
-                                                <button class="btn btn-outline-dark"><a href="/works/index/{{$project->id}}">مشاهده زمان های کاری</a></button>
+                                                <button class="btn btn-outline-dark"><a href="/works/index/{{$tag->id}}">مشاهده زمان های کاری</a></button>
                                             </td>
-                                            <td>
-                                                <button class="btn btn-outline-dark"><a href="">دعوت به همکاری</a></button>
-                                            </td>
-
                                         </tr>
                                      @endforeach
                                     </tbody>

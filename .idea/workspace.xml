@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/tags/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/InviteMembersController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkSpaceMembersController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/members/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TagsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TagsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/projects/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/projects/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/projects/index.blade.php-copy" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/projects/New folder/index.blade.php-copy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserProjectWorksController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Old_Controller/UserProjectWorksController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserWorksController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Old_Controller/UserWorksController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkTagsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Old_Controller/WorkTagsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkTimesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkTimesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/UserWorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UserWorkSpace.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/WorkTime.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkTime.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -123,15 +127,17 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/tags" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/members" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\members" />
       <recent name="C:\xampp\htdocs\clockify1\resources\views\tags" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\clockify1\app\Http\Controllers\Old_Controller" />
       <recent name="C:\xampp\htdocs\clockify1\resources\views\projects\New folder" />
       <recent name="C:\xampp\htdocs\clockify1\database\migrations\temp" />
     </key>
@@ -165,7 +171,7 @@
       <workItem from="1573325953567" duration="6669000" />
       <workItem from="1573360857835" duration="12418000" />
       <workItem from="1573381414107" duration="12879000" />
-      <workItem from="1573447134582" duration="3641000" />
+      <workItem from="1573447134582" duration="9951000" />
     </task>
     <servers />
   </component>

@@ -19,6 +19,11 @@ class WorkTime extends Model
         $query->whereNull('stop_time');
     }
 
+    public function scopeComplete($query)
+    {
+        $query->whereNotNull('stop_time');
+    }
+
     public function projects()
     {
         return $this->belongsToMany(Project::class,'work_time_project')

@@ -4,14 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\WorkTimeFormRequest;
 use App\User;
-use App\Work;
 use App\WorkSpace;
 use App\WorkTime;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\UserWorkSpace;
-
 
 class WorkTimesController extends Controller
 {
@@ -24,11 +22,14 @@ class WorkTimesController extends Controller
     {
         $activeWorkSpace = Auth::user()->activeWorkSpace();
 
-        $workTimes = WorkTime::where('user_work_space_id', $activeWorkSpace->id)
+        $workTimes = UserWorkSpace::find($activeWorkSpace->id)
+            ->completeWorkTimes()
             ->orderby('id','desc')
             ->get();
 
-        $incompleteWorkTime = UserWorkSpace::find($activeWorkSpace->id)->incompleteWorkTimes()->first();
+        $incompleteWorkTime = UserWorkSpace::find($activeWorkSpace->id)
+            ->incompleteWorkTimes()
+            ->first();
 
         return view('work_times.index', [
             'workTimes' => $workTimes,

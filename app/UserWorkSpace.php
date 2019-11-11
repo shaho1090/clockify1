@@ -32,5 +32,9 @@ class UserWorkSpace extends pivot
         return $this->workTimes()->incomplete();
     }
 
+    public function completeWorkTimes()
+    {
+        return $this->workTimes()->complete();
+    }
 
 }

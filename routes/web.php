@@ -52,6 +52,24 @@ Route::middleware('auth')->group(function () {
     Route::get('/projects/destroy/{id}','ProjectsController@destroy' );
 });
 
+Route::middleware('auth')->group(function () {
+    Route::get('/work-space/members/index','WorkSpaceMembersController@index' );
+    Route::post('/work-space/members/store','WorkSpaceMembersController@store' );
+    Route::get('/work-space/members/show','WorkSpaceMembersController@show' );
+    Route::get('/work-space/members/edit','WorkSpaceMembersController@edit' );
+    Route::post('/work-space/members/update','WorkSpaceMembersController@update' );
+    Route::get('/work-space/members/destroy','WorkSpaceMembersController@destroy' );
+});
+
+Route::middleware('auth')->group(function () {
+   // Route::get('/work-space/members/index','WorkSpaceMembersController@index' );
+    Route::post('/invite/members/store','InviteMembersController@store' );
+  //  Route::get('/work-space/members/show','WorkSpaceMembersController@show' );
+  //  Route::get('/work-space/members/edit','WorkSpaceMembersController@edit' );
+   // Route::post('/work-space/members/update','WorkSpaceMembersController@update' );
+ //   Route::get('/work-space/members/destroy','WorkSpaceMembersController@destroy' );
+});
+
 /*Route::prefix('project/works')->middleware('auth')->group(function () {
     Route::get('/index/{id}','project\WorksController@index' );
     Route::get('/create','project\WorksController@create' );
@@ -61,16 +79,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/update','project\WorksController@update' );
     Route::get('/destroy','project\WorksController@destroy' );
 });*/
-
-
-//Route::get('projects/index','ProjectsController@index')->middleware('auth');
-Route::get('/projects/index','ProjectsController@index' )->middleware('auth');
-//Route::get('/projects/show/{id?}', 'ProjectsController@show')->middleware('auth');
-Route::post('/projects/create', 'ProjectsController@create')->middleware('auth');
-Route::get('/projects/show/{id?}', 'ProjectsController@show')->middleware('auth');
-Route::post('/projects/store/', 'ProjectsController@store')->middleware('auth');
-Route::post('/projects/delete/', 'ProjectsController@delete')->middleware('auth');
-
 
 Route::get('/contributors/invited/{email?}', 'ContributorsController@add')->middleware('auth')->name('inviteGet');
 Route::get('/contributors/invite/{project}', 'ContributorsController@invite')->middleware('auth')->name('invitePost');

@@ -30,6 +30,7 @@
                                         <th>ساعت پایان</th>
                                         <th>تعیین عنوان برای کار</th>
                                         <th>مربوط به پروژه :</th>
+                                        <th>تگ</th>
                                         <th>تعیین نوع کار</th>
                                         <th></th>
                                     </tr>
@@ -63,7 +64,7 @@
                                         <td>
                                             <input typeof="text" class="form-control" name="title" placeholder="عنوان کار">
                                         </td>
-                                          <td>
+                                        <td>
                                               <select id="source"  class="form-control"  size="1" name="project_id" >
                                                   <option value="" disabled selected>انتخاب پروژه</option>
                                                   @foreach($projects as $project)
@@ -72,7 +73,17 @@
                                                       </option>
                                                   @endforeach
                                               </select>
-                                          </td>
+                                        </td>
+
+                                          <select id="source"  class="form-control"  size="1" name="project_id" >
+                                              <option value="" disabled selected>انتخاب تگ</option>
+                                              @foreach($tags as $tag)
+                                                  <option value="{!! $project->id !!} ">
+                                                      {!! $tag->title !!}
+                                                  </option>
+                                              @endforeach
+                                          </select>
+
                                         <td>
                                             <select name="selectBillable" class="form-control">
                                                 <option value="1" >

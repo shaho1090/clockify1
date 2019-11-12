@@ -30,6 +30,7 @@
                                         <th>ساعت پایان</th>
                                         <th>تعیین عنوان برای کار</th>
                                         <th>مربوط به پروژه :</th>
+                                        <th>تگ</th>
                                         <th>تعیین نوع کار</th>
                                         <th></th>
                                     </tr>
@@ -64,7 +65,7 @@
                                             <input typeof="text" class="form-control" name="title" placeholder="عنوان کار">
                                         </td>
                                           <td>
-                                              <select id="source"  class="form-control"  size="1" name="project_id" >
+                                              <select class="form-control"  size="1" name="project_id" >
                                                   <option value="" disabled selected>انتخاب پروژه</option>
                                                   @foreach($projects as $project)
                                                       <option value="{!! $project->id !!} ">
@@ -73,7 +74,17 @@
                                                   @endforeach
                                               </select>
                                           </td>
-                                        <td>
+                                          <td>
+
+                                          <select  class="form-control"  size="3" name="tags[]" multiple>
+                                               @foreach($tags as $tag)
+                                                  <option value="{{$tag->id }}">
+                                                        {{ $tag->title }}
+                                                  </option>
+                                              @endforeach
+                                          </select>
+                                          </td>
+                                          <td>
                                             <select name="selectBillable" class="form-control">
                                                 <option value="1" >
                                                     پولی
@@ -101,6 +112,7 @@
                                     <th>ساعت شروع</th>
                                     <th>ساعت پایان</th>
                                     <th>مربوط به پروژه :</th>
+                                    <th>تگ ها</th>
                                     <th>نوع کار</th>
                                     <th></th>
                                 </tr>
@@ -131,6 +143,15 @@
                                             @if ($workTime->project)
                                                 {{ $workTime->project->title }}
                                             @endif
+                                        </td>
+
+                                        <td>
+                                            @if ($workTime->tags)
+                                                @foreach($workTime->tags as $tag)
+                                                    | {{ $tag->title }}
+                                                @endforeach
+                                            @endif
+
                                         </td>
 
                                         <td>

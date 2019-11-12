@@ -57,14 +57,17 @@ class NewWorkTimeController extends Controller
             'billable' => $request->get('selectBillable'),
             'title' =>  $request->get('title'),
             'project_id' =>  $request->get('project_id'),
-            'stop_time' => Carbon::now(),
         ]);
-      //  $incompleteWorkTime->ends();
+
+         $tags = $request->get('tags');
+         if($tags) {
+             foreach ($tags as $tag) {
+                 $incompleteWorkTime->tags()->attach($tag);
+             }
+         }
+
+         $incompleteWorkTime->complete();
 
         return redirect()->action('WorkTimesController@index');
     }
-
-
-
-
 }

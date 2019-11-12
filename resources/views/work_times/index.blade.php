@@ -19,41 +19,36 @@
                     <div class="card-body">
                         <div class="panel panel-default">
                             <div class="panel-heading">ثبت زمان کار جدید</div>
-
-                                <table class="table">
+                            <form method="post" action="/work-time/start">
+                                @csrf
+                                <table class="table" >
                                     <thead>
                                     <tr>
                                         <th>تاریخ امروز</th>
                                         <th>ثبت ساعت</th>
                                         <th>ساعت شروع</th>
                                         <th>ساعت پایان</th>
-                                        <th>تعیین نوع کار</th>
                                         <th>تعیین عنوان برای کار</th>
+                                        <th>مربوط به پروژه :</th>
+                                        <th>تعیین نوع کار</th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
+                                      <tr>
                                         <td>
                                             {{ date("Y-m-d") }}
                                         </td>
 
                                         <td>
-
                                             @if (! $incompleteWorkTime)
-                                                <form method="post" action="/work-time/start">
-                                                    @csrf
-                                                    <input type="hidden" name="activeWorkSpaceId" value="{{ $activeWorkSpace->id }}">
-                                                    <button class="btn btn-outline-dark" type="submit" name="start">شروع
-                                                    </button>
-                                                </form>
-                                            @else
-                                                <form method="post" action="/work-time/stop">
-                                                    @csrf
-                                                <input type="hidden" name="activeWorkSpaceId" value="{{ $activeWorkSpace->id }}">
-                                                <button class="btn btn-outline-dark" type="submit" name="stop">پایان
+                                                <button class="btn btn-outline-dark" type="submit" name="start" formaction="/work-time/start">
+                                                    شروع
                                                 </button>
-                                                </form>
+                                            @else
+                                               <button class="btn btn-outline-dark" type="submit" name="stop" formaction="/work-time/stop">
+                                                    پایان
+                                               </button>
                                             @endif
                                         </td>
 
@@ -65,12 +60,22 @@
                                             {{ $incompleteWorkTime ? date("H:i:s",strtotime($incompleteWorkTime->stop_time)) :'--:--:--'}}
                                         </td>
 
-                                        <form method="post" action="">
-                                            @csrf
-                                            @method('PATCH')
                                         <td>
-                                            <select name="selectBillable">
-                                                <option value="1">
+                                            <input typeof="text" class="form-control" name="title" placeholder="عنوان کار">
+                                        </td>
+                                          <td>
+                                              <select id="source"  class="form-control"  size="1" name="project_id" >
+                                                  <option value="" disabled selected>انتخاب پروژه</option>
+                                                  @foreach($projects as $project)
+                                                      <option value="{!! $project->id !!} ">
+                                                          {!! $project->title !!}
+                                                      </option>
+                                                  @endforeach
+                                              </select>
+                                          </td>
+                                        <td>
+                                            <select name="selectBillable" class="form-control">
+                                                <option value="1" >
                                                     پولی
                                                 </option>
                                                 <option value="0">
@@ -78,16 +83,8 @@
                                                 </option>
                                             </select>
                                         </td>
-                                        <td>
-                                            <input typeof="text" name="title" placeholder="عنوان کار">
-                                        </td>
-
-                                        </form>
-
-                                    </tr>
-
+                                     </tr>
                                     </tbody>
-
                                 </table>
                             </form>
                         </div>
@@ -103,6 +100,7 @@
                                     <th>تاریخ</th>
                                     <th>ساعت شروع</th>
                                     <th>ساعت پایان</th>
+                                    <th>مربوط به پروژه :</th>
                                     <th>نوع کار</th>
                                     <th></th>
                                 </tr>
@@ -127,6 +125,10 @@
                                             @else
                                                 {{ date("H:i:s",strtotime($workTime->stop_time)) }}
                                             @endif
+                                        </td>
+
+                                        <td>
+                                            {{ $workTime->project }}
                                         </td>
 
                                         <td>

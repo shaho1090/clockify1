@@ -26,11 +26,19 @@
                                 </div>
                                 <div id="collapseTwo" class="collapse" data-parent="#accordion">
                                     <div class="card-body">
+                                      <div class="col-md-6">
                                         <form action="/invite/members/store" method="post">
                                             @csrf
-                                            <input type="text" name="tag_title">
+                                            <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('آدرس ایمیل') }}" required autocomplete="email">
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                              <strong>{{ $message }}</strong>
+                                              </span>
+                                            @enderror
+                                            <p></p>
                                             <button type="submit" class="btn" >ارسال ایمیل</button>
                                         </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

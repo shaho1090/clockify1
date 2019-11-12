@@ -14,9 +14,9 @@ class Project extends Model
     }
 
     public function workTimes()
-    {
-       return $this->belongsToMany(WorkTime::class,'work_time_project')->withPivot('id');
-    }
+   {
+       return $this->hasMany(WorkTime::class,'project_id');
+   }
 
     public function tasks()
     {

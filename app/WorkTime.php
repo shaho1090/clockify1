@@ -24,10 +24,9 @@ class WorkTime extends Model
         $query->whereNotNull('stop_time');
     }
 
-    public function projects()
+   public function project()
     {
-        return $this->belongsToMany(Project::class,'work_time_project')
-            ->withPivot('id');
+        return $this->belongsTo(Project::class,'project_id');
     }
 
     public function tags()
@@ -42,4 +41,6 @@ class WorkTime extends Model
             'stop_time' => Carbon::now()
         ]);
     }
+
+
 }

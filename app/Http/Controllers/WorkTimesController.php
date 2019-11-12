@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\WorkTimeFormRequest;
+use App\Project;
 use App\User;
 use App\WorkSpace;
 use App\WorkTime;
@@ -31,9 +32,11 @@ class WorkTimesController extends Controller
             ->incompleteWorkTimes()
             ->first();
 
+        $projects = Project::find($activeWorkSpace->id)->get();
+
         return view('work_times.index', [
-            'workTimes' => $workTimes,
-            'activeWorkSpace' =>  $activeWorkSpace,
+            'workTimes' => $workTimes->load('project'),
+            'projects' =>  $projects,
             'incompleteWorkTime' =>   $incompleteWorkTime,
             ]);
     }
@@ -82,9 +85,10 @@ class WorkTimesController extends Controller
         $stopTime = Carbon::parse($workTime->stop_time);
         $totalDuration =  $stopTime->diffInSeconds($startTime);
 
+
         return view('work_times.edit', [
             'totalDuration' => $totalDuration,
-            'workTime' => $workTime,
+            'workTime' => $workTime->load('projects'),
         ]);
     }
 
@@ -102,7 +106,7 @@ class WorkTimesController extends Controller
 
         WorkTime::find($request->get('workTimeId'))
             ->update(['billable' => $billable,
-                'title' => $request->title]);
+                'title' => $request->get('title')]);
 
         return redirect()->action('WorkTimesController@index');
 
@@ -111,8 +115,9 @@ class WorkTimesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(WorkTime $workTime)
     {

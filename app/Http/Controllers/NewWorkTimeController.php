@@ -7,27 +7,39 @@ use App\UserWorkSpace;
 use App\WorkTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class NewWorkTimeController extends Controller
 {
 
-    public function store(Request $request)
+    public function store()
     {
-        $incompleteWorkTime =UserWorkSpace::find($request->activeWorkSpaceId)
+        $activeWorkSpace = Auth::user()->activeWorkSpace();
+
+        $incompleteWorkTime =UserWorkSpace::find($activeWorkSpace->id)
             ->incompleteWorkTimes()
             ->first();
 
         if (! $incompleteWorkTime) {
            WorkTime::create(['start_time'=> Carbon::now(),
-                'user_work_space_id' => $request->activeWorkSpaceId,
-                 ]);
+               'user_work_space_id' => $activeWorkSpace->id,
+                ]);
             return redirect()->action('WorkTimesController@index');
         }
    }
 
+    public function update(Request $request, $id)
+    {
+
+
+        return redirect()->action('WorkTimesController@index');
+    }
+
     public function destroy(Request $request)
     {
-        $incompleteWorkTime = UserWorkSpace::find($request->activeWorkSpaceId)
+        $activeWorkSpace = Auth::user()->activeWorkSpace();
+
+        $incompleteWorkTime = UserWorkSpace::find( $activeWorkSpace->id)
             ->incompleteWorkTimes()
             ->first();
 
@@ -35,8 +47,24 @@ class NewWorkTimeController extends Controller
             return redirect()->back();
         }
 
-        $incompleteWorkTime->ends();
+//        if ($request->get('selectProject')) {
+//            $incompleteWorkTime->projects()->attach($request->get('selectProject'));
+//        }
+//        Auth::user()->workSpaces()->attach( $workSpace->id,['access' => 0,
+//            'active' =>true
+
+        $incompleteWorkTime->update([
+            'billable' => $request->get('selectBillable'),
+            'title' =>  $request->get('title'),
+            'project_id' =>  $request->get('project_id'),
+            'stop_time' => Carbon::now(),
+        ]);
+      //  $incompleteWorkTime->ends();
 
         return redirect()->action('WorkTimesController@index');
     }
+
+
+
+
 }

@@ -31,6 +31,7 @@
                                     <th>ساعت شروع به کار</th>
                                     <th>ساعت پایان کار</th>
                                     <th>مدت زمان کار </th>
+                                    <td>مربوط به پروژه :</td>
                                     <th>عنوان کار </th>
                                     <th>نوع کار </th>
                                 </tr>
@@ -41,6 +42,8 @@
                                         <td>{{date('H:i:s',strtotime($workTime->start_time)) }}</td>
                                         <td>{{date('H:i:s',strtotime($workTime->stop_time)) }}</td>
                                         <td>{{gmdate('H:i:s',$totalDuration) }}</td>
+                                        <td>
+                                        </td>
                                         <td>
                                             <input typeof="text" name="title" placeholder="عنوان کار">
                                         </td>
@@ -57,7 +60,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                                <input type="hidden" name="workTimeId" value="{!! $workTime->id !!}">
+                                <input type="hidden" class="form-control" name="workTimeId" value="{!! $workTime->id !!}">
                                 <button type="submit" class="btn btn-outline-danger" >ثبت تغییرات</button>
                            </form>
                             <p></p>

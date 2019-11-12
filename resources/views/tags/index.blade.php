@@ -28,7 +28,7 @@
                                     <div class="card-body">
                                         <form action="/tags/store" method="post">
                                             @csrf
-                                            <input type="text" name="tag_title">
+                                            <input type="text" name="tag_title" required autocomplete="name" autofocus>
                                             <button type="submit" class="btn" >ثبت</button>
                                         </form>
                                     </div>

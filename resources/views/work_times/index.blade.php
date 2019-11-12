@@ -128,7 +128,9 @@
                                         </td>
 
                                         <td>
-                                            {{ $workTime->project }}
+                                            @if ($workTime->project)
+                                                {{ $workTime->project->title }}
+                                            @endif
                                         </td>
 
                                         <td>

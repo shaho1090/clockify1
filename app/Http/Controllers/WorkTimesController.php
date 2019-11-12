@@ -88,7 +88,7 @@ class WorkTimesController extends Controller
 
         return view('work_times.edit', [
             'totalDuration' => $totalDuration,
-            'workTime' => $workTime->load('projects'),
+            'workTime' => $workTime->load('project'),
         ]);
     }
 

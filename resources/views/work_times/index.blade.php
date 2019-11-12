@@ -15,13 +15,13 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">لیست زمان های کاری شما </div>
+                    <div class="card-header">لیست زمان های کاری شما</div>
                     <div class="card-body">
                         <div class="panel panel-default">
                             <div class="panel-heading">ثبت زمان کار جدید</div>
                             <form method="post" action="/work-time/start">
                                 @csrf
-                                <table class="table" >
+                                <table class="table">
                                     <thead>
                                     <tr>
                                         <th>تاریخ امروز</th>
@@ -36,25 +36,27 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                      <tr>
+                                    <tr>
                                         <td>
                                             {{ date("Y-m-d") }}
                                         </td>
 
                                         <td>
                                             @if (! $incompleteWorkTime)
-                                                <button class="btn btn-outline-dark" type="submit" name="start" formaction="/work-time/start">
+                                                <button class="btn btn-outline-dark" type="submit" name="start"
+                                                        formaction="/work-time/start">
                                                     شروع
                                                 </button>
                                             @else
-                                               <button class="btn btn-outline-dark" type="submit" name="stop" formaction="/work-time/stop">
+                                                <button class="btn btn-outline-dark" type="submit" name="stop"
+                                                        formaction="/work-time/stop">
                                                     پایان
-                                               </button>
+                                                </button>
                                             @endif
                                         </td>
 
                                         <td>
-                                             {{ $incompleteWorkTime ? date("H:i:s",strtotime($incompleteWorkTime->start_time)) :'--:--:--'}}
+                                            {{ $incompleteWorkTime ? date("H:i:s",strtotime($incompleteWorkTime->start_time)) :'--:--:--'}}
                                         </td>
 
                                         <td>
@@ -62,31 +64,34 @@
                                         </td>
 
                                         <td>
-                                            <input typeof="text" class="form-control" name="title" placeholder="عنوان کار">
+                                            <input typeof="text" class="form-control" name="title"
+                                                   placeholder="عنوان کار">
                                         </td>
+
                                         <td>
-                                              <select id="source"  class="form-control"  size="1" name="project_id" >
-                                                  <option value="" disabled selected>انتخاب پروژه</option>
-                                                  @foreach($projects as $project)
-                                                      <option value="{!! $project->id !!} ">
-                                                          {!! $project->title !!}
-                                                      </option>
-                                                  @endforeach
-                                              </select>
+                                            <select class="form-control" size="1" name="project_id">
+                                                <option value="" disabled selected>انتخاب پروژه</option>
+                                                @foreach($projects as $project)
+                                                    <option value="{!! $project->id !!} ">
+                                                        {!! $project->title !!}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </td>
 
-                                          <select id="source"  class="form-control"  size="1" name="project_id" >
-                                              <option value="" disabled selected>انتخاب تگ</option>
-                                              @foreach($tags as $tag)
-                                                  <option value="{!! $project->id !!} ">
-                                                      {!! $tag->title !!}
-                                                  </option>
-                                              @endforeach
-                                          </select>
+                                        <td>
 
+                                            <select class="form-control" size="3" name="tags[]" multiple>
+                                                @foreach($tags as $tag)
+                                                    <option value="{{$tag->id }}">
+                                                        {{ $tag->title }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </td>
                                         <td>
                                             <select name="selectBillable" class="form-control">
-                                                <option value="1" >
+                                                <option value="1">
                                                     پولی
                                                 </option>
                                                 <option value="0">
@@ -94,7 +99,7 @@
                                                 </option>
                                             </select>
                                         </td>
-                                     </tr>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </form>
@@ -112,6 +117,7 @@
                                     <th>ساعت شروع</th>
                                     <th>ساعت پایان</th>
                                     <th>مربوط به پروژه :</th>
+                                    <th>تگ ها</th>
                                     <th>نوع کار</th>
                                     <th></th>
                                 </tr>
@@ -142,6 +148,15 @@
                                             @if ($workTime->project)
                                                 {{ $workTime->project->title }}
                                             @endif
+                                        </td>
+
+                                        <td>
+                                            @if ($workTime->tags)
+                                                @foreach($workTime->tags as $tag)
+                                                    | {{ $tag->title }}
+                                                @endforeach
+                                            @endif
+
                                         </td>
 
                                         <td>

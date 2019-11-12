@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\WorkTimeFormRequest;
 use App\Project;
+use App\Tag;
 use App\User;
 use App\WorkSpace;
 use App\WorkTime;
@@ -33,11 +34,13 @@ class WorkTimesController extends Controller
             ->first();
 
         $projects = Project::find($activeWorkSpace->id)->get();
+        $tags = Tag::find($activeWorkSpace->id)->get();
 
         return view('work_times.index', [
-            'workTimes' => $workTimes->load('project'),
+            'workTimes' => $workTimes->load('project')->load('tags'),
             'projects' =>  $projects,
             'incompleteWorkTime' =>   $incompleteWorkTime,
+            'tags' =>$tags,
             ]);
     }
 

@@ -35,7 +35,7 @@ class WorkTime extends Model
             ->withPivot('id');
     }
 
-    public function ends()
+    public function complete()
     {
         $this->update([
             'stop_time' => Carbon::now()

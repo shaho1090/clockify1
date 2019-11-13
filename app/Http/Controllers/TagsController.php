@@ -47,7 +47,8 @@ class TagsController extends Controller
     public function store(Request $request)
     {
         $activeWorkSpace = Auth::user()->activeWorkSpace();
-        $activeWorkSpace->tags()->create(['title' => $request->get('tag_title')]);
+        $activeWorkSpace->tags()
+            ->create(['title' => $request->get('tag_title')]);
 
         return redirect('/tags/index');
     }
@@ -91,9 +92,14 @@ class TagsController extends Controller
      *
      * @param Tag $tag
      * @return void
+     * @throws \Exception
      */
     public function destroy(Tag $tag)
     {
-        Auth::user()->activeWorkSpace()->tags()->where('id',$tag->id)->delete();
+        $tag->workTimes()->delete();
+        $tag->workTimes()->detach();
+        $tag->delete();
+
+        return redirect()->action('TagsController@index');
     }
 }

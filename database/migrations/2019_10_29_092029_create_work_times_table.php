@@ -23,6 +23,19 @@ class CreateWorkTimesTable extends Migration
             $table->unsignedBigInteger('tag_id')->nullable();
             $table->string('title')->nullable();
             $table->timestamps();
+            $table->foreign('user_work_space_id')
+                ->references('id')->on('user_work_space')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreign('project_id')
+                ->references('id')->on('projects')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreign('tag_id')
+                ->references('id')->on('tags')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
         });
     }
 

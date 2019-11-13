@@ -45,8 +45,8 @@
                                     <thead>
                                     <tr>
                                         <th>عنوان پروژه</th>
+                                        <th>حذف پروژه</th>
                                         <th>مشاهده انجام کار</th>
-                                        <th>دعوت به همکاری در این پروژه</th>
 
                                     </tr>
                                     </thead>
@@ -61,15 +61,18 @@
                                             </td>
 
                                             <td>
+                                                <form action="/projects/destroy/{{$project->id}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-outline-danger">حذف این پروژه</button>
+                                                </form>
+                                            </td>
+
+                                            <td>
                                                 <button class="btn btn-outline-dark"><a
                                                         href="/works/index/{{$project->id}}">مشاهده زمان های کاری</a>
                                                 </button>
                                             </td>
-                                            <td>
-                                                <button class="btn btn-outline-dark"><a href="">دعوت به همکاری</a>
-                                                </button>
-                                            </td>
-
                                         </tr>
                                     @endforeach
                                     </tbody>

@@ -60,7 +60,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/projects/show/{project}','ProjectsController@show' );
     Route::get('/projects/edit','ProjectsController@edit' );
     Route::post('/projects/update','ProjectsController@update' );
-    Route::get('/projects/destroy/{id}','ProjectsController@destroy' );
+    Route::delete('/projects/destroy/{project}','ProjectsController@destroy' );
 });
 
 Route::middleware('auth')->group(function () {

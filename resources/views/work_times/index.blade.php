@@ -133,7 +133,7 @@
                                         </td>
 
                                         <td>
-                                            {{ date("H:i:s",strtotime($workTime->start_time)) }}
+                                           {{ date("H:i:s",strtotime($workTime->start_time)) }}
                                         </td>
 
                                         <td>
@@ -145,12 +145,25 @@
                                         </td>
 
                                         <td>
-                                            @if ($workTime->project)
-                                                {{ $workTime->project->title }}
-                                            @endif
+
+                                            <select class="form-control" size="1" name="changeProject" onchange="updateWorkTimeProject(this.value, {{ $workTime->id }})">
+                                                <option value="" disabled selected>
+                                                    @if ($workTime->project)
+                                                        {{ $workTime->project->title }}
+                                                    @endif
+                                                </option>
+
+                                                @foreach($projects as $project)
+                                                    <option value="{!! $project->id !!} ">
+                                                        {!! $project->title !!}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+
                                         </td>
 
                                         <td>
+
                                             @if ($workTime->tags)
                                                 @foreach($workTime->tags as $tag)
                                                     | {{ $tag->title }}
@@ -184,4 +197,31 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function updateWorkTimeProject(projectId,workTimeId) {
+            if (projectId === "") {
+                document.getElementById("txtHint").innerHTML = "";
+                return;
+            } else {
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else {
+                    // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 200) {
+                        document.getElementById("txtHint").innerHTML = this.responseText;
+                    }
+                };
+
+                xmlhttp.open("get","/work-time/project/update/"+workTimeId+"/"+projectId ,true);
+                xmlhttp.send();
+
+                confirm('project_id:'+projectId+'workTimeId:'+workTimeId);
+            }
+        }
+    </script>
 @endsection

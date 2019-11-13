@@ -36,6 +36,16 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::get('/work-time/index','WorkTimesController@index');
+    Route::post('/work-time/start','NewWorkTimeController@store' );
+    Route::post('/work-time/stop','NewWorkTimeController@destroy' );
+    Route::patch('/work-time/{workTime}/edit','WorkTimesController@edit' );
+    Route::get('/work-time/project/update/{workTime}/{project}','WorkTimeProjectController@update' );
+    Route::delete('/work-time/delete/{workTime}','WorkTimesController@destroy');
+});
+
+
+Route::middleware('auth')->group(function () {
     Route::get('/tags/index','TagsController@index');
     Route::post('/tags/store','TagsController@store' );
     Route::patch('/tags/{tag}/edit','TagsController@edit' );
@@ -60,6 +70,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/work-space/members/update','WorkSpaceMembersController@update' );
     Route::get('/work-space/members/destroy','WorkSpaceMembersController@destroy' );
 });
+
+
+
 
 Route::middleware('auth')->group(function () {
    // Route::get('/work-space/members/index','WorkSpaceMembersController@index' );

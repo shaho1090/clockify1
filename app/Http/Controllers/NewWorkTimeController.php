@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Auth;
 
 class NewWorkTimeController extends Controller
 {
-
+  /*
+  *
+  */
     public function store()
     {
         $activeWorkSpace = Auth::user()->activeWorkSpace();
@@ -27,13 +29,18 @@ class NewWorkTimeController extends Controller
             return redirect()->action('WorkTimesController@index');
         }
    }
+   /*
+    *
+    */
 
     public function update(Request $request, $id)
     {
 
-
-        return redirect()->action('WorkTimesController@index');
     }
+    /*
+     * end of the setting time with related project and tags
+     * @stop_time
+     */
 
     public function destroy(Request $request)
     {
@@ -46,12 +53,6 @@ class NewWorkTimeController extends Controller
         if (! $incompleteWorkTime) {
             return redirect()->back();
         }
-
-//        if ($request->get('selectProject')) {
-//            $incompleteWorkTime->projects()->attach($request->get('selectProject'));
-//        }
-//        Auth::user()->workSpaces()->attach( $workSpace->id,['access' => 0,
-//            'active' =>true
 
         $incompleteWorkTime->update([
             'billable' => $request->get('selectBillable'),

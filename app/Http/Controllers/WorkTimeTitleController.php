@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Project;
-use App\UserWorkSpace;
 use App\WorkTime;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class WorkTimeProjectController extends Controller
+class WorkTimeTitleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -67,12 +64,12 @@ class WorkTimeProjectController extends Controller
      * Update the specified resource in storage.
      *
      * @param WorkTime $workTime
-     * @param Project $project
+     * @param $title
      * @return void
      */
-    public function update(WorkTime $workTime, Project $project)
+    public function update(WorkTime $workTime, $title)
     {
-        $workTime->update(['project_id' => $project->id]);
+        $workTime->update(['title' => $title]);
     }
 
     /**

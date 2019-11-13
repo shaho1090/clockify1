@@ -126,7 +126,7 @@
                                 <tbody>
                                 @forelse ($workTimes as $workTime)
                                     <tr>
-                                        <td>{{ $workTime->title }}</td>
+                                        <td><input type="text" class="form-control" name="changeTitle" value="{{ $workTime->title }}" onchange="updateWorkTimeTitle(this.value, {{ $workTime->id }})"></td>
 
                                         <td>
                                             {{ date("Y-m-d",strtotime($workTime->created_at)) }}
@@ -173,7 +173,17 @@
                                         </td>
 
                                         <td>
-                                            {{ $workTime->billable ? 'پولی' : 'رایگان' }}
+                                            <select class="form-control" size="1" name="changeBillable" onchange="updateWorkTimeBillable(this.value, {{ $workTime->id }})">
+                                                <option value="" disabled selected>
+                                                    {{ $workTime->billable ? 'پولی' : 'رایگان' }}
+                                                </option>
+                                                <option value="1">
+                                                    پولی
+                                                </option>
+                                                <option value="0">
+                                                    رایگان
+                                                </option>
+                                            </select>
                                         </td>
 
                                         <td>
@@ -217,11 +227,63 @@
                     }
                 };
 
-                xmlhttp.open("get","/work-time/project/update/"+workTimeId+"/"+projectId ,true);
+                xmlhttp.open("get","/work-time/project/"+workTimeId+"/"+projectId ,true);
                 xmlhttp.send();
 
                 confirm('project_id:'+projectId+'workTimeId:'+workTimeId);
             }
         }
+
+        function updateWorkTimeTitle(title,workTimeId) {
+            if (title === "") {
+                document.getElementById("txtHint").innerHTML = "";
+                return;
+            } else {
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else {
+                    // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 200) {
+                        document.getElementById("txtHint").innerHTML = this.responseText;
+                    }
+                };
+
+                xmlhttp.open("get","/work-time/title/"+workTimeId+"/"+title ,true);
+                xmlhttp.send();
+
+                confirm('title:'+title+'workTimeId:'+workTimeId);
+            }
+        }
+
+        function updateWorkTimeBillable(billable,workTimeId) {
+            if (billable === "") {
+                document.getElementById("txtHint").innerHTML = "";
+                return;
+            } else {
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else {
+                    // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 200) {
+                        document.getElementById("txtHint").innerHTML = this.responseText;
+                    }
+                };
+
+                xmlhttp.open("get","/work-time/billable/"+workTimeId+"/"+billable ,true);
+                xmlhttp.send();
+
+                confirm('billable:'+billable+'workTimeId:'+workTimeId);
+            }
+        }
+
+
     </script>
 @endsection

@@ -34,14 +34,14 @@ Route::middleware('auth')->group(function () {
     Route::put('/work-time/update','WorkTimesController@update' );
     Route::delete('/work-time/delete/{workTime}','WorkTimesController@destroy');
 });
-
+/*
+ * these routes used for change work time fields using ajax
+ */
 Route::middleware('auth')->group(function () {
-    Route::get('/work-time/index','WorkTimesController@index');
-    Route::post('/work-time/start','NewWorkTimeController@store' );
-    Route::post('/work-time/stop','NewWorkTimeController@destroy' );
-    Route::patch('/work-time/{workTime}/edit','WorkTimesController@edit' );
-    Route::get('/work-time/project/update/{workTime}/{project}','WorkTimeProjectController@update' );
-    Route::delete('/work-time/delete/{workTime}','WorkTimesController@destroy');
+
+    Route::get('/work-time/title/{workTime}/{title}','WorkTimeTitleController@update' );
+    Route::get('/work-time/project/{workTime}/{project}','WorkTimeProjectController@update' );
+    Route::get('/work-time/billable/{workTime}/{billable}','WorkTimeBillableController@update' );
 });
 
 

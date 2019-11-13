@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Project;
-use App\UserWorkSpace;
 use App\WorkTime;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class WorkTimeProjectController extends Controller
+class WorkTimeBillableController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -67,12 +64,13 @@ class WorkTimeProjectController extends Controller
      * Update the specified resource in storage.
      *
      * @param WorkTime $workTime
-     * @param Project $project
+     * @param $billable
      * @return void
      */
-    public function update(WorkTime $workTime, Project $project)
+    public function update(WorkTime $workTime, $billable)
     {
-        $workTime->update(['project_id' => $project->id]);
+        $billable = $billable ? true : false;
+        $workTime->update(['billable' =>  $billable]);
     }
 
     /**

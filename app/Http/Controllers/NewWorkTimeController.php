@@ -18,14 +18,14 @@ class NewWorkTimeController extends Controller
     {
         $activeWorkSpace = Auth::user()->activeWorkSpace();
 
-        $incompleteWorkTime =UserWorkSpace::find($activeWorkSpace->id)
+        $incompleteWorkTime = $activeWorkSpace
             ->incompleteWorkTimes()
             ->first();
 
         if (! $incompleteWorkTime) {
-           WorkTime::create(['start_time'=> Carbon::now(),
-               'user_work_space_id' => $activeWorkSpace->id,
-                ]);
+            $activeWorkSpace->workTimes()
+                ->create(['start_time'=> Carbon::now(),
+                 ]);
             return redirect()->action('WorkTimesController@index');
         }
    }
@@ -46,7 +46,7 @@ class NewWorkTimeController extends Controller
     {
         $activeWorkSpace = Auth::user()->activeWorkSpace();
 
-        $incompleteWorkTime = UserWorkSpace::find( $activeWorkSpace->id)
+        $incompleteWorkTime = $activeWorkSpace
             ->incompleteWorkTimes()
             ->first();
 

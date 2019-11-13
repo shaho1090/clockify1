@@ -19,7 +19,7 @@ class ProjectsController extends Controller
     {
         $activeWorkSpace = Auth::user()->activeWorkSpace();
 
-        $projects = Project::where('user_work_space_id', $activeWorkSpace->id)
+        $projects = $activeWorkSpace->projects()
             ->orderby('id','desc')
             ->get();
 
@@ -48,9 +48,9 @@ class ProjectsController extends Controller
     public function store(Request $request)
     {
         $activeWorkSpace = Auth::user()->activeWorkSpace();
-        $project_title = $request->get('project_title');
-
-        UserWorkSpace::find($activeWorkSpace->id)->projects()->create(['title' =>$project_title]);
+        $activeWorkSpace->projects()
+            ->create(
+                ['title' =>$request->get('project_title')]);
 
         return redirect('/projects/index')->with('status', 'پروژه جدید ایجاد شد!');
     }

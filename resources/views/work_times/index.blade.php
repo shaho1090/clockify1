@@ -163,13 +163,11 @@
                                         </td>
 
                                         <td>
-
                                             @if ($workTime->tags)
                                                 @foreach($workTime->tags as $tag)
                                                     | {{ $tag->title }}
                                                 @endforeach
                                             @endif
-
                                         </td>
 
                                         <td>
@@ -200,9 +198,7 @@
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>

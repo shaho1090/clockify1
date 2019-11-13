@@ -29,21 +29,21 @@
                                         <form action="/tags/store" method="post">
                                             @csrf
                                             <input type="text" name="tag_title" required autocomplete="name" autofocus>
-                                            <button type="submit" class="btn" >ثبت</button>
+                                            <button type="submit" class="btn">ثبت</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
+                            <p></p>
                             <div class="panel-heading">
-                                <h3>  </h3>
+                                <h4>لیست تگ ها</h4>
                             </div>
-                            @if (is_null($tags))
-                                <p> هنوز هیچ تگی در این فضای کاری ایجاد نشده است.</p>
-                            @else
+                            @if ($tags)
                                 <table class="table">
                                     <thead>
                                     <tr>
                                         <th>عنوان تگ</th>
+                                        <th>حذف تگ</th>
                                         <th>مشاهده انجام کار</th>
                                     </tr>
                                     </thead>
@@ -51,15 +51,30 @@
                                     @foreach($tags as $tag)
                                         <tr>
                                             <td>
-                                                <a href="show/{{$tag->id}}">{!! $tag->title !!} </a>
+                                                <input type="text" class="form-control" name="changeTitle"
+                                                       value="{!! $tag->title !!}"
+                                                       onchange="updateTagTitle(this.value, {{ $tag->id }})">
                                             </td>
+
                                             <td>
-                                                <button class="btn btn-outline-dark"><a href="/works/index/{{$tag->id}}">مشاهده زمان های کاری</a></button>
+                                                <form action="/tags/destroy/{{$tag->id}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-outline-danger">حذف این تگ</button>
+                                                </form>
+                                            </td>
+
+                                            <td>
+                                                <button class="btn btn-outline-dark"><a
+                                                        href="/works/index/{{$tag->id}}">مشاهده زمان های کاری</a>
+                                                </button>
                                             </td>
                                         </tr>
-                                     @endforeach
+                                    @endforeach
                                     </tbody>
                                 </table>
+                            @else
+                                <p> هنوز هیچ تگی در این فضای کاری ایجاد نشده است.</p>
                             @endif
                         </div>
 
@@ -68,4 +83,31 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function updateTagTitle(title, tagId) {
+            if (title === "") {
+                document.getElementById("txtHint").innerHTML = "";
+                return;
+            } else {
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else {
+                    // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState === 4 && this.status === 200) {
+                        document.getElementById("txtHint").innerHTML = this.responseText;
+                    }
+                };
+
+                xmlhttp.open("get", "/tags/update/" + tagId + "/" + title, true);
+                xmlhttp.send();
+
+                confirm('Tag Id: ' + tagId + 'newTitle: ' + title);
+            }
+        }
+    </script>
 @endsection

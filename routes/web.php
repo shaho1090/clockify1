@@ -49,7 +49,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/tags/index','TagsController@index');
     Route::post('/tags/store','TagsController@store' );
     Route::patch('/tags/{tag}/edit','TagsController@edit' );
-    Route::put('/tags/update','TagsController@update' );
+    Route::get('/tags/update/{tag}/{title}','TagsController@update' );
+    Route::delete('/tags/destroy/{tag}','TagsController@destroy' );
 });
 
 Route::middleware('auth')->group(function () {
@@ -60,6 +61,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/projects/edit','ProjectsController@edit' );
     Route::post('/projects/update','ProjectsController@update' );
     Route::get('/projects/destroy/{id}','ProjectsController@destroy' );
+});
+
+Route::middleware('auth')->group(function () {
+
+    Route::get('/project/title/{project}/{title}','ProjectTitleController@update' );
+
+});
+
+Route::middleware('auth')->group(function () {
+
+    Route::get('/tag/title/{tag}/{title}','TagTitleController@update' );
+
 });
 
 Route::middleware('auth')->group(function () {

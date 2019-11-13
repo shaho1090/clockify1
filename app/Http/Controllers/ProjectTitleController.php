@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Tag;
-use App\UserWorkSpace;
+use App\Project;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class TagsController extends Controller
+class ProjectTitleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,16 +14,7 @@ class TagsController extends Controller
      */
     public function index()
     {
-        $activeWorkSpace = Auth::user()->activeWorkSpace();
-
-        $tags =  $activeWorkSpace->tags()
-            ->orderby('id','asc')
-            ->get();
-
-        return view('tags.index', [
-            'tags' => $tags,
-        ]);
-
+        //
     }
 
     /**
@@ -46,10 +35,7 @@ class TagsController extends Controller
      */
     public function store(Request $request)
     {
-        $activeWorkSpace = Auth::user()->activeWorkSpace();
-        $activeWorkSpace->tags()->create(['title' => $request->get('tag_title')]);
-
-        return redirect('/tags/index');
+        //
     }
 
     /**
@@ -77,23 +63,23 @@ class TagsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Tag $tag
+     * @param Project $project
      * @param $title
      * @return void
      */
-    public function update(Tag $tag, $title)
+    public function update(Project $project, $title)
     {
-        $tag->update(['title' => $title]);
+        $project->update(['title' => $title]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Tag $tag
-     * @return void
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $tag)
+    public function destroy($id)
     {
-        Auth::user()->activeWorkSpace()->tags()->where('id',$tag->id)->delete();
+        //
     }
 }

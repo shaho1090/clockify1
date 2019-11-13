@@ -28,8 +28,9 @@
                                     <div class="card-body">
                                         <form action="store" method="post">
                                             @csrf
-                                            <input type="text" name="project_title" required autocomplete="name" autofocus>
-                                            <button type="submit" class="btn" >ثبت</button>
+                                            <input type="text" name="project_title" required autocomplete="name"
+                                                   autofocus>
+                                            <button type="submit" class="btn">ثبت</button>
                                         </form>
                                     </div>
                                 </div>
@@ -38,7 +39,7 @@
                                 <h3> لیست پروژه های شما </h3>
                             </div>
                             @if (is_null($projects))
-                                <p> هنوز هیچ پروژه ای  توسط شما ایجاد نشده است.</p>
+                                <p> هنوز هیچ پروژه ای توسط شما ایجاد نشده است.</p>
                             @else
                                 <table class="table">
                                     <thead>
@@ -53,17 +54,24 @@
                                     @foreach($projects as $project)
                                         <tr>
                                             <td>
-                                                <a href="show/{{$project->id}}">{!! $project->title !!} </a>
+
+                                                <input type="text" class="form-control" name="changeTitle"
+                                                       value="{!! $project->title !!}"
+                                                       onchange="updateProjectTitle(this.value, {{ $project->id }})">
+                                            </td>
+
+                                            <td>
+                                                <button class="btn btn-outline-dark"><a
+                                                        href="/works/index/{{$project->id}}">مشاهده زمان های کاری</a>
+                                                </button>
                                             </td>
                                             <td>
-                                                <button class="btn btn-outline-dark"><a href="/works/index/{{$project->id}}">مشاهده زمان های کاری</a></button>
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-outline-dark"><a href="">دعوت به همکاری</a></button>
+                                                <button class="btn btn-outline-dark"><a href="">دعوت به همکاری</a>
+                                                </button>
                                             </td>
 
                                         </tr>
-                                     @endforeach
+                                    @endforeach
                                     </tbody>
                                 </table>
                             @endif
@@ -74,4 +82,32 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function updateProjectTitle(title, projectId) {
+            if (title === "") {
+                document.getElementById("txtHint").innerHTML = "";
+                return;
+            } else {
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else {
+                    // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState === 4 && this.status === 200) {
+                        document.getElementById("txtHint").innerHTML = this.responseText;
+                    }
+                };
+
+                xmlhttp.open("get", "/project/title/" + projectId + "/" + title, true);
+                xmlhttp.send();
+
+                confirm('project_id: ' + projectId + 'newTitle: ' + title);
+            }
+        }
+    </script>
+
 @endsection

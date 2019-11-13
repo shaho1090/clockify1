@@ -20,7 +20,6 @@ class CreateWorkTimesTable extends Migration
             $table->dateTime('stop_time')->nullable();
             $table->boolean('billable')->default(true);
             $table->unsignedBigInteger('project_id')->nullable();
-            $table->unsignedBigInteger('tag_id')->nullable();
             $table->string('title')->nullable();
             $table->timestamps();
             $table->foreign('user_work_space_id')
@@ -31,12 +30,7 @@ class CreateWorkTimesTable extends Migration
                 ->references('id')->on('projects')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->foreign('tag_id')
-                ->references('id')->on('tags')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-
-        });
+            });
     }
 
     /**

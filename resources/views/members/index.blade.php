@@ -21,29 +21,32 @@
                             <div id="accordion">
                                 <div class="card-header">
                                     <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-                                      اضافه کردن عضو جدید به این محیط کاری
+                                        اضافه کردن عضو جدید به این محیط کاری
                                     </a>
                                 </div>
                                 <div id="collapseTwo" class="collapse" data-parent="#accordion">
                                     <div class="card-body">
-                                      <div class="col-md-6">
-                                        <form action="/invite/members/store" method="post">
-                                            @csrf
-                                            <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('آدرس ایمیل') }}" required autocomplete="email">
-                                            @error('email')
-                                            <span class="invalid-feedback" role="alert">
+                                        <div class="col-md-6">
+                                            <form action="/work-space/members/store" method="post">
+                                                @csrf
+                                                <input type="email" id="email"
+                                                       class="form-control @error('email') is-invalid @enderror"
+                                                       name="email" value="{{ old('آدرس ایمیل') }}" required
+                                                       autocomplete="email">
+                                                @error('email')
+                                                <span class="invalid-feedback" role="alert">
                                               <strong>{{ $message }}</strong>
                                               </span>
-                                            @enderror
-                                            <p></p>
-                                            <button type="submit" class="btn" >ارسال ایمیل</button>
-                                        </form>
+                                                @enderror
+                                                <p></p>
+                                                <button type="submit" class="btn">ارسال ایمیل</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="panel-heading">
-                                <h3>  </h3>
+                                <h3></h3>
                             </div>
                             @if (is_null($members))
                                 <p> هنوز هیچ کس به این فضای کاری دعوت نشده است.</p>
@@ -51,7 +54,7 @@
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th>نام </th>
+                                        <th>نام</th>
                                         <th>ایمیل</th>
                                     </tr>
                                     </thead>
@@ -59,21 +62,57 @@
                                     @foreach($members as $member)
                                         <tr>
                                             <td>
-                                               {{$member->name}}
+                                                {{$member->name}}
                                             </td>
                                             <td>
-                                               {{$member->email}}
+                                                {{$member->email}}
                                             </td>
                                             <td>
-                                                <button class="btn btn-outline-dark"><a href="/works/index/{{$member->id}}">مشاهده زمان های کاری</a></button>
+                                                <button class="btn btn-outline-dark"><a
+                                                        href="/works/index/{{$member->id}}">مشاهده زمان های کاری</a>
+                                                </button>
                                             </td>
                                         </tr>
-                                     @endforeach
+                                    @endforeach
                                     </tbody>
                                 </table>
                             @endif
                         </div>
 
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">لیست ایمیل های دعوت شده</div>
+                    <div class="card-body">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3></h3>
+                            </div>
+                            @if (is_null($invitees))
+                                <p> هنوز هیچ کس به این فضای کاری دعوت نشده است.</p>
+                            @else
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>ایمیل</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($invitees as $invitee)
+                                        <tr>
+                                            <td>
+                                                {{$invitee->email}}
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-outline-dark"><a
+                                                        href="/works/index/{{$member->id}}">لغو دعوت نامه</a></button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

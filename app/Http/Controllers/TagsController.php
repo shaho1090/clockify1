@@ -50,7 +50,7 @@ class TagsController extends Controller
         $activeWorkSpace->tags()
             ->create(['title' => $request->get('tag_title')]);
 
-        return redirect('/tags/index');
+        return redirect(route('tags.index'));
     }
 
     /**

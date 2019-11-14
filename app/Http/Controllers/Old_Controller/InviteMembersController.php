@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Invitee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class InviteMembersController extends Controller
 {
@@ -36,13 +39,6 @@ class InviteMembersController extends Controller
     {
 
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //

@@ -44,9 +44,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/work-time/billable/{workTime}/{billable}','WorkTimeBillableController@update' );
 });
 
-
 Route::middleware('auth')->group(function () {
-    Route::get('/tags/index','TagsController@index');
+    Route::get('/tags/index','TagsController@index')->name('tags.index');
     Route::post('/tags/store','TagsController@store' );
     Route::patch('/tags/{tag}/edit','TagsController@edit' );
     Route::get('/tags/update/{tag}/{title}','TagsController@update' );
@@ -72,8 +71,14 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
 
     Route::get('/tag/title/{tag}/{title}','TagTitleController@update' );
-
 });
+
+//Route::middleware('auth')->group(function () {
+//
+//    Route::post('/invite-member/store','InviteMembersController@store' );
+//});
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/work-space/members/index','WorkSpaceMembersController@index' );

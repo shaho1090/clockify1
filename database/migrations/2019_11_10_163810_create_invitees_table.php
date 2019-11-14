@@ -20,9 +20,10 @@ class CreateInviteesTable extends Migration
             $table->unsignedBigInteger('work_space_id');
             $table->timestamps();
             $table->foreign('work_space_id')
-                ->references('id')->on('work_space')
+                ->references('id')->on('work_spaces')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->unique(['email', 'work_space_id']);
         });
     }
 

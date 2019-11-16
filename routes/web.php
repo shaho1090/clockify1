@@ -17,21 +17,17 @@ Route::get('sendemail', function () {
     return "Your email has been sent successfully";
 });
 
-Route::get('/contributors/welcome',function () {
-    return view('contributors.welcome');
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/initial-workspace','InitialWorkSpaceController@store');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/work-time/index','WorkTimesController@index');
-    Route::post('/work-time/start','NewWorkTimeController@store' );
-    Route::post('/work-time/stop','NewWorkTimeController@destroy' );
-    Route::patch('/work-time/{workTime}/edit','WorkTimesController@edit' );
-    Route::put('/work-time/update','WorkTimesController@update' );
+    Route::get('/work-time/index','WorkTimesController@index')->name('work-time.index');
+    Route::post('/work-time/start','NewWorkTimeController@store' )->name('work-time.start');
+    Route::post('/work-time/stop','NewWorkTimeController@destroy' )->name('work-time.stop');
+    Route::patch('/work-time/{workTime}/edit','WorkTimesController@edit' )->name('work-time.edit');
+    Route::put('/work-time/update','WorkTimesController@update' )->name('work-time.update');
     Route::delete('/work-time/delete/{workTime}','WorkTimesController@destroy');
 });
 /*
@@ -44,28 +40,24 @@ Route::middleware('auth')->group(function () {
     Route::get('/work-time/billable/{workTime}/{billable}','WorkTimeBillableController@update' );
 });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/tags/index','TagsController@index')->name('tags.index');
-    Route::post('/tags/store','TagsController@store' );
-    Route::patch('/tags/{tag}/edit','TagsController@edit' );
-    Route::get('/tags/update/{tag}/{title}','TagsController@update' );
-    Route::delete('/tags/destroy/{tag}','TagsController@destroy' );
-});
+//Route::middleware('auth')->group(function () {
+//    Route::get('/tags/index','TagsController@index')->name('tags.index');
+//    Route::post('/tags/store','TagsController@store' )->name('tags.store');
+//    Route::patch('/tags/{tag}/edit','TagsController@edit' )->name('tags.edit');
+//    Route::get('/tags/update/{tag}/{title}','TagsController@update' )->name('tags.update');
+//    Route::delete('/tags/destroy/{tag}','TagsController@destroy' )->name('tags.destroy');
+//});
+
+Route::resource('tags', 'TagsController')->middleware('auth');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/projects/index','ProjectsController@index' );
-    Route::get('/projects/create','ProjectsController@create' );
-    Route::post('/projects/store','ProjectsController@store' );
-    Route::get('/projects/show/{project}','ProjectsController@show' );
-    Route::get('/projects/edit','ProjectsController@edit' );
+    Route::get('/projects/index','ProjectsController@index' )->name('projects.index');
+    Route::get('/projects/create','ProjectsController@create' )->name('projects.create');
+    Route::post('/projects/store','ProjectsController@store' )->name('projects.store');
+    Route::get('/projects/show/{project}','ProjectsController@show' )->name('projects.show');
+    Route::get('/projects/edit','ProjectsController@edit' )->name('projects.index');
     Route::post('/projects/update','ProjectsController@update' );
     Route::delete('/projects/destroy/{project}','ProjectsController@destroy' );
-});
-
-Route::middleware('auth')->group(function () {
-
-    Route::get('/project/title/{project}/{title}','ProjectTitleController@update' );
-
 });
 
 Route::middleware('auth')->group(function () {

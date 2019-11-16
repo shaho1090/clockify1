@@ -48,12 +48,12 @@ Route::middleware('auth')->group(function () {
 //    Route::delete('/tags/destroy/{tag}','TagsController@destroy' )->name('tags.destroy');
 //});
 
-Route::resource('tags', 'TagsController')->except([
-    'update'
-])->middleware('auth');
+Route::resource('tags', 'TagsController')->except(['update'])->middleware('auth');
 Route::put('/tags/update/{tag}','TagsController@update' )->name('tags.update')->middleware('auth');
 
-Route::resource('projects', 'ProjectsController')->middleware('auth');
+Route::resource('projects', 'ProjectsController')->except(['update'])->middleware('auth');
+Route::put('/projects/update/{project}','ProjectsController@update')
+    ->name('projects.update')->middleware('auth');
 
 Route::resource('members', 'WorkSpaceMembersController')->middleware('auth');
 

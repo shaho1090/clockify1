@@ -54,7 +54,7 @@ class ProjectsController extends Controller
             ->create(
                 ['title' =>$request->get('project_title')]);
 
-        return redirect('/projects/index')->with('status', 'پروژه جدید ایجاد شد!');
+        return redirect(route('projects.index'))->with('status', 'پروژه جدید ایجاد شد!');
     }
 
     /**
@@ -89,15 +89,16 @@ class ProjectsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param Project $project
+     * @param \Illuminate\Http\Request $request
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Project $project, Request $request)
     {
-        //
-    }
+        $project->update(['title' => $request->get('title')]);
 
+        return redirect()->action('ProjectsController@index');
+    }
     /**
      * Remove the specified resource from storage.
      *

@@ -51,12 +51,12 @@
                                     @foreach($tags as $tag)
                                         <tr>
                                             <td>
-                                                <form action="{{route('tags.destroy',$tag->id)}}" method="POST">
+                                                <form action="{{route('tags.update',$tag->id)}}" method="POST">
                                                     @csrf
                                                     @method('PUT')
                                                     <input type="text" class="form-control" name="title"
-                                                           value="{{ $tag->title }}" onchange="updateTagTitle(this.value, {{ $tag->id }})">
-                                                    <button type="submit" class="btn btn-outline-danger" formaction="{{route('tags.update',$tag->id)}}" name="update">ویرایش</button>
+                                                           value="{{ $tag->title }}"
+                                                           onchange="updateTagTitle(this.value, {{ $tag->id }})">
                                                 </form>
                                             </td>
 
@@ -88,21 +88,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-
-        function updateTagTitle(title, tagId) {
-            axios({
-                method: 'PUT',
-                url: '/tags/update/'+tagId,
-                data: {
-                    title: title,
-                    }
-            });
-
-            confirm('Tag_id: ' + tagId + 'newTitle: ' + title);
-        }
-
-    </script>
+    <script src="{{ asset('js/myFunctions.js') }}"></script>
 @endsection
 

@@ -26,7 +26,7 @@
                                 </div>
                                 <div id="collapseTwo" class="collapse" data-parent="#accordion">
                                     <div class="card-body">
-                                        <form action="store" method="post">
+                                        <form action="{{route('projects.store')}}" method="post">
                                             @csrf
                                             <input type="text" name="project_title" required autocomplete="name"
                                                    autofocus>
@@ -36,6 +36,7 @@
                                 </div>
                             </div>
                             <div class="panel-heading">
+                                <p></p>
                                 <h3> لیست پروژه های شما </h3>
                             </div>
                             @if (is_null($projects))
@@ -54,10 +55,13 @@
                                     @foreach($projects as $project)
                                         <tr>
                                             <td>
-
-                                                <input type="text" class="form-control" name="changeTitle"
-                                                       value="{!! $project->title !!}"
-                                                       onchange="updateProjectTitle(this.value, {{ $project->id }})">
+                                                <form action="{{route('projects.update',$project->id)}}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="text" class="form-control" name="title"
+                                                           value="{{ $project->title }}"
+                                                           onchange="updateProjectTitle(this.value, {{ $project->id }})">
+                                                </form>
                                             </td>
 
                                             <td>
@@ -85,32 +89,10 @@
             </div>
         </div>
     </div>
-
+    <script src="{{ asset('js/myFunctions.js') }}"></script>
     <script>
-        function updateProjectTitle(title, projectId) {
-            if (title === "") {
-                document.getElementById("txtHint").innerHTML = "";
-                return;
-            } else {
-                if (window.XMLHttpRequest) {
-                    // code for IE7+, Firefox, Chrome, Opera, Safari
-                    xmlhttp = new XMLHttpRequest();
-                } else {
-                    // code for IE6, IE5
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.onreadystatechange = function () {
-                    if (this.readyState === 4 && this.status === 200) {
-                        document.getElementById("txtHint").innerHTML = this.responseText;
-                    }
-                };
 
-                xmlhttp.open("get", "/project/title/" + projectId + "/" + title, true);
-                xmlhttp.send();
 
-                confirm('project_id: ' + projectId + 'newTitle: ' + title);
-            }
-        }
     </script>
 
 @endsection

@@ -48,41 +48,45 @@ Route::middleware('auth')->group(function () {
 //    Route::delete('/tags/destroy/{tag}','TagsController@destroy' )->name('tags.destroy');
 //});
 
-Route::resource('tags', 'TagsController')->middleware('auth');
+Route::resource('tags', 'TagsController')->except([
+    'update'
+])->middleware('auth');
+Route::put('/tags/update/{tag}','TagsController@update' )->name('tags.update')->middleware('auth');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/projects/index','ProjectsController@index' )->name('projects.index');
-    Route::get('/projects/create','ProjectsController@create' )->name('projects.create');
-    Route::post('/projects/store','ProjectsController@store' )->name('projects.store');
-    Route::get('/projects/show/{project}','ProjectsController@show' )->name('projects.show');
-    Route::get('/projects/edit','ProjectsController@edit' )->name('projects.index');
-    Route::post('/projects/update','ProjectsController@update' );
-    Route::delete('/projects/destroy/{project}','ProjectsController@destroy' );
-});
+Route::resource('projects', 'ProjectsController')->middleware('auth');
 
-Route::middleware('auth')->group(function () {
+Route::resource('members', 'WorkSpaceMembersController')->middleware('auth');
 
-    Route::get('/tag/title/{tag}/{title}','TagTitleController@update' );
-});
+Route::resource('invitees', 'InviteesController')->middleware('auth');
+
+//Route::middleware('auth')->group(function () {
+//    Route::get('/work-space/members/index','WorkSpaceMembersController@index' );
+//    Route::post('/work-space/members/store','WorkSpaceMembersController@store' );
+//    Route::get('/work-space/members/show','WorkSpaceMembersController@show' );
+//    Route::get('/work-space/members/edit','WorkSpaceMembersController@edit' );
+//    Route::post('/work-space/members/update','WorkSpaceMembersController@update' );
+//    Route::get('/work-space/members/destroy','WorkSpaceMembersController@destroy' );
+//});
+
+//Route::middleware('auth')->group(function () {
+//    Route::get('/projects/index','ProjectsController@index' )->name('projects.index');
+//    Route::get('/projects/create','ProjectsController@create' )->name('projects.create');
+//    Route::post('/projects/store','ProjectsController@store' )->name('projects.store');
+//    Route::get('/projects/show/{project}','ProjectsController@show' )->name('projects.show');
+//    Route::get('/projects/edit','ProjectsController@edit' )->name('projects.index');
+//    Route::post('/projects/update','ProjectsController@update' );
+//    Route::delete('/projects/destroy/{project}','ProjectsController@destroy' );
+//});
+
+//Route::middleware('auth')->group(function () {
+//
+//    Route::get('/tag/title/{tag}/{title}','TagTitleController@update' );
+//});
 
 //Route::middleware('auth')->group(function () {
 //
 //    Route::post('/invite-member/store','InviteMembersController@store' );
 //});
-
-
-
-Route::middleware('auth')->group(function () {
-    Route::get('/work-space/members/index','WorkSpaceMembersController@index' );
-    Route::post('/work-space/members/store','WorkSpaceMembersController@store' );
-    Route::get('/work-space/members/show','WorkSpaceMembersController@show' );
-    Route::get('/work-space/members/edit','WorkSpaceMembersController@edit' );
-    Route::post('/work-space/members/update','WorkSpaceMembersController@update' );
-    Route::get('/work-space/members/destroy','WorkSpaceMembersController@destroy' );
-});
-
-
-
 
 Route::middleware('auth')->group(function () {
    // Route::get('/work-space/members/index','WorkSpaceMembersController@index' );
@@ -107,10 +111,5 @@ Route::get('/contributors/invited/{email?}', 'ContributorsController@add')->midd
 Route::get('/contributors/invite/{project}', 'ContributorsController@invite')->middleware('auth')->name('invitePost');
 Route::get('/contributors/index', 'ContributorsController@index')->middleware('auth')->name('contributors');
 
-Route::get('/works/index/{project}', 'WorksController@index')->middleware('auth');
-Route::get('/works/start/{project}', 'WorksController@setStartTime')->middleware('auth');
-Route::get('/works/stop/{project}', 'WorksController@setStopTime')->middleware('auth');
-Route::get('/works/edit/{id?}', 'WorksController@editWork')->middleware('auth');
-Route::post('/works/storeEdited', 'WorksController@storeEdited')->middleware('auth');
-Route::get('/works/current/{project}', 'WorksController@currentWork')->middleware('auth');
+
 

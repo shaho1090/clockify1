@@ -26,7 +26,7 @@
                                 </div>
                                 <div id="collapseTwo" class="collapse" data-parent="#accordion">
                                     <div class="card-body">
-                                        <form action="/tags/store" method="post">
+                                        <form action="{{route('tags.store')}}" method="post">
                                             @csrf
                                             <input type="text" name="tag_title" required autocomplete="name" autofocus>
                                             <button type="submit" class="btn">ثبت</button>
@@ -51,13 +51,18 @@
                                     @foreach($tags as $tag)
                                         <tr>
                                             <td>
-                                                <input type="text" class="form-control" name="changeTitle"
-                                                       value="{!! $tag->title !!}"
-                                                       onchange="updateTagTitle(this.value, {{ $tag->id }})">
+                                                <form action="{{route('tags.destroy',$tag->id)}}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="text" class="form-control" name="title"
+                                                           value="{{ $tag->title }}" onchange="updateTagTitle(this.value, {{ $tag->id }})">
+                                                    <button type="submit" class="btn btn-outline-danger" formaction="{{route('tags.update',$tag->id)}}" name="update">ویرایش</button>
+                                                </form>
                                             </td>
 
+
                                             <td>
-                                                <form action="/tags/destroy/{{$tag->id}}" method="POST">
+                                                <form action="{{route('tags.destroy',$tag->id)}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-outline-danger">حذف این تگ</button>
@@ -85,29 +90,19 @@
     </div>
 
     <script>
+
         function updateTagTitle(title, tagId) {
-            if (title === "") {
-                document.getElementById("txtHint").innerHTML = "";
-                return;
-            } else {
-                if (window.XMLHttpRequest) {
-                    // code for IE7+, Firefox, Chrome, Opera, Safari
-                    xmlhttp = new XMLHttpRequest();
-                } else {
-                    // code for IE6, IE5
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.onreadystatechange = function () {
-                    if (this.readyState === 4 && this.status === 200) {
-                        document.getElementById("txtHint").innerHTML = this.responseText;
+            axios({
+                method: 'PUT',
+                url: '/tags/update/'+tagId,
+                data: {
+                    title: title,
                     }
-                };
+            });
 
-                xmlhttp.open("get", "/tags/update/" + tagId + "/" + title, true);
-                xmlhttp.send();
-
-                confirm('Tag Id: ' + tagId + 'newTitle: ' + title);
-            }
+            confirm('Tag_id: ' + tagId + 'newTitle: ' + title);
         }
+
     </script>
 @endsection
+

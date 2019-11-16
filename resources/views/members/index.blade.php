@@ -21,13 +21,13 @@
                             <div id="accordion">
                                 <div class="card-header">
                                     <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-                                        اضافه کردن عضو جدید به این محیط کاری
+                                      دعوت به همکاری در  این محیط کاری
                                     </a>
                                 </div>
                                 <div id="collapseTwo" class="collapse" data-parent="#accordion">
                                     <div class="card-body">
                                         <div class="col-md-6">
-                                            <form action="/work-space/members/store" method="post">
+                                            <form action="{{ route('invitees.store') }}" method="post">
                                                 @csrf
                                                 <input type="email" id="email"
                                                        class="form-control @error('email') is-invalid @enderror"
@@ -39,7 +39,7 @@
                                               </span>
                                                 @enderror
                                                 <p></p>
-                                                <button type="submit" class="btn">ارسال ایمیل</button>
+                                                <button type="submit" class="btn">اضافه کردن به لیست دعوت شده ها</button>
                                             </form>
                                         </div>
                                     </div>
@@ -103,10 +103,15 @@
                                             <td>
                                                 {{$invitee->email}}
                                             </td>
+
                                             <td>
-                                                <button class="btn btn-outline-dark"><a
-                                                        href="/works/index/{{$member->id}}">لغو دعوت نامه</a></button>
-                                            </td>
+                                                <form method="post" action="{{ route('invitees.destroy',$member->id) }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-outline-danger" >لغو دعوت نامه</button>
+                                                </form>
+                                             </td>
+
                                         </tr>
                                     @endforeach
                                     </tbody>

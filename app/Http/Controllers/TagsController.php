@@ -79,12 +79,14 @@ class TagsController extends Controller
      * Update the specified resource in storage.
      *
      * @param Tag $tag
-     * @param $title
+     * @param Request $request
      * @return void
      */
-    public function update(Tag $tag, $title)
+    public function update(Tag $tag, Request $request)
     {
-        $tag->update(['title' => $title]);
+        $tag->update(['title' => $request->get('title')]);
+
+        return redirect()->action('TagsController@index');
     }
 
     /**

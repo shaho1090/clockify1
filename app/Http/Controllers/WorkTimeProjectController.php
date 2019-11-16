@@ -70,9 +70,9 @@ class WorkTimeProjectController extends Controller
      * @param Project $project
      * @return void
      */
-    public function update(WorkTime $workTime, Project $project)
+    public function update(WorkTime $workTime,Request $request)
     {
-        $workTime->update(['project_id' => $project->id]);
+        $workTime->update(['project_id' => $request->get('projectId')]);
     }
 
     /**

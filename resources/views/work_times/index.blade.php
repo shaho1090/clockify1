@@ -155,7 +155,7 @@
 
                                                 @foreach($projects as $project)
                                                     <option value="{!! $project->id !!} ">
-                                                        {!! $project->title !!}
+                                                        {{ $project->title }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -203,83 +203,20 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/myFunctions.js') }}"></script>
 
     <script>
-        function updateWorkTimeProject(projectId,workTimeId) {
-            if (projectId === "") {
-                document.getElementById("txtHint").innerHTML = "";
-                return;
-            } else {
-                if (window.XMLHttpRequest) {
-                    // code for IE7+, Firefox, Chrome, Opera, Safari
-                    xmlhttp = new XMLHttpRequest();
-                } else {
-                    // code for IE6, IE5
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.onreadystatechange = function() {
-                    if (this.readyState === 4 && this.status === 200) {
-                        document.getElementById("txtHint").innerHTML = this.responseText;
-                    }
-                };
-
-                xmlhttp.open("get","/work-time/project/"+workTimeId+"/"+projectId ,true);
-                xmlhttp.send();
-
-                confirm('project_id:'+projectId+'workTimeId:'+workTimeId);
-            }
-        }
-
-        function updateWorkTimeTitle(title,workTimeId) {
-            if (title === "") {
-                document.getElementById("txtHint").innerHTML = "";
-                return;
-            } else {
-                if (window.XMLHttpRequest) {
-                    // code for IE7+, Firefox, Chrome, Opera, Safari
-                    xmlhttp = new XMLHttpRequest();
-                } else {
-                    // code for IE6, IE5
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.onreadystatechange = function() {
-                    if (this.readyState === 4 && this.status === 200) {
-                        document.getElementById("txtHint").innerHTML = this.responseText;
-                    }
-                };
-
-                xmlhttp.open("get","/work-time/title/"+workTimeId+"/"+title ,true);
-                xmlhttp.send();
-
-                confirm('title:'+title+'workTimeId:'+workTimeId);
-            }
-        }
-
         function updateWorkTimeBillable(billable,workTimeId) {
-            if (billable === "") {
-                document.getElementById("txtHint").innerHTML = "";
-                return;
-            } else {
-                if (window.XMLHttpRequest) {
-                    // code for IE7+, Firefox, Chrome, Opera, Safari
-                    xmlhttp = new XMLHttpRequest();
-                } else {
-                    // code for IE6, IE5
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            axios({
+                method: 'PUT',
+                url: '/work-time/billable/' + workTimeId,
+                data: {
+                    billable: billable,
                 }
-                xmlhttp.onreadystatechange = function() {
-                    if (this.readyState === 4 && this.status === 200) {
-                        document.getElementById("txtHint").innerHTML = this.responseText;
-                    }
-                };
+            });
 
-                xmlhttp.open("get","/work-time/billable/"+workTimeId+"/"+billable ,true);
-                xmlhttp.send();
-
-                confirm('billable:'+billable+'workTimeId:'+workTimeId);
-            }
+            confirm('workTimeId: ' + workTimeId + 'billable: ' + billable);
         }
-
 
     </script>
 @endsection

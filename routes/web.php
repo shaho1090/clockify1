@@ -35,18 +35,10 @@ Route::middleware('auth')->group(function () {
  */
 Route::middleware('auth')->group(function () {
 
-    Route::get('/work-time/title/{workTime}/{title}','WorkTimeTitleController@update' );
-    Route::get('/work-time/project/{workTime}/{project}','WorkTimeProjectController@update' );
-    Route::get('/work-time/billable/{workTime}/{billable}','WorkTimeBillableController@update' );
+    Route::put('/work-time/title/{workTime}','WorkTimeTitleController@update' );
+    Route::put('/work-time/project/{workTime}','WorkTimeProjectController@update' );
+    Route::put('/work-time/billable/{workTime}','WorkTimeBillableController@update' );
 });
-
-//Route::middleware('auth')->group(function () {
-//    Route::get('/tags/index','TagsController@index')->name('tags.index');
-//    Route::post('/tags/store','TagsController@store' )->name('tags.store');
-//    Route::patch('/tags/{tag}/edit','TagsController@edit' )->name('tags.edit');
-//    Route::get('/tags/update/{tag}/{title}','TagsController@update' )->name('tags.update');
-//    Route::delete('/tags/destroy/{tag}','TagsController@destroy' )->name('tags.destroy');
-//});
 
 Route::resource('tags', 'TagsController')->except(['update'])->middleware('auth');
 Route::put('/tags/update/{tag}','TagsController@update' )->name('tags.update')->middleware('auth');

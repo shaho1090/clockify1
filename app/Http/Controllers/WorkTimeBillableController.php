@@ -67,9 +67,9 @@ class WorkTimeBillableController extends Controller
      * @param $billable
      * @return void
      */
-    public function update(WorkTime $workTime, $billable)
+    public function update(WorkTime $workTime,Request $request)
     {
-        $billable = $billable ? true : false;
+        $billable = $request->get('billable') ? true : false;
         $workTime->update(['billable' =>  $billable]);
     }
 

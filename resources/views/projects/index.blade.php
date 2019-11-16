@@ -90,9 +90,4 @@
         </div>
     </div>
     <script src="{{ asset('js/myFunctions.js') }}"></script>
-    <script>
-
-
-    </script>
-
 @endsection

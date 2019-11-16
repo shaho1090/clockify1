@@ -64,12 +64,12 @@ class WorkTimeTitleController extends Controller
      * Update the specified resource in storage.
      *
      * @param WorkTime $workTime
-     * @param $title
+     * @param Request $request
      * @return void
      */
-    public function update(WorkTime $workTime, $title)
+    public function update(WorkTime $workTime, Request $request)
     {
-        $workTime->update(['title' => $title]);
+        $workTime->update(['title' => $request->get('title')]);
     }
 
     /**

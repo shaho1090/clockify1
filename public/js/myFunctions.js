@@ -27,6 +27,38 @@ function updateProjectTitle(title, projectId) {
 
     confirm('projectId: ' + projectId + 'newTitle: ' + title);
 }
+/*
+for updating project that associated with specific work time
+ */
+
+function updateWorkTimeProject(projectId,workTimeId) {
+    axios({
+        method: 'PUT',
+        url: '/work-time/project/' + workTimeId,
+        data: {
+            projectId: projectId,
+        }
+    });
+
+    confirm('workTimeId: ' + workTimeId + 'projectId: ' + projectId);
+}
+/*
+for updating work time title on page work time
+ */
+function updateWorkTimeTitle(title,workTimeId) {
+    axios({
+        method: 'PUT',
+        url: '/work-time/title/' + workTimeId,
+        data: {
+            title: title,
+        }
+    });
+
+    confirm('workTimeId: ' + workTimeId + 'title: ' + title);
+}
+
+
+
 
 
 

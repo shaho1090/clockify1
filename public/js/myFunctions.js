@@ -69,6 +69,22 @@ function updateWorkTimeTitle(title,workTimeId) {
 
     confirm('workTimeId: ' + workTimeId + 'title: ' + title);
 }
+/*
+using for
+ */
+
+function updateWorkTimeBillable(billable,workTimeId) {
+    axios({
+        method: 'PUT',
+        url: '/work-time/billable/' + workTimeId,
+        data: {
+            billable: billable,
+        }
+    });
+
+    confirm('workTimeId: ' + workTimeId + 'billable: ' + billable);
+}
+
 
 
 

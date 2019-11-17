@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/work-spaces/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/work-spaces/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/myFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/myFunctions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/work_times/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/work_times/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -267,6 +271,9 @@
       <workItem from="1573878954981" duration="13167000" />
       <workItem from="1573900299221" duration="2731000" />
       <workItem from="1573968586490" duration="6864000" />
+      <workItem from="1573909789085" duration="1090000" />
+      <workItem from="1573965248052" duration="2017000" />
+      <workItem from="1573977274224" duration="60000" />
     </task>
     <servers />
   </component>

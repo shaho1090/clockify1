@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-right">
-            <div class="col-lg">
+            <div class="col-auto ">
                 @foreach ($errors->all() as $error)
                     <p class="alert alert-danger">{{ $error }}</p>
                 @endforeach
@@ -204,19 +204,4 @@
         </div>
     </div>
     <script src="{{ asset('js/myFunctions.js') }}"></script>
-
-    <script>
-        function updateWorkTimeBillable(billable,workTimeId) {
-            axios({
-                method: 'PUT',
-                url: '/work-time/billable/' + workTimeId,
-                data: {
-                    billable: billable,
-                }
-            });
-
-            confirm('workTimeId: ' + workTimeId + 'billable: ' + billable);
-        }
-
-    </script>
 @endsection

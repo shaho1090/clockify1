@@ -10,7 +10,7 @@ Route::get('sendemail', function () {
     $data = array(
         'name' => "Learning Laravel",
     );
-    Mail::send( 'contributors.welcome',$data, function ($message) {
+    Mail::send( 'members.welcome',$data, function ($message) {
         $message->from('laravelshaho@gmail.com', 'Learning Laravel');
         $message->to('shaho.sanandaji@gmail.com')->subject('Learning Laravel test email');
     });

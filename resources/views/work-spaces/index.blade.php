@@ -46,7 +46,7 @@
                                     <thead>
                                     <tr>
                                         <th>عنوان محیط کاری</th>
-                                        <th>وضعیت فعال بودن</th>
+                                        <th>فعال سازی</th>
                                         <th>مشاهده انجام کار</th>
                                         <th>حذف محیط کاری</th>
                                     </tr>
@@ -55,12 +55,26 @@
                                     @foreach($workSpaces as $workSpace)
                                         <tr>
                                             <td>
-                                                <form action="{{route('work-spaces.update',$workSpace->id)}}" method="POST">
+                                                <form action="{{route('work-spaces.update',$workSpace->id)}}"
+                                                      method="POST">
                                                     @csrf
                                                     @method('PUT')
                                                     <input type="text" class="form-control" name="title"
                                                            value="{{ $workSpace->title }}"
                                                            onchange="updateWorkSpaceTitle(this.value, {{ $workSpace->id }})">
+                                                </form>
+                                            </td>
+
+                                            <td>
+                                                <form method="post"
+                                                      action="{{route('activate-workspace',$workSpace->id)}}">
+                                                    @csrf
+                                                    <button type="{{ $workSpace->pivot->active ? 'button' : 'submit' }}"
+                                                            class="form-control  {{ $workSpace->pivot->active ? 'btn-outline-info' : ' btn-info' }}"
+                                                            name="status"
+                                                            value="{{ $workSpace->pivot->active }}">
+                                                        {{ $workSpace->pivot->active ? 'فعال' : ' فعال کردن' }}
+                                                    </button>
                                                 </form>
                                             </td>
 

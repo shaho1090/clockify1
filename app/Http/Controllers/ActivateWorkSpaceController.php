@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Invitee;
-use App\UserWorkSpace;
 use App\WorkSpace;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class WorkSpaceMembersController extends Controller
+class ActivateWorkSpaceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,15 +15,7 @@ class WorkSpaceMembersController extends Controller
      */
     public function index()
     {
-        $activeWorkSpace = Auth::user()->activeWorkSpace();
-
-        $members =  WorkSpace::find($activeWorkSpace->id)->users()->get();
-        $invitees = Invitee::where('work_space_id',$activeWorkSpace->work_space_id)->get();
-
-        return view('members.index', [
-            'members' => $members,
-            'invitees' => $invitees,
-        ]);
+        //
     }
 
     /**
@@ -41,15 +31,16 @@ class WorkSpaceMembersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param WorkSpace $workSpace
+     * @param Request $request
+     * @return void
      */
-    public function store(Request $request)
+    public function store(WorkSpace $workSpace,Request $request)
     {
+        Auth::user()->setWorkSpaceActive($workSpace);
 
+        return redirect()->action(route('work-spaces.index'));
     }
-
-
 
     /**
      * Display the specified resource.
@@ -59,7 +50,7 @@ class WorkSpaceMembersController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**

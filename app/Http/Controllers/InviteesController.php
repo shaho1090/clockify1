@@ -36,13 +36,18 @@ class InviteesController extends Controller
      */
     public function store(Request $request)
     {
-        $email = $request->get('email');
-        if (Invitee::where('email', $email)->first()){
+        request()->validate([
+            'email' => 'required|email'
+        ]);
+
+        if (Invitee::where('email', $request->get('email'))->first()) {
             return redirect('/work-space/members/index')->with('status', 'دعوت نامه برای این ایمیل قبلا ارسال شده است!');
         }
 
         $workSpaceId = Auth::user()->activeWorkSpace()->work_space_id;
-        $uniqId = uniqid();
+
+        $uniqId = bcrypt() . time();
+
         Invitee::create([
             'email' => $request->get('email'),
             'token' => $uniqId,
@@ -100,12 +105,13 @@ class InviteesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Invitee $invitee
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(Invitee $invitee)
     {
-        Invitee::where('id', $invitee)->delete();
+        $invitee->delete();
 
         return redirect(route('members.index'))->with('status', 'لغو دعوت نامه انجام شد!');
     }

@@ -41,7 +41,10 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('work-spaces', 'WorkSpacesController')->except(['update'])->middleware('auth');
-Route::put('/work-spaces/update/{workSpace}','WorkSpacesController@update' )->name('work-spaces.update')->middleware('auth');
+Route::put('/work-spaces/update/{workSpace}','WorkSpacesController@update' )->name('work-spaces.update')
+    ->middleware('auth');
+Route::post('/activate-workspace/{workSpace}', 'ActivateWorkSpaceController@store')->middleware('auth')
+    ->name('activate-workspace');
 
 Route::resource('tags', 'TagsController')->except(['update'])->middleware('auth');
 Route::put('/tags/update/{tag}','TagsController@update' )->name('tags.update')->middleware('auth');
@@ -54,22 +57,9 @@ Route::resource('members', 'WorkSpaceMembersController')->middleware('auth');
 
 Route::resource('invitees', 'InviteesController')->middleware('auth');
 
-
-
-
-Route::middleware('auth')->group(function () {
-   // Route::get('/work-space/members/index','WorkSpaceMembersController@index' );
-    Route::post('/invite/members/store','InviteMembersController@store' );
-  //  Route::get('/work-space/members/show','WorkSpaceMembersController@show' );
-  //  Route::get('/work-space/members/edit','WorkSpaceMembersController@edit' );
-   // Route::post('/work-space/members/update','WorkSpaceMembersController@update' );
- //   Route::get('/work-space/members/destroy','WorkSpaceMembersController@destroy' );
-});
-
-
-Route::get('/contributors/invited/{email?}', 'ContributorsController@add')->middleware('auth')->name('inviteGet');
-Route::get('/contributors/invite/{project}', 'ContributorsController@invite')->middleware('auth')->name('invitePost');
-Route::get('/contributors/index', 'ContributorsController@index')->middleware('auth')->name('contributors');
+//Route::get('/contributors/invited/{email?}', 'ContributorsController@add')->middleware('auth')->name('inviteGet');
+//Route::get('/contributors/invite/{project}', 'ContributorsController@invite')->middleware('auth')->name('invitePost');
+//Route::get('/contributors/index', 'ContributorsController@index')->middleware('auth')->name('contributors');
 
 
 

@@ -17,8 +17,8 @@ class CreateUserWorkSpaceTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('work_space_id');
-            $table->tinyInteger('access')->default(2);
-            $table->boolean('active')->default(true);
+            $table->tinyInteger('access')->default(0);
+            $table->boolean('active')->default(false);
             $table->timestamps();
             $table->foreign('user_id')
                 ->references('id')->on('users')

@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class User extends Authenticatable
 {
@@ -52,56 +53,69 @@ class User extends Authenticatable
     */
     public function workSpaces()
     {
-        return $this->belongsToMany(WorkSpace::class,'user_work_space')
-            ->withPivot('access','id','active');
+        return $this->belongsToMany(WorkSpace::class, 'user_work_space')
+            ->withPivot('access', 'id', 'active');
     }
 
     public function activeWorkSpace()
     {
-        return UserWorkSpace::find(auth::user())->where('active',true)->first();
+        return UserWorkSpace::find(auth::user())->where('active', true)->first();
+
+//        return $this->workSpaces()
+//            ->wherePivot('active',true)
+//            ->first();
     }
 
-   public function workTimes()
+    public function setWorkSpaceActive(WorkSpace $workSpace)
     {
-        return $this->hasManyThrough(
-            WorkTime::class,
-            UserWorkSpace::class,
-            'user_id',// Foreign key on user_project table...
-            'user_work_space_id', // Foreign key on works table...
-            'id', // Local key on user_project table...
-            'id' // Local key on tasks table...
-        );
+        UserWorkSpace::find(auth::user())->where('work_space_id',$workSpace->id)->update('active', true);
+
+        return $this->setWorkSpacesInActive($workSpace);
     }
 
+    public function setWorkSpacesInActive(WorkSpace $activeWorkSpace)
+    {
+       // $WorkSpaces = $this->workSpaces()->get()->all();
+        $userWorkSpaces = UserWorkSpace::where($this->id)->get()->all();
 
-//    public function activeWorkSpace()
-//    {
-//        return $this->where('active',true)->first();
-//    }
+        foreach( $userWorkSpaces as $userWorkSpace) {
+            if ($userWorkSpaces->id !== $activeWorkSpace->id) {
+                $userWorkSpace->active = false;
+            }
+        }
+    }
+
+    public function workTimes()
+    {
+       return $this->hasManyThrough(
+           WorkTime::class,
+           UserWorkSpace::class,
+           'user_id',// Foreign key on user_project table...
+           'user_work_space_id', // Foreign key on works table...
+           'id', // Local key on user_project table...
+           'id' // Local key on tasks table...
+       );
+    }
+
 
     /*
      * each user has many works through the table name user_project
      */
 
-    public function works()
-    {
-        return $this->hasManyThrough(
-            Work::class,
-            UserProject::class,
-            'user_id',// Foreign key on user_project table...
-            'user_project_id', // Foreign key on works table...
-            'id', // Local key on user_project table...
-            'id' // Local key on tasks table...
-        );
-    }
+//    public function works()
+//    {
+//        return $this->hasManyThrough(
+//            Work::class,
+//            UserProject::class,
+//            'user_id',// Foreign key on user_project table...
+//            'user_project_id', // Foreign key on works table...
+//            'id', // Local key on user_project table...
+//            'id' // Local key on tasks table...
+//        );
+//    }
   /*  public function currentUserId()
     {
         return Auth::user()->id;
-    }
-
-    public function currentUser()
-    {
-        $user = User::find($this->currentUserId());
-        return $user;
     }*/
-}
+
+  }

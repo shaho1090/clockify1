@@ -12,6 +12,7 @@ function updateWorkSpaceTitle(title,workSpaceId) {
 
     confirm('workSpaceId: ' + workSpaceId + 'title: ' + title);
 }
+
 /*
 use for updating tag title with axios
  */

@@ -105,7 +105,7 @@
                                             </td>
 
                                             <td>
-                                                <form method="post" action="{{ route('invitees.destroy',$member->id) }}">
+                                                <form method="post" action="{{ route('invitees.destroy',$invitee->id) }}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-outline-danger" >لغو دعوت نامه</button>

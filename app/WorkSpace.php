@@ -15,6 +15,7 @@ class WorkSpace extends Model
              ->withPivot('access','id','active');
     }
 
+
 //    public function workTimes()
 //    {
 //        return $this->hasMany(WorkTime::class,'work_space_id','id');

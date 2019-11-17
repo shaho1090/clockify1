@@ -43,7 +43,7 @@ class InitialWorkSpaceController extends Controller
         $workSpace->save();
         Auth::user()->workSpaces()->attach( $workSpace->id,['access' => 0,
             'active' =>true
-        ]); // zero means owner access and also this work space activated
+        ]); // zero means owner access
 
         return redirect('/home');
     }

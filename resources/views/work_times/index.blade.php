@@ -80,7 +80,6 @@
                                         </td>
 
                                         <td>
-
                                             <select class="form-control" size="3" name="tags[]" multiple>
                                                 @foreach($tags as $tag)
                                                     <option value="{{$tag->id }}">

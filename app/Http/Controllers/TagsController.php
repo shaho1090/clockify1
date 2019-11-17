@@ -47,6 +47,7 @@ class TagsController extends Controller
     public function store(Request $request)
     {
         $activeWorkSpace = Auth::user()->activeWorkSpace();
+
         $activeWorkSpace->tags()
             ->create(['title' => $request->get('tag_title')]);
 

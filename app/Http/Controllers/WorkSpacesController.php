@@ -43,7 +43,7 @@ class WorkSpacesController extends Controller
      */
     public function store(Request $request)
     {
-        Auth::user()->workSpaces()->create(['title' =>$request->get('title')]);
+        $workSpace = Auth::user()->workSpaces()->create(['title' =>$request->get('title')]);
 
         return redirect(route('work-spaces.index'))->with('status', 'محیط کاری جدید ایجاد شد!');
     }

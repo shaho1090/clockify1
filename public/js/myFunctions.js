@@ -1,4 +1,17 @@
+/*
 
+ */
+function updateWorkSpaceTitle(title,workSpaceId) {
+    axios({
+        method: 'PUT',
+        url: '/work-spaces/update/' + workSpaceId,
+        data: {
+            title: title,
+        }
+    });
+
+    confirm('workSpaceId: ' + workSpaceId + 'title: ' + title);
+}
 /*
 use for updating tag title with axios
  */

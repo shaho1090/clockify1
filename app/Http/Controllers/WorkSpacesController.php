@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\WorkSpace;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +15,14 @@ class WorkSpacesController extends Controller
      */
     public function index()
     {
-        //
+        $workSpaces = Auth::user()->workSpaces()->get();
+        //dd($workSpaces);
+
+        $activeWorkSpace = Auth::user()->activeWorkSpace();
+
+        return view('work-spaces.index', [
+            'workSpaces' =>  $workSpaces,
+        ]);
     }
 
     /**
@@ -35,7 +43,9 @@ class WorkSpacesController extends Controller
      */
     public function store(Request $request)
     {
+        Auth::user()->workSpaces()->create(['title' =>$request->get('title')]);
 
+        return redirect(route('work-spaces.index'))->with('status', 'محیط کاری جدید ایجاد شد!');
     }
 
     /**
@@ -63,13 +73,15 @@ class WorkSpacesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param WorkSpace $workSpace
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(WorkSpace $workSpace, Request $request)
     {
-        //
+        $workSpace->update(['title' => $request->get('title')]);
+
+        return redirect()->action('WorkSpacesController@index');
     }
 
     /**

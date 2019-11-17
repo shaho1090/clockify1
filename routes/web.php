@@ -20,7 +20,7 @@ Route::get('sendemail', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/initial-workspace','InitialWorkSpaceController@store');
+Route::get('/initial-workspace','InitialWorkSpaceController@store')->name('initial.workspace');
 
 Route::middleware('auth')->group(function () {
     Route::get('/work-time/index','WorkTimesController@index')->name('work-time.index');
@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/work-time/stop','NewWorkTimeController@destroy' )->name('work-time.stop');
     Route::patch('/work-time/{workTime}/edit','WorkTimesController@edit' )->name('work-time.edit');
     Route::put('/work-time/update','WorkTimesController@update' )->name('work-time.update');
-    Route::delete('/work-time/delete/{workTime}','WorkTimesController@destroy');
+    Route::delete('/work-time/delete/{workTime}','WorkTimesController@destroy')->name('work-time.destroy');
 });
 /*
  * these routes used for change work time fields using ajax
@@ -39,6 +39,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/work-time/project/{workTime}','WorkTimeProjectController@update' );
     Route::put('/work-time/billable/{workTime}','WorkTimeBillableController@update' );
 });
+
+Route::resource('work-spaces', 'WorkSpacesController')->except(['update'])->middleware('auth');
+Route::put('/work-spaces/update/{workSpace}','WorkSpacesController@update' )->name('work-spaces.update')->middleware('auth');
 
 Route::resource('tags', 'TagsController')->except(['update'])->middleware('auth');
 Route::put('/tags/update/{tag}','TagsController@update' )->name('tags.update')->middleware('auth');
@@ -51,34 +54,8 @@ Route::resource('members', 'WorkSpaceMembersController')->middleware('auth');
 
 Route::resource('invitees', 'InviteesController')->middleware('auth');
 
-//Route::middleware('auth')->group(function () {
-//    Route::get('/work-space/members/index','WorkSpaceMembersController@index' );
-//    Route::post('/work-space/members/store','WorkSpaceMembersController@store' );
-//    Route::get('/work-space/members/show','WorkSpaceMembersController@show' );
-//    Route::get('/work-space/members/edit','WorkSpaceMembersController@edit' );
-//    Route::post('/work-space/members/update','WorkSpaceMembersController@update' );
-//    Route::get('/work-space/members/destroy','WorkSpaceMembersController@destroy' );
-//});
 
-//Route::middleware('auth')->group(function () {
-//    Route::get('/projects/index','ProjectsController@index' )->name('projects.index');
-//    Route::get('/projects/create','ProjectsController@create' )->name('projects.create');
-//    Route::post('/projects/store','ProjectsController@store' )->name('projects.store');
-//    Route::get('/projects/show/{project}','ProjectsController@show' )->name('projects.show');
-//    Route::get('/projects/edit','ProjectsController@edit' )->name('projects.index');
-//    Route::post('/projects/update','ProjectsController@update' );
-//    Route::delete('/projects/destroy/{project}','ProjectsController@destroy' );
-//});
 
-//Route::middleware('auth')->group(function () {
-//
-//    Route::get('/tag/title/{tag}/{title}','TagTitleController@update' );
-//});
-
-//Route::middleware('auth')->group(function () {
-//
-//    Route::post('/invite-member/store','InviteMembersController@store' );
-//});
 
 Route::middleware('auth')->group(function () {
    // Route::get('/work-space/members/index','WorkSpaceMembersController@index' );
@@ -89,15 +66,6 @@ Route::middleware('auth')->group(function () {
  //   Route::get('/work-space/members/destroy','WorkSpaceMembersController@destroy' );
 });
 
-/*Route::prefix('project/works')->middleware('auth')->group(function () {
-    Route::get('/index/{id}','project\WorksController@index' );
-    Route::get('/create','project\WorksController@create' );
-    Route::post('/store','project\WorksController@store' );
-    Route::get('/show','project\WorksController@show' );
-    Route::get('/edit','project\WorksController@edit' );
-    Route::get('/update','project\WorksController@update' );
-    Route::get('/destroy','project\WorksController@destroy' );
-});*/
 
 Route::get('/contributors/invited/{email?}', 'ContributorsController@add')->middleware('auth')->name('inviteGet');
 Route::get('/contributors/invite/{project}', 'ContributorsController@invite')->middleware('auth')->name('invitePost');

@@ -57,9 +57,9 @@ class User extends Authenticatable
             ->withPivot('access', 'id', 'active');
     }
 
-    public function activeWorkSpace()
+    public function ActiveWorkSpace()
     {
-        return UserWorkSpace::find(auth::user())->where('active', true)->first();
+        return UserWorkSpace::find($this->id)->where('active', true)->first();
 
 //        return $this->workSpaces()
 //            ->wherePivot('active',true)
@@ -68,21 +68,22 @@ class User extends Authenticatable
 
     public function setWorkSpaceActive(WorkSpace $workSpace)
     {
-        UserWorkSpace::find(auth::user())->where('work_space_id',$workSpace->id)->update('active', true);
+        UserWorkSpace::find($this->id)->where('work_space_id',$workSpace->id)->update(['active' => true]);
 
         return $this->setWorkSpacesInActive($workSpace);
     }
 
     public function setWorkSpacesInActive(WorkSpace $activeWorkSpace)
     {
-       // $WorkSpaces = $this->workSpaces()->get()->all();
-        $userWorkSpaces = UserWorkSpace::where($this->id)->get()->all();
+        $userWorkSpaces = UserWorkSpace::where('user_id',$this->id)->get()->all();
 
         foreach( $userWorkSpaces as $userWorkSpace) {
-            if ($userWorkSpaces->id !== $activeWorkSpace->id) {
-                $userWorkSpace->active = false;
+            if ($userWorkSpace->work_space_id !== $activeWorkSpace->id) {
+                $userWorkSpace->update(['active' => false]);
             }
         }
+
+        return redirect()->action('WorkSpacesController@index');
     }
 
     public function workTimes()

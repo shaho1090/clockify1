@@ -64,7 +64,7 @@ class WorkTimeBillableController extends Controller
      * Update the specified resource in storage.
      *
      * @param WorkTime $workTime
-     * @param $billable
+     * @param Request $request
      * @return void
      */
     public function update(WorkTime $workTime,Request $request)

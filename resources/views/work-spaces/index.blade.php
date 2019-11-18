@@ -85,7 +85,7 @@
                                             </td>
 
                                             <td>
-                                                <form action="/projects/destroy/{{$workSpace->id}}" method="POST">
+                                                <form action="{{route('work-spaces.destroy',$workSpace->id)}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-outline-danger">حذف این محیط کاری</button>

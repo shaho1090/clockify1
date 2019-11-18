@@ -39,7 +39,7 @@ class ActivateWorkSpaceController extends Controller
     {
         Auth::user()->setWorkSpaceActive($workSpace);
 
-        return redirect()->action(route('work-spaces.index'));
+        return redirect()->action('WorkSpacesController@index');
     }
 
     /**

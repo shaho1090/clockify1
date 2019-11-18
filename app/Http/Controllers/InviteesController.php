@@ -41,17 +41,15 @@ class InviteesController extends Controller
         ]);
 
         if (Invitee::where('email', $request->get('email'))->first()) {
-            return redirect('/work-space/members/index')->with('status', 'دعوت نامه برای این ایمیل قبلا ارسال شده است!');
+            return redirect(route('members.index'))->with('status', 'دعوت نامه برای این ایمیل قبلا ارسال شده است!');
         }
 
-        $workSpaceId = Auth::user()->activeWorkSpace()->work_space_id;
-
-        $uniqId = bcrypt() . time();
+        $uniqId = uniqid(); //bcrypt() . time();
 
         Invitee::create([
             'email' => $request->get('email'),
             'token' => $uniqId,
-            'work_space_id' => $workSpaceId,
+            'work_space_id' => Auth::user()->activeWorkSpace()->work_space_id,
         ]);
 
         return redirect(route('members.index'))->with('status', 'ایمیل دعوت نامه ارسال شد');

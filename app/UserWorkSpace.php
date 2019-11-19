@@ -37,10 +37,10 @@ class UserWorkSpace extends pivot
         return $this->belongsTo(WorkSpace::class,'work_space_id','id');
     }
 
-    public function invitees()
-    {
-        return $this->hasMany(Invitee::class,'user_work_space_id','id');
-    }
+//    public function invitees()
+//    {
+//        return $this->hasMany(Invitee::class,'work_space_id','id');
+//    }
 
    public function incompleteWorkTimes()
     {
@@ -52,5 +52,14 @@ class UserWorkSpace extends pivot
           return $this->workTimes()->whereNotNull('stop_time');
       }
 
+    public function members()
+    {
+        return WorkSpace::find($this->id)->users()->get();
+    }
+
+//    public function invitees()
+//    {
+//        return Invitee::where('work_space_id',$this->id)->get();
+//    }
 
 }

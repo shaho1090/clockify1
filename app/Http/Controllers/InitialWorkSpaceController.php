@@ -37,10 +37,9 @@ class InitialWorkSpaceController extends Controller
      */
     public function store()
     {
-        $workSpace = new WorkSpace(array(
-            'title' => Auth::user()->name
-          ));
+        $workSpace = new WorkSpace(array('title' => Auth::user()->name));
         $workSpace->save();
+
         Auth::user()->workSpaces()->attach( $workSpace->id,['access' => 0,
             'active' =>true
         ]); // zero means owner access

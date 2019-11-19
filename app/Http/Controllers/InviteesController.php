@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Invitee;
+use App\WorkSpace;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,18 +41,27 @@ class InviteesController extends Controller
             'email' => 'required|email'
         ]);
 
-        if (Invitee::where('email', $request->get('email'))->first()) {
-            return redirect(route('members.index'))
-                ->with('status', 'دعوت نامه برای این ایمیل قبلا ارسال شده است!');
-        }
+//        if (Invitee::where('email', $request->get('email'))->first()) {
+//            return redirect(route('members.index'))
+//               ->with('status', 'دعوت نامه برای این ایمیل قبلا ارسال شده است!');
+//        }
 
         $uniqId = uniqid(); //bcrypt() . time();
 
-        Invitee::create([
-            'email' => $request->get('email'),
-            'token' => $uniqId,
-            'work_space_id' => Auth::user()->activeUserWorkSpace()->work_space_id,
-        ]);
+        $newInvitee = Invitee::where('email', $request->get('email'))->first();
+
+        if ($newInvitee) {
+            WorkSpace::find(Auth::user()->activeUserWorkSpace()->work_space_id)
+                ->invitees()
+                ->attach($newInvitee,['token' => $uniqId]);
+        } else {
+            $newInvitee = Invitee::create([
+                'email' => $request->get('email'),
+            ]);
+            WorkSpace::find(Auth::user()->activeUserWorkSpace()->work_space_id)
+                ->invitees()
+                ->attach($newInvitee,['token' => $uniqId]);
+        }
 
         return redirect(route('members.index'))->with('status', 'ایمیل دعوت نامه ارسال شد');
 
@@ -110,7 +120,9 @@ class InviteesController extends Controller
      */
     public function destroy(Invitee $invitee)
     {
-        $invitee->delete();
+      //  dd(Auth::user()->activeUserWorkSpace()->work_space_id);
+        $invitee->remove();
+      //  $invitee->workSpaces()->detach($invitee->id);
 
         return redirect(route('members.index'))->with('status', 'لغو دعوت نامه انجام شد!');
     }

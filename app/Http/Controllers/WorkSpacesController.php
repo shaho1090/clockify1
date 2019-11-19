@@ -19,7 +19,7 @@ class WorkSpacesController extends Controller
         $workSpaces = Auth::user()->workSpaces()->get();
 
         return view('work-spaces.index', [
-            'workSpaces' =>  $workSpaces,
+            'workSpaces' => $workSpaces,
         ]);
     }
 
@@ -36,20 +36,24 @@ class WorkSpacesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        Auth::user()->workSpaces()->create(['title' =>$request->get('title')]);
+        Auth::user()->workSpaces()
+            ->create([
+                'title' => $request->get('title')
+            ]);
 
-        return redirect(route('work-spaces.index'))->with('status', 'محیط کاری جدید ایجاد شد!');
+        return redirect(route('work-spaces.index'))
+            ->with('status', 'محیط کاری جدید ایجاد شد!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -60,7 +64,7 @@ class WorkSpacesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -91,9 +95,9 @@ class WorkSpacesController extends Controller
      */
     public function destroy(WorkSpace $workSpace)
     {
-        if($workSpace->isActive()){
+        if ($workSpace->isActive()) {
             return redirect()->action('WorkSpacesController@index')
-                ->with('warning','برای حذف این محیط کاری ابتدا آنرا از حالت فعال خارج کنید!');
+                ->with('warning', 'برای حذف این محیط کاری ابتدا آنرا از حالت فعال خارج کنید!');
         }
 
         $workSpace->removeAllDependency();

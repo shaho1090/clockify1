@@ -2,20 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/WorkSpaceInvitee.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_11_19_115231_create_work_space_invitee_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InitialWorkSpaceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InitialWorkSpaceController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InviteesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InviteesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NewWorkTimeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NewWorkTimeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProjectTitleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Old_Controller/ProjectTitleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/myFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/myFunctions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/members/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/members/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/projects/New folder/invite.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/projects/New folder/invite.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/projects/New folder/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/projects/New folder/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/projects/invite.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/projects/show.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/projects/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/projects/New folder/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/work_times/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/work_times/Temp/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/work_times/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/work_times/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/work_times/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/work_times/Temp/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkSpaceMembersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkSpaceMembersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkSpacesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkSpacesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Invitee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Invitee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/UserWorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UserWorkSpace.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/WorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkSpace.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_10_163810_create_invitees_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_10_163810_create_invitees_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -286,7 +284,9 @@
       <workItem from="1573985968489" duration="14517000" />
       <workItem from="1574052108648" duration="11942000" />
       <workItem from="1574073447188" duration="14103000" />
-      <workItem from="1574138034846" duration="4256000" />
+      <workItem from="1574138034846" duration="11221000" />
+      <workItem from="1574159225484" duration="961000" />
+      <workItem from="1574160930749" duration="9955000" />
     </task>
     <servers />
   </component>

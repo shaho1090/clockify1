@@ -51,17 +51,17 @@ class WorkSpace extends Model
         );
     }
 
-    public function invitees()
-    {
-        return $this->hasManyThrough(
-            WorkTime::class,
-            UserWorkSpace::class,
-            'work_space_id',// Foreign key on user_project table...
-            'user_work_space_id', // Foreign key on works table...
-            'id', // Local key on user_project table...
-            'id' // Local key on tasks table...
-        );
-    }
+//    public function invitees()
+//    {
+//        return $this->hasManyThrough(
+//            WorkTime::class,
+//            UserWorkSpace::class,
+//            'work_space_id',// Foreign key on user_project table...
+//            'work_space_id', // Foreign key on works table...
+//            'id', // Local key on user_project table...
+//            'id' // Local key on tasks table...
+//        );
+//    }
 
     public function isOwner(WorkSpace $workSpace)
     {
@@ -78,9 +78,23 @@ class WorkSpace extends Model
         $this->workTimes()->delete();
         $this->projects()->delete();
         $this->tags()->delete();
-        $this->invitees()->delete();
         $this->users()->detach();
+        $this->invitees()->detach();
+
     }
+
+    public function Invitees()
+    {
+        return $this->belongsToMany(Invitee::class,'work_space_invitee')
+            ->withPivot('token');
+    }
+
+    public function removeInvitee(Invitee $invitee)
+    {
+
+    }
+
+
 
 //    public function incompleteWorkTimes()
 //    {

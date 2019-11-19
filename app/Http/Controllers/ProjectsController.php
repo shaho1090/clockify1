@@ -19,15 +19,16 @@ class ProjectsController extends Controller
 
     public function index()
     {
-        $activeWorkSpace = Auth::user()->activeWorkSpace();
 
-        $projects = $activeWorkSpace->projects()
+        $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
+
+        $projects = $activeUserWorkSpace->projects()
             ->orderby('id','desc')
             ->get();
 
         return view('projects.index', [
             'projects' => $projects,
-            'activeWorkSpace' =>  $activeWorkSpace,
+            'activeWorkSpace' =>  $activeUserWorkSpace,
         ]);
     }
 
@@ -49,8 +50,8 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        $activeWorkSpace = Auth::user()->activeWorkSpace();
-        $activeWorkSpace->projects()
+        $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
+        $activeUserWorkSpace->projects()
             ->create(
                 ['title' =>$request->get('project_title')]);
 

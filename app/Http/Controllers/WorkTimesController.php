@@ -3,15 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\WorkTimeFormRequest;
-use App\Project;
-use App\Tag;
-use App\User;
-use App\WorkSpace;
 use App\WorkTime;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\UserWorkSpace;
 
 class WorkTimesController extends Controller
 {
@@ -22,19 +17,19 @@ class WorkTimesController extends Controller
      */
     public function index()
     {
-        $activeWorkSpace = Auth::user()->activeWorkSpace();
-
-        $workTimes = $activeWorkSpace->completeWorkTimes()
+        $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
+        //dd($activeUserWorkSpace->workTimes()->get());
+        $workTimes = $activeUserWorkSpace->completeWorkTimes()
             ->orderby('id','desc')
             ->get();
 
-        $incompleteWorkTime = $activeWorkSpace
+        $incompleteWorkTime = $activeUserWorkSpace
             ->incompleteWorkTimes()
             ->first();
 
-        $projects = $activeWorkSpace->projects()->get();
+        $projects = $activeUserWorkSpace->projects()->get();
 
-        $tags = $activeWorkSpace->tags()->get();
+        $tags = $activeUserWorkSpace->tags()->get();
 
         return view('work_times.index', [
             'workTimes' => $workTimes->load('project')->load('tags'),
@@ -79,7 +74,7 @@ class WorkTimesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param WorkTime $workTime
      * @return \Illuminate\Http\Response
      */
     public function edit(WorkTime $workTime)

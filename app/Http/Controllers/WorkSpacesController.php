@@ -17,7 +17,7 @@ class WorkSpacesController extends Controller
     public function index()
     {
         $workSpaces = Auth::user()->workSpaces()->get();
-       // dd($workSpaces);
+
         return view('work-spaces.index', [
             'workSpaces' =>  $workSpaces,
         ]);
@@ -91,11 +91,13 @@ class WorkSpacesController extends Controller
      */
     public function destroy(WorkSpace $workSpace)
     {
-        $workSpace->workTimes()->delete();
-        $workSpace->projects()->delete();
-        $workSpace->tags()->delete();
-        $workSpace->invitees()->delete();
-        $workSpace->users()->detach();
+        if($workSpace->isActive()){
+            return redirect()->action('WorkSpacesController@index')
+                ->with('warning','برای حذف این محیط کاری ابتدا آنرا از حالت فعال خارج کنید!');
+        }
+
+        $workSpace->removeAllDependency();
+
         $workSpace->delete();
 
         return redirect()->action('WorkSpacesController@index');

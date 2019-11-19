@@ -3,15 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ActivateWorkSpaceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ActivateWorkSpaceController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InviteesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InviteesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NewWorkTimeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NewWorkTimeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TagsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TagsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkSpaceMembersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkSpaceMembersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkSpacesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkSpacesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkTimeBillableController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkTimeBillableController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkTimesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkTimesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/UserWorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UserWorkSpace.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/WorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkSpace.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_24_060918_create_projects_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_24_060918_create_projects_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/work-spaces/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/work-spaces/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/work_times/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/work_times/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -280,7 +283,8 @@
       <workItem from="1573977274224" duration="2171000" />
       <workItem from="1573985968489" duration="14517000" />
       <workItem from="1574052108648" duration="11942000" />
-      <workItem from="1574073447188" duration="202000" />
+      <workItem from="1574073447188" duration="14103000" />
+      <workItem from="1574138034846" duration="1318000" />
     </task>
     <servers />
   </component>

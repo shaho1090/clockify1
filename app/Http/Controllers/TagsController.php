@@ -16,9 +16,9 @@ class TagsController extends Controller
      */
     public function index()
     {
-        $activeWorkSpace = Auth::user()->activeWorkSpace();
+        $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
 
-        $tags =  $activeWorkSpace->tags()
+        $tags =  $activeUserWorkSpace->tags()
             ->orderby('id','asc')
             ->get();
 
@@ -46,9 +46,9 @@ class TagsController extends Controller
      */
     public function store(Request $request)
     {
-        $activeWorkSpace = Auth::user()->activeWorkSpace();
+        $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
 
-        $activeWorkSpace->tags()
+        $activeUserWorkSpace->tags()
             ->create(['title' => $request->get('tag_title')]);
 
         return redirect(route('tags.index'));

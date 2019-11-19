@@ -62,9 +62,34 @@ class WorkSpace extends Model
             'id' // Local key on tasks table...
         );
     }
-//    public function workTimes()
+
+    public function isOwner(WorkSpace $workSpace)
+    {
+        return Auth::user()->workSpaces()->find($this->id)->pivot->access;
+    }
+
+    public function isActive()
+    {
+        return Auth::user()->workSpaces()->find($this->id)->pivot->active;
+    }
+
+    public function removeAllDependency()
+    {
+        $this->workTimes()->delete();
+        $this->projects()->delete();
+        $this->tags()->delete();
+        $this->invitees()->delete();
+        $this->users()->detach();
+    }
+
+//    public function incompleteWorkTimes()
 //    {
-//        return $this->hasMany(WorkTime::class,'work_space_id','id');
+//        return $this->workTimes()->incomplete();
+//    }
+//
+//    public function completeWorkTimes()
+//    {
+//        return $this->workTimes()->complete();
 //    }
 
 }

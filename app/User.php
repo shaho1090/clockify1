@@ -39,15 +39,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /*
-     *many to many relationship with pivot table user_project
-     */
 
-//    public function projects()
-//    {
-//        return $this->belongsToMany(Project::class,'user_project')
-//                      ->withPivot('access','id');
-//    }
     /*
     *many to many relationship with pivot table user_work_space
     */
@@ -57,13 +49,14 @@ class User extends Authenticatable
             ->withPivot('access', 'id', 'active');
     }
 
-    public function ActiveWorkSpace()
+    public function userWorkSpaces()
     {
-        return UserWorkSpace::find($this->id)->where('active', true)->first();
+        return $this->hasMany(UserWorkSpace::class,'user_id','id');
+    }
 
-//        return $this->workSpaces()
-//            ->wherePivot('active',true)
-//            ->first();
+    public function activeUserWorkSpace()
+    {
+          return $this->userWorkSpaces()->where('active','=',true)->first();
     }
 
     public function setWorkSpaceActive(WorkSpace $workSpace)
@@ -97,26 +90,4 @@ class User extends Authenticatable
            'id' // Local key on tasks table...
        );
     }
-
-
-    /*
-     * each user has many works through the table name user_project
-     */
-
-//    public function works()
-//    {
-//        return $this->hasManyThrough(
-//            Work::class,
-//            UserProject::class,
-//            'user_id',// Foreign key on user_project table...
-//            'user_project_id', // Foreign key on works table...
-//            'id', // Local key on user_project table...
-//            'id' // Local key on tasks table...
-//        );
-//    }
-  /*  public function currentUserId()
-    {
-        return Auth::user()->id;
-    }*/
-
-  }
+}

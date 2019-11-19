@@ -17,10 +17,10 @@ class WorkSpaceMembersController extends Controller
      */
     public function index()
     {
-        $activeWorkSpace = Auth::user()->activeWorkSpace();
+        $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
 
-        $members =  WorkSpace::find($activeWorkSpace->id)->users()->get();
-        $invitees = Invitee::where('work_space_id',$activeWorkSpace->work_space_id)->get();
+        $members =  WorkSpace::find($activeUserWorkSpace->id)->users()->get();
+        $invitees = Invitee::where('work_space_id',$activeUserWorkSpace->work_space_id)->get();
 
         return view('members.index', [
             'members' => $members,

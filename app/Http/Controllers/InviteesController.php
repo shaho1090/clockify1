@@ -49,7 +49,7 @@ class InviteesController extends Controller
         Invitee::create([
             'email' => $request->get('email'),
             'token' => $uniqId,
-            'work_space_id' => Auth::user()->activeWorkSpace()->work_space_id,
+            'work_space_id' => Auth::user()->activeUserWorkSpace()->work_space_id,
         ]);
 
         return redirect(route('members.index'))->with('status', 'ایمیل دعوت نامه ارسال شد');

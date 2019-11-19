@@ -10,9 +10,13 @@
                     <p class="alert alert-danger">{{ $error }}</p>
                 @endforeach
                 @if (session('status'))
-                    <div class="alert alert-success">
+                    <div class="alert alert-success ">
                         {{ session('status') }}
                     </div>
+                @elseif (session('warning'))
+                        <div class="alert alert-warning ">
+                            {{ session('warning') }}
+                        </div>
                 @endif
                 <div class="card">
                     <div class="card-header">لیست محیط های کاری</div>
@@ -85,7 +89,8 @@
                                             </td>
 
                                             <td>
-                                                <form action="{{route('work-spaces.destroy',$workSpace->id)}}" method="POST">
+                                                <form action="{{route('work-spaces.destroy',$workSpace->id)}}"
+                                                      method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-outline-danger">حذف این محیط کاری</button>

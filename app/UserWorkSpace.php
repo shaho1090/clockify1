@@ -27,18 +27,30 @@ class UserWorkSpace extends pivot
         return $this->hasMany(Tag::class,'user_work_space_id','id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user','id');
+    }
+
+    public function workSpace()
+    {
+        return $this->belongsTo(WorkSpace::class,'work_space_id','id');
+    }
+
     public function invitees()
     {
         return $this->hasMany(Invitee::class,'user_work_space_id','id');
     }
 
-    public function incompleteWorkTimes()
+   public function incompleteWorkTimes()
     {
-        return $this->workTimes()->incomplete();
+        return $this->workTimes()->whereNull('stop_time');
     }
 
-    public function completeWorkTimes()
-    {
-        return $this->workTimes()->complete();
-    }
+  public function completeWorkTimes()
+      {
+          return $this->workTimes()->whereNotNull('stop_time');
+      }
+
+
 }

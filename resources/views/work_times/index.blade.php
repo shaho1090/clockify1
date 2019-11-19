@@ -19,7 +19,7 @@
                     <div class="card-body">
                         <div class="panel panel-default">
                             <div class="panel-heading">ثبت زمان کار جدید</div>
-                            <form method="post" action="/work-time/start">
+                            <form method="post" action="{{route('work-time.start')}}">
                                 @csrf
                                 <table class="table">
                                     <thead>
@@ -44,12 +44,12 @@
                                         <td>
                                             @if (! $incompleteWorkTime)
                                                 <button class="btn btn-outline-dark" type="submit" name="start"
-                                                        formaction="/work-time/start">
+                                                        formaction="{{route('work-time.start')}}">
                                                     شروع
                                                 </button>
                                             @else
                                                 <button class="btn btn-outline-dark" type="submit" name="stop"
-                                                        formaction="/work-time/stop">
+                                                        formaction="{{route('work-time.stop')}}">
                                                     پایان
                                                 </button>
                                             @endif
@@ -88,6 +88,7 @@
                                                 @endforeach
                                             </select>
                                         </td>
+
                                         <td>
                                             <select name="selectBillable" class="form-control">
                                                 <option value="1">
@@ -125,14 +126,17 @@
                                 <tbody>
                                 @forelse ($workTimes as $workTime)
                                     <tr>
-                                        <td><input type="text" class="form-control" name="changeTitle" value="{{ $workTime->title }}" onchange="updateWorkTimeTitle(this.value, {{ $workTime->id }})"></td>
+                                        <td><input type="text" class="form-control" name="changeTitle"
+                                                   value="{{ $workTime->title }}"
+                                                   onchange="updateWorkTimeTitle(this.value, {{ $workTime->id }})">
+                                        </td>
 
                                         <td>
                                             {{ date("Y-m-d",strtotime($workTime->created_at)) }}
                                         </td>
 
                                         <td>
-                                           {{ date("H:i:s",strtotime($workTime->start_time)) }}
+                                            {{ date("H:i:s",strtotime($workTime->start_time)) }}
                                         </td>
 
                                         <td>
@@ -145,7 +149,8 @@
 
                                         <td>
 
-                                            <select class="form-control" size="1" name="changeProject" onchange="updateWorkTimeProject(this.value, {{ $workTime->id }})">
+                                            <select class="form-control" size="1" name="changeProject"
+                                                    onchange="updateWorkTimeProject(this.value, {{ $workTime->id }})">
                                                 <option value="" disabled selected>
                                                     @if ($workTime->project)
                                                         {{ $workTime->project->title }}
@@ -170,7 +175,8 @@
                                         </td>
 
                                         <td>
-                                            <select class="form-control" size="1" name="changeBillable" onchange="updateWorkTimeBillable(this.value, {{ $workTime->id }})">
+                                            <select class="form-control" size="1" name="changeBillable"
+                                                    onchange="updateWorkTimeBillable(this.value, {{ $workTime->id }})">
                                                 <option value="" disabled selected>
                                                     {{ $workTime->billable ? 'پولی' : 'رایگان' }}
                                                 </option>
@@ -184,10 +190,10 @@
                                         </td>
 
                                         <td>
-                                            <form action="/work-time/{{ $workTime->id }}/edit/" method="POST">
+                                            <form action="{{route('work-time.destroy',$workTime->id)}}" method="post">
                                                 @csrf
-                                                @method('PATCH')
-                                                <button class="btn-outline-dark">ویرایش</button>
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-outline-danger">حذف</button>
                                             </form>
                                         </td>
                                     </tr>

@@ -41,7 +41,8 @@ class InviteesController extends Controller
         ]);
 
         if (Invitee::where('email', $request->get('email'))->first()) {
-            return redirect(route('members.index'))->with('status', 'دعوت نامه برای این ایمیل قبلا ارسال شده است!');
+            return redirect(route('members.index'))
+                ->with('status', 'دعوت نامه برای این ایمیل قبلا ارسال شده است!');
         }
 
         $uniqId = uniqid(); //bcrypt() . time();

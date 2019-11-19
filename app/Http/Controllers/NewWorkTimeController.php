@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
-use App\UserWorkSpace;
-use App\WorkTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -17,11 +14,10 @@ class NewWorkTimeController extends Controller
     public function store()
     {
         $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
-       // dd($activeWorkSpace);
+
         $incompleteWorkTime = $activeUserWorkSpace
             ->incompleteWorkTimes()
             ->first();
-        //dd($incompleteWorkTime);
 
         if (! $incompleteWorkTime) {
             $activeUserWorkSpace->workTimes()

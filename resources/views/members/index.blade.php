@@ -21,7 +21,7 @@
                             <div id="accordion">
                                 <div class="card-header">
                                     <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-                                      دعوت به همکاری در  این محیط کاری
+                                        دعوت به همکاری در این محیط کاری
                                     </a>
                                 </div>
                                 <div id="collapseTwo" class="collapse" data-parent="#accordion">
@@ -39,7 +39,8 @@
                                               </span>
                                                 @enderror
                                                 <p></p>
-                                                <button type="submit" class="btn">اضافه کردن به لیست دعوت شده ها</button>
+                                                <button type="submit" class="btn">اضافه کردن به لیست دعوت شده ها
+                                                </button>
                                             </form>
                                         </div>
                                     </div>
@@ -105,12 +106,14 @@
                                             </td>
 
                                             <td>
-                                                <form method="post" action="{{ route('invitees.destroy',$invitee->id) }}">
+                                                <form method="post"
+                                                      action="{{ route('invitees.destroy',$invitee->id) }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-outline-danger" >لغو دعوت نامه</button>
+                                                    <button type="submit" class="btn btn-outline-danger">لغو دعوت نامه
+                                                    </button>
                                                 </form>
-                                             </td>
+                                            </td>
 
                                         </tr>
                                     @endforeach

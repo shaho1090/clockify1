@@ -15,58 +15,35 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">{!! $project->title !!}</div>
+                    <div class="card-header">ارسال ایمیل جهت دعوت به همکاری در  این پروژه </div>
                     <div class="card-body">
                         <div class="panel panel-default">
-
                             <div class="panel-heading">
-                                <h4> لیست افراد شرکت کننده در پروژه</h4>
+                                <h4>{!! $project->title !!}</h4>
                             </div>
-                               <table class="table">
+                            <form action="/contributors/sendEmail" method="post">
+                                <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                                <table class="table">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>نام کاربری</th>
-                                        <th>آدرس ایمیل</th>
+                                        <th>ارسال ایمیل</th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($projects->user as $user)
-                                        <tr>
-                                            <td>{!! $user->pivot->id !!}</td>
-                                            <td>
-                                                <a href="{!! action('ProjectsController@edit') !!}">{!! $user->pivot->name !!} </a>
-                                            </td>
-                                            <td>{!! $user->pivot->email !!}</td>
-                                        </tr>
-                                    @endforeach
+                                    <tr>
+                                        <td>ایمیل :</td>
+                                        <td> <input type="text" name="email" style="width:200px;"> </td>
+                                        <td><input type="hidden" name="project_id" value="{!! $project->id !!}"></td>
+                                        <td><button type="submit" class="btn btn-outline-danger" >ارسال</button></td>
+                                     </tr>
                                     </tbody>
                                 </table>
-                            </div>
-                        <div id="accordion">
-                        <div class="card-header">
-                            <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-                                ارسال ایمیل مشارکت در پروژه
-                            </a>
+                            </form>
                         </div>
-
-                        <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                            <div class="card-body">
-                               <form action="/contributors/invite" method="post">
-                                   <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-                                   <input type="text" name="email">
-                                   <input type="hidden" name="project_id" value={!! $project->id !!}>
-                                   <input type="hidden" name="project_title" value={!! $project->title !!}>
-                                   <button type="submit" class="btn" >ارسال</button>
-                               </form>
-                            </div>
-                        </div>
-                        </div>
-
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>

@@ -51,26 +51,30 @@ class User extends Authenticatable
 
     public function userWorkSpaces()
     {
-        return $this->hasMany(UserWorkSpace::class,'user_id','id');
+        return $this->hasMany(UserWorkSpace::class, 'user_id', 'id');
     }
 
     public function activeUserWorkSpace()
     {
-          return $this->userWorkSpaces()->where('active','=',true)->first();
+        return $this->userWorkSpaces()->where('active', '=', true)->first();
     }
 
     public function setWorkSpaceActive(WorkSpace $workSpace)
     {
-        UserWorkSpace::find($this->id)->where('work_space_id',$workSpace->id)->update(['active' => true]);
+        UserWorkSpace::find($this->id)
+            ->where('work_space_id', $workSpace->id)
+            ->update(['active' => true]);
 
         return $this->setWorkSpacesInActive($workSpace);
     }
 
     public function setWorkSpacesInActive(WorkSpace $activeWorkSpace)
     {
-        $userWorkSpaces = UserWorkSpace::where('user_id',$this->id)->get()->all();
+        $userWorkSpaces = UserWorkSpace::where('user_id', $this->id)
+            ->get()
+            ->all();
 
-        foreach( $userWorkSpaces as $userWorkSpace) {
+        foreach ($userWorkSpaces as $userWorkSpace) {
             if ($userWorkSpace->work_space_id !== $activeWorkSpace->id) {
                 $userWorkSpace->update(['active' => false]);
             }
@@ -81,13 +85,13 @@ class User extends Authenticatable
 
     public function workTimes()
     {
-       return $this->hasManyThrough(
-           WorkTime::class,
-           UserWorkSpace::class,
-           'user_id',// Foreign key on user_project table...
-           'user_work_space_id', // Foreign key on works table...
-           'id', // Local key on user_project table...
-           'id' // Local key on tasks table...
-       );
+        return $this->hasManyThrough(
+            WorkTime::class,
+            UserWorkSpace::class,
+            'user_id',// Foreign key on user_project table...
+            'user_work_space_id', // Foreign key on works table...
+            'id', // Local key on user_project table...
+            'id' // Local key on tasks table...
+        );
     }
 }

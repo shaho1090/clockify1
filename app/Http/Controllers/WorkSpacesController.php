@@ -16,10 +16,8 @@ class WorkSpacesController extends Controller
      */
     public function index()
     {
-        $workSpaces = Auth::user()->workSpaces()->get();
-
         return view('work-spaces.index', [
-            'workSpaces' => $workSpaces,
+            'workSpaces' => Auth::user()->workSpaces()->get(),
         ]);
     }
 

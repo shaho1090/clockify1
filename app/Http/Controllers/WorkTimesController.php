@@ -18,7 +18,7 @@ class WorkTimesController extends Controller
     public function index()
     {
         $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
-        //dd($activeUserWorkSpace->workTimes()->get());
+
         $workTimes = $activeUserWorkSpace->completeWorkTimes()
             ->orderby('id','desc')
             ->get();

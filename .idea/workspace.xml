@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkSpacesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkSpacesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkTimesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkTimesController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -219,18 +219,18 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\clockify1\resources\views\projects\New folder" />
-      <recent name="C:\xampp\htdocs\clockify1\app\Http\Controllers\Old_Controller" />
-      <recent name="C:\xampp\htdocs\clockify1\resources\views\work_times\Temp" />
-      <recent name="C:\xampp\htdocs\clockify1\app\old_model" />
-      <recent name="C:\xampp\htdocs\clockify1\database\migrations\temp" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\clockify1\resources\views\work-spaces" />
       <recent name="C:\xampp\htdocs\clockify1\resources\views\work_times" />
       <recent name="C:\xampp\htdocs\clockify1\resources\views\members" />
       <recent name="C:\xampp\htdocs\clockify1\resources\views\tags" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\clockify1\app\old_model" />
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\projects\New folder" />
+      <recent name="C:\xampp\htdocs\clockify1\app\Http\Controllers\Old_Controller" />
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\work_times\Temp" />
+      <recent name="C:\xampp\htdocs\clockify1\database\migrations\temp" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -278,7 +278,7 @@
       <workItem from="1574159225484" duration="961000" />
       <workItem from="1574160930749" duration="12340000" />
       <workItem from="1574224366796" duration="13238000" />
-      <workItem from="1574245664141" duration="3201000" />
+      <workItem from="1574245664141" duration="3980000" />
     </task>
     <servers />
   </component>

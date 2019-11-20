@@ -94,9 +94,7 @@ class WorkSpace extends Model
 
     }
 
-
-
-//    public function incompleteWorkTimes()
+    //    public function incompleteWorkTimes()
 //    {
 //        return $this->workTimes()->incomplete();
 //    }

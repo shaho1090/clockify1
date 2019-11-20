@@ -32,7 +32,7 @@ class InviteesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -40,27 +40,19 @@ class InviteesController extends Controller
         request()->validate([
             'email' => 'required|email'
         ]);
-
-//        if (Invitee::where('email', $request->get('email'))->first()) {
+        // $uniqId = uniqid(); //bcrypt() . time();
+        $invitee = Invitee::where('email', $request->get('email'))->first();
+//        if (!$invitee->isNotAttached()) {
 //            return redirect(route('members.index'))
-//               ->with('status', 'دعوت نامه برای این ایمیل قبلا ارسال شده است!');
+//                ->with('status', 'دعوت نامه برای این ایمیل قبلا ارسال شده است!');
 //        }
-
-        $uniqId = uniqid(); //bcrypt() . time();
-
-        $newInvitee = Invitee::where('email', $request->get('email'))->first();
-
-        if ($newInvitee) {
-            WorkSpace::find(Auth::user()->activeUserWorkSpace()->work_space_id)
-                ->invitees()
-                ->attach($newInvitee,['token' => $uniqId]);
+        if ($invitee) {
+            $invitee->attachToActiveWorkSpace();
         } else {
-            $newInvitee = Invitee::create([
+            $invitee = Invitee::create([
                 'email' => $request->get('email'),
             ]);
-            WorkSpace::find(Auth::user()->activeUserWorkSpace()->work_space_id)
-                ->invitees()
-                ->attach($newInvitee,['token' => $uniqId]);
+            $invitee->attachToActiveWorkSpace();
         }
 
         return redirect(route('members.index'))->with('status', 'ایمیل دعوت نامه ارسال شد');
@@ -80,7 +72,7 @@ class InviteesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -91,7 +83,7 @@ class InviteesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -102,8 +94,8 @@ class InviteesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -120,9 +112,7 @@ class InviteesController extends Controller
      */
     public function destroy(Invitee $invitee)
     {
-      //  dd(Auth::user()->activeUserWorkSpace()->work_space_id);
-        $invitee->remove();
-      //  $invitee->workSpaces()->detach($invitee->id);
+        $invitee->detachFromActiveWorkSpace();
 
         return redirect(route('members.index'))->with('status', 'لغو دعوت نامه انجام شد!');
     }

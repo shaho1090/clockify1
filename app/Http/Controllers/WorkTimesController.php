@@ -20,23 +20,17 @@ class WorkTimesController extends Controller
         $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
 
         $workTimes = $activeUserWorkSpace->completeWorkTimes()
-            ->orderby('id','desc')
+            ->orderby('id', 'desc')
             ->get();
-
-        $incompleteWorkTime = $activeUserWorkSpace
-            ->incompleteWorkTimes()
-            ->first();
-
-        $projects = $activeUserWorkSpace->projects()->get();
-
-        $tags = $activeUserWorkSpace->tags()->get();
 
         return view('work_times.index', [
             'workTimes' => $workTimes->load('project')->load('tags'),
-            'projects' =>  $projects,
-            'incompleteWorkTime' =>   $incompleteWorkTime,
-            'tags' =>$tags,
-            ]);
+            'projects' => $activeUserWorkSpace->projects()->get(),
+            'incompleteWorkTime' => $activeUserWorkSpace
+                ->incompleteWorkTimes()
+                ->first(),
+            'tags' => $activeUserWorkSpace->tags()->get(),
+        ]);
     }
 
     /**
@@ -52,7 +46,7 @@ class WorkTimesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -63,7 +57,7 @@ class WorkTimesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -81,7 +75,7 @@ class WorkTimesController extends Controller
     {
         $startTime = Carbon::parse($workTime->start_time);
         $stopTime = Carbon::parse($workTime->stop_time);
-        $totalDuration =  $stopTime->diffInSeconds($startTime);
+        $totalDuration = $stopTime->diffInSeconds($startTime);
 
 
         return view('work_times.edit', [
@@ -119,8 +113,8 @@ class WorkTimesController extends Controller
      */
     public function destroy(WorkTime $workTime)
     {
-       $workTime->delete();
+        $workTime->delete();
 
-       return redirect()->action('WorkTimesController@index');
+        return redirect()->action('WorkTimesController@index');
     }
 }

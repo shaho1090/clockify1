@@ -113,7 +113,7 @@ class WorkTimesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param WorkTime $workTime
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */

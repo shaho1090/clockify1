@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkTimesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkTimesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkSpaceMembersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkSpaceMembersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/UserTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3">
     <include_path>
       <path value="$PROJECT_DIR$/clockify1/vendor/theseer/tokenizer" />
       <path value="$PROJECT_DIR$/clockify1/vendor/symfony/var-dumper" />
@@ -215,9 +217,9 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/work-spaces" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/vendor/autoload.php" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -245,6 +247,25 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager" selected="PHPUnit.UserTest.registerUser">
+    <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" nameIsGenerated="true">
+      <TestRunner />
+      <method v="2" />
+    </configuration>
+    <configuration name="UserTest.registerUser" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="registerUser" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="PHPUnit.Unnamed" />
+      <item itemvalue="PHPUnit.UserTest.registerUser" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.UserTest.registerUser" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -280,7 +301,8 @@
       <workItem from="1574160930749" duration="12340000" />
       <workItem from="1574224366796" duration="13238000" />
       <workItem from="1574245664141" duration="8547000" />
-      <workItem from="1574311140306" duration="5920000" />
+      <workItem from="1574311140306" duration="8197000" />
+      <workItem from="1574323714816" duration="1004000" />
     </task>
     <servers />
   </component>

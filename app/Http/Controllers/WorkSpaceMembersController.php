@@ -19,10 +19,9 @@ class WorkSpaceMembersController extends Controller
     {
         $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
 
-        //WorkSpace::find($activeUserWorkSpace->work_space_id)->users()->get();
-        $invitees = WorkSpace::find($activeUserWorkSpace->work_space_id)->invitees()->get();
-        //dd($invitees);
-        //Invitee::where('work_space_id',$activeUserWorkSpace->work_space_id)->get();
+        $invitees = WorkSpace::find($activeUserWorkSpace->work_space_id)
+            ->invitees()
+            ->get();
 
         return view('members.index', [
             'members' => $activeUserWorkSpace->members(),

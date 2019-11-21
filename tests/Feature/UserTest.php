@@ -13,9 +13,10 @@ class UserTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    /** @test */
+    public function registerUser()
     {
-        $response = $this->get('/projects');
+        $response = $this->post('/projects');
 
         $response->assertStatus(200);
     }

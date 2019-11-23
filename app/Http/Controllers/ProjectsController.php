@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProjectFormRequest;
 use App\Project;
 use App\UserWorkSpace;
 use Exception;
@@ -48,12 +49,12 @@ class ProjectsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(ProjectFormRequest $request)
     {
         $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
         $activeUserWorkSpace->projects()
             ->create(
-                ['title' =>$request->get('project_title')]);
+                ['title' =>$request->get('title')]);
 
         return redirect(route('projects.index'))->with('status', 'پروژه جدید ایجاد شد!');
     }
@@ -94,7 +95,7 @@ class ProjectsController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return Response
      */
-    public function update(Project $project, Request $request)
+    public function update(Project $project, ProjectFormRequest $request)
     {
         $project->update(['title' => $request->get('title')]);
 

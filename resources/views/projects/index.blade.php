@@ -28,7 +28,7 @@
                                     <div class="card-body">
                                         <form action="{{route('projects.store')}}" method="post">
                                             @csrf
-                                            <input type="text" name="project_title" required autocomplete="name"
+                                            <input type="text" name="title" required autocomplete="name"
                                                    autofocus>
                                             <button type="submit" class="btn">ثبت</button>
                                         </form>

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProjectFormRequest extends FormRequest
+class NewWorkTimeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class ProjectFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:150|min:3'
+            'title' => 'max:150|min:3'
         ];
     }
 }

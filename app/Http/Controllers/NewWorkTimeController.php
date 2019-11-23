@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\WorkTimeRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +40,7 @@ class NewWorkTimeController extends Controller
      * @stop_time
      */
 
-    public function destroy(Request $request)
+    public function destroy(WorkTimeRequest $request)
     {
         $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
 

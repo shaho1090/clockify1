@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TagFormRequest;
 use App\Tag;
 use App\UserWorkSpace;
 use Illuminate\Http\Request;
@@ -44,12 +45,12 @@ class TagsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TagFormRequest $request)
     {
         $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
 
         $activeUserWorkSpace->tags()
-            ->create(['title' => $request->get('tag_title')]);
+            ->create(['title' => $request->get('title')]);
 
         return redirect(route('tags.index'));
     }
@@ -83,7 +84,7 @@ class TagsController extends Controller
      * @param Request $request
      * @return void
      */
-    public function update(Tag $tag, Request $request)
+    public function update(Tag $tag, TagFormRequest $request)
     {
         $tag->update(['title' => $request->get('title')]);
 

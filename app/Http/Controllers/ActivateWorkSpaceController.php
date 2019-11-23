@@ -35,7 +35,7 @@ class ActivateWorkSpaceController extends Controller
      * @param Request $request
      * @return void
      */
-    public function store(WorkSpace $workSpace,Request $request)
+    public function store(WorkSpace $workSpace)
     {
         Auth::user()->setWorkSpaceActive($workSpace);
 

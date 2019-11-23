@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\WorkTimeRequest;
 use App\WorkTime;
 use Illuminate\Http\Request;
 
@@ -67,7 +68,7 @@ class WorkTimeTitleController extends Controller
      * @param Request $request
      * @return void
      */
-    public function update(WorkTime $workTime, Request $request)
+    public function update(WorkTime $workTime, WorkTimeRequest $request)
     {
         $workTime->update(['title' => $request->get('title')]);
     }

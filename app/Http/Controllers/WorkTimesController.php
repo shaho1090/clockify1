@@ -91,7 +91,7 @@ class WorkTimesController extends Controller
      * @param WorkTime $workTime
      * @return void
      */
-    public function update(WorkTimeFormRequest $request)
+    public function update(WorkTimeRequest $request)
     {
         $billable = $request->get('selectBillable');
         $billable = $billable ? true : false;

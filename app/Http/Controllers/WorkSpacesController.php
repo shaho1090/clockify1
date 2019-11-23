@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\WorkSpaceRequest;
 use App\UserWorkSpace;
 use App\WorkSpace;
 use Illuminate\Http\Request;
@@ -37,7 +38,7 @@ class WorkSpacesController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(WorkSpaceRequest $request)
     {
         Auth::user()->workSpaces()
             ->create([
@@ -77,7 +78,7 @@ class WorkSpacesController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function update(WorkSpace $workSpace, Request $request)
+    public function update(WorkSpace $workSpace, WorkSpaceRequest $request)
     {
         $workSpace->update(['title' => $request->get('title')]);
 

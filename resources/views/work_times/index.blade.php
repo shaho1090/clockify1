@@ -80,13 +80,13 @@
                                         </td>
 
                                         <td>
-                                            <select class="form-control" size="3" name="tags[]" multiple>
+                                            <fieldset>
                                                 @foreach($tags as $tag)
-                                                    <option value="{{$tag->id }}">
-                                                        {{ $tag->title }}
-                                                    </option>
+                                                    <input type="checkbox" name="tags[]" value="{{$tag->id }}">
+                                                    {{ $tag->title }}
+                                                    <br>
                                                 @endforeach
-                                            </select>
+                                            </fieldset>
                                         </td>
 
                                         <td>
@@ -167,11 +167,19 @@
                                         </td>
 
                                         <td>
-                                            @if ($workTime->tags)
-                                                @foreach($workTime->tags as $tag)
-                                                    | {{ $tag->title }}
+                                            <fieldset>
+                                                @foreach($tags as $tag)
+                                                    <input type="checkbox" name="tags[]" value="{{$tag->id }}"
+                                                           onchange="updateWorkTimeTag(this.value, {{ $workTime->id }})"
+                                                    @if ($workTime->tags)
+                                                        @foreach($workTime->tags as $workTimeTag)
+                                                            {{ $workTimeTag->id == $tag->id ? 'checked': 'unchecked'}}
+                                                        @endforeach
+                                                    @endif>
+                                                    {{ $tag->title }}
+                                                    <br>
                                                 @endforeach
-                                            @endif
+                                            </fieldset>
                                         </td>
 
                                         <td>

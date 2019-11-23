@@ -56,6 +56,22 @@ function updateWorkTimeProject(projectId,workTimeId) {
 
     confirm('workTimeId: ' + workTimeId + 'projectId: ' + projectId);
 }
+
+function updateWorkTimeTag(tagId,workTimeId) {
+    axios({
+        method: 'PUT',
+        url: '/work-time/tag/' + workTimeId,
+        data: {
+            tagId: tagId,
+        }
+    });
+
+    confirm('workTimeId: ' + workTimeId + 'tagId: ' + tagId);
+}
+
+
+
+
 /*
 for updating work time title on page work time
  */

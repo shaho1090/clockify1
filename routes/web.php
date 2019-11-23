@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/work-time/title/{workTime}','WorkTimeTitleController@update' );
     Route::put('/work-time/project/{workTime}','WorkTimeProjectController@update' );
     Route::put('/work-time/billable/{workTime}','WorkTimeBillableController@update' );
+    Route::put('/work-time/tag/{workTime}','WorkTimeTagController@update' );
 });
 
 Route::resource('work-spaces', 'WorkSpacesController')->except(['update'])->middleware('auth');

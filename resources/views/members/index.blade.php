@@ -115,6 +115,15 @@
                                                 </form>
                                             </td>
 
+                                            <td>
+                                                <form method="post"
+                                                      action="{{ route('send.mail',$invitee->id) }}">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-outline-danger">ارسال دعوت نامه
+                                                    </button>
+                                                </form>
+                                            </td>
+
                                         </tr>
                                     @endforeach
                                     </tbody>

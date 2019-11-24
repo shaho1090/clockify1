@@ -55,7 +55,7 @@ class InviteesController extends Controller
             $invitee->attachToActiveWorkSpace();
         }
 
-        return redirect(route('members.index'))->with('status', 'ایمیل دعوت نامه ارسال شد');
+        return redirect(route('members.index'))->with('status', 'ایمیل دعوت نامه برای ارسال ذخیره شد!');
 
 //        $data = array(
 //            'workSpaceId' => $workSpaceId,

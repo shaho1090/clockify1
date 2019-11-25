@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\WorkTimeFormRequest;
+use App\WorkSpace;
 use App\WorkTime;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class WorkTimesController extends Controller
             'incompleteWorkTime' => $activeUserWorkSpace
                 ->incompleteWorkTimes()
                 ->first(),
-            'tags' => $activeUserWorkSpace->tags()->get(),
+            'tags' => WorkSpace::find($activeUserWorkSpace->id)->tags()->get(),
         ]);
     }
 

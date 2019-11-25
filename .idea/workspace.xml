@@ -3,7 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/members/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/members/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ActivateWorkSpaceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ActivateWorkSpaceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InitialWorkSpaceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InitialWorkSpaceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkSpacesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkSpacesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkTimesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkTimesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Project.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Project.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/UserWorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UserWorkSpace.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/WorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkSpace.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_13_105546_create_user_work_space_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_13_105546_create_user_work_space_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_24_060918_create_projects_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_24_060918_create_projects_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_24_061250_create_tags_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_24_061250_create_tags_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_25_092157_create_tasks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/temp/2019_10_25_092157_create_tasks_table.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -219,18 +231,18 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\clockify1\app\Http\Requests\Old_request" />
-      <recent name="C:\xampp\htdocs\clockify1\app\old_model" />
-      <recent name="C:\xampp\htdocs\clockify1\resources\views\projects\New folder" />
-      <recent name="C:\xampp\htdocs\clockify1\app\Http\Controllers\Old_Controller" />
-      <recent name="C:\xampp\htdocs\clockify1\resources\views\work_times\Temp" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\clockify1\resources\views\work-spaces" />
       <recent name="C:\xampp\htdocs\clockify1\resources\views\work_times" />
       <recent name="C:\xampp\htdocs\clockify1\resources\views\members" />
       <recent name="C:\xampp\htdocs\clockify1\resources\views\tags" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\clockify1\database\migrations\temp" />
+      <recent name="C:\xampp\htdocs\clockify1\app\Http\Requests\Old_request" />
+      <recent name="C:\xampp\htdocs\clockify1\app\old_model" />
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\projects\New folder" />
+      <recent name="C:\xampp\htdocs\clockify1\app\Http\Controllers\Old_Controller" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -304,7 +316,8 @@
       <workItem from="1574505739880" duration="12723000" />
       <workItem from="1574591400116" duration="346000" />
       <workItem from="1574604693038" duration="1113000" />
-      <workItem from="1574656634226" duration="3002000" />
+      <workItem from="1574656634226" duration="12770000" />
+      <workItem from="1574677803595" duration="9203000" />
     </task>
     <servers />
   </component>

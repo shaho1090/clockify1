@@ -17,7 +17,8 @@ class WorkSpacesController extends Controller
      */
     public function index()
     {
-        return view('work-spaces.index', [
+
+          return view('work-spaces.index', [
             'workSpaces' => Auth::user()->workSpaces()->get(),
         ]);
     }
@@ -40,10 +41,12 @@ class WorkSpacesController extends Controller
      */
     public function store(WorkSpaceRequest $request)
     {
-        Auth::user()->workSpaces()
+        $newWorkSpace = Auth::user()->workSpaces()
             ->create([
                 'title' => $request->get('title')
             ]);
+
+        $newWorkSpace->active();
 
         return redirect(route('work-spaces.index'))
             ->with('status', 'محیط کاری جدید ایجاد شد!');
@@ -94,6 +97,7 @@ class WorkSpacesController extends Controller
      */
     public function destroy(WorkSpace $workSpace)
     {
+
         if ($workSpace->isActive()) {
             return redirect()->action('WorkSpacesController@index')
                 ->with('warning', 'برای حذف این محیط کاری ابتدا آنرا از حالت فعال خارج کنید!');

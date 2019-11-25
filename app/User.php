@@ -59,29 +59,7 @@ class User extends Authenticatable
         return $this->userWorkSpaces()->where('active', '=', true)->first();
     }
 
-    public function setWorkSpaceActive(WorkSpace $workSpace)
-    {
-        UserWorkSpace::find($this->id)
-            ->where('work_space_id', $workSpace->id)
-            ->update(['active' => true]);
 
-        return $this->setWorkSpacesInActive($workSpace);
-    }
-
-    public function setWorkSpacesInActive(WorkSpace $activeWorkSpace)
-    {
-        $userWorkSpaces = UserWorkSpace::where('user_id', $this->id)
-            ->get()
-            ->all();
-
-        foreach ($userWorkSpaces as $userWorkSpace) {
-            if ($userWorkSpace->work_space_id !== $activeWorkSpace->id) {
-                $userWorkSpace->update(['active' => false]);
-            }
-        }
-
-        return redirect()->action('WorkSpacesController@index');
-    }
 
     public function workTimes()
     {
@@ -94,4 +72,11 @@ class User extends Authenticatable
             'id' // Local key on tasks table...
         );
     }
+
+    public function scopeInvited()
+    {
+        return Invitee::where('email',$this->email)->get();
+    }
+
+
 }

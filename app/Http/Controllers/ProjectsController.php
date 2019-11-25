@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProjectFormRequest;
 use App\Project;
 use App\UserWorkSpace;
+use App\WorkSpace;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -20,10 +21,9 @@ class ProjectsController extends Controller
 
     public function index()
     {
-
         $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
 
-        $projects = $activeUserWorkSpace->projects()
+        $projects = WorkSpace::find($activeUserWorkSpace->id)->projects()
             ->orderby('id','desc')
             ->get();
 

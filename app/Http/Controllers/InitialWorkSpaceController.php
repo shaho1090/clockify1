@@ -32,25 +32,39 @@ class InitialWorkSpaceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store()
     {
-        $workSpace = new WorkSpace(array('title' => Auth::user()->name));
-        $workSpace->save();
+        /**
+         * @workSpacesInvited = work spaces from invitees table that demonstrate user invited for them
+         */
+//       if(Auth::user()->invited()) {
+//           dd(Auth::user()->invited()->workSpaces()->get());
+//        }
+        if (Auth::user()->invited()) {
+            foreach (Auth::user()->invited() as $workSpace) {
+                Auth::user()->workSpaces()->attach($workSpace->id, ['access' => 2,
+                    'active' => true
+                ]);
+            }
+            return redirect('/home');
+        }
 
-        Auth::user()->workSpaces()->attach( $workSpace->id,['access' => 0,
-            'active' =>true
+        $workSpace = WorkSpace::create(['title' => Auth::user()->name]);
+
+        Auth::user()->workSpaces()->attach($workSpace->id, ['access' => 0,
+            'active' => true
         ]); // zero means owner access
 
         return redirect('/home');
-    }
+   }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -61,7 +75,7 @@ class InitialWorkSpaceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -72,8 +86,8 @@ class InitialWorkSpaceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -84,7 +98,7 @@ class InitialWorkSpaceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

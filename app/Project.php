@@ -10,7 +10,7 @@ class Project extends Model
 
     public function userWorkSpace()
     {
-        return $this->belongsTo(UserWorkSpace::class);
+        return $this->belongsTo(WorkSpace::class);
     }
 
     public function workTimes()
@@ -18,10 +18,10 @@ class Project extends Model
        return $this->hasMany(WorkTime::class,'project_id');
    }
 
-    public function tasks()
-    {
-        return $this->hasMany(Task::class,'task_id','id');
-    }
+//    public function tasks()
+//    {
+//        return $this->hasMany(Task::class,'task_id','id');
+//    }
 
 
 

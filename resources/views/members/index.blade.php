@@ -39,7 +39,7 @@
                                               </span>
                                                 @enderror
                                                 <p></p>
-                                                <button type="submit" class="btn">اضافه کردن به لیست دعوت شده ها
+                                                <button type="submit" class="btn">ثبت جهت ارسال دعوت نامه
                                                 </button>
                                             </form>
                                         </div>

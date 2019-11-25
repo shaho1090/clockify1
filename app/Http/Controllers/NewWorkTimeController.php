@@ -14,16 +14,16 @@ class NewWorkTimeController extends Controller
   */
     public function store()
     {
-        $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
+        $activeWorkSpace = Auth::user()->activeWorkSpace();
 
-        $incompleteWorkTime = $activeUserWorkSpace
+        $incompleteWorkTime = Auth::user()
             ->incompleteWorkTimes()
             ->first();
 
         if (! $incompleteWorkTime) {
-            $activeUserWorkSpace->workTimes()
-                ->create(['start_time'=> Carbon::now(),
-                 ]);
+            Auth::user()->createNewWorkTime();
+//                ->create(['start_time'=> Carbon::now(),
+//                 ]);
             return redirect()->action('WorkTimesController@index');
         }
    }

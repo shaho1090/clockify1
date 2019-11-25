@@ -42,15 +42,15 @@ class UserWorkSpace extends pivot
 //        return $this->hasMany(Invitee::class,'work_space_id','id');
 //    }
 
-   public function incompleteWorkTimes()
-    {
-        return $this->workTimes()->whereNull('stop_time');
-    }
+//   public function incompleteWorkTimes()
+//    {
+//        return $this->workTimes()->whereNull('stop_time');
+//    }
 
-  public function completeWorkTimes()
-      {
-          return $this->workTimes()->whereNotNull('stop_time');
-      }
+//  public function completeWorkTimes()
+//      {
+//          return $this->workTimes()->whereNotNull('stop_time');
+//      }
 
     public function members()
     {

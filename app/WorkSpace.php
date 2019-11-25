@@ -131,7 +131,6 @@ class WorkSpace extends Model
             }
         }
 
-      // return redirect()->action('WorkSpacesController@index');
     }
 
 }

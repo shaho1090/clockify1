@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -54,12 +55,10 @@ class User extends Authenticatable
         return $this->hasMany(UserWorkSpace::class, 'user_id', 'id');
     }
 
-    public function activeUserWorkSpace()
+    public function activeWorkSpace()
     {
-        return $this->userWorkSpaces()->where('active', '=', true)->first();
+        return $this->workSpaces()->wherePivot('active', '=', true)->first();
     }
-
-
 
     public function workTimes()
     {
@@ -75,8 +74,23 @@ class User extends Authenticatable
 
     public function scopeInvited()
     {
-        return Invitee::where('email',$this->email)->get();
+        return Invitee::where('email', $this->email)->get();
     }
 
+    public function completeWorkTimes()
+    {
+        return $this->workTimes()->whereNotNull('stop_time');
+    }
 
+    public function incompleteWorkTimes()
+    {
+        return $this->workTimes()->whereNull('stop_time');
+    }
+
+    public function createNewWorkTime()
+    {
+        return UserWorkSpace::where('user_id',$this->id)
+            ->workTimes()
+            ->create(['start_time',Carbon::now()]);
+    }
 }

@@ -18,19 +18,17 @@ class WorkTimesController extends Controller
      */
     public function index()
     {
-        $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
-
-        $workTimes = $activeUserWorkSpace->completeWorkTimes()
+        $workTimes =  Auth::user()->completeWorkTimes()
             ->orderby('id', 'desc')
             ->get();
 
         return view('work_times.index', [
             'workTimes' => $workTimes->load('project')->load('tags'),
-            'projects' => $activeUserWorkSpace->projects()->get(),
-            'incompleteWorkTime' => $activeUserWorkSpace
+            'projects' => Auth::user()->activeWorkSpace()->projects()->get(),
+            'incompleteWorkTime' => Auth::user()
                 ->incompleteWorkTimes()
                 ->first(),
-            'tags' => WorkSpace::find($activeUserWorkSpace->id)->tags()->get(),
+            'tags' => Auth::user()->activeWorkSpace()->tags()->get(),
         ]);
     }
 

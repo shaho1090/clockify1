@@ -10,31 +10,31 @@ class UserWorkSpace extends pivot
 {
     public $incrementing = true;
     protected $table = 'user_work_space';
-    protected $fillable = ['user_id', 'work_space_id', 'access', 'active' ];
+    protected $fillable = ['user_id', 'work_space_id', 'access', 'active'];
 
     public function workTimes()
     {
-        return $this->hasMany(WorkTime::class,'user_work_space_id','id');
+        return $this->hasMany(WorkTime::class, 'user_work_space_id', 'id');
     }
 
-//    public function projects()
-//    {
-//        return $this->hasMany(Project::class,'user_work_space_id','id');
-//    }
+    public function scopeProjects($query)
+    {
+        return WorkSpace::find($this->work_space_id)->projects();
+    }
 
-//    public function tags()
-//    {
-//        return $this->hasMany(Tag::class,'user_work_space_id','id');
-//    }
+    public function scopeTags($query)
+    {
+        return WorkSpace::find($this->work_space_id)->tags();
+    }
 
     public function user()
     {
-        return $this->belongsTo(User::class,'user','id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function workSpace()
     {
-        return $this->belongsTo(WorkSpace::class,'work_space_id','id');
+        return $this->belongsTo(WorkSpace::class, 'Work_space_id', 'id');
     }
 
 //    public function invitees()
@@ -61,5 +61,10 @@ class UserWorkSpace extends pivot
 //    {
 //        return Invitee::where('work_space_id',$this->id)->get();
 //    }
+
+    public function scopeWhereActive($query)
+    {
+        return $query->where('active', '=', true);
+    }
 
 }

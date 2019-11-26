@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkTimesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkTimesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/UserWorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UserWorkSpace.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/WorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkSpace.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -310,7 +309,8 @@
       <workItem from="1574591400116" duration="346000" />
       <workItem from="1574604693038" duration="1113000" />
       <workItem from="1574656634226" duration="12770000" />
-      <workItem from="1574677803595" duration="13676000" />
+      <workItem from="1574677803595" duration="14040000" />
+      <workItem from="1574742879315" duration="9989000" />
     </task>
     <servers />
   </component>

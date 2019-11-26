@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\WorkTimeFormRequest;
+use App\Http\Requests\WorkTimeRequest;
 use App\WorkSpace;
 use App\WorkTime;
 use Carbon\Carbon;
@@ -24,11 +25,11 @@ class WorkTimesController extends Controller
 
         return view('work_times.index', [
             'workTimes' => $workTimes->load('project')->load('tags'),
-            'projects' => Auth::user()->activeWorkSpace()->projects()->get(),
+            'projects' => Auth::user()->activeUserWorkSpace()->projects()->get(),
             'incompleteWorkTime' => Auth::user()
                 ->incompleteWorkTimes()
                 ->first(),
-            'tags' => Auth::user()->activeWorkSpace()->tags()->get(),
+            'tags' => Auth::user()->activeUserWorkSpace()->tags()->get(),
         ]);
     }
 

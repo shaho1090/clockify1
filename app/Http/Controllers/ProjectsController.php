@@ -21,15 +21,15 @@ class ProjectsController extends Controller
 
     public function index()
     {
-        $activeWorkSpace = Auth::user()->activeWorkSpace();
-
-        $projects = WorkSpace::find($activeWorkSpace->id)->projects()
+        $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
+;
+        $projects = WorkSpace::find($activeUserWorkSpace->id)->projects()
             ->orderby('id','desc')
             ->get();
 
         return view('projects.index', [
             'projects' => $projects,
-            'activeWorkSpace' =>  $activeWorkSpace,
+            'activeWorkSpace' =>  $activeUserWorkSpace,
         ]);
     }
 
@@ -51,7 +51,7 @@ class ProjectsController extends Controller
      */
     public function store(ProjectFormRequest $request)
     {
-        Auth::user()->activeWorkSpace()->projects()
+        Auth::user()->activeUserWorkSpace()->projects()
             ->create(
                 ['title' =>$request->get('title')]);
 
@@ -66,14 +66,7 @@ class ProjectsController extends Controller
      */
     public function show(Project $project)
     {
-        $contributors = $project
-            ->users()
-            ->get()
-            ->all();
-        return view('projects.show', [
-            'project' => $project,
-            'contributors' => $contributors,
-        ]);
+
     }
 
     /**

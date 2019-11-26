@@ -55,9 +55,9 @@ class User extends Authenticatable
         return $this->hasMany(UserWorkSpace::class, 'user_id', 'id');
     }
 
-    public function activeWorkSpace()
+    public function activeUserWorkSpace()
     {
-        return $this->workSpaces()->wherePivot('active', '=', true)->first();
+        return $this->userWorkSpaces()->whereActive()->get()->first();
     }
 
     public function workTimes()
@@ -65,9 +65,9 @@ class User extends Authenticatable
         return $this->hasManyThrough(
             WorkTime::class,
             UserWorkSpace::class,
-            'user_id',// Foreign key on user_project table...
-            'user_work_space_id', // Foreign key on works table...
-            'id', // Local key on user_project table...
+            'user_id',// Foreign key on ... table...
+            'user_work_space_id', // Foreign key on ... table...
+            'id', // Local key on ... table...
             'id' // Local key on tasks table...
         );
     }
@@ -79,18 +79,18 @@ class User extends Authenticatable
 
     public function completeWorkTimes()
     {
-        return $this->workTimes()->whereNotNull('stop_time');
+        return $this->activeUserWorkSpace()->workTimes()->whereNotNull('stop_time');
     }
 
     public function incompleteWorkTimes()
     {
-        return $this->workTimes()->whereNull('stop_time');
+        return $this->activeUserWorkSpace()->workTimes()->whereNull('stop_time');
     }
 
-    public function createNewWorkTime()
+    public function startNewWorkTime()
     {
-        return UserWorkSpace::where('user_id',$this->id)
+        return $this->activeUserWorkSpace()
             ->workTimes()
-            ->create(['start_time',Carbon::now()]);
+            ->create(['start_time' => Carbon::now()]);
     }
 }

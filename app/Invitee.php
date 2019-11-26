@@ -27,7 +27,10 @@ class Invitee extends Model
     public function removeIfNotUsed()
     {
         if ($this->workSpaces()->doesntExist()) {
-            $this->delete();
+            try {
+                $this->delete();
+            } catch (\Exception $e) {
+            }
         }
     }
 
@@ -49,6 +52,21 @@ class Invitee extends Model
                 ->activeUserWorkSpace()
                 ->work_space_id)) {
             return $this;
+        }
+    }
+
+    public function workSpacesInvited()
+    {
+        $this->workSpaces()->get();
+
+    }
+
+    public function remove()
+    {
+        $this->workSpaces()->detach();
+        try {
+            $this->delete();
+        } catch (\Exception $e) {
         }
     }
 

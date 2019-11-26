@@ -54,6 +54,8 @@ Route::put('/projects/update/{project}','ProjectsController@update')
     ->name('projects.update')->middleware('auth');
 
 Route::resource('members', 'WorkSpaceMembersController')->middleware('auth');
+Route::post('new-member', 'NewMemberController@store')->name('new-member.store')->middleware('auth');
+
 
 Route::resource('invitees', 'InviteesController')->middleware('auth');
 

@@ -72,10 +72,12 @@ class User extends Authenticatable
         );
     }
 
-    public function invitations()
+    public function invitation()
     {
-        return Invitee::where('email', $this->email)->get();
+        return Invitee::where('email', $this->email)->get()->first();
     }
+
+
 
     public function completeWorkTimes()
     {

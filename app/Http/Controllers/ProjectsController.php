@@ -23,7 +23,7 @@ class ProjectsController extends Controller
     {
         $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
 ;
-        $projects = WorkSpace::find($activeUserWorkSpace->id)->projects()
+        $projects = WorkSpace::find($activeUserWorkSpace->work_space_id)->projects()
             ->orderby('id','desc')
             ->get();
 
@@ -46,11 +46,14 @@ class ProjectsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store(ProjectFormRequest $request)
     {
+        $this->authorize('store', Project::class);
+
         Auth::user()->activeUserWorkSpace()->projects()
             ->create(
                 ['title' =>$request->get('title')]);

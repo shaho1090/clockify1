@@ -52,9 +52,9 @@ class UserWorkSpace extends pivot
 //          return $this->workTimes()->whereNotNull('stop_time');
 //      }
 
-    public function members()
+    public function scopeMembers()
     {
-        return WorkSpace::find($this->id)->users()->get();
+        return WorkSpace::find($this->work_space_id)->users();
     }
 
 //    public function invitees()

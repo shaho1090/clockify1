@@ -24,7 +24,7 @@ class WorkSpaceMembersController extends Controller
             ->get();
 
         return view('members.index', [
-            'members' => $activeUserWorkSpace->members(),
+            'members' => $activeUserWorkSpace->members()->get(),
             'invitees' =>$invitees,
         ]);
     }

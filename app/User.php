@@ -72,7 +72,7 @@ class User extends Authenticatable
         );
     }
 
-    public function scopeInvited()
+    public function invitations()
     {
         return Invitee::where('email', $this->email)->get();
     }

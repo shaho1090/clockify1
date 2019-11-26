@@ -43,10 +43,11 @@ class InitialWorkSpaceController extends Controller
 //       if(Auth::user()->invited()) {
 //           dd(Auth::user()->invited()->workSpaces()->get());
 //        }
-        if (Auth::user()->invited()) {
-            foreach (Auth::user()->invited() as $workSpace) {
-                Auth::user()->workSpaces()->attach($workSpace->id, ['access' => 2,
-                    'active' => true
+        //dd(Auth::user()->invitations());
+        if (Auth::user()->invitations()) {
+            foreach (Auth::user()->invitations() as $invitation) {
+                Auth::user()->workSpaces()->attach($invitation->work_space_id, ['access' => 2,
+                    'active' => false
                 ]);
             }
             return redirect('/home');

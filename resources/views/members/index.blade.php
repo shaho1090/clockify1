@@ -110,7 +110,7 @@
                                                       action="{{ route('invitees.destroy',$invitee->id) }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-outline-danger">لغو دعوت نامه
+                                                    <button type="submit" class="btn btn-outline-danger">حذف از لیست
                                                     </button>
                                                 </form>
                                             </td>

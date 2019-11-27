@@ -52,8 +52,6 @@ class ProjectsController extends Controller
      */
     public function store(ProjectFormRequest $request)
     {
-        $this->authorize('store', Project::class);
-
         Auth::user()->activeUserWorkSpace()->projects()
             ->create(
                 ['title' =>$request->get('title')]);

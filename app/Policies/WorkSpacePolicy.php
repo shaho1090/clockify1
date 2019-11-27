@@ -6,6 +6,7 @@ use App\User;
 use App\UserWorkSpace;
 use App\WorkSpace;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
 
 class WorkSpacePolicy
 {
@@ -68,8 +69,11 @@ class WorkSpacePolicy
     {
         //return $user->id === $post->user_id;
         if ($user->isOwnerOf($workSpace)) {
-            return true;
+            return Response::allow();
         }
+
+        return Response::deny('You do not own this work space!');
+
     }
 
     /**

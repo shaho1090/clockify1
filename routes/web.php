@@ -40,6 +40,13 @@ Route::middleware('auth')->group(function () {
     Route::put('/work-time/tag/{workTime}','WorkTimeTagController@update' );
 });
 
+Route::middleware('auth')->group(function () {
+    Route::post('/member/work-times/{user}','MemberWorkTimesController@index' )->name('member.work-times');
+   // Route::put('/work-time/project/{workTime}','WorkTimeProjectController@update' );
+  //  Route::put('/work-time/billable/{workTime}','WorkTimeBillableController@update' );
+   // Route::put('/work-time/tag/{workTime}','WorkTimeTagController@update' );
+});
+
 Route::resource('work-spaces', 'WorkSpacesController')->except(['update'])->middleware('auth');
 Route::put('/work-spaces/update/{workSpace}','WorkSpacesController@update' )->name('work-spaces.update')
     ->middleware('auth');

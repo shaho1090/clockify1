@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/MemberWorkTimesController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/members/work-times/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Policies/WorkSpacePolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Policies/WorkSpacePolicy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/members/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/members/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -215,23 +217,24 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/vendor/autoload.php" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/members/work-times" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\members\work-times" />
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\work-spaces" />
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\work_times" />
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\members" />
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\tags" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\clockify1\app\Http\Controllers\Old_Controller" />
       <recent name="C:\xampp\htdocs\clockify1\database\migrations\temp" />
       <recent name="C:\xampp\htdocs\clockify1\app\Http\Requests\Old_request" />
       <recent name="C:\xampp\htdocs\clockify1\app\old_model" />
       <recent name="C:\xampp\htdocs\clockify1\resources\views\projects\New folder" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\clockify1\resources\views\work-spaces" />
-      <recent name="C:\xampp\htdocs\clockify1\resources\views\work_times" />
-      <recent name="C:\xampp\htdocs\clockify1\resources\views\members" />
-      <recent name="C:\xampp\htdocs\clockify1\resources\views\tags" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -309,7 +312,8 @@
       <workItem from="1574677803595" duration="14040000" />
       <workItem from="1574742879315" duration="12968000" />
       <workItem from="1574763514831" duration="13090000" />
-      <workItem from="1574829112482" duration="10499000" />
+      <workItem from="1574829112482" duration="11444000" />
+      <workItem from="1574850120796" duration="6906000" />
     </task>
     <servers />
   </component>
@@ -334,5 +338,16 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/clockify1" />
     </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/members/work-times/index.blade.php</url>
+          <line>39</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

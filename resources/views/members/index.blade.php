@@ -69,9 +69,12 @@
                                                 {{$member->email}}
                                             </td>
                                             <td>
-                                                <button class="btn btn-outline-dark"><a
-                                                        href="/works/index/{{$member->id}}">مشاهده زمان های کاری</a>
-                                                </button>
+                                                <form method="post" action="{{route('member.work-times',$member->id)}}">
+                                                    @csrf
+                                                    <button type="submit" name="wrok-times"
+                                                            class="btn btn-outline-dark">مشاهده زمان های کاری
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

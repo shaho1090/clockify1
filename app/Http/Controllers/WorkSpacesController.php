@@ -99,7 +99,7 @@ class WorkSpacesController extends Controller
     {
         if ($workSpace->isActive()) {
             return redirect()->action('WorkSpacesController@index')
-                ->with('warning', 'برای حذف این محیط کاری ابتدا آنرا از حالت فعال خارج کنید!');
+                ->with('warning', 'لطفا محیط کاری دیگری را فعال کنید تا امکان حذف این محیط را داشته باشید');
         }
 
         $this->authorize('delete', $workSpace);

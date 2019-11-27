@@ -39,7 +39,7 @@
                                               </span>
                                                 @enderror
                                                 <p></p>
-                                                <button type="submit" class="btn">ثبت 
+                                                <button type="submit" class="btn">ثبت
                                                 </button>
                                             </form>
                                         </div>

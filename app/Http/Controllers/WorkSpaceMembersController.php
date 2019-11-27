@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Invitee;
+use App\User;
 use App\UserWorkSpace;
 use App\WorkSpace;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class WorkSpaceMembersController extends Controller
 
         return view('members.index', [
             'members' => $activeUserWorkSpace->members()->get(),
-            'invitees' =>$invitees,
+            'invitees' => $invitees,
         ]);
     }
 
@@ -42,20 +43,32 @@ class WorkSpaceMembersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        request()->validate([
+            'email' => 'required|email'
+        ]);
 
+        $user = User::where('email', $request->get('email'))->get()->first();
+        if ($user) {
+            $user->workSpaces()->attach(Auth::user()->activeUserWorkSpace()->work_space_id, ['access' => 2,
+                'active' => false
+            ]);
+
+            return redirect(route('members.index'))->with('status', 'ایمیل مورد نظر به تیم اضافه شد!');
+        }
+
+         return redirect(route('invitees.store',[$request]));
     }
-
 
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -66,7 +79,7 @@ class WorkSpaceMembersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -77,8 +90,8 @@ class WorkSpaceMembersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -89,7 +102,7 @@ class WorkSpaceMembersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

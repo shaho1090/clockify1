@@ -63,10 +63,7 @@ class WorkSpace extends Model
 //        );
 //    }
 
-    public function isOwner(WorkSpace $workSpace)
-    {
-        return Auth::user()->workSpaces()->find($this->id)->pivot->access;
-    }
+
 
     public function isActive()
     {

@@ -97,11 +97,12 @@ class WorkSpacesController extends Controller
      */
     public function destroy(WorkSpace $workSpace)
     {
-
         if ($workSpace->isActive()) {
             return redirect()->action('WorkSpacesController@index')
                 ->with('warning', 'برای حذف این محیط کاری ابتدا آنرا از حالت فعال خارج کنید!');
         }
+
+        $this->authorize('delete', $workSpace);
 
         $workSpace->removeAllDependency();
 

@@ -46,6 +46,7 @@ class InviteesController extends Controller
 //            return redirect(route('members.index'))
 //                ->with('status', 'دعوت نامه برای این ایمیل قبلا ارسال شده است!');
 //        }
+
         if ($invitee) {
             $invitee->attachToActiveWorkSpace();
         } else {

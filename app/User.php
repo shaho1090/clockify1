@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
+use PharIo\Manifest\Email;
 use phpDocumentor\Reflection\Types\Boolean;
 
 class User extends Authenticatable
@@ -78,7 +79,6 @@ class User extends Authenticatable
     }
 
 
-
     public function completeWorkTimes()
     {
         return $this->activeUserWorkSpace()->workTimes()->whereNotNull('stop_time');
@@ -94,5 +94,16 @@ class User extends Authenticatable
         return $this->activeUserWorkSpace()
             ->workTimes()
             ->create(['start_time' => Carbon::now()]);
+    }
+
+    public function isOwnerOf(WorkSpace $workSpace)
+    {
+        if (Auth::user()
+                ->workSpaces()
+                ->find($workSpace->id)
+                ->pivot
+                ->access === 0) {
+            return true;
+        }
     }
 }

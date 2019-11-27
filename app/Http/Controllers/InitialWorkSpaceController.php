@@ -47,7 +47,9 @@ class InitialWorkSpaceController extends Controller
                 Auth::user()->workSpaces()->attach($workSpace->id, ['access' => 2,
                     'active' => false
                 ]);
+                $workSpace->active();
             }
+
             Auth::user()->invitation()->remove();
 
             return redirect('/home');//->action('NewMemberController@store');

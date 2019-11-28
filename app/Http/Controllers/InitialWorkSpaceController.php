@@ -42,18 +42,18 @@ class InitialWorkSpaceController extends Controller
          * @workSpacesInvited = work spaces from invitees table that demonstrate user invited for them
          */
 
-        if (Auth::user()->invitation()) {
-            foreach (Auth::user()->invitation()->workSpaces()->get() as $workSpace) {
-                Auth::user()->workSpaces()->attach($workSpace->id, ['access' => 2,
-                    'active' => false
-                ]);
-                $workSpace->active();
-            }
-
-            Auth::user()->invitation()->remove();
-
-            return redirect('/home');//->action('NewMemberController@store');
-        }
+//        if (Auth::user()->invitation()) {
+//            foreach (Auth::user()->invitation()->workSpaces()->get() as $workSpace) {
+//                Auth::user()->workSpaces()->attach($workSpace->id, ['access' => 2,
+//                    'active' => false
+//                ]);
+//                $workSpace->active();
+//            }
+//
+//            Auth::user()->invitation()->remove();
+//
+//            return redirect('/home');//->action('NewMemberController@store');
+//        }
 
         $workSpace = WorkSpace::create(['title' => Auth::user()->name]);
 

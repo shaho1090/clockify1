@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Invitee;
 use App\Mail\InviteMail;
+use App\WorkSpace;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use PharIo\Manifest\Email;
 
 class MailController extends Controller
 {
@@ -49,9 +51,9 @@ class MailController extends Controller
 //          $message->to( $invitee->email)->subject('دعوت به همکاری در پروژه');
 //      });
 
-        Mail::to($invitee->email)->send(new InviteMail());
+        Mail::to($invitee->email)->send(new InviteMail($activeUserWorkSpace, $invitee->email));
 
-        return "Your email has been sent successfully";
+        return redirect(route('members.index'))->with('status', 'ایمیل دعوت نامه با موفقیت ارسال شد!');
 
 //        Mail::send( 'members.welcome',$data, function ($message) {
 //            $message->from('laravelshaho@gmail.com', 'Learning Laravel');
@@ -62,12 +64,24 @@ class MailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param WorkSpace $workSpace
+     * @param $email
+     * @return void
      */
-    public function show($id)
+    public function show(WorkSpace $workSpace, $token)
     {
-        //
+       if(! Auth::user()->invitation()){
+           return redirect('/home');
+       }
+
+       if($workSpace->users()->find(Auth::user())){
+           return redirect(route('work-spaces.index'))->with('status','شما قبلا دعوت به این فصای کاری را قبول کرده اید!');
+       }
+        Auth::user()->workSpaces()->attach($workSpace->id, ['access' => 2]);
+        $workSpace->active();
+
+        return redirect(route('work-spaces.index'))->with('status','از شما بابت قبول دعوت نامه تشکر می کنیم!');
+
     }
 
     /**
@@ -76,9 +90,10 @@ class MailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(WorkSpace $workSpace, $email)
     {
-       dd($request);
+       //dd($workSpace.$email);
+
     }
 
     /**

@@ -10,7 +10,7 @@ function updateWorkSpaceTitle(title,workSpaceId) {
         }
     });
 
-    confirm('workSpaceId: ' + workSpaceId + 'title: ' + title);
+    //confirm('workSpaceId: ' + workSpaceId + 'title: ' + title);
 }
 
 /*
@@ -25,7 +25,7 @@ function updateTagTitle(title, tagId) {
         }
     });
 
-    confirm('Tag_id: ' + tagId + 'newTitle: ' + title);
+    //confirm('Tag_id: ' + tagId + 'newTitle: ' + title);
 }
 /*
 use for updating project title with axios
@@ -39,7 +39,7 @@ function updateProjectTitle(title, projectId) {
         }
     });
 
-    confirm('projectId: ' + projectId + 'newTitle: ' + title);
+   // confirm('projectId: ' + projectId + 'newTitle: ' + title);
 }
 /*
 for updating project that associated with specific work time
@@ -54,7 +54,7 @@ function updateWorkTimeProject(projectId,workTimeId) {
         }
     });
 
-    confirm('workTimeId: ' + workTimeId + 'projectId: ' + projectId);
+    //confirm('workTimeId: ' + workTimeId + 'projectId: ' + projectId);
 }
 
 function updateWorkTimeTag(tagId,workTimeId) {
@@ -66,7 +66,7 @@ function updateWorkTimeTag(tagId,workTimeId) {
         }
     });
 
-    confirm('workTimeId: ' + workTimeId + 'tagId: ' + tagId);
+    //confirm('workTimeId: ' + workTimeId + 'tagId: ' + tagId);
 }
 
 
@@ -84,7 +84,7 @@ function updateWorkTimeTitle(title,workTimeId) {
         }
     });
 
-    confirm('workTimeId: ' + workTimeId + 'title: ' + title);
+   // confirm('workTimeId: ' + workTimeId + 'title: ' + title);
 }
 /*
 using for
@@ -99,7 +99,7 @@ function updateWorkTimeBillable(billable,workTimeId) {
         }
     });
 
-    confirm('workTimeId: ' + workTimeId + 'billable: ' + billable);
+    //confirm('workTimeId: ' + workTimeId + 'billable: ' + billable);
 }
 
 

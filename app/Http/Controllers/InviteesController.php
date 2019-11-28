@@ -42,19 +42,16 @@ class InviteesController extends Controller
         ]);
         // $uniqId = uniqid(); //bcrypt() . time();
         $invitee = Invitee::where('email', $request->get('email'))->first();
-//        if (!$invitee->isNotAttached()) {
-//            return redirect(route('members.index'))
-//                ->with('status', 'دعوت نامه برای این ایمیل قبلا ارسال شده است!');
-//        }
-
         if ($invitee) {
-            $invitee->attachToActiveWorkSpace();
-        } else {
-            $invitee = Invitee::create([
-                'email' => $request->get('email'),
-            ]);
-            $invitee->attachToActiveWorkSpace();
+            return redirect(route('members.index'))
+                ->with('status', 'این ایمیل قبلا در لیست ارسال ثبت شده است!');
         }
+
+        $invitee = Invitee::create([
+            'email' => $request->get('email'),
+        ]);
+        $invitee->attachToActiveWorkSpace();
+
 
         return redirect(route('members.index'))->with('status', 'ایمیل دعوت نامه برای ارسال ذخیره شد!');
 

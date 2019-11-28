@@ -1,11 +1,16 @@
 @component('mail::message')
 # Introduction
 
-The body of your message.
-
-@component('mail::button', ['url' => 'http://localhost/clockify1/public/get/back'])
+با سلام از شما برای مشارکت در چند پروژه دعوت شده است.
+برای قبول همکاری در این پروژه ها روی دکمه زیر کلیک کنید.
+{{$workSpaceId}}
+{{$email}}
+@component('mail::button',
+    ['url' => 'http://localhost/clockify1/public/get/back/'.$workSpaceId.'/'.$email.'/',
+     'email' => $email,
+     'workSpaceId' => $workSpaceId])
     @csrf
-Button Text
+قبول همکاری
 @endcomponent
 
 Thanks,<br>

@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/MemberWorkTimesController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/members/work-times/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InitialWorkSpaceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InitialWorkSpaceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InviteesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InviteesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MailController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MailController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkSpaceMembersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkSpaceMembersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/WorkTimeRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/WorkTimeRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/InviteMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/InviteMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/myFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/myFunctions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/members/Invite.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/members/Invite.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/members/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/members/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -313,7 +319,8 @@
       <workItem from="1574742879315" duration="12968000" />
       <workItem from="1574763514831" duration="13090000" />
       <workItem from="1574829112482" duration="11444000" />
-      <workItem from="1574850120796" duration="6906000" />
+      <workItem from="1574850120796" duration="10994000" />
+      <workItem from="1574915562854" duration="8165000" />
     </task>
     <servers />
   </component>

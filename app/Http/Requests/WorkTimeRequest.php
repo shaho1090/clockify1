@@ -24,7 +24,7 @@ class WorkTimeRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'max:150|min:3'
+            'title' => 'max:150'
         ];
     }
 }

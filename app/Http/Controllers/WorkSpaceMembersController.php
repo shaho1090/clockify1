@@ -48,20 +48,22 @@ class WorkSpaceMembersController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'email' => 'required|email'
-        ]);
 
-        $user = User::where('email', $request->get('email'))->get()->first();
-        if ($user) {
-            $user->workSpaces()->attach(Auth::user()->activeUserWorkSpace()->work_space_id, ['access' => 2,
-                'active' => false
-            ]);
 
-            return redirect(route('members.index'))->with('status', 'ایمیل مورد نظر به تیم اضافه شد!');
-        }
-
-         return redirect(route('invitees.store',[$request]));
+//        request()->validate([
+//            'email' => 'required|email'
+//        ]);
+//
+//        $user = User::where('email', $request->get('email'))->get()->first();
+//        if ($user) {
+//            $user->workSpaces()->attach(Auth::user()->activeUserWorkSpace()->work_space_id, ['access' => 2,
+//                'active' => false
+//            ]);
+//
+//            return redirect(route('members.index'))->with('status', 'ایمیل مورد نظر به تیم اضافه شد!');
+//        }
+//
+//         return redirect(route('invitees.store',[$request]));
     }
 
 

@@ -27,7 +27,7 @@
                                 <div id="collapseTwo" class="collapse" data-parent="#accordion">
                                     <div class="card-body">
                                         <div class="col-md-6">
-                                            <form action="{{ route('members.store') }}" method="post">
+                                            <form action="{{ route('invitees.store') }}" method="post">
                                                 @csrf
                                                 <input type="email" id="email"
                                                        class="form-control @error('email') is-invalid @enderror"

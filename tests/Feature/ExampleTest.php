@@ -14,7 +14,7 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $response = $this->get('/');
+        $response = $this->get('/')->see('به صفحه اکانت خود خوش آمدید!');
 
         $response->assertStatus(200);
     }

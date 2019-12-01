@@ -4,8 +4,10 @@
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InitialWorkSpaceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Old_Controller/InitialWorkSpaceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/UserTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -221,19 +223,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\clockify1\resources\views\members\work-times" />
-      <recent name="C:\xampp\htdocs\clockify1\resources\views\work-spaces" />
-      <recent name="C:\xampp\htdocs\clockify1\resources\views\work_times" />
-      <recent name="C:\xampp\htdocs\clockify1\resources\views\members" />
-      <recent name="C:\xampp\htdocs\clockify1\resources\views\tags" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\clockify1\app\Http\Controllers\Old_Controller" />
       <recent name="C:\xampp\htdocs\clockify1\database\migrations\temp" />
       <recent name="C:\xampp\htdocs\clockify1\app\Http\Requests\Old_request" />
       <recent name="C:\xampp\htdocs\clockify1\app\old_model" />
       <recent name="C:\xampp\htdocs\clockify1\resources\views\projects\New folder" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\members\work-times" />
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\work-spaces" />
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\work_times" />
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\members" />
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\tags" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -248,13 +250,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.UserTest.testWorkSpace">
+  <component name="RunManager" selected="PHPUnit.UserTest.email_field_is_required">
     <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" nameIsGenerated="true">
       <TestRunner />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" scope="Class" />
+    <configuration name="UserTest.email_field_is_required" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="email_field_is_required" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="UserTest.name_field_is_required" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="name_field_is_required" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="UserTest.registerUser" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -272,16 +278,18 @@
     <list>
       <item itemvalue="PHPUnit.Unnamed" />
       <item itemvalue="PHPUnit.UserTest.registerUser" />
-      <item itemvalue="PHPUnit.UserTest" />
       <item itemvalue="PHPUnit.UserTest.testRegister" />
       <item itemvalue="PHPUnit.UserTest.testWorkSpace" />
+      <item itemvalue="PHPUnit.UserTest.name_field_is_required" />
+      <item itemvalue="PHPUnit.UserTest.email_field_is_required" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.UserTest.email_field_is_required" />
+        <item itemvalue="PHPUnit.UserTest.name_field_is_required" />
         <item itemvalue="PHPUnit.UserTest.testWorkSpace" />
         <item itemvalue="PHPUnit.UserTest.testRegister" />
         <item itemvalue="PHPUnit.UserTest.registerUser" />
-        <item itemvalue="PHPUnit.UserTest" />
       </list>
     </recent_temporary>
   </component>

@@ -6,21 +6,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('sendemail', function () {
-    $data = array(
-        'name' => "Learning Laravel",
-    );
-    Mail::send( 'members.welcome',$data, function ($message) {
-        $message->from('laravelshaho@gmail.com', 'Learning Laravel');
-        $message->to('shaho.sanandaji@gmail.com')->subject('Learning Laravel test email');
-    });
-    return "Your email has been sent successfully";
-});
+//Route::get('sendemail', function () {
+//    $data = array(
+//        'name' => "Learning Laravel",
+//    );
+//    Mail::send( 'members.welcome',$data, function ($message) {
+//        $message->from('laravelshaho@gmail.com', 'Learning Laravel');
+//        $message->to('shaho.sanandaji@gmail.com')->subject('Learning Laravel test email');
+//    });
+//    return "Your email has been sent successfully";
+//});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/initial-workspace','InitialWorkSpaceController@store')->name('initial.workspace');
 
 Route::middleware('auth')->group(function () {
     Route::get('/work-time/index','WorkTimesController@index')->name('work-time.index');

@@ -25,7 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //dd(Auth::user()->workSpaces()->get());
         if (!Auth::user()->workSpaces()->get()->first()) {
             $workSpace = WorkSpace::create(['title' => Auth::user()->name]);
             Auth::user()->workSpaces()->attach($workSpace->id, [

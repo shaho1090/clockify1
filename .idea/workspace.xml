@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InitialWorkSpaceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Old_Controller/InitialWorkSpaceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/UserTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -342,6 +338,7 @@
       <workItem from="1574915562854" duration="10456000" />
       <workItem from="1575093960713" duration="3962000" />
       <workItem from="1575109836340" duration="3863000" />
+      <workItem from="1575199364814" duration="1310000" />
     </task>
     <servers />
   </component>

@@ -25,13 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (!Auth::user()->workSpaces()->get()->first()) {
-            $workSpace = WorkSpace::create(['title' => Auth::user()->name]);
-            Auth::user()->workSpaces()->attach($workSpace->id, [
-                'access' => 0,
-                'active' => true,
-            ]); // zero means owner access
-        }
+//        if (!Auth::user()->workSpaces()->get()->first()) {
+//            $workSpace = WorkSpace::create(['title' => Auth::user()->name]);
+//            Auth::user()->workSpaces()->attach($workSpace->id, [
+//                'access' => 0,
+//                'active' => true,
+//            ]); // zero means owner access
+//        }
 
         return view('home');
     }

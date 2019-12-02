@@ -78,19 +78,12 @@ class UserTest extends TestCase
 
     public function testWorkSpace()
     {
-        $this->post('/register', [
-            'name' => 'yadgar',
-            'email' => 'yadgar42@test.com',
-            'password' => 'passwordtest',
-            'password_confirmation' => 'passwordtest',
+
+
+        $this->postJson('/workspaces', [
+            'title' => 'yadgar'
         ]);
-//        $this
-//            ->visit('register')
-//            ->fillForm([
-//                'email' => 'matt@mattstauffer.co'
-//            ])
-//            ->submitForm();
-         $this->assertDatabaseHas('users', ['name' => 'yadgar']);
+
          $this->assertDatabaseHas('work_spaces', ['title' => 'yadgar']);
         //  $this->assertIsNotResource('work-spaces');
 

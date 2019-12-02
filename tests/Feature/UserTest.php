@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\User;
+use Faker\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Session;
 use Tests\TestCase;
@@ -24,7 +25,7 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    public function password_confirmation_bayad_ba_password_barabar_bashad()
+    public function test_if_password_confirmation_not_same_as()
     {
         $this->json('post', '/register', [
             'password' => "Hello World",
@@ -33,7 +34,7 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    public function password_confirmation_barabar_ba_password_ast()
+    public function test_if_password_confirmation_the_same_as()
     {
         $this->json('post', '/register', [
             'password' => "Hello World",
@@ -41,8 +42,17 @@ class UserTest extends TestCase
         ])->assertDontSee("The password confirmation does not match");
     }
 
-
-
+    /** @test */
+    public function test_if_email_duplicate()
+    {
+        factory(User::class)->create([
+            'email' => 'shaho.parvini@gmail.com',
+        ]);
+        $this->json('post', '/register', [
+            'name' => "dsajkfhjasdfhj",
+            'email' => "shaho.parvini@gmail.com",
+        ])->assertSee('The email has already been taken.');
+    }
     /**
      * A basic feature test example.
      *
@@ -51,38 +61,49 @@ class UserTest extends TestCase
     /** @test */
     public function testRegister()
     {
-        $user = [
+        $this->json('post', '/register', [
             'name' => 'yadgar',
             'email' => 'yadgar42@test.com',
             'password' => 'passwordtest',
             'password_confirmation' => 'passwordtest',
-        ];
-
-        $this->json('post', '/register', $user);
+        ]);
 
         $this->assertDatabaseHas('users', [
             'name' => 'yadgar',
             'email' => 'yadgar42@test.com',
         ]);
 
-        self::assertCount(1, User::first()->workSpaces);
+        //self::assertCount(1, User::first()->workSpaces());
     }
 
     public function testWorkSpace()
     {
-
-        $this->assertIsNotResource('work-spaces');
+        $this->post('/register', [
+            'name' => 'yadgar',
+            'email' => 'yadgar42@test.com',
+            'password' => 'passwordtest',
+            'password_confirmation' => 'passwordtest',
+        ]);
+//        $this
+//            ->visit('register')
+//            ->fillForm([
+//                'email' => 'matt@mattstauffer.co'
+//            ])
+//            ->submitForm();
+         $this->assertDatabaseHas('users', ['name' => 'yadgar']);
+         $this->assertDatabaseHas('work_spaces', ['title' => 'yadgar']);
+        //  $this->assertIsNotResource('work-spaces');
 
         // $response->assertStatus(200);
     }
 
-    public function testProjects()
-    {
-
-        $this->assertIsNotResource('/projects');
-
-        // $response->assertStatus(200);
-    }
+//    public function testProjects()
+//    {
+//
+//        $this->assertIsNotResource('/projects');
+//
+//        // $response->assertStatus(200);
+//    }
 
 //    public function testUserAndWorkSpace()
 //    {

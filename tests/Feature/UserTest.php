@@ -76,17 +76,18 @@ class UserTest extends TestCase
         //self::assertCount(1, User::first()->workSpaces());
     }
 
-    public function testWorkSpace()
+    public function testCreateWorkSpaceForUser()
     {
-
-
-        $this->postJson('/workspaces', [
-            'title' => 'yadgar'
+        $this->post('/register', [
+            'name' => 'yadgar',
+            'email' => 'yadgar42@test.com',
+            'password' => 'passwordtest',
+            'password_confirmation' => 'passwordtest',
         ]);
 
-         $this->assertDatabaseHas('work_spaces', ['title' => 'yadgar']);
-        //  $this->assertIsNotResource('work-spaces');
-
+       //  $this->assertDatabaseHas('users', ['name' => 'yadgar']);
+        $this->assertDatabaseHas('work_spaces', ['title' => 'yadgar']);
+        self::assertCount(1, User::first()->workSpaces);
         // $response->assertStatus(200);
     }
 

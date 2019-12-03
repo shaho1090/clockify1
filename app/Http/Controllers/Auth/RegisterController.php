@@ -9,6 +9,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -81,7 +82,11 @@ class RegisterController extends Controller
 
             throw new \Exception();
         }
-        event(Registered::class);
+
+       // event(Registered::class);
+        //event(new Registered($user));
+      //  Event::fire(Registered::class);
+
         DB::commit();
 
         return $user;

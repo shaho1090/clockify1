@@ -21,6 +21,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('work-spaces', 'WorkSpacesController')->except(['update'])->middleware('auth');
+Route::put('/work-spaces/update/{workSpace}','WorkSpacesController@update' )->name('work-spaces.update')
+    ->middleware('auth');
+Route::post('/activate-workspace/{workSpace}', 'ActivateWorkSpaceController@store')->middleware('auth')
+    ->name('activate-workspace');
+
 Route::middleware('auth')->group(function () {
     Route::get('/work-time/index','WorkTimesController@index')->name('work-time.index');
     Route::post('/work-time/start','NewWorkTimeController@store' )->name('work-time.start');
@@ -46,11 +52,7 @@ Route::middleware('auth')->group(function () {
    // Route::put('/work-time/tag/{workTime}','WorkTimeTagController@update' );
 });
 
-Route::resource('work-spaces', 'WorkSpacesController')->except(['update'])->middleware('auth');
-Route::put('/work-spaces/update/{workSpace}','WorkSpacesController@update' )->name('work-spaces.update')
-    ->middleware('auth');
-Route::post('/activate-workspace/{workSpace}', 'ActivateWorkSpaceController@store')->middleware('auth')
-    ->name('activate-workspace');
+
 
 Route::resource('tags', 'TagsController')->except(['update'])->middleware('auth');
 Route::put('/tags/update/{tag}','TagsController@update' )->name('tags.update')->middleware('auth');

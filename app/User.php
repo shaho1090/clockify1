@@ -106,4 +106,13 @@ class User extends Authenticatable
             return true;
         }
     }
+
+    public function addWorkSpace()
+    {
+        $workSpace = WorkSpace::create(['title' => $this->name]);
+        $this->workSpaces()->attach($workSpace->id, [
+            'access' => 0,
+        ]);
+        $workSpace->active();
+    }
 }

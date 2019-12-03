@@ -13,9 +13,15 @@ class UserTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function when_registering_users_a_new_workspace_will_be_assigned_to_them()
+    {
+
+    }
+
+    /** @test */
     public function name_field_is_required()
     {
-        $this->json('post', '/register')->assertSee("The name field is required");
+        $this->json('post', route('register.index'))->assertSee("The name field is required");
     }
 
     /** @test */
@@ -25,21 +31,30 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    public function test_if_password_confirmation_not_same_as()
+    public function test_password_confirmation_error()
     {
-        $this->json('post', '/register', [
-            'password' => "Hello World",
-            'password_confirmation' => "Bye World",
-        ])->assertSee("The password confirmation does not match");
+        $this->post('/register', [
+            'name' => 'yadgar',
+            'email' => 'yadgar42@test.com',
+            'password' => 'passwordtest',
+            'password_confirmation' => 'Bye World',
+        ])->assertSessionHasErrors('password');
     }
 
     /** @test */
-    public function test_if_password_confirmation_the_same_as()
+    public function test_password_confirmation_ok()
     {
-        $this->json('post', '/register', [
-            'password' => "Hello World",
-            'password_confirmation' => "Hello World",
-        ])->assertDontSee("The password confirmation does not match");
+        $this->post('/register', [
+            'name' => 'yadgar',
+            'email' => 'yadgar42@test.com',
+            'password' => 'passwordtest',
+            'password_confirmation' => 'passwordtest',
+        ])->assertSessionHasNoErrors();
+
+//        $this->json('post', '/register', [
+//            'password' => "Hello World",
+//            'password_confirmation' => "Hello World",
+//        ])->assertDontSee("The password confirmation does not match");
     }
 
     /** @test */
@@ -76,7 +91,9 @@ class UserTest extends TestCase
         //self::assertCount(1, User::first()->workSpaces());
     }
 
-    public function testCreateWorkSpaceForUser()
+
+
+    public function test_user_login()
     {
         $this->post('/register', [
             'name' => 'yadgar',
@@ -85,10 +102,10 @@ class UserTest extends TestCase
             'password_confirmation' => 'passwordtest',
         ]);
 
-       //  $this->assertDatabaseHas('users', ['name' => 'yadgar']);
-        $this->assertDatabaseHas('work_spaces', ['title' => 'yadgar']);
-        self::assertCount(1, User::first()->workSpaces);
-        // $response->assertStatus(200);
+        $this->postJson('/login',[
+            'email' => 'yadgar42@test.com',
+            'password' => 'passwordtest',
+        ])->assertRedirect('/home');
     }
 
 //    public function testProjects()

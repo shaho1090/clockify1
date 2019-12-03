@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class WorkSpace extends Model
 {
@@ -64,7 +65,6 @@ class WorkSpace extends Model
 //    }
 
 
-
     public function isActive()
     {
         return Auth::user()->workSpaces()->find($this->id)->pivot->active;
@@ -111,23 +111,20 @@ class WorkSpace extends Model
         return $this->hasMany(Tag::class, 'work_space_id', 'id');
     }
 
+    public static function deActiveAll()
+    {
+        DB::table('user_work_space')
+            ->where('user_id', auth()->id())
+            ->update(['active' => false]);
+    }
+
     public function active()
     {
-        Auth::user()->workSpaces()->find($this->id)->pivot->update(['active' => true]);
+        static::deActiveAll();
 
-        return $this->setOtherInActive();
+        DB::table('user_work_space')
+            ->where('user_id', auth()->id())
+            ->where('work_space_id', $this->id)
+            ->update(['active' => true]);
     }
-
-    private function setOtherInActive()
-    {
-        $userWorkSpaces = Auth::user()->userWorkSpaces()->where('active', true)->get();
-
-        foreach ($userWorkSpaces as $userWorkSpace) {
-            if ($userWorkSpace->work_space_id != $this->id) {
-                $userWorkSpace->update(['active' => false]);
-            }
-        }
-
-    }
-
 }

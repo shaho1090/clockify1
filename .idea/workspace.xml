@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Listeners/CreateWorkSpace.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Observers/UserObserver.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/WorkspaceStates.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Events/CreateWorkSpace.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Listeners/CreateWorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/CreateWorkSpace.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/WorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkSpace.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/UserTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -251,46 +252,46 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.UserTest.testWorkSpace">
+  <component name="RunManager" selected="PHPUnit.UserWorkSpaceTest">
     <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" nameIsGenerated="true">
       <TestRunner />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest.name_field_is_required" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="name_field_is_required" scope="Method" />
+    <configuration name="UserTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest.testRegister" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="testRegister" scope="Method" />
+    <configuration name="UserTest.test_if_password_confirmation_not_same_as" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="test_if_password_confirmation_not_same_as" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest.testWorkSpace" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="testWorkSpace" scope="Method" />
+    <configuration name="UserTest.test_password_confirmation_ok" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="test_password_confirmation_ok" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest.test_if_email_duplicate" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="test_if_email_duplicate" scope="Method" />
+    <configuration name="UserTest.test_user_login" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="test_user_login" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest.test_if_password_confirmation_the_same_as" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="test_if_password_confirmation_the_same_as" scope="Method" />
+    <configuration name="UserWorkSpaceTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" scope="Class" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="PHPUnit.Unnamed" />
-      <item itemvalue="PHPUnit.UserTest.name_field_is_required" />
-      <item itemvalue="PHPUnit.UserTest.testRegister" />
-      <item itemvalue="PHPUnit.UserTest.test_if_email_duplicate" />
-      <item itemvalue="PHPUnit.UserTest.test_if_password_confirmation_the_same_as" />
-      <item itemvalue="PHPUnit.UserTest.testWorkSpace" />
+      <item itemvalue="PHPUnit.UserTest" />
+      <item itemvalue="PHPUnit.UserTest.test_user_login" />
+      <item itemvalue="PHPUnit.UserTest.test_if_password_confirmation_not_same_as" />
+      <item itemvalue="PHPUnit.UserTest.test_password_confirmation_ok" />
+      <item itemvalue="PHPUnit.UserWorkSpaceTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.UserTest.testWorkSpace" />
-        <item itemvalue="PHPUnit.UserTest.testRegister" />
-        <item itemvalue="PHPUnit.UserTest.test_if_password_confirmation_the_same_as" />
-        <item itemvalue="PHPUnit.UserTest.name_field_is_required" />
-        <item itemvalue="PHPUnit.UserTest.test_if_email_duplicate" />
+        <item itemvalue="PHPUnit.UserWorkSpaceTest" />
+        <item itemvalue="PHPUnit.UserTest" />
+        <item itemvalue="PHPUnit.UserTest.test_password_confirmation_ok" />
+        <item itemvalue="PHPUnit.UserTest.test_if_password_confirmation_not_same_as" />
+        <item itemvalue="PHPUnit.UserTest.test_user_login" />
       </list>
     </recent_temporary>
   </component>
@@ -346,7 +347,7 @@
       <workItem from="1575199364814" duration="9933000" />
       <workItem from="1575261007597" duration="8658000" />
       <workItem from="1575282643219" duration="13496000" />
-      <workItem from="1575347618172" duration="1471000" />
+      <workItem from="1575347618172" duration="12554000" />
     </task>
     <servers />
   </component>

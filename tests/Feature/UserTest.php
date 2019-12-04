@@ -76,6 +76,7 @@ class UserTest extends TestCase
     /** @test */
     public function testRegister()
     {
+
         $this->json('post', '/register', [
             'name' => 'yadgar',
             'email' => 'yadgar42@test.com',

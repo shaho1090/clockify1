@@ -2,14 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/WorkspaceStates.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Browser/ExampleTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Browser/Pages/HomePage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Browser/Pages/Page.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Browser/console/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Browser/screenshots/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/DuskTestCase.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Listeners/CreateWorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/CreateWorkSpace.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/WorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkSpace.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkSpacesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkSpacesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/UserTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -222,22 +228,22 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/members/work-times" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="php.test.frameworks.configurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\clockify1\app\Http\Controllers\Old_Controller" />
-      <recent name="C:\xampp\htdocs\clockify1\database\migrations\temp" />
-      <recent name="C:\xampp\htdocs\clockify1\app\Http\Requests\Old_request" />
-      <recent name="C:\xampp\htdocs\clockify1\app\old_model" />
-      <recent name="C:\xampp\htdocs\clockify1\resources\views\projects\New folder" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\clockify1\resources\views\members\work-times" />
       <recent name="C:\xampp\htdocs\clockify1\resources\views\work-spaces" />
       <recent name="C:\xampp\htdocs\clockify1\resources\views\work_times" />
       <recent name="C:\xampp\htdocs\clockify1\resources\views\members" />
       <recent name="C:\xampp\htdocs\clockify1\resources\views\tags" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\clockify1\app\Http\Controllers\Old_Controller" />
+      <recent name="C:\xampp\htdocs\clockify1\database\migrations\temp" />
+      <recent name="C:\xampp\htdocs\clockify1\app\Http\Requests\Old_request" />
+      <recent name="C:\xampp\htdocs\clockify1\app\old_model" />
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\projects\New folder" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -252,46 +258,46 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.UserWorkSpaceTest">
+  <component name="RunManager" selected="PHPUnit.UserWorkSpaceTest.test_requirement_of_title_in_work_space_creation">
     <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" nameIsGenerated="true">
       <TestRunner />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" scope="Class" />
+    <configuration name="UserWorkSpaceTest.test_if_title_greater_then_50_char" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_if_title_greater_then_50_char" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest.test_if_password_confirmation_not_same_as" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="test_if_password_confirmation_not_same_as" scope="Method" />
+    <configuration name="UserWorkSpaceTest.test_if_title_less_then_3_char" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_if_title_less_then_3_char" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest.test_password_confirmation_ok" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="test_password_confirmation_ok" scope="Method" />
+    <configuration name="UserWorkSpaceTest.test_requirement_of_title_in_work_space_creation" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_requirement_of_title_in_work_space_creation" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest.test_user_login" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="test_user_login" scope="Method" />
+    <configuration name="UserWorkSpaceTest.test_user_can_create_work_space" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_user_can_create_work_space" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserWorkSpaceTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" scope="Class" />
+    <configuration name="UserWorkSpaceTest.test_work_space_title_between_3_to_50_character" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_work_space_title_between_3_to_50_character" scope="Method" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="PHPUnit.Unnamed" />
-      <item itemvalue="PHPUnit.UserTest" />
-      <item itemvalue="PHPUnit.UserTest.test_user_login" />
-      <item itemvalue="PHPUnit.UserTest.test_if_password_confirmation_not_same_as" />
-      <item itemvalue="PHPUnit.UserTest.test_password_confirmation_ok" />
-      <item itemvalue="PHPUnit.UserWorkSpaceTest" />
+      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_user_can_create_work_space" />
+      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_title_between_3_to_50_character" />
+      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_if_title_less_then_3_char" />
+      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_if_title_greater_then_50_char" />
+      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_requirement_of_title_in_work_space_creation" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.UserWorkSpaceTest" />
-        <item itemvalue="PHPUnit.UserTest" />
-        <item itemvalue="PHPUnit.UserTest.test_password_confirmation_ok" />
-        <item itemvalue="PHPUnit.UserTest.test_if_password_confirmation_not_same_as" />
-        <item itemvalue="PHPUnit.UserTest.test_user_login" />
+        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_requirement_of_title_in_work_space_creation" />
+        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_if_title_greater_then_50_char" />
+        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_title_between_3_to_50_character" />
+        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_if_title_less_then_3_char" />
+        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_user_can_create_work_space" />
       </list>
     </recent_temporary>
   </component>
@@ -347,7 +353,11 @@
       <workItem from="1575199364814" duration="9933000" />
       <workItem from="1575261007597" duration="8658000" />
       <workItem from="1575282643219" duration="13496000" />
-      <workItem from="1575347618172" duration="12554000" />
+      <workItem from="1575347618172" duration="13514000" />
+      <workItem from="1575369785493" duration="11457000" />
+      <workItem from="1575434418754" duration="6230000" />
+      <workItem from="1575443335813" duration="5014000" />
+      <workItem from="1575455337005" duration="14119000" />
     </task>
     <servers />
   </component>
@@ -383,5 +393,8 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/clockify1@UserWorkSpaceTest_test_user_work_space_owner.xml" NAME="UserWorkSpaceTest.test_user_work_space_owner Coverage Results" MODIFIED="1575373630575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

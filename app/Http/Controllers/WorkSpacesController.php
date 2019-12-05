@@ -41,9 +41,9 @@ class WorkSpacesController extends Controller
      */
     public function store(WorkSpaceRequest $request)
     {
-        request()->validate([
-            'title' => 'required|min:3|max:50'
-        ]);
+//        request()->validate([
+//            'title' => 'required|min:3|max:50'
+//        ]);
         $newWorkSpace = Auth::user()->workSpaces()
             ->create([
                 'title' => $request->get('title')

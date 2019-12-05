@@ -30,7 +30,7 @@ class UserWorkSpaceTest extends TestCase
 
         $this->assertDatabaseHas('users', ['name' => 'yadgar']);
         $this->assertDatabaseHas('work_spaces', ['title' => 'yadgar']);
-       // self::assertCount(1, $user->workSpaces);
+        // self::assertCount(1, $user->workSpaces);
     }
 
     /*
@@ -73,18 +73,26 @@ class UserWorkSpaceTest extends TestCase
      * @test
      * */
 
-    public function test_work_space_title_between_3_to_50_character()
+    public function test_work_space_title_between_3_to_50_char_when_creating()
     {
         $this->login();
-        for ($counter = 3; $counter <= 50; $counter++) {
-            $response = $this->post(route('work-spaces.store'), [
-                'title' => Str::random($counter),
-            ]);
-            if (!$response->assertSessionHasNoErrors()) {
-                break;
-            }
 
-        }
+//        for ($counter = 3; $counter <= 50; $counter++) {
+//            $response = $this->post(route('work-spaces.store'), [
+//                'title' => Str::random($counter),
+//            ]);
+//            if (!$response->assertSessionHasNoErrors()) {
+//                break;
+//            }
+//        }
+
+        $stringLength = rand(3, 50);
+
+        $response = $this->post(route('work-spaces.store'), [
+            'title' => Str::random($stringLength),
+        ]);
+
+        $response->assertSessionHasNoErrors();
     }
 
     /*
@@ -93,10 +101,11 @@ class UserWorkSpaceTest extends TestCase
 
     public function test_if_title_less_then_3_char()
     {
+        $this->login();
 
         $response = $this->post(route('work-spaces.store'), [
             'title' => Str::random(2),
-        ]); $this->login();
+        ]);
 
         $response->assertSessionHasErrors('title');
 
@@ -129,6 +138,7 @@ class UserWorkSpaceTest extends TestCase
     public function test_requirement_of_title_in_work_space_creation()
     {
         $this->login();
+
         $response = $this->post(route('work-spaces.store'), [
             'title' => ''
         ]);
@@ -136,6 +146,69 @@ class UserWorkSpaceTest extends TestCase
         $response->assertSessionHasErrors('title');
     }
 
-    
+    /*
+        * @test
+        * */
+    public function test_work_space_title_can_updated()
+    {
+        $user = $this->login();
+
+        $this->post(route('work-spaces.store'), [
+            'title' => 'example work space',
+        ]);
+
+        $this->put(route('work-spaces.update', $user->workSpaces()->get()->first()->id), [
+            'title' => 'test update title',
+        ]);
+
+        $this->assertDatabaseHas('work_spaces', [
+            'title' => 'test update title'
+        ]);
+    }
+
+    /*
+     * @test
+     *
+     *  */
+    public function test_work_space_update_min_3_char()
+    {
+        $user = $this->login();
+
+        $this->post(route('work-spaces.store'), [
+            'title' => 'example work space',
+        ]);
+
+        $response = $this->put(route('work-spaces.update', $user->workSpaces()->get()->first()->id), [
+            'title' => 'AB',
+        ]);
+
+        $this->assertDatabaseHas('work_spaces', [
+            'title' => 'example work space'
+        ]);
+
+        $response->assertSessionHasErrors('title');
+    }
+    /*
+     * @test
+     * */
+    public function test_work_space_update_max_50_char()
+    {
+        $user = $this->login();
+
+        $this->post(route('work-spaces.store'), [
+            'title' => 'example work space',
+        ]);
+
+        $response = $this->put(route('work-spaces.update', $user->workSpaces()->get()->first()->id), [
+            'title' => Str::random('51'),
+        ]);
+
+        $this->assertDatabaseHas('work_spaces', [
+            'title' => 'example work space'
+        ]);
+
+        $response->assertSessionHasErrors('title');
+    }
+
 
 }

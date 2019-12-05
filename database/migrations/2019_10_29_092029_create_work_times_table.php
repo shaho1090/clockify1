@@ -14,6 +14,7 @@ class CreateWorkTimesTable extends Migration
     public function up()
     {
         Schema::create('work_times', function (Blueprint $table) {
+            $table->softDeletes();
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_work_space_id');
             $table->dateTime('start_time');

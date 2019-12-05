@@ -14,6 +14,7 @@ class CreateInviteesTable extends Migration
     public function up()
     {
         Schema::create('invitees', function (Blueprint $table) {
+            $table->softDeletes();
             $table->bigIncrements('id');
             $table->string('email');
             $table->timestamps();

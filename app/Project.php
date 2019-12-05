@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model
 {
+    use softdeletes;
+    
     protected $fillable = ['user_work_space_id','title'];
 
     public function userWorkSpace()

@@ -4,9 +4,12 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class WorkTime extends Model
 {
+    use softDeletes;
+
     protected $fillable = ['user_work_space_id','start_time','stop_time','billable','title','project_id'];
 
     public function userWorkSpace()

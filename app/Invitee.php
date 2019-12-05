@@ -4,9 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Invitee extends Model
 {
+    use softdeletes;
+
     protected $fillable = ['work_space_id', 'token', 'email'];
 
     public function workSpaces()

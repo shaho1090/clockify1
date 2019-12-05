@@ -24,7 +24,7 @@ class WorkSpaceRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:150|min:3'
+            'title' => 'required|max:50|min:3'
         ];
     }
 }

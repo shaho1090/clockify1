@@ -2,20 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/Browser/ExampleTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Browser/Pages/HomePage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Browser/Pages/Page.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Browser/console/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Browser/screenshots/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/DuskTestCase.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkSpacesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkSpacesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/UserTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/WorkSpaceRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/WorkSpaceRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Invitee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Invitee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Project.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Project.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Task.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/WorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkSpace.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/WorkTime.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkTime.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/WorkTimeTag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkTimeTag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_13_093732_create_work_spaces_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_13_093732_create_work_spaces_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_24_060918_create_projects_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_24_060918_create_projects_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_24_061250_create_tags_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_24_061250_create_tags_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_29_092029_create_work_times_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_29_092029_create_work_times_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_10_163810_create_invitees_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_10_163810_create_invitees_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -231,19 +233,19 @@
     <property name="settings.editor.selected.configurable" value="php.test.frameworks.configurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\clockify1\resources\views\members\work-times" />
-      <recent name="C:\xampp\htdocs\clockify1\resources\views\work-spaces" />
-      <recent name="C:\xampp\htdocs\clockify1\resources\views\work_times" />
-      <recent name="C:\xampp\htdocs\clockify1\resources\views\members" />
-      <recent name="C:\xampp\htdocs\clockify1\resources\views\tags" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\clockify1\app\Http\Controllers\Old_Controller" />
       <recent name="C:\xampp\htdocs\clockify1\database\migrations\temp" />
       <recent name="C:\xampp\htdocs\clockify1\app\Http\Requests\Old_request" />
       <recent name="C:\xampp\htdocs\clockify1\app\old_model" />
       <recent name="C:\xampp\htdocs\clockify1\resources\views\projects\New folder" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\members\work-times" />
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\work-spaces" />
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\work_times" />
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\members" />
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\tags" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -258,46 +260,46 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.UserWorkSpaceTest.test_requirement_of_title_in_work_space_creation">
+  <component name="RunManager" selected="PHPUnit.UserWorkSpaceTest.test_work_space_title_between_3_to_50_char_when_creating">
     <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" nameIsGenerated="true">
       <TestRunner />
       <method v="2" />
     </configuration>
-    <configuration name="UserWorkSpaceTest.test_if_title_greater_then_50_char" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_if_title_greater_then_50_char" scope="Method" />
+    <configuration name="UserWorkSpaceTest.test_work_space_title_between_3_to_50_char_when_create_update" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_work_space_title_between_3_to_50_char_when_create_update" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserWorkSpaceTest.test_if_title_less_then_3_char" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_if_title_less_then_3_char" scope="Method" />
+    <configuration name="UserWorkSpaceTest.test_work_space_title_between_3_to_50_char_when_creating" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_work_space_title_between_3_to_50_char_when_creating" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserWorkSpaceTest.test_requirement_of_title_in_work_space_creation" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_requirement_of_title_in_work_space_creation" scope="Method" />
+    <configuration name="UserWorkSpaceTest.test_work_space_title_can_updated" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_work_space_title_can_updated" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserWorkSpaceTest.test_user_can_create_work_space" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_user_can_create_work_space" scope="Method" />
+    <configuration name="UserWorkSpaceTest.test_work_space_update_max_50_char" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_work_space_update_max_50_char" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserWorkSpaceTest.test_work_space_title_between_3_to_50_character" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_work_space_title_between_3_to_50_character" scope="Method" />
+    <configuration name="UserWorkSpaceTest.test_work_space_update_min_3_char" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_work_space_update_min_3_char" scope="Method" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="PHPUnit.Unnamed" />
-      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_user_can_create_work_space" />
-      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_title_between_3_to_50_character" />
-      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_if_title_less_then_3_char" />
-      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_if_title_greater_then_50_char" />
-      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_requirement_of_title_in_work_space_creation" />
+      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_title_between_3_to_50_char_when_create_update" />
+      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_title_can_updated" />
+      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_update_min_3_char" />
+      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_update_max_50_char" />
+      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_title_between_3_to_50_char_when_creating" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_requirement_of_title_in_work_space_creation" />
-        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_if_title_greater_then_50_char" />
-        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_title_between_3_to_50_character" />
-        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_if_title_less_then_3_char" />
-        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_user_can_create_work_space" />
+        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_title_between_3_to_50_char_when_creating" />
+        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_update_max_50_char" />
+        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_update_min_3_char" />
+        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_title_can_updated" />
+        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_title_between_3_to_50_char_when_create_update" />
       </list>
     </recent_temporary>
   </component>
@@ -357,7 +359,8 @@
       <workItem from="1575369785493" duration="11457000" />
       <workItem from="1575434418754" duration="6230000" />
       <workItem from="1575443335813" duration="5014000" />
-      <workItem from="1575455337005" duration="14119000" />
+      <workItem from="1575455337005" duration="14253000" />
+      <workItem from="1575520541400" duration="6842000" />
     </task>
     <servers />
   </component>

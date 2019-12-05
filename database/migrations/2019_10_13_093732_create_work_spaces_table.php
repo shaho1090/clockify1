@@ -14,10 +14,10 @@ class CreateWorkSpacesTable extends Migration
     public function up()
     {
         Schema::create('work_spaces', function (Blueprint $table) {
+            $table->softDeletes();
             $table->bigIncrements('id');
             $table->string('title');
             $table->timestamps();
-
         });
     }
 

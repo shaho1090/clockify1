@@ -14,6 +14,7 @@ class CreateUserWorkSpaceTable extends Migration
     public function up()
     {
         Schema::create('user_work_space', function (Blueprint $table) {
+            $table->softDeletes();
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('work_space_id');

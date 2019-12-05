@@ -44,6 +44,4 @@ class WorkTime extends Model
             'stop_time' => Carbon::now()
         ]);
     }
-
-
 }

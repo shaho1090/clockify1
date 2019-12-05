@@ -14,6 +14,7 @@ class CreateWorkTimeTagTable extends Migration
     public function up()
     {
         Schema::create('work_time_tag', function (Blueprint $table) {
+            $table->softDeletes();
             $table->bigIncrements('id');
             $table->unsignedBigInteger('work_time_id');
             $table->unsignedBigInteger('tag_id');

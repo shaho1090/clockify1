@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/UserWorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UserWorkSpace.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/WorkSpaceInvitee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkSpaceInvitee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/WorkTimeTag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkTimeTag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/WorkTime.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkTime.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_13_105546_create_user_work_space_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_13_105546_create_user_work_space_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_10_163717_create_work_time_tag_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_10_163717_create_work_time_tag_table.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -348,7 +348,7 @@
       <workItem from="1575434418754" duration="6230000" />
       <workItem from="1575443335813" duration="5014000" />
       <workItem from="1575455337005" duration="14253000" />
-      <workItem from="1575520541400" duration="7915000" />
+      <workItem from="1575520541400" duration="8392000" />
     </task>
     <servers />
   </component>

@@ -3,21 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkSpacesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkSpacesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/WorkSpaceRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/WorkSpaceRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Invitee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Invitee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Project.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Project.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Task.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/WorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkSpace.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/WorkTime.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkTime.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/UserWorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UserWorkSpace.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/WorkSpaceInvitee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkSpaceInvitee.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/WorkTimeTag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkTimeTag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_13_093732_create_work_spaces_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_13_093732_create_work_spaces_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_24_060918_create_projects_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_24_060918_create_projects_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_24_061250_create_tags_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_24_061250_create_tags_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_29_092029_create_work_times_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_29_092029_create_work_times_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_10_163810_create_invitees_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_10_163810_create_invitees_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -360,7 +348,7 @@
       <workItem from="1575434418754" duration="6230000" />
       <workItem from="1575443335813" duration="5014000" />
       <workItem from="1575455337005" duration="14253000" />
-      <workItem from="1575520541400" duration="6842000" />
+      <workItem from="1575520541400" duration="7915000" />
     </task>
     <servers />
   </component>

@@ -5,9 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class UserWorkSpace extends pivot
 {
+    use softDeletes;
+
     public $incrementing = true;
     protected $table = 'user_work_space';
     protected $fillable = ['user_id', 'work_space_id', 'access', 'active'];

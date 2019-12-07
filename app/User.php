@@ -98,11 +98,10 @@ class User extends Authenticatable
 
     public function isOwnerOf(WorkSpace $workSpace)
     {
-        if (Auth::user()
-                ->workSpaces()
+        if ($this->workSpaces()
                 ->find($workSpace->id)
                 ->pivot
-                ->access === 0) {
+                ->access == 0) {
             return true;
         }
     }

@@ -100,6 +100,7 @@ class WorkSpacesController extends Controller
      */
     public function destroy(WorkSpace $workSpace)
     {
+       // dd($workSpace->isActive());
         if ($workSpace->isActive()) {
             return redirect()->action('WorkSpacesController@index')
                 ->with('warning', 'لطفا محیط کاری دیگری را فعال کنید تا امکان حذف این محیط را داشته باشید');
@@ -107,6 +108,10 @@ class WorkSpacesController extends Controller
 
         $this->authorize('delete', $workSpace);
 
+//        if(!Auth::user()->isOwnerOf($workSpace)){
+//            return redirect()->action('WorkSpacesController@index')
+//                ->with('warning', 'شما مجوز حذف این محیط کاری را ندارید!');
+//        }
         $workSpace->removeAllDependency();
 
         $workSpace->delete();

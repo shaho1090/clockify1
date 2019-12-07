@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/factories/UserWorkSpace.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/WorkSpaceFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/WorkTime.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkTime.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_13_105546_create_user_work_space_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_13_105546_create_user_work_space_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_10_163717_create_work_time_tag_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_10_163717_create_work_time_tag_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkSpacesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkSpacesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Policies/WorkSpacePolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Policies/WorkSpacePolicy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/WorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkSpace.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -248,46 +252,46 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.UserWorkSpaceTest.test_work_space_title_between_3_to_50_char_when_creating">
+  <component name="RunManager" selected="PHPUnit.UserWorkSpaceTest.test_user_that_is_not_owner_cant_delete_work_space">
     <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" nameIsGenerated="true">
       <TestRunner />
       <method v="2" />
     </configuration>
-    <configuration name="UserWorkSpaceTest.test_work_space_title_between_3_to_50_char_when_create_update" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_work_space_title_between_3_to_50_char_when_create_update" scope="Method" />
+    <configuration name="UserWorkSpaceTest.test_soft_delete_work_space" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_soft_delete_work_space" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserWorkSpaceTest.test_work_space_title_between_3_to_50_char_when_creating" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_work_space_title_between_3_to_50_char_when_creating" scope="Method" />
+    <configuration name="UserWorkSpaceTest.test_user_can_change_active_work_space" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_user_can_change_active_work_space" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserWorkSpaceTest.test_work_space_title_can_updated" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_work_space_title_can_updated" scope="Method" />
+    <configuration name="UserWorkSpaceTest.test_user_can_delete_inActive_work_space" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_user_can_delete_inActive_work_space" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserWorkSpaceTest.test_work_space_update_max_50_char" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_work_space_update_max_50_char" scope="Method" />
+    <configuration name="UserWorkSpaceTest.test_user_can_not_delete_active_work_space" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_user_can_not_delete_active_work_space" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserWorkSpaceTest.test_work_space_update_min_3_char" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_work_space_update_min_3_char" scope="Method" />
+    <configuration name="UserWorkSpaceTest.test_user_that_is_not_owner_cant_delete_work_space" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserWorkSpaceTest" file="$PROJECT_DIR$/tests/Feature/UserWorkSpaceTest.php" method="test_user_that_is_not_owner_cant_delete_work_space" scope="Method" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="PHPUnit.Unnamed" />
-      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_title_between_3_to_50_char_when_create_update" />
-      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_title_can_updated" />
-      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_update_min_3_char" />
-      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_update_max_50_char" />
-      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_title_between_3_to_50_char_when_creating" />
+      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_soft_delete_work_space" />
+      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_user_can_change_active_work_space" />
+      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_user_can_not_delete_active_work_space" />
+      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_user_can_delete_inActive_work_space" />
+      <item itemvalue="PHPUnit.UserWorkSpaceTest.test_user_that_is_not_owner_cant_delete_work_space" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_title_between_3_to_50_char_when_creating" />
-        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_update_max_50_char" />
-        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_update_min_3_char" />
-        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_title_can_updated" />
-        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_work_space_title_between_3_to_50_char_when_create_update" />
+        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_user_that_is_not_owner_cant_delete_work_space" />
+        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_user_can_not_delete_active_work_space" />
+        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_user_can_delete_inActive_work_space" />
+        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_user_can_change_active_work_space" />
+        <item itemvalue="PHPUnit.UserWorkSpaceTest.test_soft_delete_work_space" />
       </list>
     </recent_temporary>
   </component>
@@ -348,7 +352,10 @@
       <workItem from="1575434418754" duration="6230000" />
       <workItem from="1575443335813" duration="5014000" />
       <workItem from="1575455337005" duration="14253000" />
-      <workItem from="1575520541400" duration="8392000" />
+      <workItem from="1575520541400" duration="12421000" />
+      <workItem from="1575693222943" duration="12875000" />
+      <workItem from="1575714710728" duration="575000" />
+      <workItem from="1575715668448" duration="10211000" />
     </task>
     <servers />
   </component>

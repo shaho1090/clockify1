@@ -70,7 +70,10 @@ class WorkSpace extends Model
 
     public function isActive()
     {
-        return Auth::user()->workSpaces()->find($this->id)->pivot->active;
+         if(Auth::user()->workSpaces()->find($this->id)->pivot->active === 1) {
+             return true;
+         }
+         return false;
     }
 
     public function removeAllDependency()
@@ -78,9 +81,8 @@ class WorkSpace extends Model
         $this->workTimes()->delete();
         $this->projects()->delete();
         $this->tags()->delete();
-        $this->users()->detach();
-        $this->invitees()->detach();
-
+       // $this->users()->detach();
+    //    $this->invitees()->detach();
     }
 
     public function Invitees()

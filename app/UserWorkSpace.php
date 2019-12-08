@@ -20,15 +20,15 @@ class UserWorkSpace extends pivot
         return $this->hasMany(WorkTime::class, 'user_work_space_id', 'id');
     }
 
-    public function scopeProjects($query)
-    {
-        return WorkSpace::find($this->work_space_id)->projects();
-    }
+//    public function scopeProjects($query)
+//    {
+//        return WorkSpace::find($this->work_space_id)->projects();
+//    }
 
-    public function scopeTags($query)
-    {
-        return WorkSpace::find($this->work_space_id)->tags();
-    }
+//    public function scopeTags($query)
+//    {
+//        return WorkSpace::find($this->work_space_id)->tags();
+//    }
 
     public function user()
     {
@@ -55,19 +55,19 @@ class UserWorkSpace extends pivot
 //          return $this->workTimes()->whereNotNull('stop_time');
 //      }
 
-    public function scopeMembers()
-    {
-        return WorkSpace::find($this->work_space_id)->users();
-    }
+//    public function scopeMembers()
+//    {
+//        return WorkSpace::find($this->work_space_id)->users();
+//    }
 
 //    public function invitees()
 //    {
 //        return Invitee::where('work_space_id',$this->id)->get();
 //    }
 
-    public function scopeWhereActive($query)
-    {
-        return $query->where('active', '=', true);
-    }
+//    public function scopeWhereActive($query)
+//    {
+//        return $query->where('active', '=', true);
+//    }
 
 }

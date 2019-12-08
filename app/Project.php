@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Project extends Model
 {
     use softdeletes;
-    
-    protected $fillable = ['user_work_space_id','title'];
+
+    protected $fillable = ['work_space_id','title'];
 
     public function userWorkSpace()
     {

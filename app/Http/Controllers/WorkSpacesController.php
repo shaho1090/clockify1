@@ -100,7 +100,6 @@ class WorkSpacesController extends Controller
      */
     public function destroy(WorkSpace $workSpace)
     {
-       // dd($workSpace->isActive());
         if ($workSpace->isActive()) {
             return redirect()->action('WorkSpacesController@index')
                 ->with('warning', 'لطفا محیط کاری دیگری را فعال کنید تا امکان حذف این محیط را داشته باشید');

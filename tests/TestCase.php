@@ -3,8 +3,11 @@
 namespace Tests;
 
 use App\User;
+use App\WorkSpace;
+use Faker\Factory;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Str;
+use Faker\Generator as Faker;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -12,6 +15,8 @@ abstract class TestCase extends BaseTestCase
 
    // public $inputString = null;
     protected $user;
+
+    protected $workSpace;
 
    /* public function setUp():void
     {
@@ -24,6 +29,23 @@ abstract class TestCase extends BaseTestCase
     public function login()
     {
         $user = factory(User::class)->create();
+
+        $this->actingAs($user);
+
+        return $user;
+    }
+
+    public function registerUserAndCreateWorkSpace()
+    {
+
+        $users = factory(User::class, 20)
+            ->create()
+            ->each(function ($user) {
+                $user->workSpaces()->save(factory(WorkSpace::class)->create([
+                    'title' => $user->name.' WorkSpace',
+                ]));
+            });
+        $user = $users[rand(1, 20)];
 
         $this->actingAs($user);
 

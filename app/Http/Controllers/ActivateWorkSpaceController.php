@@ -37,7 +37,7 @@ class ActivateWorkSpaceController extends Controller
      */
     public function store(WorkSpace $workSpace)
     {
-        $workSpace->active();
+        $workSpace->activate();
 
         return redirect()->action('WorkSpacesController@index');
     }

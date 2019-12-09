@@ -6,6 +6,7 @@ use App\Invitee;
 use App\User;
 use App\UserWorkSpace;
 use App\WorkSpace;
+use App\WorkTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -104,11 +105,15 @@ class WorkSpaceMembersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return void
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        UserWorkSpace::find(Auth::user()->activeUserWorkSpace()->id)->workTimes()->delete();
+
+        $user->workSpaces()->detach(Auth::user()->activeUserWorkSpace()->work_space_id);
+
+        return redirect(route('members.index'))->with('status','عضو مورد نظر از این فضای کاری حذف شد!');
     }
 }

@@ -7,7 +7,6 @@ use App\User;
 use App\UserWorkSpace;
 use App\WorkSpace;
 use Faker\Generator as Faker;
-use phpDocumentor\Reflection\Types\Boolean;
 
 $factory->define(UserWorkSpace::class, function (Faker $faker) {
     return [

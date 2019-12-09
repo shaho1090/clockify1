@@ -2,10 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/config/erd-generator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/UserWorkSpaceProject.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Project.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Project.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ActivateWorkSpaceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ActivateWorkSpaceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MailController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MailController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TagsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TagsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkSpaceMembersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkSpaceMembersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkSpacesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkSpacesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/ContributorFormRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Old_request/ContributorFormRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/WorkTimeRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/WorkTimeRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/UserWorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UserWorkSpace.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/ProjectTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/ProjectTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/WorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkSpace.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/ProjectFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ProjectFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/UserWorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserWorkSpace.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/members/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/members/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -221,19 +237,19 @@
     <property name="settings.editor.selected.configurable" value="php.test.frameworks.configurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\clockify1\app\Http\Controllers\Old_Controller" />
-      <recent name="C:\xampp\htdocs\clockify1\database\migrations\temp" />
-      <recent name="C:\xampp\htdocs\clockify1\app\Http\Requests\Old_request" />
-      <recent name="C:\xampp\htdocs\clockify1\app\old_model" />
-      <recent name="C:\xampp\htdocs\clockify1\resources\views\projects\New folder" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\clockify1\resources\views\members\work-times" />
       <recent name="C:\xampp\htdocs\clockify1\resources\views\work-spaces" />
       <recent name="C:\xampp\htdocs\clockify1\resources\views\work_times" />
       <recent name="C:\xampp\htdocs\clockify1\resources\views\members" />
       <recent name="C:\xampp\htdocs\clockify1\resources\views\tags" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\clockify1\app\Http\Requests\Old_request" />
+      <recent name="C:\xampp\htdocs\clockify1\app\Http\Controllers\Old_Controller" />
+      <recent name="C:\xampp\htdocs\clockify1\database\migrations\temp" />
+      <recent name="C:\xampp\htdocs\clockify1\app\old_model" />
+      <recent name="C:\xampp\htdocs\clockify1\resources\views\projects\New folder" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -248,25 +264,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.projectTest.test_user_can_delete_project">
+  <component name="RunManager" selected="PHPUnit.WorkTimeTest.test_user_can_see_projects_in_work_time_page">
     <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" nameIsGenerated="true">
       <TestRunner />
       <method v="2" />
     </configuration>
-    <configuration name="projectTest.test_project_title_can_update" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\projectTest" file="$PROJECT_DIR$/tests/Feature/ProjectTest.php" method="test_project_title_can_update" scope="Method" />
+    <configuration name="WorkTimeTest.test_user_can_creat_work_time" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\WorkTimeTest" file="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" method="test_user_can_creat_work_time" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="projectTest.test_project_title_cant_be_less_than_3_char" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\projectTest" file="$PROJECT_DIR$/tests/Feature/ProjectTest.php" method="test_project_title_cant_be_less_than_3_char" scope="Method" />
+    <configuration name="WorkTimeTest.test_user_can_see_projects_in_work_time_page" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\WorkTimeTest" file="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" method="test_user_can_see_projects_in_work_time_page" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="projectTest.test_project_title_cont_be_greater_than_50_char" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\projectTest" file="$PROJECT_DIR$/tests/Feature/ProjectTest.php" method="test_project_title_cont_be_greater_than_50_char" scope="Method" />
+    <configuration name="WorkTimeTest.test_user_can_start_work_time" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\WorkTimeTest" file="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" method="test_user_can_start_work_time" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="projectTest.test_user_can_create_project" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\projectTest" file="$PROJECT_DIR$/tests/Feature/ProjectTest.php" method="test_user_can_create_project" scope="Method" />
+    <configuration name="WorkTimeTest.test_user_can_stop_work_time" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\WorkTimeTest" file="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" method="test_user_can_stop_work_time" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="projectTest.test_user_can_delete_project" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -275,19 +291,19 @@
     </configuration>
     <list>
       <item itemvalue="PHPUnit.Unnamed" />
-      <item itemvalue="PHPUnit.projectTest.test_user_can_create_project" />
-      <item itemvalue="PHPUnit.projectTest.test_project_title_cant_be_less_than_3_char" />
-      <item itemvalue="PHPUnit.projectTest.test_project_title_cont_be_greater_than_50_char" />
-      <item itemvalue="PHPUnit.projectTest.test_project_title_can_update" />
       <item itemvalue="PHPUnit.projectTest.test_user_can_delete_project" />
+      <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_creat_work_time" />
+      <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_start_work_time" />
+      <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_stop_work_time" />
+      <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_see_projects_in_work_time_page" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_see_projects_in_work_time_page" />
+        <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_stop_work_time" />
+        <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_start_work_time" />
+        <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_creat_work_time" />
         <item itemvalue="PHPUnit.projectTest.test_user_can_delete_project" />
-        <item itemvalue="PHPUnit.projectTest.test_project_title_can_update" />
-        <item itemvalue="PHPUnit.projectTest.test_project_title_cont_be_greater_than_50_char" />
-        <item itemvalue="PHPUnit.projectTest.test_project_title_cant_be_less_than_3_char" />
-        <item itemvalue="PHPUnit.projectTest.test_user_can_create_project" />
       </list>
     </recent_temporary>
   </component>
@@ -354,7 +370,9 @@
       <workItem from="1575715668448" duration="13310000" />
       <workItem from="1575779466778" duration="351000" />
       <workItem from="1575780240173" duration="12381000" />
-      <workItem from="1575801348461" duration="2756000" />
+      <workItem from="1575801348461" duration="13856000" />
+      <workItem from="1575866019843" duration="9866000" />
+      <workItem from="1575887944318" duration="8529000" />
     </task>
     <servers />
   </component>

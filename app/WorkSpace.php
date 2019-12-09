@@ -116,16 +116,16 @@ class WorkSpace extends Model
         return $this->hasMany(Tag::class, 'work_space_id', 'id');
     }
 
-    public static function deActiveAll()
+    public static function deActivateAll()
     {
         DB::table('user_work_space')
             ->where('user_id', auth()->id())
             ->update(['active' => false]);
     }
 
-    public function active()
+    public function activate()
     {
-        static::deActiveAll();
+        static::deActivateAll();
 
         DB::table('user_work_space')
             ->where('user_id', auth()->id())

@@ -77,8 +77,9 @@ class MailController extends Controller
        if($workSpace->users()->find(Auth::user())){
            return redirect(route('work-spaces.index'))->with('status','شما هم اکنون عضو این فضای کاری هستید');
        }
+
         Auth::user()->workSpaces()->attach($workSpace->id, ['access' => 2]);
-        $workSpace->active();
+        $workSpace->activate();
         Auth::user()->invitation()->remove();
 
         return redirect(route('work-spaces.index'))->with('status','از شما بابت قبول دعوت نامه تشکر می کنیم!');

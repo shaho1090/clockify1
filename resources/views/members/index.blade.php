@@ -57,6 +57,7 @@
                                     <tr>
                                         <th>نام</th>
                                         <th>ایمیل</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -76,6 +77,17 @@
                                                     </button>
                                                 </form>
                                             </td>
+
+                                            <td>
+                                                <form method="post"
+                                                      action="{{ route('members.destroy',$member->id) }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-outline-danger">حذف
+                                                    </button>
+                                                </form>
+                                            </td>
+
                                         </tr>
                                     @endforeach
                                     </tbody>

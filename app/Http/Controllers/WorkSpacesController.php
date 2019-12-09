@@ -49,7 +49,7 @@ class WorkSpacesController extends Controller
                 'title' => $request->get('title')
             ]);
 
-        $newWorkSpace->active();
+        $newWorkSpace->activate();
 
         return redirect(route('work-spaces.index'))
             ->with('status', 'محیط کاری جدید ایجاد شد!');

@@ -52,6 +52,24 @@ abstract class TestCase extends BaseTestCase
         return $user;
     }
 
+//    public function createManyProjects()
+//    {
+//        $faker = new Faker();
+//
+//        $user = $this->registerUserAndCreateWorkSpace();
+//
+//        $userWorkSpaceId = $user->workSpaces()->get()->first()->pivot->id;
+//
+//        $user->workSpaces()->find($userWorkSpaceId)->projects()->createMany([
+//            ['title'=> 'test project A',],
+//            ['title'=> 'test project B',],
+//            ['title'=> 'test project C',],
+//            ['title'=> 'test project D',],
+//        ]);
+//    }
+
+
+
     /*  public function assertStringLengthBetween(int $from ,int $to)
       {
           if ($from<=$this->inputString && $this->inputString<=$to){

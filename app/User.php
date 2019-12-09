@@ -112,6 +112,6 @@ class User extends Authenticatable
         $this->workSpaces()->attach($workSpace->id, [
             'access' => 0,
         ]);
-        $workSpace->active();
+        $workSpace->activate();
     }
 }

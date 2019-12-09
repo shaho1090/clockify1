@@ -19,8 +19,8 @@ class TagsController extends Controller
     {
         $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
 
-        $tags =  $activeUserWorkSpace->tags()
-            ->orderby('id','asc')
+        $tags = $activeUserWorkSpace->tags()
+            ->orderby('id', 'asc')
             ->get();
 
         return view('tags.index', [
@@ -42,14 +42,12 @@ class TagsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(TagFormRequest $request)
     {
-        $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
-
-        $activeUserWorkSpace->tags()
+        Auth::user()->activeUserWorkSpace()->tags()
             ->create(['title' => $request->get('title')]);
 
         return redirect(route('tags.index'));
@@ -58,7 +56,7 @@ class TagsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -69,7 +67,7 @@ class TagsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -101,7 +99,7 @@ class TagsController extends Controller
     public function destroy(Tag $tag)
     {
         $tag->workTimes()->delete();
-        $tag->workTimes()->detach();
+        //$tag->workTimes()->detach();
         $tag->delete();
 
         return redirect()->action('TagsController@index');

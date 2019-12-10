@@ -41,28 +41,38 @@ class WorkTimeTest extends TestCase
 
         $this->assertNotNull($user->completeWorkTimes());
     }
+    /*
+     * @test
+     * */
 
-    public function test_user_can_see_projects_in_work_time_page()
+    public function test_user_can_see_projects_in_work_time_page_related_to_specific_work_space()
     {
+        //initial user and work space
         $user = $this->registerUserAndCreateWorkSpace();
-
+        //get work space id
         $userWorkSpaceId = $user->workSpaces()->get()->first()->pivot->id;
 
+        //create number of projects for this work space
         $user->workSpaces()->find($userWorkSpaceId)->projects()->createMany([
             ['title'=> 'test project A',],
             ['title'=> 'test project B',],
             ['title'=> 'test project C',],
-            ['title'=> 'test project D',],
         ]);
 
-        $this->assertCount('4', Project::all());
-
+        //check if projects are exist
+        $this->assertCount('3', Project::all());
+        //go to the work time page
         $response = $this->get(route('work-time.index'));
-
-        dd($response);
-
-
+        //assert see the projects have been created
+        $response->assertSeeText('test project A');
+        $response->assertSeeText('test project B');
+        $response->assertSeeText('test project C');
     }
+
+    /*
+     * @test
+     *
+     * */
 
     public function createManyProjects()
     {

@@ -14,9 +14,9 @@ abstract class TestCase extends BaseTestCase
     use CreatesApplication;
 
    // public $inputString = null;
-    protected $user;
+   // protected $user;
 
-    protected $workSpace;
+    //protected $workSpace;
 
    /* public function setUp():void
     {
@@ -34,6 +34,9 @@ abstract class TestCase extends BaseTestCase
 
         return $user;
     }
+    /*
+     * @test
+     * */
 
     public function registerUserAndCreateWorkSpace()
     {

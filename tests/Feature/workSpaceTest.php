@@ -11,7 +11,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 
-class UserWorkSpaceTest extends TestCase
+class workSpaceTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -70,28 +70,60 @@ class UserWorkSpaceTest extends TestCase
         ]);
     }
 
+    /*
+     *
+     *  @test
+     * */
     public function test_new_work_space_which_created_is_active()
     {
         $user = $this->login();
 
-        $this->post(route('work-spaces.store'), [
+        $this->json('post',route('work-spaces.store'), [
             'title' => 'example work space',
         ]);
 
-        $this->post(route('work-spaces.store'), [
+        $this->json('post', route('work-spaces.store'), [
             'title' => 'example work space 2',
         ]);
 
-        //dd($request);
         $this->assertCount(2, $user->workSpaces);
 
-        $lastUserWorkSpace = UserWorkSpace::where('user_id', $user->id)->orderBy('id', 'desc')->get()->first();
-        $this->assertEquals('1', $lastUserWorkSpace->active);
+        $this->assertEquals('1', UserWorkSpace::where('user_id', $user->id)
+            ->orderBy('id', 'desc')
+            ->get()
+            ->first()
+            ->active);
+        $this->assertEquals('0', UserWorkSpace::where('user_id', $user->id)
+            ->orderBy('id', 'asc')
+            ->get()
+            ->first()
+            ->active);
 
-//        $response = $this->get(route('work-spaces.index'));
-//        $response->assertSee('example work space');
-//        $response->assertSee('example work space 2');
 
+    }
+    /*
+     * @test
+     * */
+
+    public function test_user_can_see_work_spaces_in_index_page()
+    {
+        $user = $this->login();
+
+        $this->json('post',route('work-spaces.store'), [
+            'title' => 'example work space',
+        ]);
+
+        $this->json('post', route('work-spaces.store'), [
+            'title' => 'example work space 2',
+        ]);
+
+        $this->assertCount(2, $user->workSpaces);
+
+        $response = $this->json('get', route('work-spaces.index'));
+
+        $response->assertSee('example work space');
+
+        $response->assertSee('example work space 2');
     }
 
     /*
@@ -264,7 +296,6 @@ class UserWorkSpaceTest extends TestCase
     /*
      * @test
      * */
-
     public function test_user_can_not_delete_active_work_space()
     {
         $user = $this->login();
@@ -280,6 +311,7 @@ class UserWorkSpaceTest extends TestCase
         $this->assertDatabaseHas('work_spaces', ['title' => 'example for delete']);
 
     }
+
     /*
      * @test
      * */
@@ -287,8 +319,8 @@ class UserWorkSpaceTest extends TestCase
     public function test_user_can_delete_inActive_work_space()
     {
         $user = $this->login();
-       // $user = factory(User::class)->create();
-       //  $workSpace = factory(WorkSpace::class)->create();
+        // $user = factory(User::class)->create();
+        //  $workSpace = factory(WorkSpace::class)->create();
 //        $userWorkspace = factory(UserWorkSpace::class, [
 //            'user_id' => $user->id,
 //            'work_space_id' => $workSpace->id,
@@ -313,6 +345,7 @@ class UserWorkSpaceTest extends TestCase
             'id' => $workSpace->id
         ]);
     }
+
     /*
      * @test
      * */
@@ -332,7 +365,7 @@ class UserWorkSpaceTest extends TestCase
 
         $response->assertStatus(403);
 
-        $this->assertDatabaseHas('work_spaces',['title' =>$workSpace->title]);
+        $this->assertDatabaseHas('work_spaces', ['title' => $workSpace->title]);
     }
 }
 

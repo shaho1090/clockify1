@@ -2,12 +2,11 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-
-use App\Project;
+use App\Model;
 use App\WorkSpace;
 use Faker\Generator as Faker;
 
-$factory->define(Project::class, function (Faker $faker) {
+$factory->define(Tag::class, function (Faker $faker) {
     return [
         'title' => $faker->title,
         'work_space_id' => factory(WorkSpace::class)->create()->id,

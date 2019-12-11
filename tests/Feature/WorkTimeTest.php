@@ -3,10 +3,12 @@
 namespace Tests\Feature;
 
 use App\Project;
+use App\User;
 use App\WorkTime;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 
+use Facades\Tests\Factory\WorkspaceFactory;
 use Tests\TestCase;
 
 class WorkTimeTest extends TestCase
@@ -47,8 +49,15 @@ class WorkTimeTest extends TestCase
 
     public function test_user_can_see_projects_in_work_time_page_related_to_specific_work_space()
     {
+        $workspace = WorkSpaceFactory::forUsers(20)->tag(5)->create();
+
+        dd($workspace->users);
         //initial user and work space
         $user = $this->registerUserAndCreateWorkSpace();
+        //create another work space for test
+        $user->addWorkSpace('work space for test seeing projects');
+        //check if two work space is exist
+//        $user->workSpaces()->get()->
         //get work space id
         $userWorkSpaceId = $user->workSpaces()->get()->first()->pivot->id;
 
@@ -63,10 +72,18 @@ class WorkTimeTest extends TestCase
         $this->assertCount('3', Project::all());
         //go to the work time page
         $response = $this->get(route('work-time.index'));
-        //assert see the projects have been created
+        //assert see the projects those have been created
         $response->assertSeeText('test project A');
         $response->assertSeeText('test project B');
         $response->assertSeeText('test project C');
+    }
+
+    public function test_user_can_see_projects_in_work_time_page_related_to_specific_work_space_2()
+    {
+        $user = $this->login();
+
+
+
     }
 
     /*
@@ -74,17 +91,4 @@ class WorkTimeTest extends TestCase
      *
      * */
 
-    public function createManyProjects()
-    {
-        $user = $this->registerUserAndCreateWorkSpace();
-
-        $userWorkSpaceId = $user->workSpaces()->get()->first()->pivot->id;
-
-        $user->workSpaces()->find($userWorkSpaceId)->projects()->createMany([
-            ['title'=> 'test project A',],
-            ['title'=> 'test project B',],
-            ['title'=> 'test project C',],
-            ['title'=> 'test project D',],
-        ]);
-    }
 }

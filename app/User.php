@@ -106,12 +106,18 @@ class User extends Authenticatable
         }
     }
 
-    public function addWorkSpace()
+    public function addWorkSpace(string $title = '')
     {
-        $workSpace = WorkSpace::create(['title' => $this->name]);
+        if($title = ''){
+            $title = $this->name;
+        }
+
+        $workSpace = WorkSpace::create(['title' =>  $title]);
         $this->workSpaces()->attach($workSpace->id, [
             'access' => 0,
         ]);
         $workSpace->activate();
+
+        return $workSpace;
     }
 }

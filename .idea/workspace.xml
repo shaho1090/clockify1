@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/Feature/WorkSpaceFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/ProjectFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ProjectFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/TagFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/TagFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/WorkSpaceFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/WorkSpaceFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/ProjectFormRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/ProjectFormRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/TagFormRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/TagFormRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/WorkSpaceFactory.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/MyFactories/WorkSpaceFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MyFactories/WorkSpaceFactory.php" afterDir="false" />
     </list>
@@ -224,7 +221,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/members/work-times" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -254,7 +251,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.WorkTimeTest.test_user_can_see_projects_in_work_time_page_related_to_specific_work_space_2">
+  <component name="RunManager" selected="PHPUnit.WorkTimeTest.test_user_can_see_projects_in_work_time_page_related_to_specific_work_space">
     <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" nameIsGenerated="true">
       <TestRunner />
       <method v="2" />
@@ -289,8 +286,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_see_projects_in_work_time_page_related_to_specific_work_space_2" />
         <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_see_projects_in_work_time_page_related_to_specific_work_space" />
+        <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_see_projects_in_work_time_page_related_to_specific_work_space_2" />
         <item itemvalue="PHPUnit.workSpaceTest.test_user_can_see_work_spaces_in_index_page" />
         <item itemvalue="PHPUnit.workSpaceTest.test_new_work_space_which_created_is_active" />
         <item itemvalue="PHPUnit.workSpaceTest.test_user_can_create_work_space" />
@@ -370,7 +367,7 @@
       <workItem from="1575976900112" duration="9184000" />
       <workItem from="1576038733902" duration="8606000" />
       <workItem from="1576060434627" duration="13534000" />
-      <workItem from="1576125152657" duration="1774000" />
+      <workItem from="1576125152657" duration="10499000" />
     </task>
     <servers />
   </component>

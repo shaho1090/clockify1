@@ -8,10 +8,15 @@ use App\Project;
 use App\Tag;
 use App\User;
 use App\WorkSpace;
+use Faker\Test\Provider\BaseTest;
+use Illuminate\Foundation\Testing\Concerns\InteractsWithAuthentication;
 use Illuminate\Support\Str;
+use Tests\CreatesApplication;
 
 class WorkSpaceFactory
 {
+    use InteractsWithAuthentication;
+
     protected $user = null;
 
     protected $tagsCount = 0;
@@ -41,9 +46,19 @@ class WorkSpaceFactory
 
     public function create()
     {
-        $user = $this->user ?? factory(User::class)->create();
+        //dd($this->user);
 
-        $workSpace = $user->addWorkSpace();
+//        if ($this->user === null) {
+//
+//            $user = factory(User::class)->create();
+//
+//            $this->actingAs($user);
+//        }
+       // dd($this->user);
+
+        $workSpace = $this->user->addWorkSpace();
+
+       // dd($workSpace);
 
         factory(Tag::class, $this->tagsCount)->create([
             'work_space_id' => $workSpace->id,
@@ -52,10 +67,6 @@ class WorkSpaceFactory
         factory(Project::class, $this->projectsCount)->create([
             'work_space_id' => $workSpace->id,
         ]);
-
-       // $user->workSpaces()->create(['title' => 'Test']);
-
-
 
         return $workSpace;
     }

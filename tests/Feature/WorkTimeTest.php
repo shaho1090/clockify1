@@ -3,12 +3,15 @@
 namespace Tests\Feature;
 
 use App\Project;
+use App\Tag;
 use App\User;
+use App\WorkSpace;
 use App\WorkTime;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 
-use Facades\Tests\Factory\WorkspaceFactory;
+//use Facades\Tests\MyFactories\WorkSpaceFactory;
+use Tests\MyFactories\WorkSpaceFactory;
 use Tests\TestCase;
 
 class WorkTimeTest extends TestCase
@@ -82,8 +85,15 @@ class WorkTimeTest extends TestCase
     {
         $user = $this->login();
 
+        $this->assertCount(0,Tag::all());
+        $this->assertCount(0,Project::all());
+        $this->assertCount(0,WorkSpace::all());
 
+        $workSpace = app(WorkSpaceFactory::class)->ownedBy($user)->withTags(3)->withProjects(4)->create();
 
+        $this->assertCount(1,WorkSpace::all());
+        $this->assertCount(3,Tag::all());
+        $this->assertCount(4,Project::all());
     }
 
     /*

@@ -108,8 +108,8 @@ class User extends Authenticatable
 
     public function addWorkSpace(string $title = '')
     {
-        if($title = ''){
-            $title = $this->name;
+        if($title === ''){
+            $title = $this->name.' work space';
         }
 
         $workSpace = WorkSpace::create(['title' =>  $title]);

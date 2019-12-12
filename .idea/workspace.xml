@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/factories/TagFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/MyFactories/ProjectFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/MyFactories/WorkSpaceFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/WorkSpaceFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tag.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/factories/ProjectFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ProjectFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/TagFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/TagFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/WorkSpaceFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/WorkSpaceFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/workSpaceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/WorkSpaceTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/MyFactories/WorkSpaceFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MyFactories/WorkSpaceFactory.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -253,17 +254,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.WorkTimeTest.test_user_can_see_projects_in_work_time_page_related_to_specific_work_space">
+  <component name="RunManager" selected="PHPUnit.WorkTimeTest.test_user_can_see_projects_in_work_time_page_related_to_specific_work_space_2">
     <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" nameIsGenerated="true">
       <TestRunner />
       <method v="2" />
     </configuration>
-    <configuration name="WorkTimeTest.test_user_can_see_projects_in_work_time_page" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\WorkTimeTest" file="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" method="test_user_can_see_projects_in_work_time_page" scope="Method" />
-      <method v="2" />
-    </configuration>
     <configuration name="WorkTimeTest.test_user_can_see_projects_in_work_time_page_related_to_specific_work_space" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\WorkTimeTest" file="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" method="test_user_can_see_projects_in_work_time_page_related_to_specific_work_space" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="WorkTimeTest.test_user_can_see_projects_in_work_time_page_related_to_specific_work_space_2" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\WorkTimeTest" file="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" method="test_user_can_see_projects_in_work_time_page_related_to_specific_work_space_2" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="workSpaceTest.test_new_work_space_which_created_is_active" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -280,19 +281,19 @@
     </configuration>
     <list>
       <item itemvalue="PHPUnit.Unnamed" />
-      <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_see_projects_in_work_time_page" />
       <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_see_projects_in_work_time_page_related_to_specific_work_space" />
       <item itemvalue="PHPUnit.workSpaceTest.test_user_can_create_work_space" />
       <item itemvalue="PHPUnit.workSpaceTest.test_new_work_space_which_created_is_active" />
       <item itemvalue="PHPUnit.workSpaceTest.test_user_can_see_work_spaces_in_index_page" />
+      <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_see_projects_in_work_time_page_related_to_specific_work_space_2" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_see_projects_in_work_time_page_related_to_specific_work_space_2" />
         <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_see_projects_in_work_time_page_related_to_specific_work_space" />
         <item itemvalue="PHPUnit.workSpaceTest.test_user_can_see_work_spaces_in_index_page" />
         <item itemvalue="PHPUnit.workSpaceTest.test_new_work_space_which_created_is_active" />
         <item itemvalue="PHPUnit.workSpaceTest.test_user_can_create_work_space" />
-        <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_see_projects_in_work_time_page" />
       </list>
     </recent_temporary>
   </component>
@@ -368,7 +369,8 @@
       <workItem from="1575975557038" duration="1306000" />
       <workItem from="1575976900112" duration="9184000" />
       <workItem from="1576038733902" duration="8606000" />
-      <workItem from="1576060434627" duration="5566000" />
+      <workItem from="1576060434627" duration="13534000" />
+      <workItem from="1576125152657" duration="1774000" />
     </task>
     <servers />
   </component>

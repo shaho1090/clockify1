@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Tag extends Model
 {
     use softDeletes;
-    protected $fillable = ['user_work_space_id','title'];
+    protected $fillable = ['work_space_id','title'];
 
     public function workTimes()
     {

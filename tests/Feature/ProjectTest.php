@@ -57,7 +57,7 @@ class projectTest extends TestCase
     /*
      * @test
      * */
-    public function test_project_title_cont_be_greater_than_50_char()
+    public function test_project_title_cant_be_greater_than_50_char()
     {
         $user = $this->registerUserAndCreateWorkSpace();
 

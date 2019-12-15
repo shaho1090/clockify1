@@ -132,4 +132,9 @@ class WorkSpace extends Model
             ->where('work_space_id', $this->id)
             ->update(['active' => true]);
     }
+
+    public function scopeWhereActive($query)
+    {
+        return $query->where('active', '=', true);
+    }
 }

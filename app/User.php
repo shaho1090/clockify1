@@ -56,9 +56,9 @@ class User extends Authenticatable
         return $this->hasMany(UserWorkSpace::class, 'user_id', 'id');
     }
 
-    public function activeUserWorkSpace()
+    public function activeWorkSpace()
     {
-        return $this->userWorkSpaces()->whereActive()->get()->first();
+        return $this->WorkSpaces()->wherePivot('active', '=', 1)->get()->first();
     }
 
     public function workTimes()
@@ -79,21 +79,22 @@ class User extends Authenticatable
     }
 
 
-    public function completeWorkTimes()
-    {
-        return $this->activeUserWorkSpace()->workTimes()->whereNotNull('stop_time');
-    }
+//    public function scopeCompleteWorkTimes($query)
+//    {
+//        return $query->workTimes()
+//            ->whereNotNull('stop_time');
+//    }
 
     public function incompleteWorkTimes()
     {
-        return $this->activeUserWorkSpace()->workTimes()->whereNull('stop_time');
+        return $this->activeWorkSpace()->workTimes()->whereNull('stop_time');
     }
 
     public function startNewWorkTime()
     {
-        return $this->activeUserWorkSpace()
-            ->workTimes()
-            ->create(['start_time' => Carbon::now()]);
+        return WorkTime::create([
+            'user_work_space_id' => UserWorkSpace::where('work_space_id','=',$this->activeWorkSpace()->id)->get()->first()->id,
+            'start_time' => Carbon::now()]);
     }
 
     public function isOwnerOf(WorkSpace $workSpace)
@@ -108,16 +109,22 @@ class User extends Authenticatable
 
     public function addWorkSpace(string $title = '')
     {
-        if($title === ''){
-            $title = $this->name.' work space';
+        if ($title === '') {
+            $title = $this->name . ' work space';
         }
 
-        $workSpace = WorkSpace::create(['title' =>  $title]);
+        $workSpace = WorkSpace::create(['title' => $title]);
         $this->workSpaces()->attach($workSpace->id, [
             'access' => 0,
         ]);
-        $workSpace->activate();
+
+        //$workSpace->activate();
 
         return $workSpace;
+    }
+
+    public function activateWorkSpace(WorkSpace $workSpace)
+    {
+        $workSpace->activate();
     }
 }

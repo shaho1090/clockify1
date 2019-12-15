@@ -21,15 +21,13 @@ class ProjectsController extends Controller
 
     public function index()
     {
-        $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
-;
-        $projects = WorkSpace::find($activeUserWorkSpace->work_space_id)->projects()
-            ->orderby('id','desc')
+        $projects = Auth::user()->activeWorkSpace()->projects()
+            ->orderby('id', 'desc')
             ->get();
 
         return view('projects.index', [
             'projects' => $projects,
-            'activeWorkSpace' =>  $activeUserWorkSpace,
+            'activeWorkSpace' => Auth::user()->activeWorkSpace(),
         ]);
     }
 
@@ -52,9 +50,9 @@ class ProjectsController extends Controller
      */
     public function store(ProjectFormRequest $request)
     {
-        Auth::user()->activeUserWorkSpace()->projects()
+        Auth::user()->activeWorkSpace()->projects()
             ->create(
-                ['title' =>$request->get('title')]);
+                ['title' => $request->get('title')]);
 
         return redirect(route('projects.index'))->with('status', 'پروژه جدید ایجاد شد!');
     }
@@ -73,7 +71,7 @@ class ProjectsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function edit($id)
@@ -94,6 +92,7 @@ class ProjectsController extends Controller
 
         return redirect()->action('ProjectsController@index');
     }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -107,5 +106,5 @@ class ProjectsController extends Controller
         $project->delete();
 
         return redirect()->action('ProjectsController@index');
-     }
+    }
 }

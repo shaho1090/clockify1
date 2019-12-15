@@ -17,12 +17,12 @@ class WorkTime extends Model
         return $this->belongsTo(UserWorkSpace::class);
     }
 
-    public function scopeIncomplete($query)
+    public function scopeUnCompleted($query)
     {
         $query->whereNull('stop_time');
     }
 
-    public function scopeComplete($query)
+    public function scopeCompleted($query)
     {
         $query->whereNotNull('stop_time');
     }

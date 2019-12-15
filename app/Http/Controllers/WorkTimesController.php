@@ -19,17 +19,18 @@ class WorkTimesController extends Controller
      */
     public function index()
     {
-        $workTimes =  Auth::user()->completeWorkTimes()
+         $workTimes = Auth::user()->workTimes()->completed()
             ->orderby('id', 'desc')
             ->get();
+        //  dd($workTimes);
 
         return view('work_times.index', [
             'workTimes' => $workTimes->load('project')->load('tags'),
-            'projects' => Auth::user()->activeUserWorkSpace()->projects()->get(),
-            'incompleteWorkTime' => Auth::user()
+            'projects' => Auth::user()->activeWorkSpace()->projects()->get(),
+            'unCompletedWorkTime' => Auth::user()
                 ->incompleteWorkTimes()
                 ->first(),
-            'tags' => Auth::user()->activeUserWorkSpace()->tags()->get(),
+            'tags' => Auth::user()->activeWorkSpace()->tags()->get(),
         ]);
     }
 
@@ -73,7 +74,7 @@ class WorkTimesController extends Controller
      */
     public function edit(WorkTime $workTime)
     {
-        $startTime = Carbon::parse($workTime->start_time);
+        /*$startTime = Carbon::parse($workTime->start_time);
         $stopTime = Carbon::parse($workTime->stop_time);
         $totalDuration = $stopTime->diffInSeconds($startTime);
 
@@ -81,7 +82,7 @@ class WorkTimesController extends Controller
         return view('work_times.edit', [
             'totalDuration' => $totalDuration,
             'workTime' => $workTime->load('project'),
-        ]);
+        ]);*/
     }
 
     /**
@@ -93,14 +94,14 @@ class WorkTimesController extends Controller
      */
     public function update(WorkTimeRequest $request)
     {
-        $billable = $request->get('selectBillable');
-        $billable = $billable ? true : false;
+        /*  $billable = $request->get('selectBillable');
+          $billable = $billable ? true : false;
 
-        WorkTime::find($request->get('workTimeId'))
-            ->update(['billable' => $billable,
-                'title' => $request->get('title')]);
+          WorkTime::find($request->get('workTimeId'))
+              ->update(['billable' => $billable,
+                  'title' => $request->get('title')]);
 
-        return redirect()->action('WorkTimesController@index');
+          return redirect()->action('WorkTimesController@index');*/
 
     }
 
@@ -113,8 +114,8 @@ class WorkTimesController extends Controller
      */
     public function destroy(WorkTime $workTime)
     {
-        $workTime->delete();
+        /*$workTime->delete();
 
-        return redirect()->action('WorkTimesController@index');
+        return redirect()->action('WorkTimesController@index');*/
     }
 }

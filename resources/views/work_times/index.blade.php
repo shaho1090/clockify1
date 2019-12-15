@@ -42,7 +42,7 @@
                                         </td>
 
                                         <td>
-                                            @if (! $incompleteWorkTime)
+                                            @if (! $unCompletedWorkTime)
                                                 <button class="btn btn-outline-dark" type="submit" name="start"
                                                         formaction="{{route('work-time.start')}}">
                                                     شروع
@@ -56,11 +56,11 @@
                                         </td>
 
                                         <td>
-                                            {{ $incompleteWorkTime ? date("H:i:s",strtotime($incompleteWorkTime->start_time)) :'--:--:--'}}
+                                            {{ $unCompletedWorkTime ? date("H:i:s",strtotime($unCompletedWorkTime->start_time)) :'--:--:--'}}
                                         </td>
 
                                         <td>
-                                            {{ $incompleteWorkTime ? date("H:i:s",strtotime($incompleteWorkTime->stop_time)) :'--:--:--'}}
+                                            {{ $unCompletedWorkTime ? date("H:i:s",strtotime($unCompletedWorkTime->stop_time)) :'--:--:--'}}
                                         </td>
 
                                         <td>

@@ -40,14 +40,14 @@ abstract class TestCase extends BaseTestCase
 
     public function registerUserAndCreateWorkSpace()
     {
-
         $users = factory(User::class, 20)
             ->create()
             ->each(function ($user) {
                 $user->workSpaces()->save(factory(WorkSpace::class)->create([
-                    'title' => $user->name.' WorkSpace',
+                    'title' => $user->name.'work space',
                 ]));
             });
+
         $user = $users[rand(1, 20)];
 
         $this->actingAs($user);

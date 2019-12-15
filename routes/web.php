@@ -39,9 +39,9 @@ Route::middleware('auth')->group(function () {
  * these routes used for change work time fields using ajax
  */
 Route::middleware('auth')->group(function () {
-    Route::put('/work-time/title/{workTime}','WorkTimeTitleController@update' );
-    Route::put('/work-time/project/{workTime}','WorkTimeProjectController@update' );
-    Route::put('/work-time/billable/{workTime}','WorkTimeBillableController@update' );
+    Route::put('/work-time/title/{workTime}','WorkTimeTitleController@update' )->name('work-time-title.update');
+    Route::put('/work-time/project/{workTime}','WorkTimeProjectController@update' )->name('work-time-project.update');
+    Route::put('/work-time/billable/{workTime}','WorkTimeBillableController@update' )->name('work-time-billable.update');
     Route::put('/work-time/tag/{workTime}','WorkTimeTagController@update' );
 });
 

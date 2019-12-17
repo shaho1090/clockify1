@@ -58,6 +58,4 @@ class MemberTest extends TestCase
         $response->assertDontSee($userA->name);
         $response->assertDontSee($userB->name);
     }
-
-    
 }

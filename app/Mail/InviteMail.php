@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\UserWorkSpace;
+use App\WorkSpace;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -17,12 +18,12 @@ class InviteMail extends Mailable
 
     /**
      * Create a new message instance.
-     * @param UserWorkSpace $activeUserWorkSpace
+     * @param WorkSpace $activeWorkSpace
      * @param Email $email
      */
-    public function __construct(UserWorkSpace $activeUserWorkSpace, $email)
+    public function __construct(WorkSpace $activeWorkSpace, $email)
     {
-        $this->workSpaceId = $activeUserWorkSpace->work_space_id;
+        $this->workSpaceId = $activeWorkSpace->id;
         $this->email = $email;
     }
 

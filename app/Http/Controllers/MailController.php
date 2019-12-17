@@ -41,7 +41,7 @@ class MailController extends Controller
      */
     public function store(Invitee $invitee)
     {
-       $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
+        $activeWorkSpace = Auth::user()->activeWorkSpace();
 //          $data = array(
 //          'workSpaceId' => $activeUserWorkSpace->id,
 //          'email' => $invitee->email,
@@ -51,7 +51,7 @@ class MailController extends Controller
 //          $message->to( $invitee->email)->subject('دعوت به همکاری در پروژه');
 //      });
 
-        Mail::to($invitee->email)->send(new InviteMail($activeUserWorkSpace, $invitee->email));
+        Mail::to($invitee->email)->send(new InviteMail($activeWorkSpace, $invitee->email));
 
         return redirect(route('members.index'))->with('status', 'ایمیل دعوت نامه با موفقیت ارسال شد!');
 
@@ -68,7 +68,7 @@ class MailController extends Controller
      * @param $email
      * @return void
      */
-    public function show(WorkSpace $workSpace, $token)
+    public function show(WorkSpace $workSpace)
     {
        if(! Auth::user()->invitation()){
            return redirect('/home');

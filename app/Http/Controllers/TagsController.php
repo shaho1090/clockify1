@@ -96,20 +96,10 @@ class TagsController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //dd(Auth::user()->activeWorkSpace()->tags);
-        //dd($tag);
-        $test = $tag->workTimes()->get();
-       // dd( $test, 'hello');
-
-//        foreach($tag->workTimes()->get() as $workTime) {
-//          $workTime->delete();
-//              }
-
          $tag->workTimes()->delete();
 
-        //$tag->load('workTimes')->delete();
-        $tag->delete();
-       // dd(Auth::user()->workTimes()->get()->all());
+         $tag->delete();
+
         return redirect()->route('tags.index');
     }
 }

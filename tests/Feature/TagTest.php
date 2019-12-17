@@ -112,6 +112,33 @@ class TagTest extends TestCase
             $user->activeWorkSpace()->tags()->get()->first()->title);
     }
 
+
+    public function test_title_of_tag_should_be_less_than_100_character()
+    {
+        $this->registerUserAndCreateWorkSpace();
+
+        $this->assertCount(0 , Tag::all());
+
+        $request = $this->post(route('tags.store'),['title' => Str::random(101)]);
+
+        $this->assertCount(0 , Tag::all());
+
+        $request->assertSessionHasErrorsIn('title');
+    }
+
+    public function test_title_of_tag_should_be_greater_than_3_character()
+    {
+        $this->registerUserAndCreateWorkSpace();
+
+        $this->assertCount(0 , Tag::all());
+
+        $request = $this->post(route('tags.store'),['title' => Str::random(2)]);
+
+        $this->assertCount(0 , Tag::all());
+
+        $request->assertSessionHasErrorsIn('title');
+    }
+
     public function test_user_can_delete_tag()
     {
         $user = $this->registerUserAndCreateWorkSpace();

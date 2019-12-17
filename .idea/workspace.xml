@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/Feature/TagTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NewWorkTimeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NewWorkTimeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TagsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TagsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkTimeTagController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkTimeTagController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkTimesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkTimesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/WorkTime.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkTime.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/WorkTimeTag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkTimeTag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_10_163717_create_work_time_tag_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_10_163717_create_work_time_tag_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/ProjectTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/ProjectTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/TagTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/TagTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -259,7 +248,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.TagTest.test_removing_work_times_with_deleting_tag">
+  <component name="RunManager" selected="PHPUnit.TagTest.test_title_of_tag_should_be_greater_than_3_character">
     <configuration name="TagTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\TagTest" file="$PROJECT_DIR$/tests/Feature/TagTest.php" scope="Class" />
       <method v="2" />
@@ -268,16 +257,16 @@
       <TestRunner class="Tests\Feature\TagTest" file="$PROJECT_DIR$/tests/Feature/TagTest.php" method="test_removing_work_times_with_deleting_tag" scope="Method" />
       <method v="2" />
     </configuration>
+    <configuration name="TagTest.test_title_of_tag_should_be_greater_than_3_character" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\TagTest" file="$PROJECT_DIR$/tests/Feature/TagTest.php" method="test_title_of_tag_should_be_greater_than_3_character" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TagTest.test_title_of_tag_should_be_less_than_100_character" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\TagTest" file="$PROJECT_DIR$/tests/Feature/TagTest.php" method="test_title_of_tag_should_be_less_than_100_character" scope="Method" />
+      <method v="2" />
+    </configuration>
     <configuration name="TagTest.test_user_can_delete_tag" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\TagTest" file="$PROJECT_DIR$/tests/Feature/TagTest.php" method="test_user_can_delete_tag" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TagTest.test_user_can_update_title_of_tag" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\TagTest" file="$PROJECT_DIR$/tests/Feature/TagTest.php" method="test_user_can_update_title_of_tag" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TagTest.test_user_should_not_see_tags_of_other_work_space_on_tag_index_page" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\TagTest" file="$PROJECT_DIR$/tests/Feature/TagTest.php" method="test_user_should_not_see_tags_of_other_work_space_on_tag_index_page" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" nameIsGenerated="true">
@@ -286,19 +275,19 @@
     </configuration>
     <list>
       <item itemvalue="PHPUnit.Unnamed" />
-      <item itemvalue="PHPUnit.TagTest.test_user_should_not_see_tags_of_other_work_space_on_tag_index_page" />
-      <item itemvalue="PHPUnit.TagTest.test_user_can_update_title_of_tag" />
       <item itemvalue="PHPUnit.TagTest" />
       <item itemvalue="PHPUnit.TagTest.test_user_can_delete_tag" />
       <item itemvalue="PHPUnit.TagTest.test_removing_work_times_with_deleting_tag" />
+      <item itemvalue="PHPUnit.TagTest.test_title_of_tag_should_be_less_than_100_character" />
+      <item itemvalue="PHPUnit.TagTest.test_title_of_tag_should_be_greater_than_3_character" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.TagTest.test_title_of_tag_should_be_greater_than_3_character" />
+        <item itemvalue="PHPUnit.TagTest.test_title_of_tag_should_be_less_than_100_character" />
         <item itemvalue="PHPUnit.TagTest.test_removing_work_times_with_deleting_tag" />
         <item itemvalue="PHPUnit.TagTest.test_user_can_delete_tag" />
         <item itemvalue="PHPUnit.TagTest" />
-        <item itemvalue="PHPUnit.TagTest.test_user_can_update_title_of_tag" />
-        <item itemvalue="PHPUnit.TagTest.test_user_should_not_see_tags_of_other_work_space_on_tag_index_page" />
       </list>
     </recent_temporary>
   </component>
@@ -381,6 +370,7 @@
       <workItem from="1576384377362" duration="12047000" />
       <workItem from="1576405730101" duration="13217000" />
       <workItem from="1576470818499" duration="13072000" />
+      <workItem from="1576557280159" duration="2276000" />
     </task>
     <servers />
   </component>

@@ -137,4 +137,10 @@ class WorkSpace extends Model
     {
         return $query->where('active', '=', true);
     }
+
+//    public function scopeMembers()
+//    {
+//        //return WorkSpace::find($this->work_space_id)->users();
+//        return $this->users();
+//    }
 }

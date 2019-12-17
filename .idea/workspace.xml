@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tests/Feature/MemberTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkSpaceMembersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkSpaceMembersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Invitee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Invitee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/UserWorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UserWorkSpace.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/WorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkSpace.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/TagTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/TagTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -246,25 +252,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.TagTest.test_title_of_tag_should_not_be_empty">
-    <configuration name="TagTest.test_removing_work_times_with_deleting_tag" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\TagTest" file="$PROJECT_DIR$/tests/Feature/TagTest.php" method="test_removing_work_times_with_deleting_tag" scope="Method" />
+  <component name="RunManager" selected="PHPUnit.MemberTest.test_user_should_not_see_members_of_inActive_work_space">
+    <configuration name="MemberTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\MemberTest" file="$PROJECT_DIR$/tests/Feature/MemberTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="MemberTest.test_user_can_see_members_of_active_work_space" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\MemberTest" file="$PROJECT_DIR$/tests/Feature/MemberTest.php" method="test_user_can_see_members_of_active_work_space" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="MemberTest.test_user_should_not_see_members_of_inActive_work_space" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\MemberTest" file="$PROJECT_DIR$/tests/Feature/MemberTest.php" method="test_user_should_not_see_members_of_inActive_work_space" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="TagTest.test_title_of_tag_should_be_greater_than_3_character" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\TagTest" file="$PROJECT_DIR$/tests/Feature/TagTest.php" method="test_title_of_tag_should_be_greater_than_3_character" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="TagTest.test_title_of_tag_should_be_less_than_100_character" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\TagTest" file="$PROJECT_DIR$/tests/Feature/TagTest.php" method="test_title_of_tag_should_be_less_than_100_character" scope="Method" />
-      <method v="2" />
-    </configuration>
     <configuration name="TagTest.test_title_of_tag_should_not_be_empty" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\TagTest" file="$PROJECT_DIR$/tests/Feature/TagTest.php" method="test_title_of_tag_should_not_be_empty" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TagTest.test_user_can_delete_tag" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\TagTest" file="$PROJECT_DIR$/tests/Feature/TagTest.php" method="test_user_can_delete_tag" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" nameIsGenerated="true">
@@ -273,19 +279,19 @@
     </configuration>
     <list>
       <item itemvalue="PHPUnit.Unnamed" />
-      <item itemvalue="PHPUnit.TagTest.test_user_can_delete_tag" />
-      <item itemvalue="PHPUnit.TagTest.test_removing_work_times_with_deleting_tag" />
-      <item itemvalue="PHPUnit.TagTest.test_title_of_tag_should_be_less_than_100_character" />
       <item itemvalue="PHPUnit.TagTest.test_title_of_tag_should_be_greater_than_3_character" />
       <item itemvalue="PHPUnit.TagTest.test_title_of_tag_should_not_be_empty" />
+      <item itemvalue="PHPUnit.MemberTest.test_user_can_see_members_of_active_work_space" />
+      <item itemvalue="PHPUnit.MemberTest" />
+      <item itemvalue="PHPUnit.MemberTest.test_user_should_not_see_members_of_inActive_work_space" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.MemberTest.test_user_should_not_see_members_of_inActive_work_space" />
+        <item itemvalue="PHPUnit.MemberTest.test_user_can_see_members_of_active_work_space" />
+        <item itemvalue="PHPUnit.MemberTest" />
         <item itemvalue="PHPUnit.TagTest.test_title_of_tag_should_not_be_empty" />
         <item itemvalue="PHPUnit.TagTest.test_title_of_tag_should_be_greater_than_3_character" />
-        <item itemvalue="PHPUnit.TagTest.test_title_of_tag_should_be_less_than_100_character" />
-        <item itemvalue="PHPUnit.TagTest.test_removing_work_times_with_deleting_tag" />
-        <item itemvalue="PHPUnit.TagTest.test_user_can_delete_tag" />
       </list>
     </recent_temporary>
   </component>
@@ -368,7 +374,7 @@
       <workItem from="1576384377362" duration="12047000" />
       <workItem from="1576405730101" duration="13217000" />
       <workItem from="1576470818499" duration="13072000" />
-      <workItem from="1576557280159" duration="2595000" />
+      <workItem from="1576557280159" duration="11420000" />
     </task>
     <servers />
   </component>

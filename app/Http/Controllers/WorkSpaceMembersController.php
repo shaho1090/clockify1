@@ -19,14 +19,14 @@ class WorkSpaceMembersController extends Controller
      */
     public function index()
     {
-        $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
+        $activeWorkSpace = Auth::user()->activeWorkSpace();
 
-        $invitees = WorkSpace::find($activeUserWorkSpace->work_space_id)
+        $invitees = $activeWorkSpace//WorkSpace::find($activeWorkSpace->id)
             ->invitees()
             ->get();
 
         return view('members.index', [
-            'members' => $activeUserWorkSpace->members()->get(),
+            'members' => $activeWorkSpace->users()->get(),
             'invitees' => $invitees,
         ]);
     }
@@ -49,8 +49,6 @@ class WorkSpaceMembersController extends Controller
      */
     public function store(Request $request)
     {
-
-
 //        request()->validate([
 //            'email' => 'required|email'
 //        ]);

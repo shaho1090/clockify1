@@ -22,8 +22,7 @@ class Invitee extends Model
     {
         $this->workSpaces()
             ->detach(Auth::user()
-                ->activeUserWorkSpace()
-                ->work_space_id);
+                ->activeWorkSpace());
         return $this->removeIfNotUsed();
     }
 
@@ -42,8 +41,7 @@ class Invitee extends Model
         if ($this->isNotAttached()) {
             return $this->workSpaces()
                 ->attach(Auth::user()
-                    ->activeUserWorkSpace()
-                    ->work_space_id, ['token' => uniqid()
+                    ->activeWorkSpace(), ['token' => uniqid()
                 ]);
         }
     }
@@ -52,8 +50,7 @@ class Invitee extends Model
     {
         if (!$this->workSpaces()
             ->find(Auth::user()
-                ->activeUserWorkSpace()
-                ->work_space_id)) {
+                ->activeWorkSpace())) {
             return $this;
         }
     }

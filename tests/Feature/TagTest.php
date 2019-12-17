@@ -29,7 +29,6 @@ class TagTest extends TestCase
         $this->post(route('tags.store'), ['title' => 'tag for test']);
 
         $this->assertCount(1, $user->activeWorkSpace()->tags()->get());
-
     }
 
     public function test_user_can_see_tags_on_index_page_related_to_active_work_space()

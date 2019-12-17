@@ -30,7 +30,7 @@ class WorkTimeTagController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +41,7 @@ class WorkTimeTagController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -52,7 +52,7 @@ class WorkTimeTagController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -67,12 +67,14 @@ class WorkTimeTagController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return void
      */
-     public function update(WorkTime $workTime,Request $request)
+    public function update(WorkTime $workTime, Request $request)
     {
-        if($workTime->tags()->find($request->get('tagId'))){
+        if ($workTime->tags()->find($request->get('tagId'))) {
             $workTime->tags()->detach($request->get('tagId'));
-        }else{
+            // dd('if was done');
+        } else {
             $workTime->tags()->attach($request->get('tagId'));
+            // dd('else was done');
         }
     }
 
@@ -80,7 +82,7 @@ class WorkTimeTagController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

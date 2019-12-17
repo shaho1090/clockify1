@@ -114,8 +114,8 @@ class WorkTimesController extends Controller
      */
     public function destroy(WorkTime $workTime)
     {
-        /*$workTime->delete();
+        $workTime->delete();
 
-        return redirect()->action('WorkTimesController@index');*/
+        return redirect()->action('WorkTimesController@index');
     }
 }

@@ -62,8 +62,6 @@ class NewWorkTimeController extends Controller
 
         $tags = $request->get('tags');
 
-        // dd($tags);
-
         if ($tags) {
             foreach ($tags as $tag) {
                 $unCompletedWorkTime->tags()->attach($tag);

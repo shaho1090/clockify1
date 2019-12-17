@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tests/Feature/TagTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NewWorkTimeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NewWorkTimeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TagsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TagsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkTimeTagController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkTimeTagController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkTimesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkTimesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/WorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkSpace.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tag.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/WorkTime.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkTime.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/work_times/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/work_times/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/WorkTimeTag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkTimeTag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_10_163717_create_work_time_tag_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_10_163717_create_work_time_tag_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/ProjectTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/ProjectTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" afterDir="false" />
@@ -227,7 +229,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/members/work-times" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -257,46 +259,46 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.WorkTimeTest.test_user_can_add_tags_when_work_time_was_stored">
+  <component name="RunManager" selected="PHPUnit.TagTest.test_removing_work_times_with_deleting_tag">
+    <configuration name="TagTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\TagTest" file="$PROJECT_DIR$/tests/Feature/TagTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TagTest.test_removing_work_times_with_deleting_tag" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\TagTest" file="$PROJECT_DIR$/tests/Feature/TagTest.php" method="test_removing_work_times_with_deleting_tag" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TagTest.test_user_can_delete_tag" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\TagTest" file="$PROJECT_DIR$/tests/Feature/TagTest.php" method="test_user_can_delete_tag" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TagTest.test_user_can_update_title_of_tag" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\TagTest" file="$PROJECT_DIR$/tests/Feature/TagTest.php" method="test_user_can_update_title_of_tag" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TagTest.test_user_should_not_see_tags_of_other_work_space_on_tag_index_page" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\TagTest" file="$PROJECT_DIR$/tests/Feature/TagTest.php" method="test_user_should_not_see_tags_of_other_work_space_on_tag_index_page" scope="Method" />
+      <method v="2" />
+    </configuration>
     <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" nameIsGenerated="true">
       <TestRunner />
       <method v="2" />
     </configuration>
-    <configuration name="WorkTimeTest.test_user_can_add_tags_when_work_time_was_stored" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\WorkTimeTest" file="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" method="test_user_can_add_tags_when_work_time_was_stored" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="WorkTimeTest.test_user_can_add_title_to_work_time" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\WorkTimeTest" file="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" method="test_user_can_add_title_to_work_time" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="WorkTimeTest.test_user_can_update_billable_of_work_time" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\WorkTimeTest" file="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" method="test_user_can_update_billable_of_work_time" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="WorkTimeTest.test_user_can_update_project_of_work_time" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\WorkTimeTest" file="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" method="test_user_can_update_project_of_work_time" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="WorkTimeTest.test_user_can_update_title_of_work_time" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\WorkTimeTest" file="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" method="test_user_can_update_title_of_work_time" scope="Method" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="PHPUnit.Unnamed" />
-      <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_add_title_to_work_time" />
-      <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_update_title_of_work_time" />
-      <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_update_billable_of_work_time" />
-      <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_update_project_of_work_time" />
-      <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_add_tags_when_work_time_was_stored" />
+      <item itemvalue="PHPUnit.TagTest.test_user_should_not_see_tags_of_other_work_space_on_tag_index_page" />
+      <item itemvalue="PHPUnit.TagTest.test_user_can_update_title_of_tag" />
+      <item itemvalue="PHPUnit.TagTest" />
+      <item itemvalue="PHPUnit.TagTest.test_user_can_delete_tag" />
+      <item itemvalue="PHPUnit.TagTest.test_removing_work_times_with_deleting_tag" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_add_tags_when_work_time_was_stored" />
-        <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_update_project_of_work_time" />
-        <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_update_billable_of_work_time" />
-        <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_update_title_of_work_time" />
-        <item itemvalue="PHPUnit.WorkTimeTest.test_user_can_add_title_to_work_time" />
+        <item itemvalue="PHPUnit.TagTest.test_removing_work_times_with_deleting_tag" />
+        <item itemvalue="PHPUnit.TagTest.test_user_can_delete_tag" />
+        <item itemvalue="PHPUnit.TagTest" />
+        <item itemvalue="PHPUnit.TagTest.test_user_can_update_title_of_tag" />
+        <item itemvalue="PHPUnit.TagTest.test_user_should_not_see_tags_of_other_work_space_on_tag_index_page" />
       </list>
     </recent_temporary>
   </component>
@@ -376,7 +378,9 @@
       <workItem from="1576125152657" duration="13285000" />
       <workItem from="1576297897823" duration="12765000" />
       <workItem from="1576318726902" duration="14588000" />
-      <workItem from="1576384377362" duration="1532000" />
+      <workItem from="1576384377362" duration="12047000" />
+      <workItem from="1576405730101" duration="13217000" />
+      <workItem from="1576470818499" duration="13072000" />
     </task>
     <servers />
   </component>

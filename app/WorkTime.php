@@ -34,8 +34,7 @@ class WorkTime extends Model
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class,'work_time_tag')
-            ->withPivot('id');
+        return $this->belongsToMany(Tag::class,'work_time_tag');
     }
 
     public function complete()

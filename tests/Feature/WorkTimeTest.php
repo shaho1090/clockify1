@@ -26,9 +26,6 @@ class WorkTimeTest extends TestCase
     {
         $this->registerUserAndCreateWorkSpace();
 
-        //$userWorkSpaceId = $user->workSpaces()->get()->first()->pivot->id;
-
-        // $this->post(route('work-time.start'))->assertSessionDoesntHaveErrors();
         $this->post(route('work-time.start'));
 
         $this->assertCount(1, WorkTime::all());
@@ -48,7 +45,7 @@ class WorkTimeTest extends TestCase
         $this->post(route('work-time.stop', [
             'title' => 'work time for test']));
 
-        $this->assertNotNull($user->completeWorkTimes());
+        $this->assertNotNull($user->workTimes()->completed()->get());
     }
 
     /*
@@ -142,8 +139,6 @@ class WorkTimeTest extends TestCase
         $this->assertCount(4, Project::all());
 
         $response = $this->json('get', route('work-time.index'));
-
-
     }
 
     /*
@@ -179,7 +174,7 @@ class WorkTimeTest extends TestCase
     }
 
 
-    public function test_user_should_not_see_tags_of_other_work_space_on_active_work_space()
+    public function test_user_should_not_see_tags_of_other_work_space_on_work_time_index_page()
     {
         //initial user and work space
         $user = $this->registerUserAndCreateWorkSpace();
@@ -198,6 +193,7 @@ class WorkTimeTest extends TestCase
 
         $this->assertCount(0, $firstWorkSpace->tags()->get()->all());
         $this->assertCount(0, $secondWorkSpace->tags()->get()->all());
+
         //create number of projects for this work space
         $firstWorkSpace->tags()->createMany([
             ['title' => 'test Tag A',],
@@ -258,15 +254,15 @@ class WorkTimeTest extends TestCase
             'title' => 'First title of work time',
         ]);
 
-        $workTime = $user->workTimes()->get()->first();
-
-        $this->json('put', route('work-time-title.update', $workTime), [
+        $this->json('put', route('work-time-title.update', $user->workTimes()->get()->first()), [
             'title' => 'title has been updated',
         ]);
 
         $this->assertDatabaseHas('work_times', [
             'title' => 'title has been updated',
         ]);
+
+        $this->assertEquals('title has been updated', $user->workTimes()->get()->first()->title);
     }
 
     public function test_user_can_update_billable_of_work_time()
@@ -281,9 +277,7 @@ class WorkTimeTest extends TestCase
             'title' => 'First title of work time',
         ]);
 
-        $workTime = $user->workTimes()->get()->first();
-
-        $this->json('put', route('work-time-billable.update', $workTime), [
+        $this->json('put', route('work-time-billable.update', $user->workTimes()->get()->first()), [
             'billable' => false,
         ]);
 
@@ -297,11 +291,11 @@ class WorkTimeTest extends TestCase
         //initial user and work space
         $user = $this->registerUserAndCreateWorkSpace();
 
-        $this->post(route('work-time.start'));
-
         $project = $user->activeWorkSpace()->projects()->create(['title' => 'project A']);
 
         $newProject = $user->activeWorkSpace()->projects()->create(['title' => 'project for Update']);
+
+        $this->post(route('work-time.start'));
 
         $this->assertCount(2, Project::all());
 
@@ -327,13 +321,15 @@ class WorkTimeTest extends TestCase
 
     }
 
-    public function test_user_can_add_tags_when_work_time_was_stored()
+    public function test_user_can_add_tags_when_work_time_stored()
     {
         $user = $this->registerUserAndCreateWorkSpace();
 
         $firstTag = $user->activeWorkSpace()->tags()->create(['title' => 'first TAG']);
         $secondTag = $user->activeWorkSpace()->tags()->create(['title' => 'second TAG']);
         $thirdTag = $user->activeWorkSpace()->tags()->create(['title' => 'Third TAG']);
+
+        $this->assertCount(0, WorkTime::all());
 
         $this->assertCount(3, $user->activeWorkSpace()->tags()->get());
 
@@ -359,9 +355,60 @@ class WorkTimeTest extends TestCase
         ]);
     }
 
-    /*
-     * @test
-     *
-     * */
+    public function test_user_can_update_tags_of_work_time()
+    {
+        $user = $this->registerUserAndCreateWorkSpace();
+
+        $firstTag = $user->activeWorkSpace()->tags()->create(['title' => 'first TAG']);
+
+        $secondTag = $user->activeWorkSpace()->tags()->create(['title' => 'second TAG']);
+
+        $this->assertCount(2, $user->activeWorkSpace()->tags()->get());
+
+        $this->post(route('work-time.start'));
+
+        $this->post(route('work-time.stop'), [
+            'selectBillable' => true,
+            'title' => 'title of work time',
+            'tags' => $firstTag,
+        ]);
+
+        $this->assertEquals('first TAG', WorkTime::first()->tags()->get()->first()->title);
+
+        $workTime = WorkTime::first();
+
+        $this->assertDatabaseMissing('work_time_tag', ['tag_id'=> 2 ]);
+
+        $this->json('put', route('work-time-tag.update', $workTime), [
+            'tagId' => $secondTag->id,
+        ]);
+
+        $this->assertDatabaseHas('work_time_tag', ['tag_id'=> 2 ]);
+
+    }
+
+    public function test_user_can_delete_work_time()
+    {
+        $user = $this->registerUserAndCreateWorkSpace();
+
+        $firstTag = $user->activeWorkSpace()->tags()->create(['title' => 'first TAG']);
+
+        $this->assertCount(0, WorkTime::all());
+
+        $this->post(route('work-time.start'));
+
+        $this->post(route('work-time.stop'), [
+            'selectBillable' => true,
+            'title' => 'title of work time',
+            'tags' => $firstTag,
+        ]);
+
+        $this->assertCount(1, WorkTime::all());
+
+        $this->json('delete', route('work-time.destroy', WorkTime::first()));
+
+        $this->assertCount(0, WorkTime::all());
+    }
+
 
 }

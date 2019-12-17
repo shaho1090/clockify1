@@ -17,9 +17,7 @@ class TagsController extends Controller
      */
     public function index()
     {
-        $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
-
-        $tags = $activeUserWorkSpace->tags()
+        $tags = Auth::user()->activeWorkSpace()->tags()
             ->orderby('id', 'asc')
             ->get();
 
@@ -47,7 +45,7 @@ class TagsController extends Controller
      */
     public function store(TagFormRequest $request)
     {
-        Auth::user()->activeUserWorkSpace()->tags()
+        Auth::user()->activeWorkSpace()->tags()
             ->create(['title' => $request->get('title')]);
 
         return redirect(route('tags.index'));
@@ -98,10 +96,20 @@ class TagsController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        $tag->workTimes()->delete();
-        //$tag->workTimes()->detach();
-        $tag->delete();
+        //dd(Auth::user()->activeWorkSpace()->tags);
+        //dd($tag);
+        $test = $tag->workTimes()->get();
+       // dd( $test, 'hello');
 
-        return redirect()->action('TagsController@index');
+//        foreach($tag->workTimes()->get() as $workTime) {
+//          $workTime->delete();
+//              }
+
+         $tag->workTimes()->delete();
+
+        //$tag->load('workTimes')->delete();
+        $tag->delete();
+       // dd(Auth::user()->workTimes()->get()->all());
+        return redirect()->route('tags.index');
     }
 }

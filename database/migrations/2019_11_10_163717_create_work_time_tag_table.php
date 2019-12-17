@@ -21,11 +21,9 @@ class CreateWorkTimeTagTable extends Migration
             $table->timestamps();
             $table->foreign('work_time_id')
                 ->references('id')->on('work_times')
-                ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->foreign('tag_id')
                 ->references('id')->on('tags')
-                ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
     }

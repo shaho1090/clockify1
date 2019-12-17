@@ -77,7 +77,7 @@ class projectTest extends TestCase
      * @test
      *
      * */
-    public function test_project_title_can_update()
+    public function test_project_title_can_be_updated()
     {
         $user = $this->registerUserAndCreateWorkSpace();
 

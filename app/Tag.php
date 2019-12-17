@@ -8,12 +8,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Tag extends Model
 {
     use softDeletes;
-    protected $fillable = ['work_space_id','title'];
+    protected $fillable = ['title'];
 
     public function workTimes()
     {
-        return $this->belongsToMany(WorkTime::class,'work_time_tag')
-            ->withPivot('id');
+        return $this->belongsToMany(WorkTime::class,'work_time_tag');
     }
 
 }

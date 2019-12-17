@@ -139,6 +139,19 @@ class TagTest extends TestCase
         $request->assertSessionHasErrorsIn('title');
     }
 
+    public function test_title_of_tag_should_not_be_empty()
+    {
+        $this->registerUserAndCreateWorkSpace();
+
+        $this->assertCount(0 , Tag::all());
+
+        $request = $this->post(route('tags.store'),['title' => '']);
+
+        $this->assertCount(0 , Tag::all());
+
+        $request->assertSessionHasErrorsIn('title');
+    }
+
     public function test_user_can_delete_tag()
     {
         $user = $this->registerUserAndCreateWorkSpace();

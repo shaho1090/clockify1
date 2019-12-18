@@ -6,9 +6,10 @@
 {{$workSpaceId}}
 {{$email}}
 @component('mail::button',
-    ['url' => 'http://localhost/clockify1/public/get/back/'.$workSpaceId.'/'.$email.'/',
-     'email' => $email,
-     'workSpaceId' => $workSpaceId])
+    ['url' => 'http://localhost/clockify1/public/accept/invitation/'.$workSpaceId//.'/'.$email.'/',
+   //  'email' => $email,
+  //   'workSpaceId' => $workSpaceId
+  ])
     @csrf
 قبول همکاری
 @endcomponent

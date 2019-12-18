@@ -14,6 +14,7 @@ class CreateWorkSpaceInviteeTable extends Migration
     public function up()
     {
         Schema::create('work_space_invitee', function (Blueprint $table) {
+            $table->softDeletes();
             $table->bigIncrements('id');
             $table->unsignedBigInteger('work_space_id');
             $table->unsignedBigInteger('invitee_id');

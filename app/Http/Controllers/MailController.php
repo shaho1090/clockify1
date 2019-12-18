@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Invitee;
 use App\Mail\InviteMail;
 use App\WorkSpace;
+use App\WorkSpaceInvitee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -70,39 +71,41 @@ class MailController extends Controller
      */
     public function show(WorkSpace $workSpace)
     {
-       if(! Auth::user()->invitation()){
-           return redirect('/home');
-       }
+        if (!Auth::user()->invitation()) {
+            return redirect('/home');
+        }
 
-       if($workSpace->users()->find(Auth::user())){
-           return redirect(route('work-spaces.index'))->with('status','شما هم اکنون عضو این فضای کاری هستید');
-       }
+        if ($workSpace->users()->find(Auth::user())) {
+            return redirect(route('work-spaces.index'))->with('status', 'شما هم اکنون عضو این فضای کاری هستید');
+        }
 
-        Auth::user()->workSpaces()->attach($workSpace->id, ['access' => 2]);
-        $workSpace->activate();
-        Auth::user()->invitation()->remove();
+        if (WorkSpaceInvitee::where('work_space_id', '=', $workSpace->id)->get()) {
 
-        return redirect(route('work-spaces.index'))->with('status','از شما بابت قبول دعوت نامه تشکر می کنیم!');
+            Auth::user()->workSpaces()->attach($workSpace->id, ['access' => 2]);
+            $workSpace->activate();
+            Auth::user()->invitation()->remove();
 
+            return redirect(route('work-spaces.index'))->with('status', 'از شما بابت قبول دعوت نامه تشکر می کنیم!');
+        }
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(WorkSpace $workSpace, $email)
     {
-       //dd($workSpace.$email);
+        //dd($workSpace.$email);
 
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -113,7 +116,7 @@ class MailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

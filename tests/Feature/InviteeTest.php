@@ -5,9 +5,11 @@ namespace Tests\Feature;
 use App\Invitee;
 use App\Mail\InviteMail;
 use App\User;
+use App\UserWorkSpace;
 use App\WorkSpace;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 use function foo\func;
@@ -59,7 +61,7 @@ class InviteeTest extends TestCase
         $response->assertSee($userB->emial);
     }
 
-    public function test_preventing_duplicate_email()
+    public function test_to_prevent_duplicate_email()
     {
         $ownerUser = $this->registerUserAndCreateWorkSpace();
 
@@ -76,6 +78,21 @@ class InviteeTest extends TestCase
         $this->assertCount(1, Invitee::all());
 
         $response->assertSessionHas(['status' => 'این ایمیل قبلا در لیست ارسال ثبت شده است!']);
+    }
+
+    public function test_to_prevent_insert_invalid_email_address()
+    {
+        $ownerUser = $this->registerUserAndCreateWorkSpace();
+
+        $this->assertCount(0, Invitee::all());
+
+        $userA = factory(User::class)->create(['email'=>'invalidemail']);
+
+        $response = $this->post(route('invitees.store'), ['email' => $userA->email]);
+
+        $this->assertCount(0, Invitee::all());
+
+        $response->assertSessionHasErrors(['email']);
     }
 
     public function test_user_can_send_invitation_email()
@@ -124,7 +141,10 @@ class InviteeTest extends TestCase
 
         Mail::assertSent(InviteMail::class, 1);
 
-        Mail::shouldReceive('get.back'.'/'.$ownerUser->activeWorkSpace().'/'.Invitee::first());
+      // Mail::shouldReceive('/accept.invitation'.'/'.$ownerUser->activeWorkSpace().'/'.Invitee::first());
+//        Cache::shouldReceive()->once()
+//            ->with('key')
+//            ->andReturn('value');
     }
 
     public function test_invitee_can_accept_invitation()
@@ -141,14 +161,24 @@ class InviteeTest extends TestCase
 
         $this->assertCount(1, Invitee::all());
 
-        // $response = Mail::to(Invitee::first()->email)->send(new InviteMail($ownerUser->activeWorkSpace(), Invitee::first()->email));
-        //Mail::assertSent(InviteMail::class, function (){}
+        $this->assertEquals(Invitee::first()->email,$userA->email);
 
         $response = $this->json('post',route('send.mail', Invitee::first()));
 
         $response->assertSessionHas('status', 'ایمیل دعوت نامه با موفقیت ارسال شد!');
 
         Mail::assertSent(InviteMail::class, 1);
+
+        $response = $this->get('/accept/invitation/'.$ownerUser->activeWorkSpace().'/'.Invitee::first()->email);
+
+       // $this->json('get', route('members.index'))->assertSee($userA->email);
+      //  dd($userA->workSpaces()->get());
+        dd(UserWorkSpace::all());
+
+   //     $this->assertCount(1,$ownerUser->activeWorkSpace()->users()->where('email',$userA->email)->get());
+
+       // $response->assertSee($userA->name);
+
     }
 
 }

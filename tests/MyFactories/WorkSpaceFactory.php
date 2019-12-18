@@ -22,6 +22,9 @@ class WorkSpaceFactory
 
     protected $projectsCount = 0;
 
+    protected $membersCount = 0;
+
+
     public function ownedBy(User $user)
     {
         $this->user = $user;
@@ -43,28 +46,31 @@ class WorkSpaceFactory
         return $this;
     }
 
+    public function withMembers(int $count)
+    {
+        $this->membersCount = $count;
+
+        return $this;
+    }
+
     public function create()
     {
-        //dd($this->user);
 
         if ($this->user === null) {
 
-          $user = factory(User::class)->create();
+            $user = factory(User::class)->create();
 
-           $this->actingAs($user);
+            $this->actingAs($user);
         }
-       // dd($this->user);
 
         $workSpace = $this->user->addWorkSpace();
-
-      //  dd($workSpace);
 
         factory(Tag::class, $this->tagsCount)->create([
             'work_space_id' => $workSpace->id,
         ]);
 
         factory(Project::class, $this->projectsCount)->create([
-             'work_space_id' => $workSpace->id,
+            'work_space_id' => $workSpace->id,
         ]);
 
         return $workSpace;

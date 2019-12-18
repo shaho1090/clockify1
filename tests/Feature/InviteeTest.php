@@ -61,7 +61,7 @@ class InviteeTest extends TestCase
         $response->assertSee($userB->emial);
     }
 
-    public function test_to_prevent_duplicate_email()
+    public function test_to_prevent_duplicate_email_when_inserting_invitation_email()
     {
         $ownerUser = $this->registerUserAndCreateWorkSpace();
 
@@ -80,13 +80,13 @@ class InviteeTest extends TestCase
         $response->assertSessionHas(['status' => 'این ایمیل قبلا در لیست ارسال ثبت شده است!']);
     }
 
-    public function test_to_prevent_insert_invalid_email_address()
+    public function test_to_prevent_inserting_invalid_email_address()
     {
         $ownerUser = $this->registerUserAndCreateWorkSpace();
 
         $this->assertCount(0, Invitee::all());
 
-        $userA = factory(User::class)->create(['email'=>'invalidemail']);
+        $userA = factory(User::class)->create(['email' => 'invalidemail']);
 
         $response = $this->post(route('invitees.store'), ['email' => $userA->email]);
 
@@ -109,42 +109,13 @@ class InviteeTest extends TestCase
 
         $this->assertCount(1, Invitee::all());
 
-        //  $response = Mail::to(Invitee::first()->email)->send(new InviteMail($ownerUser->activeWorkSpace(), Invitee::first()->email));
-        //Mail::assertSent(InviteMail::class, function (){}
-
-        $response = $this->json('post',route('send.mail', Invitee::first()));
+        $response = $this->json('post', route('send.mail', Invitee::first()));
 
         $response->assertSessionHas('status', 'ایمیل دعوت نامه با موفقیت ارسال شد!');
 
         Mail::assertSent(InviteMail::class);
 
-       // $this->assertCount(0, Invitee::all());
-    }
-
-    public function test_user_has_invitation_link_in_his_own_email()
-    {
-        Mail::fake();
-
-        $ownerUser = $this->registerUserAndCreateWorkSpace();
-
-        $this->assertCount(0, Invitee::all());
-
-        $userA = factory(User::class)->create();
-
-        $this->post(route('invitees.store'), ['email' => $userA->email]);
-
-        $this->assertCount(1, Invitee::all());
-
-        $response = $this->json('post',route('send.mail', Invitee::first()));
-
-        $response->assertSessionHas('status', 'ایمیل دعوت نامه با موفقیت ارسال شد!');
-
-        Mail::assertSent(InviteMail::class, 1);
-
-      // Mail::shouldReceive('/accept.invitation'.'/'.$ownerUser->activeWorkSpace().'/'.Invitee::first());
-//        Cache::shouldReceive()->once()
-//            ->with('key')
-//            ->andReturn('value');
+        // $this->assertCount(0, Invitee::all());
     }
 
     public function test_invitee_can_accept_invitation()
@@ -160,25 +131,21 @@ class InviteeTest extends TestCase
         $this->post(route('invitees.store'), ['email' => $userA->email]);
 
         $this->assertCount(1, Invitee::all());
+        $this->assertCount(1, $ownerUser->activeWorkSpace()->invitees()->get());
+        $this->assertEquals(Invitee::first()->email, $userA->email);
 
-        $this->assertEquals(Invitee::first()->email,$userA->email);
-
-        $response = $this->json('post',route('send.mail', Invitee::first()));
-
+        $response = $this->json('post', route('send.mail', Invitee::first()));
         $response->assertSessionHas('status', 'ایمیل دعوت نامه با موفقیت ارسال شد!');
 
         Mail::assertSent(InviteMail::class, 1);
 
-        $response = $this->get('/accept/invitation/'.$ownerUser->activeWorkSpace().'/'.Invitee::first()->email);
+        $this->actingAs($userA);
 
-       // $this->json('get', route('members.index'))->assertSee($userA->email);
-      //  dd($userA->workSpaces()->get());
-        dd(UserWorkSpace::all());
+        $response = $this->get(route('accept.invitation', $ownerUser->activeWorkSpace()->id));
+        $response->assertSessionHas(['status'=>'از شما بابت قبول دعوت نامه تشکر می کنیم!']);
 
-   //     $this->assertCount(1,$ownerUser->activeWorkSpace()->users()->where('email',$userA->email)->get());
-
-       // $response->assertSee($userA->name);
-
+        $this->assertCount(2, WorkSpace::find($ownerUser->activeWorkSpace()->id)->users()->get());
+        $this->assertNotNull($userA->workSpaces()->find($ownerUser->activeWorkSpace()->id)->get());
     }
 
 }

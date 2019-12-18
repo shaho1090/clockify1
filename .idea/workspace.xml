@@ -4,10 +4,9 @@
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MailController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MailController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_19_115231_create_work_space_invitee_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_19_115231_create_work_space_invitee_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/members/Invite.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/members/Invite.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/InviteeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/InviteeTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/MemberTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/MemberTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/MyFactories/WorkSpaceFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MyFactories/WorkSpaceFactory.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -251,25 +250,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.InviteeTest.test_invitee_can_accept_invitation">
+  <component name="RunManager" selected="PHPUnit.MemberTest.test_ordinary_member_can_see_tags_of_work_space_that_invited_in">
     <configuration name="InviteeTest.test_invitee_can_accept_invitation" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\InviteeTest" file="$PROJECT_DIR$/tests/Feature/InviteeTest.php" method="test_invitee_can_accept_invitation" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="InviteeTest.test_preventing_duplicate_email" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\InviteeTest" file="$PROJECT_DIR$/tests/Feature/InviteeTest.php" method="test_preventing_duplicate_email" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="InviteeTest.test_preventing_insert_invalid_email_address" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\InviteeTest" file="$PROJECT_DIR$/tests/Feature/InviteeTest.php" method="test_preventing_insert_invalid_email_address" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="InviteeTest.test_user_can_send_invitation_email" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\InviteeTest" file="$PROJECT_DIR$/tests/Feature/InviteeTest.php" method="test_user_can_send_invitation_email" scope="Method" />
-      <method v="2" />
-    </configuration>
     <configuration name="InviteeTest.test_user_has_invitation_link_in_his_own_email" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\InviteeTest" file="$PROJECT_DIR$/tests/Feature/InviteeTest.php" method="test_user_has_invitation_link_in_his_own_email" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="MemberTest.test_ordinary_member_can_see_projects_of_work_space_that_invited_in" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\MemberTest" file="$PROJECT_DIR$/tests/Feature/MemberTest.php" method="test_ordinary_member_can_see_projects_of_work_space_that_invited_in" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="MemberTest.test_ordinary_member_can_see_tags_of_work_space_that_invited_in" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\MemberTest" file="$PROJECT_DIR$/tests/Feature/MemberTest.php" method="test_ordinary_member_can_see_tags_of_work_space_that_invited_in" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" nameIsGenerated="true">
@@ -278,19 +277,19 @@
     </configuration>
     <list>
       <item itemvalue="PHPUnit.Unnamed" />
-      <item itemvalue="PHPUnit.InviteeTest.test_preventing_duplicate_email" />
-      <item itemvalue="PHPUnit.InviteeTest.test_user_can_send_invitation_email" />
       <item itemvalue="PHPUnit.InviteeTest.test_invitee_can_accept_invitation" />
       <item itemvalue="PHPUnit.InviteeTest.test_user_has_invitation_link_in_his_own_email" />
       <item itemvalue="PHPUnit.InviteeTest.test_preventing_insert_invalid_email_address" />
+      <item itemvalue="PHPUnit.MemberTest.test_ordinary_member_can_see_projects_of_work_space_that_invited_in" />
+      <item itemvalue="PHPUnit.MemberTest.test_ordinary_member_can_see_tags_of_work_space_that_invited_in" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.MemberTest.test_ordinary_member_can_see_tags_of_work_space_that_invited_in" />
+        <item itemvalue="PHPUnit.MemberTest.test_ordinary_member_can_see_projects_of_work_space_that_invited_in" />
         <item itemvalue="PHPUnit.InviteeTest.test_invitee_can_accept_invitation" />
         <item itemvalue="PHPUnit.InviteeTest.test_user_has_invitation_link_in_his_own_email" />
         <item itemvalue="PHPUnit.InviteeTest.test_preventing_insert_invalid_email_address" />
-        <item itemvalue="PHPUnit.InviteeTest.test_user_can_send_invitation_email" />
-        <item itemvalue="PHPUnit.InviteeTest.test_preventing_duplicate_email" />
       </list>
     </recent_temporary>
   </component>
@@ -376,7 +375,7 @@
       <workItem from="1576557280159" duration="12734000" />
       <workItem from="1576575867415" duration="13978000" />
       <workItem from="1576643512558" duration="11701000" />
-      <workItem from="1576664839634" duration="4415000" />
+      <workItem from="1576664839634" duration="14012000" />
     </task>
     <servers />
   </component>

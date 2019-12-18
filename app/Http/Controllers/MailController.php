@@ -71,6 +71,7 @@ class MailController extends Controller
      */
     public function show(WorkSpace $workSpace)
     {
+
         if (!Auth::user()->invitation()) {
             return redirect('/home');
         }

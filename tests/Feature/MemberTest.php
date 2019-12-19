@@ -6,6 +6,7 @@ use App\Project;
 use App\Tag;
 use App\User;
 use App\WorkSpace;
+use App\WorkTime;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 //use Tests\MyFactories\WorkSpaceFactory;
@@ -121,4 +122,124 @@ class MemberTest extends TestCase
         $response->assertSee(Tag::find(3)->title);
 
     }
+
+    public function test_ordinary_member_should_not_see_tags_of_other_work_spaces()
+    {
+        $ownerUser = $this->login();
+
+        $this->assertCount(0, Tag::all());
+        $this->assertCount(0, Project::all());
+        $this->assertCount(0, WorkSpace::all());
+
+        $workSpaceA = WorkSpaceFactory::ownedBy($ownerUser)->withTags(3)->withProjects(4)->create();
+        $workSpaceB = WorkSpaceFactory::ownedBy($ownerUser)->withTags(2)->withProjects(2)->create();
+
+        $this->assertCount(2, WorkSpace::all());
+        $this->assertCount(5, Tag::all());
+        $this->assertCount(6, Project::all());
+
+        $ordinaryUser = factory(User::class)->create();
+
+        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' => 2]);
+
+        $this->assertCount(2, $ownerUser->workSpaces()->find($workSpaceA->id)->users()->get());
+
+
+        $this->actingAs($ordinaryUser);
+        $this->assertEquals(WorkSpace::find($workSpaceA->id)->title, $ordinaryUser->activeWorkSpace()->title);
+
+        $response = $this->json('get', route('tags.index'));
+        $response->assertSee($workSpaceA->tags()->find(1)->title);
+        $response->assertSee($workSpaceA->tags()->find(2)->title);
+        $response->assertSee($workSpaceA->tags()->find(3)->title);
+
+        $response->assertDontSee($workSpaceB->tags()->find(4)->title);
+        $response->assertDontSee($workSpaceB->tags()->find(5)->title);
+    }
+
+    public function test_ordinary_member_should_not_see_projects_of_other_work_spaces()
+    {
+        $ownerUser = $this->login();
+
+        $this->assertCount(0, Tag::all());
+        $this->assertCount(0, Project::all());
+        $this->assertCount(0, WorkSpace::all());
+
+        $workSpaceA = WorkSpaceFactory::ownedBy($ownerUser)->withTags(2)->withProjects(2)->create();
+        $workSpaceB = WorkSpaceFactory::ownedBy($ownerUser)->withTags(3)->withProjects(3)->create();
+
+        $this->assertCount(2, WorkSpace::all());
+        $this->assertCount(5, Tag::all());
+        $this->assertCount(5, Project::all());
+
+        $ordinaryUser = factory(User::class)->create();
+
+        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' => 2]);
+
+        $this->assertCount(2, $ownerUser->workSpaces()->find($workSpaceA->id)->users()->get());
+
+
+        $this->actingAs($ordinaryUser);
+        $this->assertEquals(WorkSpace::find($workSpaceA->id)->title, $ordinaryUser->activeWorkSpace()->title);
+
+        $response = $this->json('get', route('projects.index'));
+        $response->assertSee($workSpaceA->projects()->find(1)->title);
+        $response->assertSee($workSpaceA->projects()->find(2)->title);
+
+        $response->assertDontSee($workSpaceB->projects()->find(3)->title);
+        $response->assertDontSee($workSpaceB->projects()->find(4)->title);
+        $response->assertDontSee($workSpaceB->projects()->find(5)->title);
+    }
+
+    public function test_ordinary_member_can_start_work_time()
+    {
+        $ownerUser = $this->login();
+
+        $workSpaceA = WorkSpaceFactory::ownedBy($ownerUser)->withTags(2)->withProjects(2)->create();
+
+        $ordinaryUser = factory(User::class)->create();
+
+        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' => 2]);
+
+        $this->assertCount(2, $ownerUser->workSpaces()->find($workSpaceA->id)->users()->get());
+
+        $this->actingAs($ordinaryUser);
+
+        $this->post(route('work-time.start'));
+
+        $this->assertCount(1, WorkTime::all());
+
+        $this->assertCount(1, WorkTime::unCompleted()->get()->all());
+
+    }
+
+    public function test_ordinary_member_can_stop_work_time()
+    {
+        $ownerUser = $this->login();
+
+        $workSpaceA = WorkSpaceFactory::ownedBy($ownerUser)->withTags(2)->withProjects(2)->create();
+
+        $ordinaryUser = factory(User::class)->create();
+
+        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' => 2]);
+
+        $this->assertCount(2, $ownerUser->workSpaces()->find($workSpaceA->id)->users()->get());
+
+        $this->actingAs($ordinaryUser);
+
+        $this->assertCount(0, WorkTime::all());
+        $this->post(route('work-time.start'));
+        $this->assertCount(1, WorkTime::all());
+
+        $response = $this->json('post', route('work-time.stop', [
+            'selectBillable' => true,
+            'title' => 'work time for test']));
+
+        $this->assertCount(1, $ordinaryUser->workTimes()->completed()->get());
+
+        $this->assertEquals('work time for test', $ordinaryUser->workTimes()->get()->first()->title);
+    }
+
+
+
 }

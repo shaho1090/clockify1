@@ -72,6 +72,10 @@ class User extends Authenticatable
             'id' // Local key on tasks table...
         );
     }
+//    public function workTimes(){
+//        return UserWorkSpace::find($this->activeWorkSpace()->pivot->id)->workTimes()->get();
+//    }
+
 
     public function invitation()
     {
@@ -93,7 +97,8 @@ class User extends Authenticatable
     public function startNewWorkTime()
     {
         return WorkTime::create([
-            'user_work_space_id' => UserWorkSpace::where('work_space_id','=',$this->activeWorkSpace()->id)->get()->first()->id,
+            'user_work_space_id' => UserWorkSpace::where('work_space_id', '=', $this->activeWorkSpace()->id)
+                ->where('user_id', '=', $this->id)->get()->first()->id,
             'start_time' => Carbon::now()]);
     }
 

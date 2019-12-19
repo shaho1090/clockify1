@@ -14,12 +14,9 @@ class NewWorkTimeController extends Controller
     */
     public function store()
     {
-        ///  $activeUserWorkSpace = Auth::user()->activeUserWorkSpace();
-
         $unCompletedWorkTime = Auth::user()
             ->workTimes()->unCompleted()
             ->first();
-        // dd($unCompletedWorkTime);
 
         if (!$unCompletedWorkTime) {
             Auth::user()->startNewWorkTime();
@@ -48,6 +45,7 @@ class NewWorkTimeController extends Controller
 
         $unCompletedWorkTime = Auth::user()
             ->workTimes()->unCompleted()
+            ->get()
             ->first();
 
         if (!$unCompletedWorkTime) {

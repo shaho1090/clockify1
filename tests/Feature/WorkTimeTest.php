@@ -42,7 +42,12 @@ class WorkTimeTest extends TestCase
     {
         $user = $this->registerUserAndCreateWorkSpace();
 
+        $this->post(route('work-time.start'));
+
+        $this->assertCount(1, WorkTime::all());
+
         $this->post(route('work-time.stop', [
+            'selectBillable' => true,
             'title' => 'work time for test']));
 
         $this->assertNotNull($user->workTimes()->completed()->get());

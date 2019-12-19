@@ -205,11 +205,13 @@ class MemberTest extends TestCase
 
         $this->actingAs($ordinaryUser);
 
+        $this->assertCount(0, $ordinaryUser->workTimes()->unCompleted()->get());
+
         $this->post(route('work-time.start'));
 
         $this->assertCount(1, WorkTime::all());
 
-        $this->assertCount(1, WorkTime::unCompleted()->get()->all());
+        $this->assertCount(1, $ordinaryUser->workTimes()->unCompleted()->get());
 
     }
 
@@ -231,7 +233,7 @@ class MemberTest extends TestCase
         $this->post(route('work-time.start'));
         $this->assertCount(1, WorkTime::all());
 
-        $response = $this->json('post', route('work-time.stop', [
+        $this->json('post', route('work-time.stop', [
             'selectBillable' => true,
             'title' => 'work time for test']));
 
@@ -240,6 +242,109 @@ class MemberTest extends TestCase
         $this->assertEquals('work time for test', $ordinaryUser->workTimes()->get()->first()->title);
     }
 
+    public function test_ordinary_member_can_see_his_work_times_on_work_time_index_page()
+    {
+        $ownerUser = $this->login();
 
+        $workSpaceA = WorkSpaceFactory::ownedBy($ownerUser)->withTags(2)->withProjects(2)->create();
+
+        $ordinaryUser = factory(User::class)->create();
+
+        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' => 2]);
+
+        $this->assertCount(2, $ownerUser->workSpaces()->find($workSpaceA->id)->users()->get());
+
+        $this->actingAs($ordinaryUser);
+
+        $this->assertCount(0, $ordinaryUser->workTimes()->completed()->get());
+
+        $this->post(route('work-time.start'));
+        $this->json('post', route('work-time.stop', [
+            'selectBillable' => true,
+            'title' => 'work time one']));
+
+        $this->assertCount(1, $ordinaryUser->workTimes()->completed()->get());
+
+        $this->post(route('work-time.start'));
+        $this->json('post', route('work-time.stop', [
+            'selectBillable' => false,
+            'title' => 'work time two']));
+
+        $this->assertCount(2, $ordinaryUser->workTimes()->completed()->get());
+
+        $response = $this->json('get', route('work-time.index'));
+
+        $response->assertSee('work time one');
+        $response->assertSee('work time two');
+    }
+
+    public function test_ordinary_member_can_update_the_title_of_work_time()
+    {
+        $ownerUser = $this->login();
+
+        $workSpaceA = WorkSpaceFactory::ownedBy($ownerUser)->withTags(2)->withProjects(2)->create();
+
+        $ordinaryUser = factory(User::class)->create();
+
+        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' => 2]);
+
+        $this->assertCount(2, $ownerUser->workSpaces()->find($workSpaceA->id)->users()->get());
+
+        $this->actingAs($ordinaryUser);
+
+        $this->assertCount(0, $ordinaryUser->workTimes()->completed()->get());
+
+        $this->post(route('work-time.start'));
+        $this->json('post', route('work-time.stop', [
+            'selectBillable' => true,
+            'title' => 'work time one']));
+
+        $this->assertCount(1, $ordinaryUser->workTimes()->completed()->get());
+
+        $this->json('put', route('work-time-title.update', $ordinaryUser->workTimes()->get()->first()),
+            ['title' => 'title has been updated']);
+
+        $this->assertDatabaseHas('work_times', [
+            'title' => 'title has been updated',
+        ]);
+
+        $this->assertEquals('title has been updated', $ordinaryUser->workTimes()->get()->first()->title);
+    }
+
+    public function test_ordinary_member_can_update_the_tags_of_his_work_time()
+    {
+        $ownerUser = $this->login();
+
+        $workSpaceA = WorkSpaceFactory::ownedBy($ownerUser)->withTags(3)->withProjects(2)->create();
+
+        $ordinaryUser = factory(User::class)->create();
+
+        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' => 2]);
+
+        $this->assertCount(2, $ownerUser->workSpaces()->find($workSpaceA->id)->users()->get());
+
+        $this->actingAs($ordinaryUser);
+
+        $this->assertCount(0, $ordinaryUser->workTimes()->completed()->get());
+
+        $this->post(route('work-time.start'));
+        $this->json('post', route('work-time.stop', [
+            'selectBillable' => true,
+            'title' => 'work time one',
+            'tags' => [$workSpaceA->tags()->find(1)->id],
+        ]));
+
+        $this->assertCount(1, $ordinaryUser->workTimes()->completed()->get());
+
+        $this->assertEquals($workSpaceA->tags()->find(1)->title, $ordinaryUser->workTimes()->find(1)->tags()->get()->first()->title);
+
+        $this->json('put', route('work-time-tag.update', $ordinaryUser->workTimes()->first()), [
+            'tagId' => $workSpaceA->tags()->find(2)->id,
+        ]);
+
+        $this->assertEquals($workSpaceA->tags()->find(2)->title, $ordinaryUser->workTimes()->find(1)->tags()->find(2)->title);
+
+        $this->assertEquals('title has been updated', $ordinaryUser->workTimes()->get()->first()->title);
+    }
 
 }

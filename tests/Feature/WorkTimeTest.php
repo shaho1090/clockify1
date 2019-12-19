@@ -375,7 +375,7 @@ class WorkTimeTest extends TestCase
         $this->post(route('work-time.stop'), [
             'selectBillable' => true,
             'title' => 'title of work time',
-            'tags' => $firstTag,
+            'tags' => [$firstTag],
         ]);
 
         $this->assertEquals('first TAG', WorkTime::first()->tags()->get()->first()->title);

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/tests/Feature/MemberTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/MemberTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -246,46 +247,46 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.WorkTimeTest">
+  <component name="RunManager" selected="PHPUnit.InviteeTest">
+    <configuration name="InviteeTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\InviteeTest" file="$PROJECT_DIR$/tests/Feature/InviteeTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="MemberTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\MemberTest" file="$PROJECT_DIR$/tests/Feature/MemberTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="MemberTest.test_user_can_see_members_of_active_work_space" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\MemberTest" file="$PROJECT_DIR$/tests/Feature/MemberTest.php" method="test_user_can_see_members_of_active_work_space" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TagTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\TagTest" file="$PROJECT_DIR$/tests/Feature/TagTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
     <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" nameIsGenerated="true">
       <TestRunner />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" scope="Class" />
-      <method v="2" />
-    </configuration>
-    <configuration name="UserTest.name_field_is_required" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="name_field_is_required" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="WorkTimeTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\WorkTimeTest" file="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" scope="Class" />
-      <method v="2" />
-    </configuration>
-    <configuration name="workSpaceTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\workSpaceTest" file="$PROJECT_DIR$/tests/Feature/WorkSpaceTest.php" scope="Class" />
-      <method v="2" />
-    </configuration>
-    <configuration name="workSpaceTest.test_creating_workspace_for_user_just_registered" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\workSpaceTest" file="$PROJECT_DIR$/tests/Feature/WorkSpaceTest.php" method="test_creating_workspace_for_user_just_registered" scope="Method" />
+    <configuration name="projectTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\projectTest" file="$PROJECT_DIR$/tests/Feature/ProjectTest.php" scope="Class" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="PHPUnit.Unnamed" />
-      <item itemvalue="PHPUnit.UserTest" />
-      <item itemvalue="PHPUnit.UserTest.name_field_is_required" />
-      <item itemvalue="PHPUnit.workSpaceTest" />
-      <item itemvalue="PHPUnit.workSpaceTest.test_creating_workspace_for_user_just_registered" />
-      <item itemvalue="PHPUnit.WorkTimeTest" />
+      <item itemvalue="PHPUnit.TagTest" />
+      <item itemvalue="PHPUnit.projectTest" />
+      <item itemvalue="PHPUnit.MemberTest" />
+      <item itemvalue="PHPUnit.MemberTest.test_user_can_see_members_of_active_work_space" />
+      <item itemvalue="PHPUnit.InviteeTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.WorkTimeTest" />
-        <item itemvalue="PHPUnit.workSpaceTest" />
-        <item itemvalue="PHPUnit.workSpaceTest.test_creating_workspace_for_user_just_registered" />
-        <item itemvalue="PHPUnit.UserTest.name_field_is_required" />
-        <item itemvalue="PHPUnit.UserTest" />
+        <item itemvalue="PHPUnit.InviteeTest" />
+        <item itemvalue="PHPUnit.projectTest" />
+        <item itemvalue="PHPUnit.MemberTest" />
+        <item itemvalue="PHPUnit.MemberTest.test_user_can_see_members_of_active_work_space" />
+        <item itemvalue="PHPUnit.TagTest" />
       </list>
     </recent_temporary>
   </component>
@@ -376,7 +377,7 @@
       <workItem from="1576862148217" duration="3661000" />
       <workItem from="1576865953664" duration="296000" />
       <workItem from="1576902542801" duration="10408000" />
-      <workItem from="1576924527439" duration="1508000" />
+      <workItem from="1576924527439" duration="1945000" />
     </task>
     <servers />
   </component>

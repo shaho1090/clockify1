@@ -17,6 +17,8 @@ class MemberTest extends TestCase
 {
     use refreshDatabase;
 
+    private const ACCESS_MEMBER = 2;
+    private const ACCESS_OWNER = 0;
     /**
      * A basic feature test example.
      *
@@ -29,11 +31,11 @@ class MemberTest extends TestCase
 
         $userA = factory(User::class)->create();
 
-        $ownerUser->activeWorkSpace()->users()->attach($userA, ['access' => 2]);
+        $ownerUser->activeWorkSpace()->users()->attach($userA, ['access' => self::ACCESS_MEMBER]);
 
         $userB = factory(User::class)->create();
 
-        $ownerUser->activeWorkSpace()->users()->attach($userB, ['access' => 2]);
+        $ownerUser->activeWorkSpace()->users()->attach($userB, ['access' => self::ACCESS_MEMBER]);
 
         $response = $this->json('get', route('members.index'));
 
@@ -49,11 +51,11 @@ class MemberTest extends TestCase
 
         $userA = factory(User::class)->create();
 
-        $ownerUser->activeWorkSpace()->users()->attach($userA, ['access' => 2]);
+        $ownerUser->activeWorkSpace()->users()->attach($userA, ['access' => self::ACCESS_MEMBER]);
 
         $userB = factory(User::class)->create();
 
-        $ownerUser->activeWorkSpace()->users()->attach($userB, ['access' => 2]);
+        $ownerUser->activeWorkSpace()->users()->attach($userB, ['access' => self::ACCESS_MEMBER]);
 
         $ownerUser->addWorkSpace()->activate();
 
@@ -81,7 +83,7 @@ class MemberTest extends TestCase
 
         $ordinaryUser = factory(User::class)->create();
 
-        $ownerUser->activeWorkSpace()->users()->attach($ordinaryUser, ['access' => 2]);
+        $ownerUser->activeWorkSpace()->users()->attach($ordinaryUser, ['access' => self::ACCESS_MEMBER]);
 
         $this->assertCount(2, $ownerUser->activeWorkSpace()->users()->get());
 
@@ -110,7 +112,7 @@ class MemberTest extends TestCase
 
         $ordinaryUser = factory(User::class)->create();
 
-        $ownerUser->activeWorkSpace()->users()->attach($ordinaryUser, ['access' => 2]);
+        $ownerUser->activeWorkSpace()->users()->attach($ordinaryUser, ['access' => self::ACCESS_MEMBER]);
 
         $this->assertCount(2, $ownerUser->activeWorkSpace()->users()->get());
 
@@ -140,7 +142,7 @@ class MemberTest extends TestCase
 
         $ordinaryUser = factory(User::class)->create();
 
-        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' => 2]);
+        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' => self::ACCESS_MEMBER]);
 
         $this->assertCount(2, $ownerUser->workSpaces()->find($workSpaceA->id)->users()->get());
 
@@ -174,7 +176,7 @@ class MemberTest extends TestCase
 
         $ordinaryUser = factory(User::class)->create();
 
-        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' => 2]);
+        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' => self::ACCESS_MEMBER]);
 
         $this->assertCount(2, $ownerUser->workSpaces()->find($workSpaceA->id)->users()->get());
 

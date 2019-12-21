@@ -18,8 +18,8 @@ class WorkTimeTest extends TestCase
 {
     use refreshDatabase;
 
-    private $accessMember = 2;
-    private $accessOwner = 0;
+    private const ACCESS_MEMBER = 2;
+    private const ACCESS_OWNER = 0;
 
     /**
      *
@@ -425,7 +425,7 @@ class WorkTimeTest extends TestCase
 
         $ordinaryUser = factory(User::class)->create();
 
-        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' => $this->accessMember]);
+        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' => self::ACCESS_MEMBER]);
 
         $this->assertCount(2, $ownerUser->workSpaces()->find($workSpaceA->id)->users()->get());
 
@@ -449,7 +449,7 @@ class WorkTimeTest extends TestCase
 
         $ordinaryUser = factory(User::class)->create();
 
-        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' => $this->accessMember]);
+        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' => self::ACCESS_MEMBER]);
 
         $this->assertCount(2, $ownerUser->workSpaces()->find($workSpaceA->id)->users()->get());
 
@@ -476,7 +476,7 @@ class WorkTimeTest extends TestCase
 
         $ordinaryUser = factory(User::class)->create();
 
-        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' =>$this->accessMember]);
+        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' =>self::ACCESS_MEMBER]);
 
         $this->assertCount(2, $ownerUser->workSpaces()->find($workSpaceA->id)->users()->get());
 
@@ -545,7 +545,7 @@ class WorkTimeTest extends TestCase
 
         $ordinaryMember = factory(User::class)->create();
 
-        $ownerUser->workSpaces()->find($workSpace->id)->users()->attach($ordinaryMember, ['access' => $this->accessMember]);
+        $ownerUser->workSpaces()->find($workSpace->id)->users()->attach($ordinaryMember, ['access' => self::ACCESS_MEMBER]);
 
         $this->assertCount(2, $ownerUser->workSpaces()->find($workSpace->id)->users()->get());
 

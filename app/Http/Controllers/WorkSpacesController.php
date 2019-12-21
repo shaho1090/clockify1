@@ -19,7 +19,7 @@ class WorkSpacesController extends Controller
     {
        // dd( Auth::user()->workSpaces()->get()->all());
         return view('work-spaces.index', [
-            'workSpaces' => Auth::user()->workSpaces()->get()->all(),
+            'workSpaces' => Auth::user()->workSpaces()->get(),
         ]);
     }
 

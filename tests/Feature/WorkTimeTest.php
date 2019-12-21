@@ -158,7 +158,6 @@ class WorkTimeTest extends TestCase
 
         $this->assertCount(0, $workSpace->tags()->get()->all());
 
-
         //create number of tags for this work space
         $workSpace->tags()->createMany([
             ['title' => 'test Tag A',],

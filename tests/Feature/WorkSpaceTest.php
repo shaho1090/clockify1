@@ -15,6 +15,8 @@ class workSpaceTest extends TestCase
 {
     use RefreshDatabase;
 
+    private $accessMember = 2;
+    private $accessOwner = 0;
     /**
      * A basic feature test example.
      *
@@ -47,7 +49,7 @@ class workSpaceTest extends TestCase
         ]);
 
         $this->assertDatabaseHas('user_work_space', [
-            'access' => 0,
+            'access' => $this->accessOwner,
             'active' => true,
         ]);
     }
@@ -310,21 +312,12 @@ class workSpaceTest extends TestCase
     public function test_user_can_delete_inActive_work_space()
     {
         $user = $this->login();
-        // $user = factory(User::class)->create();
-        //  $workSpace = factory(WorkSpace::class)->create();
-//        $userWorkspace = factory(UserWorkSpace::class, [
-//            'user_id' => $user->id,
-//            'work_space_id' => $workSpace->id,
-//            'access' => 0,
-//            'active' => 0,
-//
-//        ]);
 
         $workSpace = $user->workSpaces()->create(['title' => 'example for delete']);
 
-        $user->workSpaces()->updateExistingPivot($workSpace->id, ['active' => 0, 'access' => 0]);
+        $user->workSpaces()->updateExistingPivot($workSpace->id, ['active' => false, 'access' => $this->accessOwner]);
 
-        $this->assertDatabaseHas('user_work_space', ['active' => 0]);
+        $this->assertDatabaseHas('user_work_space', ['active' => false]);
 
         $this->assertEquals(0, $user->workSpaces()->find($workSpace->id)->pivot->active);
 
@@ -346,7 +339,7 @@ class workSpaceTest extends TestCase
 
         $workSpace = $user->workSpaces()->create(['title' => 'example for delete']);
 
-        $user->workSpaces()->updateExistingPivot($workSpace->id, ['active' => 0, 'access' => 1]);
+        $user->workSpaces()->updateExistingPivot($workSpace->id, ['active' => false, 'access' => $this->accessMember]);
 
         $this->assertEquals(1, $user->workSpaces()->find($workSpace->id)->pivot->access);
 

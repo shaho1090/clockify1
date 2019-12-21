@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkSpaceMembersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkSpaceMembersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkTimeProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkTimeProjectController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/MemberTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/MemberTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/ProjectTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/ProjectTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/UserTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkSpacesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkSpacesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/WorkSpaceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/WorkSpaceTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -252,7 +249,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.WorkTimeTest">
+  <component name="RunManager" selected="PHPUnit.workSpaceTest">
     <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" nameIsGenerated="true">
       <TestRunner />
       <method v="2" />
@@ -287,8 +284,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.WorkTimeTest" />
         <item itemvalue="PHPUnit.workSpaceTest" />
+        <item itemvalue="PHPUnit.WorkTimeTest" />
         <item itemvalue="PHPUnit.workSpaceTest.test_creating_workspace_for_user_just_registered" />
         <item itemvalue="PHPUnit.UserTest.name_field_is_required" />
         <item itemvalue="PHPUnit.UserTest" />
@@ -381,7 +378,8 @@
       <workItem from="1576729558290" duration="13929000" />
       <workItem from="1576862148217" duration="3661000" />
       <workItem from="1576865953664" duration="296000" />
-      <workItem from="1576902542801" duration="8361000" />
+      <workItem from="1576902542801" duration="10408000" />
+      <workItem from="1576924527439" duration="1209000" />
     </task>
     <servers />
   </component>

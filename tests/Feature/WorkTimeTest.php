@@ -18,6 +18,9 @@ class WorkTimeTest extends TestCase
 {
     use refreshDatabase;
 
+    private $accessMember = 2;
+    private $accessOwner = 0;
+
     /**
      *
      * @return void
@@ -422,7 +425,7 @@ class WorkTimeTest extends TestCase
 
         $ordinaryUser = factory(User::class)->create();
 
-        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' => 2]);
+        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' => $this->accessMember]);
 
         $this->assertCount(2, $ownerUser->workSpaces()->find($workSpaceA->id)->users()->get());
 
@@ -446,7 +449,7 @@ class WorkTimeTest extends TestCase
 
         $ordinaryUser = factory(User::class)->create();
 
-        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' => 2]);
+        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' => $this->accessMember]);
 
         $this->assertCount(2, $ownerUser->workSpaces()->find($workSpaceA->id)->users()->get());
 
@@ -473,7 +476,7 @@ class WorkTimeTest extends TestCase
 
         $ordinaryUser = factory(User::class)->create();
 
-        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' => 2]);
+        $ownerUser->workSpaces()->find($workSpaceA->id)->users()->attach($ordinaryUser, ['access' =>$this->accessMember]);
 
         $this->assertCount(2, $ownerUser->workSpaces()->find($workSpaceA->id)->users()->get());
 
@@ -542,7 +545,7 @@ class WorkTimeTest extends TestCase
 
         $ordinaryMember = factory(User::class)->create();
 
-        $ownerUser->workSpaces()->find($workSpace->id)->users()->attach($ordinaryMember, ['access' => 2]);
+        $ownerUser->workSpaces()->find($workSpace->id)->users()->attach($ordinaryMember, ['access' => $this->accessMember]);
 
         $this->assertCount(2, $ownerUser->workSpaces()->find($workSpace->id)->users()->get());
 
@@ -579,7 +582,7 @@ class WorkTimeTest extends TestCase
 
         $ordinaryMember = factory(User::class)->create();
 
-        $ownerUser->workSpaces()->find($workSpace->id)->users()->attach($ordinaryMember, ['access' => 2]);
+        $ownerUser->workSpaces()->find($workSpace->id)->users()->attach($ordinaryMember, ['access' => $this->accessMember]);
 
         $this->assertCount(2, $ownerUser->workSpaces()->find($workSpace->id)->users()->get());
 

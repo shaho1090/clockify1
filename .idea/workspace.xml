@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/MemberTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/MemberTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MailController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MailController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MemberWorkTimesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MemberWorkTimesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkSpaceMembersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkSpaceMembersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -374,7 +377,10 @@
       <workItem from="1576575867415" duration="13978000" />
       <workItem from="1576643512558" duration="11701000" />
       <workItem from="1576664839634" duration="14069000" />
-      <workItem from="1576729558290" duration="13688000" />
+      <workItem from="1576729558290" duration="13929000" />
+      <workItem from="1576862148217" duration="3661000" />
+      <workItem from="1576865953664" duration="296000" />
+      <workItem from="1576902542801" duration="2946000" />
     </task>
     <servers />
   </component>

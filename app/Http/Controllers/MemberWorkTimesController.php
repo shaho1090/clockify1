@@ -23,11 +23,11 @@ class MemberWorkTimesController extends Controller
 
         return view('members.work-times.index', [
             'workTimes' => $workTimes->load('project')->load('tags'),
-            'projects' => Auth::user()->activeUserWorkSpace()->projects()->get(),
+            'projects' => Auth::user()->activeWorkSpace()->projects()->get(),
 //            'incompleteWorkTime' => $user
 //                ->incompleteWorkTimes()
 //                ->first(),
-            'tags' => Auth::user()->activeUserWorkSpace()->tags()->get(),
+            'tags' => Auth::user()->activeWorkSpace()->tags()->get(),
             'member' => $user,
         ]);
     }

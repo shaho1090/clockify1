@@ -14,6 +14,9 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const ACCESS_OWNER = 0;
+    const ACCESS_INVITEE = 2;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -107,7 +110,7 @@ class User extends Authenticatable
         if ($this->workSpaces()
                 ->find($workSpace->id)
                 ->pivot
-                ->access == 0) {
+                ->access == self::ACCESS_OWNER) {
             return true;
         }
     }
@@ -120,7 +123,7 @@ class User extends Authenticatable
 
         $workSpace = WorkSpace::create(['title' => $title]);
         $this->workSpaces()->attach($workSpace->id, [
-            'access' => 0,
+            'access' => self::ACCESS_OWNER,
         ]);
 
         //$workSpace->activate();

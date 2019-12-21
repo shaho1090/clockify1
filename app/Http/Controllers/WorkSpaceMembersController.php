@@ -19,14 +19,12 @@ class WorkSpaceMembersController extends Controller
      */
     public function index()
     {
-        $activeWorkSpace = Auth::user()->activeWorkSpace();
-
-        $invitees = $activeWorkSpace//WorkSpace::find($activeWorkSpace->id)
+        $invitees = Auth::user()->activeWorkSpace()//WorkSpace::find($activeWorkSpace->id)
             ->invitees()
             ->get();
 
         return view('members.index', [
-            'members' => $activeWorkSpace->users()->get(),
+            'members' => Auth::user()->activeWorkSpace()->users()->get(),
             'invitees' => $invitees,
         ]);
     }
@@ -106,12 +104,15 @@ class WorkSpaceMembersController extends Controller
      * @param User $user
      * @return void
      */
-    public function destroy(User $user)
+    public function destroy(User $member)
     {
-        UserWorkSpace::find(Auth::user()->activeUserWorkSpace()->id)->workTimes()->delete();
+        $userWorkSpace = UserWorkSpace::where('user_id','=',$member->id)
+            ->where('work_space_id','=',Auth::user()->activeWorkSpace()->id)->get()->first();
 
-        $user->workSpaces()->detach(Auth::user()->activeUserWorkSpace()->work_space_id);
+        $userWorkSpace->workTimes()->delete();
 
-        return redirect(route('members.index'))->with('status','عضو مورد نظر از این فضای کاری حذف شد!');
+        $member->workSpaces()->detach(Auth::user()->activeWorkSpace()->id);
+
+        return redirect(route('members.index'))->with('status','عضو مورد نظر به همراه انجام کارهای وی از این فضای کاری حذف شد!');
     }
 }

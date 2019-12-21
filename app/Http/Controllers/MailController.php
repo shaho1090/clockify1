@@ -13,6 +13,9 @@ use PharIo\Manifest\Email;
 
 class MailController extends Controller
 {
+    const ACCESS_OWNER = 0;
+    const ACCESS_INVITEE = 2;
+
     /**
      * Display a listing of the resource.
      *
@@ -82,7 +85,7 @@ class MailController extends Controller
 
         if (WorkSpaceInvitee::where('work_space_id', '=', $workSpace->id)->get()) {
 
-            Auth::user()->workSpaces()->attach($workSpace->id, ['access' => 2]);
+            Auth::user()->workSpaces()->attach($workSpace->id, ['access' => self::ACCESS_INVITEE]);
             $workSpace->activate();
             Auth::user()->invitation()->remove();
 
@@ -93,8 +96,9 @@ class MailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param WorkSpace $workSpace
+     * @param $email
+     * @return void
      */
     public function edit(WorkSpace $workSpace, $email)
     {

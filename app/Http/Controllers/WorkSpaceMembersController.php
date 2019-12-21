@@ -101,7 +101,7 @@ class WorkSpaceMembersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param User $user
+     * @param User $member
      * @return void
      */
     public function destroy(User $member)

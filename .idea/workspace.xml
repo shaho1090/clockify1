@@ -3,11 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MailController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MailController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MemberWorkTimesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MemberWorkTimesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkSpaceMembersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkSpaceMembersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkTimeProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkTimeProjectController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/MemberTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/MemberTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/ProjectTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/ProjectTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/UserTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -251,46 +252,46 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.MemberTest.test_ordinary_member_can_update_the_tags_of_his_work_time">
-    <configuration name="MemberTest.test_ordinary_member_can_see_his_work_times_on_work_time_index_page" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\MemberTest" file="$PROJECT_DIR$/tests/Feature/MemberTest.php" method="test_ordinary_member_can_see_his_work_times_on_work_time_index_page" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="MemberTest.test_ordinary_member_can_start_work_time" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\MemberTest" file="$PROJECT_DIR$/tests/Feature/MemberTest.php" method="test_ordinary_member_can_start_work_time" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="MemberTest.test_ordinary_member_can_stop_work_time" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\MemberTest" file="$PROJECT_DIR$/tests/Feature/MemberTest.php" method="test_ordinary_member_can_stop_work_time" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="MemberTest.test_ordinary_member_can_update_the_tags_of_his_work_time" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\MemberTest" file="$PROJECT_DIR$/tests/Feature/MemberTest.php" method="test_ordinary_member_can_update_the_tags_of_his_work_time" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="MemberTest.test_ordinary_member_can_update_the_title_of_work_time" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\MemberTest" file="$PROJECT_DIR$/tests/Feature/MemberTest.php" method="test_ordinary_member_can_update_the_title_of_work_time" scope="Method" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="PHPUnit.WorkTimeTest">
     <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" nameIsGenerated="true">
       <TestRunner />
       <method v="2" />
     </configuration>
+    <configuration name="UserTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="UserTest.name_field_is_required" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\UserTest" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="name_field_is_required" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="WorkTimeTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\WorkTimeTest" file="$PROJECT_DIR$/tests/Feature/WorkTimeTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="workSpaceTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\workSpaceTest" file="$PROJECT_DIR$/tests/Feature/WorkSpaceTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="workSpaceTest.test_creating_workspace_for_user_just_registered" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\workSpaceTest" file="$PROJECT_DIR$/tests/Feature/WorkSpaceTest.php" method="test_creating_workspace_for_user_just_registered" scope="Method" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="PHPUnit.Unnamed" />
-      <item itemvalue="PHPUnit.MemberTest.test_ordinary_member_can_start_work_time" />
-      <item itemvalue="PHPUnit.MemberTest.test_ordinary_member_can_stop_work_time" />
-      <item itemvalue="PHPUnit.MemberTest.test_ordinary_member_can_see_his_work_times_on_work_time_index_page" />
-      <item itemvalue="PHPUnit.MemberTest.test_ordinary_member_can_update_the_title_of_work_time" />
-      <item itemvalue="PHPUnit.MemberTest.test_ordinary_member_can_update_the_tags_of_his_work_time" />
+      <item itemvalue="PHPUnit.UserTest" />
+      <item itemvalue="PHPUnit.UserTest.name_field_is_required" />
+      <item itemvalue="PHPUnit.workSpaceTest" />
+      <item itemvalue="PHPUnit.workSpaceTest.test_creating_workspace_for_user_just_registered" />
+      <item itemvalue="PHPUnit.WorkTimeTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.MemberTest.test_ordinary_member_can_update_the_tags_of_his_work_time" />
-        <item itemvalue="PHPUnit.MemberTest.test_ordinary_member_can_update_the_title_of_work_time" />
-        <item itemvalue="PHPUnit.MemberTest.test_ordinary_member_can_see_his_work_times_on_work_time_index_page" />
-        <item itemvalue="PHPUnit.MemberTest.test_ordinary_member_can_stop_work_time" />
-        <item itemvalue="PHPUnit.MemberTest.test_ordinary_member_can_start_work_time" />
+        <item itemvalue="PHPUnit.WorkTimeTest" />
+        <item itemvalue="PHPUnit.workSpaceTest" />
+        <item itemvalue="PHPUnit.workSpaceTest.test_creating_workspace_for_user_just_registered" />
+        <item itemvalue="PHPUnit.UserTest.name_field_is_required" />
+        <item itemvalue="PHPUnit.UserTest" />
       </list>
     </recent_temporary>
   </component>
@@ -380,7 +381,7 @@
       <workItem from="1576729558290" duration="13929000" />
       <workItem from="1576862148217" duration="3661000" />
       <workItem from="1576865953664" duration="296000" />
-      <workItem from="1576902542801" duration="2946000" />
+      <workItem from="1576902542801" duration="8361000" />
     </task>
     <servers />
   </component>
@@ -413,15 +414,6 @@
           <url>file://$PROJECT_DIR$/resources/views/members/work-times/index.blade.php</url>
           <line>39</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php-line-method">
-          <url>file://$PROJECT_DIR$/tests/Feature/MemberTest.php</url>
-          <line>217</line>
-          <properties>
-            <option name="className" value="\Tests\Feature\MemberTest" />
-            <option name="methodName" value="test_ordinary_member_can_stop_work_time" />
-          </properties>
-          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

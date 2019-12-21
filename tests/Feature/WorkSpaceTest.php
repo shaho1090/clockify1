@@ -30,7 +30,7 @@ class workSpaceTest extends TestCase
         ]);
 
         $this->assertDatabaseHas('users', ['name' => 'yadgar']);
-        $this->assertDatabaseHas('work_spaces', ['title' => 'yadgar']);
+        $this->assertDatabaseHas('work_spaces', ['title' => 'yadgar work space']);
         // self::assertCount(1, $user->workSpaces);
     }
 
@@ -133,15 +133,6 @@ class workSpaceTest extends TestCase
     public function test_work_space_title_between_3_to_50_char_when_creating()
     {
         $this->login();
-
-//        for ($counter = 3; $counter <= 50; $counter++) {
-//            $response = $this->post(route('work-spaces.store'), [
-//                'title' => Str::random($counter),
-//            ]);
-//            if (!$response->assertSessionHasNoErrors()) {
-//                break;
-//            }
-//        }
 
         $stringLength = rand(3, 50);
 

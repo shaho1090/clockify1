@@ -67,7 +67,7 @@ class WorkTimeProjectController extends Controller
      * Update the specified resource in storage.
      *
      * @param WorkTime $workTime
-     * @param Project $project
+     * @param Request $request
      * @return void
      */
     public function update(WorkTime $workTime,Request $request)

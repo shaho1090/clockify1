@@ -40,7 +40,7 @@ class projectTest extends TestCase
     /*
      * @test
      * */
-    public function test_project_title_cant_be_less_than_3_char()
+    public function test_project_title_cannot_be_less_than_3_char()
     {
         $user = $this->registerUserAndCreateWorkSpace();
 
@@ -57,16 +57,16 @@ class projectTest extends TestCase
     /*
      * @test
      * */
-    public function test_project_title_cant_be_greater_than_50_char()
+    public function test_project_title_cannot_be_greater_than_100_char()
     {
         $user = $this->registerUserAndCreateWorkSpace();
 
-        $title = Str::random('51');
+        $title = Str::random(101);
 
         $this->post(route('projects.store', [
             'title' => $title,
-            'work_space_id' => $user->workSpaces()->get()->first()->id,
-        ]))->assertSessionHas('errors');
+            'work_space_id' => $user->activeWorkSpace()->id,
+        ]))->assertSessionHasErrors('title');
 
         $this->assertDatabaseMissing('projects', [
             'title' => $title,
@@ -85,9 +85,9 @@ class projectTest extends TestCase
 
         $project = $user->workSpaces()->find($workSpaceId)
             ->projects()
-            ->create(['title' => Str::random('20')]);
+            ->create(['title' => Str::random(20)]);
 
-        $newTitle = Str::random('25');
+        $newTitle = Str::random(25);
 
         $this->put(route('projects.update', $project->id), [
             'title' => $newTitle,
@@ -108,7 +108,7 @@ class projectTest extends TestCase
 
         $project = $user->workSpaces()->find($workSpaceId)
             ->projects()
-            ->create(['title' => Str::random('20')]);
+            ->create(['title' => Str::random(20)]);
 
         $this->delete(route('projects.destroy',$project->id))->assertSessionDoesntHaveErrors();
 

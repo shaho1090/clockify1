@@ -13,15 +13,10 @@ class UserTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function when_registering_users_a_new_workspace_will_be_assigned_to_them()
-    {
 
-    }
-
-    /** @test */
     public function name_field_is_required()
     {
-        $this->json('post', route('register.index'))->assertSee("The name field is required");
+        $this->json('post', '/register')->assertSee("The name field is required");
     }
 
     /** @test */
@@ -50,11 +45,6 @@ class UserTest extends TestCase
             'password' => 'passwordtest',
             'password_confirmation' => 'passwordtest',
         ])->assertSessionHasNoErrors();
-
-//        $this->json('post', '/register', [
-//            'password' => "Hello World",
-//            'password_confirmation' => "Hello World",
-//        ])->assertDontSee("The password confirmation does not match");
     }
 
     /** @test */
@@ -108,30 +98,4 @@ class UserTest extends TestCase
             'password' => 'passwordtest',
         ])->assertRedirect('/home');
     }
-
-//    public function testProjects()
-//    {
-//
-//        $this->assertIsNotResource('/projects');
-//
-//        // $response->assertStatus(200);
-//    }
-
-//    public function testUserAndWorkSpace()
-//    {
-//        //arrange
-//        //user can register
-//        $user = User::create([
-//            'name' => 'yadgar',
-//            'email' => 'yadgar42@yahoo.com',
-//            'password' => 'passwordforyadgar',
-//        ]);
-//
-//        //act
-//        //go to the home
-//
-//        //assert
-//        //see the workspace
-//
-//    }
 }

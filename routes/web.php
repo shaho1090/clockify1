@@ -66,7 +66,7 @@ Route::resource('members', 'WorkSpaceMembersController')->middleware('auth');
 Route::resource('invitees', 'InviteesController')->middleware('auth');
 
 Route::post('/send/mail/{invitee}', 'MailController@store')->name('send.mail')->middleware('auth');
-Route::get('/accept/invitation/{workSpace}', 'MailController@show')->name('accept.invitation')->middleware('auth');
+Route::get('/accept/invitation/{token}', 'MailController@show')->name('accept.invitation')->middleware('auth');
 
 //Route::get('/contributors/invited/{email?}', 'ContributorsController@add')->middleware('auth')->name('inviteGet');
 //Route::get('/contributors/invite/{project}', 'ContributorsController@invite')->middleware('auth')->name('invitePost');

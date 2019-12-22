@@ -6,6 +6,7 @@ use App\Invitee;
 use App\WorkSpace;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Unique;
 
 class InviteesController extends Controller
 {
@@ -50,8 +51,8 @@ class InviteesController extends Controller
         $invitee = Invitee::create([
             'email' => $request->get('email'),
         ]);
-        $invitee->attachToActiveWorkSpace();
 
+        $invitee->attachToActiveWorkSpace();
 
         return redirect(route('members.index'))->with('status', 'ایمیل دعوت نامه برای ارسال ذخیره شد!');
 

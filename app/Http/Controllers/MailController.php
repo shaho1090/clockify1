@@ -54,8 +54,11 @@ class MailController extends Controller
 //          $message->from('laravelshaho@gmail.com', 'project manager');
 //          $message->to( $invitee->email)->subject('دعوت به همکاری در پروژه');
 //      });
-
-        Mail::to($invitee->email)->send(new InviteMail($activeWorkSpace, $invitee->email));
+        $token = WorkSpaceInvitee::where('work_space_id', '=', $activeWorkSpace->id)
+            ->where('invitee_id', '=', $invitee->id)
+            ->get()->first()->token;
+        //dd($token);
+        Mail::to($invitee->email)->send(new InviteMail($token, $invitee->email));
 
         return redirect(route('members.index'))->with('status', 'ایمیل دعوت نامه با موفقیت ارسال شد!');
 
@@ -68,29 +71,35 @@ class MailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param WorkSpace $workSpace
-     * @param $email
+     * @param $token
      * @return void
      */
-    public function show(WorkSpace $workSpace)
+    public function show($token)
     {
+        $workSpaceInvitee = WorkSpaceInvitee::where('token', '=', $token)->get()->first();
 
-        if (!Auth::user()->invitation()) {
+//        if (!Auth::user()->isInvitee()) {
+//            return redirect('/home');
+//        }
+
+        if(is_null($workSpaceInvitee)){
             return redirect('/home');
         }
 
-        if ($workSpace->users()->find(Auth::user())) {
+        if (WorkSpace::find($workSpaceInvitee->work_space_id)->users()->find(Auth::user())) {
             return redirect(route('work-spaces.index'))->with('status', 'شما هم اکنون عضو این فضای کاری هستید');
         }
 
-        if (WorkSpaceInvitee::where('work_space_id', '=', $workSpace->id)->get()) {
+       // if (WorkSpaceInvitee::where('work_space_id', '=', $workSpaceInvitee->work_space_id)->get()) {
 
-            Auth::user()->workSpaces()->attach($workSpace->id, ['access' => self::ACCESS_INVITEE]);
-            $workSpace->activate();
+            Auth::user()->workSpaces()->attach($workSpaceInvitee->work_space_id, ['access' => self::ACCESS_INVITEE]);
+
+            WorkSpace::find($workSpaceInvitee->work_space_id)->activate();
+
             Auth::user()->invitation()->remove();
 
             return redirect(route('work-spaces.index'))->with('status', 'از شما بابت قبول دعوت نامه تشکر می کنیم!');
-        }
+       // }
     }
 
     /**

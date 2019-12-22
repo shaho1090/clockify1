@@ -11,5 +11,5 @@ class WorkSpaceInvitee extends Pivot
 
     public $incrementing = true;
     protected $table = 'work_space_invitee';
-    protected $fillable = ['work_space_id', 'invitee_id' ];
+    protected $fillable = ['work_space_id', 'invitee_id','token'];
 }

@@ -3,22 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="bed5611c-1392-4590-b8fc-0fc6ad22de8a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Old_Controller/ContributorsController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Old_Controller/InviteMembersController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Old_Controller/NewMemberController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Old_Controller/ProjectTitleController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Old_Controller/TagTitleController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Old_Controller/UserProjectWorksController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Old_Controller/UserWorksController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Old_Controller/WorkTagsController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Old_Controller/WorksController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Old_request/ContributorFormRequest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Old_request/NewWorkTimeRequest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Old_request/WorkTimeFormRequest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/old_model/Invite.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/old_model/UserProject.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/old_model/Work.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/old_model/WorkTimeProject.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InviteesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InviteesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MailController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MailController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Invitee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Invitee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/InviteMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/InviteMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/WorkSpaceInvitee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/WorkSpaceInvitee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/members/Invite.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/members/Invite.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/InviteeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/InviteeTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -267,16 +260,16 @@
       <TestRunner class="Tests\Feature\InviteeTest" file="$PROJECT_DIR$/tests/Feature/InviteeTest.php" scope="Class" />
       <method v="2" />
     </configuration>
+    <configuration name="InviteeTest.test_invitee_can_accept_invitation" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\InviteeTest" file="$PROJECT_DIR$/tests/Feature/InviteeTest.php" method="test_invitee_can_accept_invitation" scope="Method" />
+      <method v="2" />
+    </configuration>
     <configuration name="MemberTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\MemberTest" file="$PROJECT_DIR$/tests/Feature/MemberTest.php" scope="Class" />
       <method v="2" />
     </configuration>
     <configuration name="MemberTest.test_user_can_see_members_of_active_work_space" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\MemberTest" file="$PROJECT_DIR$/tests/Feature/MemberTest.php" method="test_user_can_see_members_of_active_work_space" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TagTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\TagTest" file="$PROJECT_DIR$/tests/Feature/TagTest.php" scope="Class" />
       <method v="2" />
     </configuration>
     <configuration name="Unnamed" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" nameIsGenerated="true">
@@ -289,19 +282,19 @@
     </configuration>
     <list>
       <item itemvalue="PHPUnit.Unnamed" />
-      <item itemvalue="PHPUnit.TagTest" />
       <item itemvalue="PHPUnit.projectTest" />
       <item itemvalue="PHPUnit.MemberTest" />
       <item itemvalue="PHPUnit.MemberTest.test_user_can_see_members_of_active_work_space" />
       <item itemvalue="PHPUnit.InviteeTest" />
+      <item itemvalue="PHPUnit.InviteeTest.test_invitee_can_accept_invitation" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="PHPUnit.InviteeTest" />
+        <item itemvalue="PHPUnit.InviteeTest.test_invitee_can_accept_invitation" />
         <item itemvalue="PHPUnit.projectTest" />
         <item itemvalue="PHPUnit.MemberTest" />
         <item itemvalue="PHPUnit.MemberTest.test_user_can_see_members_of_active_work_space" />
-        <item itemvalue="PHPUnit.TagTest" />
       </list>
     </recent_temporary>
   </component>
@@ -392,7 +385,8 @@
       <workItem from="1576862148217" duration="3661000" />
       <workItem from="1576865953664" duration="296000" />
       <workItem from="1576902542801" duration="10408000" />
-      <workItem from="1576924527439" duration="3141000" />
+      <workItem from="1576924527439" duration="6693000" />
+      <workItem from="1576989231323" duration="6931000" />
     </task>
     <servers />
   </component>
@@ -425,6 +419,11 @@
           <url>file://$PROJECT_DIR$/resources/views/members/work-times/index.blade.php</url>
           <line>39</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Mail/InviteMail.php</url>
+          <line>4</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

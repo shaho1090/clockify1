@@ -85,6 +85,15 @@ class User extends Authenticatable
         return Invitee::where('email', $this->email)->get()->first();
     }
 
+    public function isInvitee()
+    {
+        if(Invitee::where('email', $this->email)->get()->first()){
+            return true;
+        }
+        return false;
+    }
+
+
 
 //    public function scopeCompleteWorkTimes($query)
 //    {

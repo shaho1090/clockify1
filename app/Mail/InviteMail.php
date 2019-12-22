@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Invitee;
 use App\UserWorkSpace;
 use App\WorkSpace;
 use Illuminate\Bus\Queueable;
@@ -13,7 +14,7 @@ use PharIo\Manifest\Email;
 class InviteMail extends Mailable
 {
     use Queueable, SerializesModels;
-    private $workSpaceId ='';
+    private $token ='';
     private $email;
 
     /**
@@ -21,9 +22,9 @@ class InviteMail extends Mailable
      * @param WorkSpace $activeWorkSpace
      * @param Email $email
      */
-    public function __construct(WorkSpace $activeWorkSpace, $email)
+    public function __construct($token, $email)
     {
-        $this->workSpaceId = $activeWorkSpace->id;
+        $this->token = $token;
         $this->email = $email;
     }
 
@@ -35,7 +36,7 @@ class InviteMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('members/invite')->with(['workSpaceId' => $this->workSpaceId,
+        return $this->markdown('members/invite')->with(['token' => $this->token,
             'email' => $this->email]);
 
         //        $data = array(

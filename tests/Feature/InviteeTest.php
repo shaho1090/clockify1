@@ -7,6 +7,7 @@ use App\Mail\InviteMail;
 use App\User;
 use App\UserWorkSpace;
 use App\WorkSpace;
+use App\WorkSpaceInvitee;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Cache;
@@ -141,10 +142,15 @@ class InviteeTest extends TestCase
 
         $this->actingAs($userA);
 
-        $response = $this->get(route('accept.invitation', $ownerUser->activeWorkSpace()->id));
+        $token = WorkSpaceInvitee::where('work_space_id','=',$ownerUser->activeWorkSpace()->id)
+            ->where('invitee_id','=',Invitee::first()->id)->get()->first()->token;
+
+        $response = $this->get(route('accept.invitation',$token ));
+
         $response->assertSessionHas(['status'=>'از شما بابت قبول دعوت نامه تشکر می کنیم!']);
 
         $this->assertCount(2, WorkSpace::find($ownerUser->activeWorkSpace()->id)->users()->get());
+
         $this->assertNotNull($userA->workSpaces()->find($ownerUser->activeWorkSpace()->id)->get());
     }
 

@@ -10,7 +10,7 @@ class Invitee extends Model
 {
     use softdeletes;
 
-    protected $fillable = ['work_space_id', 'token', 'email'];
+    protected $fillable = ['work_space_id', 'email'];
 
     public function workSpaces()
     {
